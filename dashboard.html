@@ -11,20 +11,26 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/dashboard.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./css/all.min.css">
+
+  <!-- Local Stylesheet -->
+  <link rel="stylesheet" href="./css/dashboard.css">
+
 </head>
 
 <body>
 
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg shawdow-lg" aria-label="Eleventh navbar example">
+  <nav class="navbar sticky-top navbar-expand-lg shawdow-lg" aria-label="Eleventh navbar example">
     <div class="container-fluid">
       <form class="d-flex">
-        <img src="content/logo.png" class=" me-2" width="50" height="50" alt="">
+        <img src="./content/logo.png" class=" me-2" width="50" height="50" alt="">
         <h6 class="college-name"><strong>DBIT</strong></h6>
       </form>
       <form class="d-flex">
-        <img src="content/logo.png" class="profile-photo me-2" width="50" height="50" alt="">
+        <img src="./content/logo.png" class="profile-photo me-2" width="50" height="50" alt="">
         <h6 class="profile-name">PROF. REVATHY</h6>
       </form>
 
@@ -40,7 +46,7 @@
 
       <div class="col-lg-4">
         <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle batch-dropdown" style="margin-top: 4vh" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-light dropdown-toggle batch-dropdown" style="margin-top: 4vh; box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Computer Science 2024 Batch
           </button>
           <ul class="dropdown-menu dropdown-box-shadow" aria-labelledby="dropdownMenuButton1">
@@ -54,7 +60,8 @@
       <div class="col-lg-4">
         <div class="modal-body" style="margin-top: 1.6vh">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-light meetings-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button type="button" class="btn btn-light meetings-btn" style="box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="fa-solid fa-calendar"></i>
             Meetings
           </button>
 
@@ -70,35 +77,41 @@
                   <div class="modal-body">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+                        <div class="col-lg-6">PREVIOUS</div>
+                        <div class="col-lg-6 ms-auto">UPCOMING</div>
                       </div>
-                      <div class="row">
-                        <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
-                        <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-9">
-                          Level 1: .col-sm-9
-                          <div class="row">
-                            <div class="col-8 col-sm-6">
-                              Level 2: .col-8 .col-sm-6
-                            </div>
-                            <div class="col-4 col-sm-6">
-                              Level 2: .col-4 .col-sm-6
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <table class="table table-striped table-hover ">
+                        <thead>
+                          <tr>
+                            <th scope="col">DATE</th>
+                            <th scope="col">TIME</th>
+                            <th scope="col">DURATION</th>
+                            <th scope="col">LINK</th>
+                            <th scope="col">PARTICIPANTS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@fat</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Understood</button>
                 </div>
               </div>
             </div>
@@ -128,7 +141,7 @@
                   </ul>
                 </div>
               </li>
-              
+
               <li class="mb-1">
                 <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse02" aria-expanded="false">
                   BIPIN GIRI
@@ -205,6 +218,61 @@
         <!-- Dashboard grid -->
         <div class="col-lg-9 col-sm-12 col-md-11">
           <div class="sidebar flex-shrink-0 p-3 student-grid" style="width:70.5vw;">
+            <div class="container-fluid">
+              <div class="row" style="margin-top: 50px; margin-left: 4.5vw;;">
+                <div class="col-lg-3">
+                  <img src="./content/mentee/boris.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">                  
+                  <img src="./content/mentee/alston.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px; margin-left: 4.5vw;;">
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">                  
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 50px; margin-bottom: 50px; margin-left: 4.5vw;">
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">                  
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+
+                <div class="col-lg-3">
+                  <img src="./content/logo.png" class=" me-2" width="105" height="120" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
