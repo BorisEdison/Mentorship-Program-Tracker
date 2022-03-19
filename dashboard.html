@@ -1,0 +1,222 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg shawdow-lg" aria-label="Eleventh navbar example">
+    <div class="container-fluid">
+      <form class="d-flex">
+        <img src="content/logo.png" class=" me-2" width="50" height="50" alt="">
+        <h6 class="college-name"><strong>DBIT</strong></h6>
+      </form>
+      <form class="d-flex">
+        <img src="content/logo.png" class="profile-photo me-2" width="50" height="50" alt="">
+        <h6 class="profile-name">PROF. REVATHY</h6>
+      </form>
+
+    </div>
+  </nav>
+
+  <!-- Dashboard Buttons -->
+  <div class="container-fuild">
+    <div class="row" style="margin-right: 0;">
+      <div class="col-lg-4">
+
+      </div>
+
+      <div class="col-lg-4">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle batch-dropdown" style="margin-top: 4vh" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Computer Science 2024 Batch
+          </button>
+          <ul class="dropdown-menu dropdown-box-shadow" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Computer Science 2025 Batch</a></li>
+            <li><a class="dropdown-item" href="#">Computer Science 2026 Batch</a></li>
+            <li><a class="dropdown-item" href="#">Computer Science 2027 Batch</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="modal-body" style="margin-top: 1.6vh">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light meetings-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Meetings
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Meetings</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-4">.col-md-4</div>
+                        <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
+                        <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-9">
+                          Level 1: .col-sm-9
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+                              Level 2: .col-8 .col-sm-6
+                            </div>
+                            <div class="col-4 col-sm-6">
+                              Level 2: .col-4 .col-sm-6
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-sm-0" col-md-1>
+          <div class="sidebar flex-shrink-0 p-3 dashboard-navigation" style="width: 18vw;">
+            <ul class="list-unstyled ps-0">
+
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse01" aria-expanded="false">
+                  BORIS EDISON
+                </button>
+                <div class="collapse" id="dashboard-collapse01">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse02" aria-expanded="false">
+                  BIPIN GIRI
+                </button>
+                <div class="collapse" id="dashboard-collapse02">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse03" aria-expanded="false">
+                  ALSTON FERNANDES
+                </button>
+                <div class="collapse" id="dashboard-collapse03">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse04" aria-expanded="false">
+                  HRISHIKESH PANIGRAHI
+                </button>
+                <div class="collapse" id="dashboard-collapse04">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse05" aria-expanded="false">
+                  ROYCE VAZ
+                </button>
+                <div class="collapse" id="dashboard-collapse05">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse06" aria-expanded="false">
+                  ALERON JAISALROYAN
+                </button>
+                <div class="collapse" id="dashboard-collapse06">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">FE</a></li>
+                    <li><a href="#" class="link-dark rounded">SE</a></li>
+                    <li><a href="#" class="link-dark rounded">TE</a></li>
+                    <li><a href="#" class="link-dark rounded">BE</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dashboard grid -->
+        <div class="col-lg-9 col-sm-12 col-md-11">
+          <div class="sidebar flex-shrink-0 p-3 student-grid" style="width:70.5vw;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
