@@ -1,0 +1,111 @@
+@import url("vars.css");
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Open Sans";
+    background: var(--bg-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+.wrapper {
+    padding-top: 50px;
+    width: 100vw;
+}
+.tabs {
+    position: relative;
+    margin: 3rem 0;
+    background: var(--bg-color);
+}
+.tab {
+    float: left;
+}
+.tab-switch {
+    display: none;
+}
+.tab-label {
+    user-select: none;
+    position: relative;
+    display: block;
+    line-height: 2.75em;
+    height: 3em;
+    padding: 0 1.6em;
+    background: var(--light-accent-color);
+    color: var(--text-black);
+    cursor: pointer;
+    top: 0;
+    transition: all 0.25s;
+}
+.tab-label:hover {
+    top: -0.25rem;
+    transition: top 0.25s;
+}
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    top: 2.75em;
+    left: 0;
+    height: calc(100vh - 142px);
+    width: 100vw;
+    padding: 1.6rem;
+    opacity: 0;
+    background: #fff;
+    color: var(--text-black);
+    transition: all 0.35s;
+}
+.tab-table{
+    overflow-x: auto;
+}
+.tab-switch:checked ~ .tab-label {
+    background: #fff;
+    color: var(--text-black);
+    border-bottom: 0;
+    border-right: 0.125rem solid #fff;
+    transition: all 0.35s;
+    z-index: 1;
+    top: -0.0625rem;
+}
+.tab-switch:checked ~ label + .tab-content {
+    z-index: 2;
+    opacity: 1;
+    transition: all 0.35s;
+}
+.tab-title{
+    user-select: none;
+    padding: 1rem 2rem;
+    background-color: var(--dark-accent-color);
+    color: var(--text-white);
+}
+.tab-actions{
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+.tab-actions>button:last-child{
+    margin-left: auto;
+}
+.tab-table{
+    overflow-x: auto;
+}
+.tab-content>section:last-child{
+    position: relative;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+th,
+td{
+    white-space: nowrap;
+    text-align: left;
+    padding: 8px;
+    min-width: 100px;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}

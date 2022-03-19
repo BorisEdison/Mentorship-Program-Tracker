@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script defer src="../js/nav.js"></script>
+    <script defer src="../js/admin.js"></script>
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-main">
+            <a href="#" class="nav-head">
+                <img height="10px" width="10px" id="logo" src="../content/logo.png" alt="logo" class="nav-img">
+                <p class="nav-text">TEST</p>
+            </a>
+            <div class="nav-content">
+                <div class="nav-links">
+                    <a class="nav-text" href="#">Link1</a>
+                    <a class="nav-text" href="#">Link2</a>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="wrapper">
+        <div class="tabs">
+            <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                <label for="tab-1" class="tab-label">Activities</label>
+                <div class="tab-content">
+                    <!-- Flex  -->
+                    <section class="tab-title">User Logs</section>
+                    <section>
+                        <span class="tab-actions">
+                            <button>Refresh</button>
+                            <button>Filter</button>
+                            <button>Download</button>
+                        </span>
+                        <section class="tab-table">
+                            <table id="activity-list">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                    <th>Department</th>
+                                    <th>Activity</th>
+                                </tr>
+                                <tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr><tr>
+                                    <td>2001</td>
+                                    <td>E. Boris</td>
+                                    <td>14:30:55</td>
+                                    <td>09-03-22</td>
+                                    <td>Computer</td>
+                                    <td>New user created</td>
+                                </tr>
+                            </table>
+                        </section>
+                        <section>
+
+                        </section>
+                    </section>
+
+                </div>
+            </div>
+            <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+                <label for="tab-2" class="tab-label">Users</label>
+                <div class="tab-content">
+                    <!-- Flex  -->
+                    <section class="tab-title">Registered Users</section>
+                    <section>
+                        <span class="tab-actions">
+                            <button>Add User</button>
+                            <button>Assign Roles</button>
+                            <button>Refresh</button>
+                            <button>Filter</button>
+                            <button>Download</button>
+                        </span>
+                        <section class="tab-table">
+                            <table id="user-list">
+                                <tr>
+                                    <th>Fname</th>
+                                    <th>Mname</th>
+                                    <th>Lname</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th>Pno</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr>
+                                    <td>Boris</td>
+                                    <td>Anthony</td>
+                                    <td>Edison</td>
+                                    <td>Student</td>
+                                    <td>Computer</td>
+                                    <td>9004031311</td>
+                                    <td>220boris0002@dbit.in</td>
+                                    <td>Some Actions</td>
+                                </tr>
+                            </table>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
