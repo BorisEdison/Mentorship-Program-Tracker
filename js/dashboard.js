@@ -6,4 +6,3 @@
       new bootstrap.Tooltip(tooltipTriggerEl)
     })
   })()
-  
