@@ -14,6 +14,8 @@
 
   <!-- Local Stylesheet -->
   <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/dashboard-kebab.css">
+  <link rel="stylesheet" href="../css/dashboard-kebab.scss">
 
 </head>
 
@@ -96,6 +98,27 @@
         <button type="button" class="btn btn-outline-info btn-sm">View Message</button>
       </div>
     </div>
+  </div>
+
+  <!-- kebab menu -->
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="kebab">
+        <figure></figure>
+        <figure class="kebab-middle"></figure>
+        <p class="kebab-cross">x</p>
+        <figure></figure>
+        <ul class="kebab-dropdown">
+          <li class="kebab-li"><a href="http://www.g.com" class="kebab-a">Select</a></li>
+          <li class="kebab-li"><a href="http://www.g.com" class="kebab-a">Schedule</a></li>
+          <li class="kebab-li"><a href="http://www.g.com" class="kebab-a">Remove</a></li>
+          <li class="kebab-li"><a href="http://www.g.com" class="kebab-a">More Info</a></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
   <!-- Dashboard Buttons -->
@@ -661,7 +684,7 @@
     </script>
 
     <!-- Local -->
-    <script src="./js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script>
 
 </body>
 
