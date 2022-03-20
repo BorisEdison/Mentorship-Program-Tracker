@@ -47,7 +47,7 @@ h6 {
   box-shadow: 0 8px 6px -6px #999;
 }
 
-/* hamburger */
+/* hamburger menu*/
  #menuToggle
  {
    display: inline-block;
@@ -228,6 +228,7 @@ main {
   padding-left: 0;
 }
 
+/* media query */
 /* hamburger */
 @media screen and (max-width: 768px) {
   #menu {

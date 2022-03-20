@@ -1,0 +1,117 @@
+.kebab {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 16px;
+  top: 12px;
+}
+
+.kebab figure {
+  width: 6px;
+  height: 6px;
+  border-radius: 5px;
+  background: #00bcd4;
+  margin: 3px 0;
+}
+
+.kebab-middle {
+  -webkit-transition: all 0.25s cubic-bezier(0.72, 1.2, 0.71, 0.72);
+  transition: all 0.25s cubic-bezier(0.72, 1.2, 0.71, 0.72);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  position: relative;
+  -webkit-box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+  -webkit-filter: blur(0.1px);
+  filter: blur(0.1px);
+}
+
+.kebab-middle.active {
+  -webkit-transform: scale(4.5);
+          transform: scale(4.5);
+  -webkit-transition: all 0.25s cubic-bezier(0.32, 2.04, 0.85, 0.54);
+  transition: all 0.25s cubic-bezier(0.32, 2.04, 0.85, 0.54);
+  -webkit-box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.kebab-cross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  margin-top: -1px;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  -webkit-transition: all 0.2s cubic-bezier(0.72, 1.2, 0.71, 0.72);
+  transition: all 0.2s cubic-bezier(0.72, 1.2, 0.71, 0.72);
+  font-size: 22px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.kebab-cross.active {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: all 0.15s cubic-bezier(0.32, 2.04, 0.85, 0.54);
+  transition: all 0.15s cubic-bezier(0.32, 2.04, 0.85, 0.54);
+}
+
+.kebab-a, .kebab-li {
+  font-family: Roboto, sans-serif;
+}
+
+.kebab-a, kebab-li {
+  color: #6b6b6b;
+  text-decoration: none;
+}
+
+.kebab-dropdown {
+  position: absolute;
+  right: 0;
+  top: 3em;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.kebab-dropdown .kebab-li {
+  display: block;
+  width: 100%;
+}
+
+.kebab-dropdown .kebab-li .kebab-a {
+  width: 100%;
+  padding: 1em 18px;
+  display: inline-block;
+  white-space: pre;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.kebab-dropdown .kebab-li .kebab-a:hover {
+  background: #ebebeb;
+}
+
+.kebab-dropdown:hover .kebab-dropdown {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.kebab-dropdown.active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.25s cubic-bezier(0.5, 1.8, 0.9, 0.8);
+  transition: all 0.25s cubic-bezier(0.5, 1.8, 0.9, 0.8);
+}
+/*# sourceMappingURL=dashboard-kebab.css.map */
