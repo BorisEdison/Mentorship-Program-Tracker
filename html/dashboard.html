@@ -101,7 +101,7 @@
   </div>
 
   <!-- kebab menu -->
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
@@ -118,37 +118,29 @@
         </ul>
       </div>
     </div>
-
-  </div>
+  </div> -->
 
   <!-- Dashboard Buttons -->
-  <div class="container-fuild">
-    <div class="row" style="margin-right: 0;">
-      <div class="col-lg-4">
-
-      </div>
-
-      <div class="col-lg-4">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle batch-dropdown" style="margin-top: 4vh;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <div class="container">
+<div class="row dashboard-buttons-1">
+  <!-- Batch Dropdown -->
+          <button class="btn btn-light dropdown-toggle batch-dropdown"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Computer Science 2024 Batch
           </button>
-          <ul class="dropdown-menu dropdown-box-shadow" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu dropdown-box-shadow dropdown-ul" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="#">Computer Science 2025 Batch</a></li>
             <li><a class="dropdown-item" href="#">Computer Science 2026 Batch</a></li>
             <li><a class="dropdown-item" href="#">Computer Science 2027 Batch</a></li>
           </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="modal-body" style="margin-top: 1.6vh">
-
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-light meetings-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
             Meetings
           </button>
+        <!-- Meetings modal Section-->
+        <div class="modal-body" >
+
+
 
           <!-- Modal -->
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -511,15 +503,14 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
     <!-- sidebar -->
     <div class="container-fluid mb-5">
       <div class="row">
-        <div class="col-lg-3 col-sm-0" col-md-1>
-          <div class="sidebar flex-shrink-0 p-3 dashboard-navigation" style="width: 18vw;">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
             <ul class="list-unstyled ps-0">
 
               <li class="mb-1">
@@ -610,60 +601,60 @@
         </div>
 
         <!-- Dashboard grid -->
-        <div class="col-lg-9 col-sm-12 col-md-11">
-          <div class="sidebar flex-shrink-0 p-3 student-grid" style="width:70.5vw;">
-            <div class="container-fluid">
-              <div class="row" style="margin-top: 50px; margin-left: 4.5vw;;">
-                <div class="col-lg-3">
-                  <img src="../content/mentee/boris.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+        <div class="col-lg-9 col-md-auto col-sm-12">
+          <div class="sidebar flex-shrink-0 p-3 student-grid">
+            <div class="container-fluid" style="margin: auto;">
+              <div class="row" style="margin-top: 50px; margin: auto">
+                <div class="col-lg-3 col-md-3 col-sm-6 img-div">
+                  <img src="../content/mentee/boris.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
-                <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                <div class="col-lg-3  col-md-3 col-sm-6 img-div">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
-                <div class="col-lg-3">
-                  <img src="../content/mentee/alston.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                <div class="col-lg-3  col-md-3 col-sm-6 img-div">
+                  <img src="../content/mentee/alston.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
-                <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                <div class="col-lg-3  col-md-3 col-sm-6 img-div">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
               </div>
 
               <div class="row" style="margin-top: 50px; margin-left: 4.5vw;;">
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130"  alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
               </div>
 
               <div class="row" style="margin-top: 50px; margin-bottom: 50px; margin-left: 4.5vw;">
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
 
                 <div class="col-lg-3">
-                  <img src="../content/logo.png" class=" me-2" width="110" height="130" style="border-radius: 10px;   box-shadow: 0 0 1.5px 1.5px rgba(0, 0, 0, 0.5);" alt="">
+                  <img src="../content/logo.png" class="student-img me-2" width="110" height="130" alt="">
                 </div>
               </div>
             </div>
