@@ -20,19 +20,65 @@
 </head>
 
 <body>
-
-  <!-- navbar -->
-  <nav class="navbar sticky-top navbar-expand-lg shawdow-lg" aria-label="Eleventh navbar example">
+  
+  <nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
-      <form class="d-flex">
+      <a class="navbar-brand" href="#">
         <img src="../content/logo.png" class=" me-2" width="50" height="50" alt="">
-        <h6 class="college-name"><strong>DBIT</strong></h6>
-      </form>
-      <form class="d-flex">
-        <img src="../content/logo.png" class="profile-photo me-2" width="50" height="50" alt="">
-        <h6 class="profile-name">PROF. REVATHY</h6> 
-      </form>
+        DBIT 
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+        <div class="hamburger-toggle">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-content">
+        <div class="ms-auto">
 
+            <a class="navbar-brand" href="#">
+              <img src="../content/logo.png" class=" me-2" width="50" height="50" alt="">
+              Prof. REVATHY
+            </a>
+        </div>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit Profile">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span class="iconify" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
+            </a>
+          </li>
+        </span>
+
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Notification">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="iconify" data-icon="clarity:notification-solid" data-width="24" data-height="26"></span>
+            </a>
+          </li>
+        </span>
+
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Message">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="iconify" data-icon="bx:message-detail" data-width="24" data-height="26"></span>
+            </a>
+          </li>
+        </span>
+
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="iconify" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
+            </a>
+          </li>
+        </span>
+
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -60,23 +106,28 @@
   <div class="container">
 <div class="row dashboard-buttons-1">
   <!-- Batch Dropdown -->
+  <div class="d-flex align-items-center justify-content-center">
           <button class="btn btn-light dropdown-toggle batch-dropdown"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Computer Science 2024 Batch
           </button>
           <ul class="dropdown-menu dropdown-box-shadow dropdown-ul" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Computer Science 2025 Batch</a></li>
-            <li><a class="dropdown-item" href="#">Computer Science 2026 Batch</a></li>
-            <li><a class="dropdown-item" href="#">Computer Science 2027 Batch</a></li>
+            <li><a class="dropdown-item" href="#" style="color: black; text-shadow: none;">Computer Science 2025 Batch</a></li>
+            <li><a class="dropdown-item" href="#" style="color: black; text-shadow: none;">Computer Science 2026 Batch</a></li>
+            <li><a class="dropdown-item" href="#" style="color: black; text-shadow: none;">Computer Science 2027 Batch</a></li>
           </ul>
+
+          <div>
+
+          </div>
+
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-light meetings-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
             Meetings
           </button>
+        </div>
         <!-- Meetings modal Section-->
         <div class="modal-body" >
-
-
 
           <!-- Modal -->
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
