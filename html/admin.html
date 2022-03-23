@@ -1,11 +1,12 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
 
-      <!-- Bootstrap -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <!-- Bootstrap Icons -->
@@ -16,55 +17,191 @@
   <link rel="stylesheet" href="../css/admin.css">
 
 </head>
+
 <body>
 
-    <!-- navbar -->
-    <nav class="navbar navbar-main sticky-top navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="../content/logo.png" class=" me-2" width="50" height="50" alt="">
-            DBIT 
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
-            <div class="hamburger-toggle">
-              <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          </button>
-          <div class="collapse navbar-collapse" id="navbar-content">
-            <div class="ms-auto admin-greeting">
-                  Welcome Admin
-            </div>
-    
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-              <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
-              <li class="nav-item-main">
-                <a class="nav-link" id="iconifyLogOut" href="#" >
-                  <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
-                </a>
-              </li>
-            </span>
-            </ul>
+  <!-- navbar -->
+  <nav class="navbar navbar-main sticky-top navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../content/logo.png" class=" me-2" width="50" height="50" alt="">
+        DBIT
+      </a>
+
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+        <div class="hamburger-toggle">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
-      </nav>
-    
-          <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+      </button>
 
-    <!-- iconify -->
-    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+      <div class="collapse navbar-collapse" id="navbar-content">
+        <div class="ms-auto admin-greeting">
+          Welcome Admin
+        </div>
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    </script>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
+            <li class="nav-item-main">
+              <a class="nav-link" id="iconifyLogOut" href="#">
+                <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
+              </a>
+            </li>
+          </span>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Local -->
-    <script src="../js/admin.js"></script>
-    <script src="../js/navbar.js"></script>
+  <div class="container-fluid">
+
+    <nav class="">
+      <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
+        <button class="nav-link" id="nav-activities-tab" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
+          ACTIVITIES
+        </button>
+
+        <button class="nav-link active" id="nav-users-tab" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users-tab" aria-selected="true">
+          USERS
+        </button>
+      </div>
+    </nav>
+
+    <div class="tab-content mt-5" id="nav-tabContent">
+      <!-- Activities -->
+      <div class="tab-pane fade" id="nav-activities" role="tabpanel" aria-labelledby="nav-activities-tab">
+
+        <div class="container-fluid mb-5">
+          <div class="sidebar flex-shrink-0 dashboard-navigation">
+            <div class="sidebar-heading d-flex align-items-center justify-content-center">
+              <h5>USERS LOGS</h5>
+            </div>
+
+            <!-- buttons -->
+            <div>
+
+            </div>
+
+            <!-- table -->
+            <div class="m-4 mt-4 mb-4">
+              <table class="table table-striped table-hover table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">DATE</th>
+                    <th scope="col">TIME</th>
+                    <th scope="col">DURATION</th>
+                    <th scope="col">Mode</th>
+                    <th scope="col">PARTICIPANTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:00 pm</td>
+                    <td>20 mins</td>
+                    <td>Online</td>
+                    <td>Aleron Jaisalroyan</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">2-2-2022</th>
+                    <td>2:00 pm</td>
+                    <td>13 mins</td>
+                    <td>Offine</td>
+                    <td>Boris Edison</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:00 pm</td>
+                    <td>20 mins</td>
+                    <td>Online</td>
+                    <td>Aleron Jaisalroyan</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">2-2-2022</th>
+                    <td>2:00 pm</td>
+                    <td>13 mins</td>
+                    <td>Offine</td>
+                    <td>Boris Edison</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Users -->
+      <div class="tab-pane fade show active" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
+
+        <div class="container-fluid mb-5">
+          <div class="sidebar flex-shrink-0 dashboard-navigation">
+            <div class="sidebar-heading d-flex align-items-center justify-content-center">
+              <h5>REGISTERED USERS</h5>
+            </div>
+
+            <!-- buttons -->
+            <div>
+
+            </div>
+
+            <!-- table -->
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+
+  <!-- iconify -->
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+
+  <!-- Local -->
+  <script src="../js/admin.js"></script>
+  <script src="../js/navbar.js"></script>
 </body>
+
 </html>

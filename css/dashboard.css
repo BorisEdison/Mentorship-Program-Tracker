@@ -45,6 +45,17 @@ h6 {
 .modal-body{
   padding: 0;
 }
+.nav-link {
+  color: #3F72AF;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #F0F4FB;
+  background-color: #3F72AF;
+  border-color: #3F72AF #3F72AF black;
+}
+.nav-tabs .nav-link {
+  border-bottom: 3px solid transparent;
+}
 
 /* sidebar */
 .sidebar {
@@ -56,17 +67,6 @@ h6 {
 }
 .dropdown-toggle { 
   outline: 0; 
-}
-.nav-link {
-  color: #3F72AF;
-}
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #F0F4FB;
-  background-color: #3F72AF;
-  border-color: #3F72AF #3F72AF black;
-}
-.nav-tabs .nav-link {
-  border-bottom: 3px solid transparent;
 }
 .btn-toggle {
   display: inline-flex;
@@ -111,7 +111,7 @@ h6 {
 
 /* student profile grid */
 #grd {
-  max-width: 750px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0;
   font-size: 0;
