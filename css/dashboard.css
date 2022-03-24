@@ -14,7 +14,7 @@ a:hover {
   text-shadow: 0 0 2px #fff;
   color: rgb(0, 0, 0);
 }
-p{
+p {
   margin-bottom: 0;
 }
 h6 {
@@ -24,25 +24,25 @@ h6 {
 }
 
 /* Dashboard Buttons-1 */
-.dashboard-buttons-1{
+.dashboard-buttons-1 {
   margin-top: 4vh;
 }
-.batch-dropdown{
+.batch-dropdown {
   position: relative;
   align-items: center;
   width: auto;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
 }
-.dropdown-ul{
+.dropdown-ul {
   width: auto;
 }
-.meetings-btn{
+.meetings-btn {
   width: auto;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* Meetings Modal */
-.modal-body{
+.modal-body {
   padding: 0;
 }
 .nav-link {
@@ -63,10 +63,10 @@ h6 {
   border-radius: 13px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
   margin: 10px 0;
-  margin-top:5.5vh;
+  margin-top: 5.5vh;
 }
-.dropdown-toggle { 
-  outline: 0; 
+.dropdown-toggle {
+  outline: 0;
 }
 .btn-toggle {
   display: inline-flex;
@@ -78,7 +78,7 @@ h6 {
   background-color: transparent;
   border: 0;
 }
-.btn-toggle:hover,.btn-toggle:focus {
+.btn-toggle:hover, .btn-toggle:focus {
   color: rgba(0, 0, 0, .85);
   background-color: #d2f4ea;
 }
@@ -102,10 +102,10 @@ h6 {
   margin-left: 1.25rem;
   text-decoration: none;
 }
-.btn-toggle-nav a:hover,.btn-toggle-nav a:focus {
+.btn-toggle-nav a:hover, .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 }
-.dashboard-navigation{
+.dashboard-navigation {
   padding-right: 0;
 }
 
@@ -225,6 +225,7 @@ h6 {
   #grd .grid-li {
     width: 25%;
   }
+
   /* #grd {
     margin: 60px auto;
   } */

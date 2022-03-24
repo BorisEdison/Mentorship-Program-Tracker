@@ -1,61 +1,63 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <title>MPT Signup</title>
 
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        
-        <!-- Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>MPT Signup</title>
 
-        <!-- Local Stylesheet -->
-        <link href="../css/login.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    </head>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
-    <body class="">
+  <!-- Local Stylesheet -->
+  <link href="../css/login.css" rel="stylesheet">
 
-        <div class="logo">
-            <a class="" href="#">
-                <img style="border-radius: 10px;" src="../content/logo.png" width="60" height="60" alt="">
-            </a>
-        </div> 
+</head>
 
-        <main class="form-signin">
-            <form action = "/" method="POST"> 
+<body class="">
 
-                <h1 class="h3 mb-3">Welcome to MPT</h1>
-                <p style="opacity: 0.7;">Sign in by entering information below</p>
+  <div class="logo">
+    <a class="" href="#">
+      <img style="border-radius: 10px;" src="../content/logo.png" width="60" height="60" alt="">
+    </a>
+  </div>
 
-                <div class="">
-                    <input type="email" name = "email" class="form-control top" placeholder="Email" required>
-                </div>
-                <div class="">
-                    <input type="password" name = "password" class="form-control bottom" placeholder="Password" required>
-                </div>
+  <main class="form-signin">
+    <form action="/" method="POST">
 
-                <p><a href=""><strong>Forgot password?</strong></a></p>
+      <h1 class="h3 mb-3">Welcome to MPT</h1>
+      <p style="opacity: 0.7;">Sign in by entering information below</p>
 
-                <label class="checkbox-container" style="opacity: 0.85;font-size: 0.9rem;">
-                    <input type="checkbox" >
-                    <span class="checkmark"></span>
-                    Remember Me
-                  </label>
+      <div class="">
+        <input type="email" name="email" class="form-control top" placeholder="Email" required>
+      </div>
+      <div class="">
+        <input type="password" name="password" class="form-control bottom" placeholder="Password" required>
+      </div>
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <p><a href=""><strong>Forgot password?</strong></a></p>
 
-                <p style="opacity: 0.8;">Don't have an account? <a href=""><strong>Sign up</strong></a></p>
-            </form>
-        </main>
+      <label class="checkbox-container" style="opacity: 0.85;font-size: 0.9rem;">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        Remember Me
+      </label>
 
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
-        <!-- Local -->
-        <script src ="../js/login.js"></script>
-  </body>
+      <p style="opacity: 0.8;">Don't have an account? <a href=""><strong>Sign up</strong></a></p>
+    </form>
+  </main>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Local -->
+  <script src="../js/login.js"></script>
+</body>
+
 </html>

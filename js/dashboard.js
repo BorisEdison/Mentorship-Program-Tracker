@@ -1,6 +1,3 @@
-// sidebar
-
-
 // kebab menu
 var kebab = document.querySelector('.kebab'),
 middle = document.querySelector('.kebab-middle'),
