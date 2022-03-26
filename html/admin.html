@@ -46,7 +46,7 @@
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
             <li class="nav-item-main">
-              <a class="nav-link" id="iconifyLogOut" href="#">
+              <a class="navbar-brand" id="iconifyLogOut" href="#">
                 <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
               </a>
             </li>
@@ -62,11 +62,11 @@
     <nav class="">
       <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
         <button class="nav-link" id="nav-activities-tab" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
-          ACTIVITIES
+          Activities
         </button>
 
         <button class="nav-link active" id="nav-users-tab" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users-tab" aria-selected="true">
-          USERS
+          Users
         </button>
       </div>
     </nav>
@@ -79,27 +79,48 @@
         <div class="container-fluid mb-5">
           <div class="sidebar flex-shrink-0 dashboard-navigation">
             <div class="sidebar-heading d-flex align-items-center justify-content-center">
-              <h5>USERS LOGS</h5>
+              <h5>User Logs</h5>
             </div>
 
             <!-- buttons -->
-            <div>
+            <div class="container-fluid">
+              <div class="d-flex bd-highlight mb-3">
 
+                <div class="p-2 bd-highlight">
+                  <button class="btn btn-light  btn-sm"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
+                    Refresh List
+                  </button>
+                </div>  
+
+                
+                <div class="p-2 bd-highlight">
+                  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                </div>
+
+                <div class="ms-auto p-2 bd-highlight">
+                  <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
+                      Download
+                    </button>                        
+                  </div>
+              </div>
             </div>
 
             <!-- table -->
-            <div class="m-4 mt-4 mb-4">
-              <table class="table table-striped table-hover table-sm">
+            <div class="table-div m-4 mt-4 mb-4">
+              <table class="table ">
                 <thead>
                   <tr>
-                    <th scope="col">DATE</th>
-                    <th scope="col">TIME</th>
-                    <th scope="col">DURATION</th>
-                    <th scope="col">Mode</th>
-                    <th scope="col">PARTICIPANTS</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Activity</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
 
                   <tr>
                     <th scope="row">11-2-2022</th>
@@ -121,7 +142,7 @@
                     <th scope="row">2-2-2022</th>
                     <td>2:00 pm</td>
                     <td>13 mins</td>
-                    <td>Offine</td>
+                    <td>Offline</td>
                     <td>Boris Edison</td>
                   </tr>
 
@@ -145,7 +166,7 @@
                     <th scope="row">2-2-2022</th>
                     <td>2:00 pm</td>
                     <td>13 mins</td>
-                    <td>Offine</td>
+                    <td>Offline</td>
                     <td>Boris Edison</td>
                   </tr>
 
@@ -171,17 +192,132 @@
         <div class="container-fluid mb-5">
           <div class="sidebar flex-shrink-0 dashboard-navigation">
             <div class="sidebar-heading d-flex align-items-center justify-content-center">
-              <h5>REGISTERED USERS</h5>
+              <h5>Registered Users</h5>
             </div>
 
             <!-- buttons -->
-            <div>
+            <div class="container-fluid" style="overflow-x: auto;">
 
+                <div class="d-flex bd-highlight mb-3">
+
+                  <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                      <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>                
+                      Add Users
+                      </button>                        
+                    </div>             
+
+                  <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                      <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>                
+                      Assign Roles
+                      </button>                        
+                    </div>
+
+                  <div class="p-2 bd-highlight">
+                    <button class="btn btn-light  btn-sm"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
+                      Refresh List
+                    </button>
+                  </div>
+
+                  <div class="p-2 bd-highlight">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                  </div>
+
+                  <div class="ms-auto p-2 bd-highlight">
+                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                      <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
+                        Download
+                      </button>                        
+                    </div>
+
+                </div>
             </div>
 
             <!-- table -->
-            <div>
+            <div class="table-div m-4 mt-4 mb-4">
+              <table class="table" >
+                <thead>
+                  <tr>
+                    <th scope="col">Fname</th>
+                    <th scope="col">Mname</th>
+                    <th scope="col">Lname</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Pno</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="myTable">
 
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>
+                      <span class="iconify" data-icon="bx:edit"></span>
+                      <span class="iconify" data-icon="ant-design:copy-outlined"></span>
+                      <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                      <span class="iconify" data-icon="ri:indeterminate-circle-fill"></span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:00 pm</td>
+                    <td>20 mins</td>
+                    <td>Online</td>
+                    <td>Aleron Jaisalroyan</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">2-2-2022</th>
+                    <td>2:00 pm</td>
+                    <td>13 mins</td>
+                    <td>Offline</td>
+                    <td>Boris Edison</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:00 pm</td>
+                    <td>20 mins</td>
+                    <td>Online</td>
+                    <td>Aleron Jaisalroyan</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">2-2-2022</th>
+                    <td>2:00 pm</td>
+                    <td>13 mins</td>
+                    <td>Offline</td>
+                    <td>Boris Edison</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">11-2-2022</th>
+                    <td>4:30 pm</td>
+                    <td>16 mins</td>
+                    <td>Online</td>
+                    <td>Royce Vaz</td>
+                  </tr>
+
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

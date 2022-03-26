@@ -57,6 +57,10 @@ h6 {
   border-bottom: 3px solid transparent;
 }
 
+/* table */
+.table-div{
+  overflow-x: auto;
+}
 /* sidebar */
 .sidebar {
   background-color: #DBE2EF;
