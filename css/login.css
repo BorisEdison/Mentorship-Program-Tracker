@@ -59,10 +59,10 @@ p {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-/* .middle {
+.middle {
   border-radius: 0;
   margin-bottom: -1px;
-} */
+}
 .bottom{
   margin-bottom: 10px;
   border-top-left-radius: 0;
