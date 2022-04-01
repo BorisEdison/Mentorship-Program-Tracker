@@ -1,18 +1,8 @@
 from django.shortcuts import render
-
+from django.contrib.auth.models import User
 # Create your views here.
-info=[
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    {'Fname': 'Hrishikesh', 'Mname':'P', 'Lname':'Pani', 'Role':'Teacher', 'Department': 'comps', 'Pno': '234', 'Email': 'Whatever'},
-    
-]
 
 def Adminpage(request):
-    return render(request, 'admin.html', {'info': info})
+    user = User.objects.all()
+    context = {'user': user} 
+    return render(request, 'admin.html', context)

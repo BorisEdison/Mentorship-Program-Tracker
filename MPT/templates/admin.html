@@ -240,27 +240,26 @@
               <table class="table" >
                 <thead>
                   <tr>
-                    <th scope="col">Fname</th>
-                    <th scope="col">Mname</th>
-                    <th scope="col">Lname</th>
+                    <th scope="col">name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
                     <th scope="col">Role</th>
                     <th scope="col">Department</th>
                     <th scope="col">Pno</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Action</th>
+                    
+                    
                   </tr>
                 </thead>
                 <tbody id="myTable">
                   
-                  {% for users in info %}
+                  {% for users in user %}
                   <tr>
-                    <th scope="row">{{users.Fname}}</th>
-                    <td>{{users.Mname}}</td>
-                    <td>{{users.Lname}}</td>
-                    <td>{{users.Role}}</td>
-                    <td>{{users.Department}}</td>
-                    <td>{{users.Pno}}</td>
-                    <td>{{users.Email}}</td>
+                    <th scope="row">{{users.first_name}}</th>
+                    <td>{{users.username}}</td>
+                    <td>{{users.email}}</td>
+                   
+                   
                     <td>
                       <span class="iconify" data-icon="bx:edit"></span>
                       <span class="iconify" data-icon="ant-design:copy-outlined"></span>
