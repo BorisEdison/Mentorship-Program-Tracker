@@ -27,13 +27,13 @@
   </div>
 
   <main class="form-signin">
-    <form action="/" method="POST">
+    <form action="LoginPage" method="POST">
 
       <h1 class="h3 mb-3">Welcome to MPT</h1>
       <p style="opacity: 0.7;">Sign in by entering information below</p>
-
+      {% csrf_token %}
       <div class="">
-        <input type="email" name="email" class="form-control top" placeholder="Email" required>
+        <input type="text" name="username" class="form-control top" placeholder="Username" required>
       </div>
       <div class="">
         <input type="password" name="password" class="form-control bottom" placeholder="Password" required>
@@ -49,8 +49,18 @@
 
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
-      <p style="opacity: 0.8;">Don't have an account? <a href=""><strong>Sign up</strong></a></p>
+      <p style="opacity: 0.8;">Don't have an account? <a href="RegisterPage"><strong>Sign up</strong></a></p>
     </form>
+
+      <div>
+      {% for i in messages %}
+
+      <h2>
+        {{i}}
+      </h2>
+        
+      {% endfor %}
+    </div>
   </main>
 
   <!-- jQuery -->
