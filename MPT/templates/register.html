@@ -19,7 +19,6 @@
 </head>
 
 <body class="">
-
   <div class="logo">
     <a class="" href="#">
       <img style="border-radius: 10px;" src="../content/logo.png" width="60" height="60" alt="">
@@ -27,18 +26,22 @@
   </div>
 
   <main class="form-signin">
-    <form action="/register" method="POST">
+    <form action="RegisterPage" method="POST">
 
       <h1 class="h3 mb-3">New Account</h1>
       <p style="opacity: 0.7;">Sign up by entering information below</p>
-
+      {% csrf_token %}
       <div class="">
         <input type="text" name="name" class="form-control top" placeholder="Name" required>
       </div>
 
       <div class="">
+        <input type="text" name="username" class="form-control top" placeholder="Username" required>
+      </div>
+
+      <div class="">
         <label for="department">Department:</label>
-        <select id="department">
+        <select id="department" name="department">
           <option value="comp">COMP</option>
           <option value="it">IT</option>
           <option value="extc">EXTC</option>
@@ -58,26 +61,34 @@
         <label for="mentor">Mentor</label><br>    
       </div>
 
-      <div class="">
-        <input type="number" name="roll-no" class="form-control middle" placeholder="Roll No."  min="0" max="70" required>
-      </div>
 
       <div class="">
         <input type="email" name="email" class="form-control middle" placeholder="Email" required>
       </div>
 
       <div class="">
-        <input type="password" name="password" class="form-control middle" placeholder="Password" required>
+        <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
       </div>
 
       <div class="">
-        <input type="password" name="password" class="form-control bottom" placeholder="Confirm Password" required>
+        <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" >Sign up</button>
 
-      <p style="opacity: 0.8;">Already have an account? <a href=""><strong>Sign up</strong></a></p>
+      <p style="opacity: 0.8;">Already have an account? <a href="admin/"><strong>Sign up</strong></a></p>
     </form>
+
+
+    <div>
+      {% for i in messages %}
+
+      <h2>
+        {{i}}
+      </h2>
+        
+      {% endfor %}
+    </div>
   </main>
 
   <!-- jQuery -->
