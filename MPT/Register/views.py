@@ -28,13 +28,27 @@ def user(request):
             else: 
                 user= User.objects.create_user(username=username, password= password1, first_name=fname, email=email)
                 user.save()
-                print("Created")
-                return HttpResponse('Hello')
+                return render(request, 'login-page.html')
 
     else: 
         messages.info(request, "Check Password")
 
     return render(request, 'register.html')
 
+def login(request):
+    if request.method == 'POST':
+        username= request.POST['username']
+        password= request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return render(request, 'student_dashboard.html')
+        
+        else:
+            message.info(request, "Check your cerdentials")
+
+    else: 
+        return render(request, 'login-page.html')
 
 
