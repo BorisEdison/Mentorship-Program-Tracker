@@ -11,7 +11,7 @@ def user(request):
     if request.method == 'POST':
         fname= request.POST['name']
         Lname= request.POST['Lname']
-        Mname= request.POST['Mname']
+        username= request.POST['username']
         #username= request.POST['username']
         #department= request.POST['department']
         phone= request.POST['phone']
@@ -21,15 +21,15 @@ def user(request):
         password2= request.POST['password2']
 
         if password1==password2:
-            # if User.objects.filter(username=username).exists():
-            #     messages.info(request, "Username Already Taken")
+            if User.objects.filter(username=username).exists():
+                messages.info(request, "Username Already Taken")
 
 
-            if User.objects.filter(email=email).exists():
+            elif User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
 
             else: 
-                user= User.objects.create_user(password= password1, first_name=fname, email=email)
+                user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
                 user.save()
                 return render(request, 'login-page.html')
 
@@ -40,16 +40,21 @@ def user(request):
 
 def login(request):
     if request.method == 'POST':
-        email= request.POST['email']
+        username= request.POST['username']
         password= request.POST['password']
 
-        user = auth.authenticate(email=email, password=password)
+        user = auth.authenticate(username=username, password=password)
+        
         if user is not None:
             auth.login(request, user)
-            return render(request, 'student_dashboard.html')
+            if request.user.is_staff:
+                return redirect('/facultydashboard')
+
+            else:
+                return render(request, 'student-dashboard.html')
         
         else:
-            message.info(request, "Check your cerdentials")
+            messages.info(request, "Check your cerdentials")
 
     else: 
         return render(request, 'login-page.html')
