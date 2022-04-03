@@ -265,7 +265,13 @@ h6 {
   }
 
 }
-
+.stu-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+}
 .stu-info {
   display: flex;
 }

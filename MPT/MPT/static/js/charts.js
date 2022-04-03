@@ -1,16 +1,31 @@
 var xValues = ["Engg. Maths 1", "Engg. Physics 1", "Engg. Chemistry 1", "Basic Elec. Engg.", "Mechanics"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"];
+var ia1Values = [10, 8, 9, 8, 10];
+var ia2Values = [10, 9, 8, 10, 10];
+var eseValues = [75, 78, 65, 80, 60];
 
+var ia1Color = ["#FA1E0E", "#FFCA03","#42E6A4","#3EDBF0","#C355F5"];
+var ia2Color = ["#BD2000", "#FF5403","#02A8A8","#77ACF1","#AA26DA"]
+var eseColor = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"]
+
+// horizontal bar chart 1
 new Chart("barGraphSem1", {
   type: "horizontalBar",
   data: {
   labels: xValues,
   datasets: [{
-    backgroundColor: barColors,
-    data: yValues
-  }]
-},
+    backgroundColor: ia1Color,
+    data: ia1Values
+    },
+    {
+      backgroundColor: ia2Color,
+      data: ia2Values
+      },
+    {
+      backgroundColor: eseColor,
+      data: eseValues
+      }
+    ]
+  },
   options: {
     legend: {display: false},
     title: {
@@ -19,11 +34,19 @@ new Chart("barGraphSem1", {
       text: "Semester 1"
     },
     scales: {
-      xAxes: [{ticks: {min:0, max:100}}],
-      yAxes: [{display:false}],
+      xAxes: [{
+        stacked: true,
+        ticks: {min:0, max:100}
+      }],
+      yAxes: [{
+        display:false,
+        stacked: true
+      }],
     }
   }
 });
+
+// doughtnut 1
 var xValues = ["Engg. Maths 1", "Engg. Physics 1", "Engg. Chemistry 1", "Basic Elec. Engg.", "Mechanics"];
 var yValues = [55, 49, 44, 24, 15];
 var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"];
@@ -37,40 +60,68 @@ new Chart("donutGraphSem1", {
       data: yValues
     }]
   },
-  legend:{display:false},
+  legend:{
+    display:true,
+    position: 'right'
+  },
 });
 
 
-// Sem 2 ke liye
-var xValues = ["Engg. Maths 2", "Engg. Physics 2", "Engg. Chemistry 2", "Pro. Comm. Ethics", "Engg. Drawing", "SPA"];
-var yValues = [55, 49, 44, 24, 15, 50];
-var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0","#42E6A4"];
+// Sem 2 
+var xValues = ["Engg. Maths 2", "Engg. Physics 2", "Engg. Chemistry 2", "Pro. Comm. Ethics", "Engg. Drawing"];
+var ia1Values = [10, 8, 9, 8, 10];
+var ia2Values = [10, 9, 8, 10, 10];
+var eseValues = [75, 78, 65, 80, 60];
 
+var ia1Color = ["#FA1E0E", "#FFCA03","#42E6A4","#3EDBF0","#C355F5"];
+var ia2Color = ["#BD2000", "#FF5403","#02A8A8","#77ACF1","#AA26DA"]
+var eseColor = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"]
+
+// bar chart 2
 new Chart("barGraphSem2", {
   type: "horizontalBar",
   data: {
   labels: xValues,
   datasets: [{
-    backgroundColor: barColors,
-    data: yValues
-  }]
-},
+    backgroundColor: ia1Color,
+    data: ia1Values
+    },
+    {
+      backgroundColor: ia2Color,
+      data: ia2Values
+      },
+    {
+      backgroundColor: eseColor,
+      data: eseValues
+      }
+    ]
+  },
   options: {
-    legend: {display: false},
+    legend: {
+      display: false
+    },
     title: {
       position:'bottom',
       display: true,
       text: "Semester 2"
     },
     scales: {
-        xAxes: [{ticks: {min:0, max:100}}],
-        yAxes: [{display:false}],
+      xAxes: [{
+        stacked: true,
+        ticks: {min:0, max:100}
+      }],
+      yAxes: [{
+        display:false,
+        stacked: true
+      }],
     }
   }
 });
-var xValues = ["Engg. Maths 2", "Engg. Physics 2", "Engg. Chemistry 2", "Pro. Comm. Ethics", "Engg. Drawing", "SPA"];
-var yValues = [55, 49, 44, 24, 15, 50];
-var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0","#42E6A4"];
+
+// doughnut 2
+var xValues = ["Engg. Maths 2", "Engg. Physics 2", "Engg. Chemistry 2", "Pro. Comm. Ethics", "Engg. Drawing"];
+var yValues = [80, 90, 100, 70, 55];
+var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"];
 
 new Chart("donutGraphSem2", {
   type: "doughnut",
@@ -81,5 +132,7 @@ new Chart("donutGraphSem2", {
       data: yValues
     }]
   },
-  legend:{display:false},
+  legend:{
+    display:false,
+  },
 });
