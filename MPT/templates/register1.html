@@ -33,12 +33,13 @@
       <div class="row">
 
         <div class="col-6">
+          {% csrf_token %}
           <div class="">
             <input type="text" name="name" class="form-control top" placeholder="First Name" required>
           </div>
 
           <div class="">
-            <input type="text" name="name" class="form-control middle" placeholder="Last Name" required>
+            <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
           </div>
 
           <div class="">
@@ -54,7 +55,7 @@
         <div class="col-6">
 
           <div class="">
-            <input type="text" name="name" class="form-control top" placeholder="Middle Name" required>
+            <input type="text" name="Mname" class="form-control top" placeholder="Middle Name" required>
           </div>
 
           <div class="">
@@ -62,7 +63,7 @@
           </div>
 
           <div class="">
-            <input type="email" name="email" class="form-control middle" placeholder="Re-enter Email" required>
+            <input type="email" name="email1" class="form-control middle" placeholder="Re-enter Email" required>
           </div>
 
 
