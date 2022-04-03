@@ -177,8 +177,12 @@
               </ul>
             </div>
           </div>
+          
     
           <!-- Dashboard grid -->
+          {% for list in users %}
+            
+          
           <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="sidebar flex-shrink-0 p-3 student-grid">
                     <section class="m-5">
@@ -186,8 +190,9 @@
                         <div class="stu-info">
                           <img src="../MPT/static/content/mentee/boris.png" class="stu-img" alt="hero">
                           <span>
-                            <p>FName:Boris</p>
-                            <p>LName:Edison</p>
+                            <p>{{list.username}}</p>
+                            <p>{{list.fname}}</p>
+                            <p>{{list.Lname}}</p>
                             <p>Roll No:14</p>
                             <!-- <p>Address:Bhandup(W),Mumbai</p> -->
                           </span>
@@ -214,6 +219,7 @@
                     </sectio>
             </div>
           </div>
+          {% endfor %}
 
   <!-- Charts.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
