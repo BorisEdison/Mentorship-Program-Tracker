@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="en">
 
 <head>
@@ -13,8 +14,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- Local Stylesheet -->
-  <link rel="stylesheet" href="../../css/edit.css">
-  <link rel="stylesheet" href="../../css/navbar.css">
+  <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 </head>
 
@@ -23,7 +24,7 @@
   <nav class="navbar navbar-main sticky-top navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="../../content/logo.png" class=" me-2" width="50" height="50" alt="">
+        <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
         DBIT
       </a>
 
@@ -40,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbar-content">
         <div class="ms-auto">
           <a class="navbar-brand" href="#">
-            <img src="../../content/logo.png" class=" me-2" width="50" height="50" alt="">
+            <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
             Prof. REVATHY
           </a>
         </div>
@@ -98,7 +99,7 @@
           <!-- left-column -->
           <div class="col-lg-6 col-md-6 col-sm-12">
 
-
+            {% csrf_token %}
             <div class="form-group col-md-10">
               <label for="inputFname">First Name</label>
               <input type="text" class="form-control" id="inputFname" placeholder="First Name">
@@ -188,8 +189,8 @@
   </script>
 
   <!-- Local -->
-  <script src="../../js/edit.js"></script>
-  <script src="../../js/navbar.js"></script>
+  <script src="{% static 'js/edit.js' %}"></script>
+  <script src="{% static 'js/navbar.js' %}"></script>
 
 </body>
 
