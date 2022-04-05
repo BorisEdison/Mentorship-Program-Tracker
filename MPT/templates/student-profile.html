@@ -84,159 +84,253 @@
     </div>
   </nav>
 
-    <!-- sidebar -->
-    <div class="container-fluid mb-5">
-        <div class="row">
-          <div class="col-lg-3 col-md-12 col-sm-12">
-            <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
-              <ul class="list-unstyled ps-0">
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse01" aria-expanded="false">
-                    Boris Edison
-                  </button>
-                  <div class="collapse" id="dashboard-collapse01">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
+  <!-- sidebar -->
+  <div class="container-fluid mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-12 col-sm-12">
+        <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
+          <ul class="list-unstyled ps-0">
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse01" aria-expanded="false">
+                Boris Edison
+              </button>
+              <div class="collapse" id="dashboard-collapse01">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse02" aria-expanded="false">
+                Bipin Giri
+              </button>
+              <div class="collapse" id="dashboard-collapse02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse03" aria-expanded="false">
+                Alston Fernandes
+              </button>
+              <div class="collapse" id="dashboard-collapse03">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse04" aria-expanded="false">
+                Hrishikesh Panigrahi
+              </button>
+              <div class="collapse" id="dashboard-collapse04">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse05" aria-expanded="false">
+                Royce Vaz
+              </button>
+              <div class="collapse" id="dashboard-collapse05">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse06" aria-expanded="false">
+                Aleron Jaisalroyan
+              </button>
+              <div class="collapse" id="dashboard-collapse06">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">FE</a></li>
+                  <li><a href="#" class="link-dark rounded">SE</a></li>
+                  <li><a href="#" class="link-dark rounded">TE</a></li>
+                  <li><a href="#" class="link-dark rounded">BE</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- Dashboard grid -->
+      {% for list in users %}
+
+
+      <div class="col-lg-9 col-md-12 col-sm-12">
+        <div class="sidebar flex-shrink-0 p-3 student-grid">
+          <section class="m-5">
+            <span class="stu-prof-info">
+              <div class="stu-info">
+                <img src="../MPT/static/content/mentee/boris.png" class="stu-img" alt="hero">
+                <span>
+                  <p>{{list.username}}</p>
+                  <p>{{list.fname}}</p>
+                  <p>{{list.Lname}}</p>
+                  <p>Roll No:14</p>
+                  <!-- <p>Address:Bhandup(W),Mumbai</p> -->
+                </span>
+              </div>
+
+            </span>
+            <p style="font-size: 36px; padding-top: 2rem;">First Year</p>
+          </section>
+          <section class="graphs">
+            <span>
+              <canvas id="donutGraphSem1" style="width:82%;"></canvas>
+              <canvas id="barGraphSem1" class="pt-2" style="width: 82%"></canvas>
+            </span>
+            <span>
+              <canvas id="donutGraphSem2" style="width: 82%"></canvas>
+              <canvas id="barGraphSem2" class="pt-2" style="width: 82%"></canvas>
+            </span>
+          </section>
+
+
+          <!-- Session Records Button -->
+          <div class="d-flex" style="padding: 2.3vh;">
+            <button type="button" style="background-color:#112D4E; color:white; border-radius: 7px" class="btn btn-sm meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <span style="color: white;" class="iconify" data-icon="akar-icons:circle-plus" data-width="19" data-height="20"></span>
+              Session Records
+            </button>
+          </div>
+
+          <!-- Session Records modal Section-->
+          <div class="modal-body">
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Session Records</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                </li>
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse02" aria-expanded="false">
-                    Bipin Giri
-                  </button>
-                  <div class="collapse" id="dashboard-collapse02">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
+                  <div class="modal-body">
+                    <div class="modal-body">
+                      <div class="container-fluid">
+
+                        <table class="table table-striped table-hover ">
+                          <thead>
+                            <tr>
+                              <th scope="col">Title</th>
+                              <th scope="col">Date</th>
+                              <th scope="col">Timing</th>
+                              <th scope="col">Duration</th>
+                              <th scope="col">Minutes</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Post Orientation</th>
+                              <td>11-2-2022</td>
+                              <td>4:30 pm</td>
+                              <td>16 mins</td>
+                              <td>
+                                <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                                  <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                                  &nbsp;Note
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Post Orientation</th>
+                              <td>11-2-2022</td>
+                              <td>4:30 pm</td>
+                              <td>16 mins</td>
+                              <td>
+                                <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                                  <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                                  &nbsp;Note
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Post Orientation</th>
+                              <td>11-2-2022</td>
+                              <td>4:30 pm</td>
+                              <td>16 mins</td>
+                              <td>
+                                <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                                  <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                                  &nbsp;Note
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Post Orientation</th>
+                              <td>11-2-2022</td>
+                              <td>4:30 pm</td>
+                              <td>16 mins</td>
+                              <td>
+                                <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                                  <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                                  &nbsp;Note
+                                </button>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
                   </div>
-                </li>
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse03" aria-expanded="false">
-                    Alston Fernandes
-                  </button>
-                  <div class="collapse" id="dashboard-collapse03">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
-                  </div>
-                </li>
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse04" aria-expanded="false">
-                    Hrishikesh Panigrahi
-                  </button>
-                  <div class="collapse" id="dashboard-collapse04">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
-                  </div>
-                </li>
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse05" aria-expanded="false">
-                    Royce Vaz
-                  </button>
-                  <div class="collapse" id="dashboard-collapse05">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
-                  </div>
-                </li>
-    
-                <li class="mb-1">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse06" aria-expanded="false">
-                    Aleron Jaisalroyan
-                  </button>
-                  <div class="collapse" id="dashboard-collapse06">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">FE</a></li>
-                      <li><a href="#" class="link-dark rounded">SE</a></li>
-                      <li><a href="#" class="link-dark rounded">TE</a></li>
-                      <li><a href="#" class="link-dark rounded">BE</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
-          
-    
-          <!-- Dashboard grid -->
-          {% for list in users %}
-            
-          
-          <div class="col-lg-9 col-md-12 col-sm-12">
-            <div class="sidebar flex-shrink-0 p-3 student-grid">
-                    <section class="m-5">
-                      <span class="stu-prof-info">
-                        <div class="stu-info">
-                          <img src="../MPT/static/content/mentee/boris.png" class="stu-img" alt="hero">
-                          <span>
-                            <p>{{list.username}}</p>
-                            <p>{{list.fname}}</p>
-                            <p>{{list.Lname}}</p>
-                            <p>Roll No:14</p>
-                            <!-- <p>Address:Bhandup(W),Mumbai</p> -->
-                          </span>
-                        </div>
-                        
-                        <div class="meet-info">
-                          <span class="iconify" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
-                          <span>
-                            <p>Meeting Scheduled</p>
-                          </span>
-                        </div>
-                      </span>
-                      <p style="font-size: 36px; padding-top: 2rem;">First Year</p>
-                    </section>
-                    <section class="graphs">
-                      <span>
-                        <canvas id="donutGraphSem1" style="width:82%;"></canvas>
-                        <canvas id="barGraphSem1" class="pt-2" style="width: 82%"></canvas>
-                      </span>
-                      <span>
-                        <canvas id="donutGraphSem2" style="width: 82%"></canvas>
-                        <canvas id="barGraphSem2" class="pt-2"  style="width: 82%"></canvas>
-                      </span>
-                    </sectio>
-            </div>
-          </div>
-          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
 
-  <!-- Charts.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+      <!-- Charts.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <!-- Bootstrap -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-  <!-- iconify -->
-  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+      <!-- iconify -->
+      <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- jQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+      </script>
 
-  <!-- Local -->
-  <script src="../MPT/static/js/charts.js"></script>
-  <script src="../MPT/static/js/dashboard.js"></script>
-  <script src="../MPT/static/js/navbar.js"></script>
+      <!-- Local -->
+      <script src="../MPT/static/js/charts.js"></script>
+      <script src="../MPT/static/js/dashboard.js"></script>
+      <script src="../MPT/static/js/navbar.js"></script>
 
 </body>
 

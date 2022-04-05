@@ -99,16 +99,10 @@
               <p>Address:HeheXDlolLMAO ROFLidc</p>
             </span>
           </div>
-
-          <div class="meet-info">
-            <span class="iconify" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
-            <span>
-              <p>Meeting Scheduled</p>
-            </span>
-          </div>
         </span>
         <p style="font-size: 36px; padding-top: 2rem;">First Year</p>
       </section>
+
       <section class="graphs">
         <span>
           <canvas id="donutGraphSem1" style="width:82%;"></canvas>
@@ -119,6 +113,104 @@
           <canvas id="barGraphSem2" class="pt-2" style="width:82%;"></canvas>
         </span>
       </section>
+
+      <!-- Session Records Button -->
+      <div class="d-flex" style="padding: 2.3vh;">
+        <button type="button" style="background-color:#112D4E; color:white; border-radius: 7px" class="btn btn-sm meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <span style="color: white;" class="iconify" data-icon="akar-icons:circle-plus" data-width="19" data-height="20"></span>
+          Session Records
+        </button>
+      </div>
+
+      <!-- Session Records modal Section-->
+      <div class="modal-body">
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"><strong>Session Records</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="modal-body">
+                  <div class="container-fluid">
+
+                    <table class="table table-striped table-hover ">
+                      <thead>
+                        <tr>
+                          <th scope="col">Title</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Timing</th>
+                          <th scope="col">Duration</th>
+                          <th scope="col">Minutes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Post Orientation</th>
+                          <td>11-2-2022</td>
+                          <td>4:30 pm</td>
+                          <td>16 mins</td>
+                          <td>
+                            <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                              <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                              &nbsp;Note
+                            </button>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Post Orientation</th>
+                          <td>11-2-2022</td>
+                          <td>4:30 pm</td>
+                          <td>16 mins</td>
+                          <td>
+                            <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                              <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                              &nbsp;Note
+                            </button>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Post Orientation</th>
+                          <td>11-2-2022</td>
+                          <td>4:30 pm</td>
+                          <td>16 mins</td>
+                          <td>
+                            <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                              <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                              &nbsp;Note
+                            </button>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Post Orientation</th>
+                          <td>11-2-2022</td>
+                          <td>4:30 pm</td>
+                          <td>16 mins</td>
+                          <td>
+                            <button type="button" style=" max-height: 23px;background-color:#112D4E; color:white; border-radius: 7px; display: flex; align-items: center; justify-content: center;" class="btn btn-sm meetings-btn">
+                              <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                              &nbsp;Note
+                            </button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -132,7 +224,8 @@
   <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 
   <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
 
   <!-- Local -->
   <script src="{% static 'js/charts.js' %}"></script>
