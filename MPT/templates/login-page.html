@@ -54,13 +54,19 @@
     </form>
 
     <div>
-      {% for i in messages %}
+      
+      {% comment %} {% if messages %}
+      <h2>{{ messages.0 }}</h2>   <!-- for printing first message only-->
+      {% endif %} {% endcomment %}
 
-      <h2>
-        {{i}}
-      </h2>
+      {% if messages %}
+    {% for message in messages %}
+        {%  if forloop.first  %}
+      {{ message }}
+        {% endif %}
+    {% endfor %}
+    {% endif %}
 
-      {% endfor %}
     </div>
   </main>
 

@@ -23,7 +23,7 @@
 
   <nav class="navbar navbar-main sticky-top navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href=" ">
         <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
         DBIT
       </a>
@@ -40,16 +40,18 @@
         <div class="ms-auto">
           <a class="navbar-brand" href="#">
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
-            Prof. Revathy
+            {% if request.user.is_staff %}
+            {{user.first_name}}
+            {% endif %}
           </a>
         </div>
 
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit Profile">
             <li class="nav-item-main">
-              {% for i in user %}
-              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="/EditPage/{{i.id}}">
-              {% endfor %}
+              
+              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="/EditPage/{% for i in user %}{{i.id}}{% endfor %}">
+                
                 <span class="iconify iconify-navbar" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
               </a>
             </li>
@@ -73,7 +75,7 @@
 
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
             <li class="nav-item-main">
-              <a class="nav-link" id="iconifyLogOut" href="#">
+              <a class="nav-link" id="iconifyLogOut" href="logout">
                 <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
               </a>
             </li>
