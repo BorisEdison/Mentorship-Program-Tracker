@@ -43,3 +43,6 @@ class EditView(generic.UpdateView):
 
 def edit(request):
     return render(request,'edit.html')
+
+def stud_prof(request):
+    return render(request, 'student-profile.html')
