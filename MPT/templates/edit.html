@@ -165,12 +165,13 @@
       <!-- buttons -->
       <div class="d-flex align-items-center justify-content-center m-3">
 
-        <button type="button" class="btn btn-sm update-btn ms-auto">
+        <button type="button" class="btn btn-sm update-btn ms-auto" onClick="javascript:history.go(-1);">
           UPDATE PROFILE
         </button>
 
-        <button type="button" class="btn btn-sm cancel-btn">
-          <a href= '#'>CANCEL</a>
+        <button type="button" class="btn btn-sm cancel-btn" onClick="javascript:history.go(-1);">
+          CANCEL
+          {% comment %} <a href= "{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
         </button>
 
       </div>
