@@ -34,5 +34,5 @@ class EditView(generic.UpdateView):
         return self.request.User
 
 
-# def edit(request):
-#     return render(request, 'edit.html')
+def edit(request):
+    return render(request,'edit.html')

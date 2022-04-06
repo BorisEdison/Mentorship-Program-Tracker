@@ -40,9 +40,10 @@
         <div class="ms-auto">
           <a class="navbar-brand" href="#">
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
-            {% if request.user.is_staff %}
+            Prof. REVATHY
+            {% comment %} {% if request.user.is_staff %}
             {{user.first_name}}
-            {% endif %}
+            {% endif %} {% endcomment %}
           </a>
         </div>
 
@@ -50,7 +51,8 @@
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit Profile">
             <li class="nav-item-main">
               
-              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="/EditPage/{% for i in user %}{{i.id}}{% endfor %}">
+              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="EditPage/">
+              {% comment %} <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="/EditPage/{% for i in user %}{{i.id}}{% endfor %}"> {% endcomment %}
                 
                 <span class="iconify iconify-navbar" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
               </a>
