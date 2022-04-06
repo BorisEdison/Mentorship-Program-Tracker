@@ -14,10 +14,17 @@ def Adminpage(request):
     context = {'user': user} 
     return render(request, 'admin.html', context)
 
+# def faculty(request):
+#     user = User.objects.all()
+#     context = {'user': user}
+#     return render(request, 'faculty-dashboard.html', context)
+
+def student(request):
+    return render(request, 'student-dashboard.html')
+
 def faculty(request):
-    user = User.objects.all()
-    context = {'user': user}
-    return render(request, 'faculty-dashboard.html', context)
+    return render(request, 'faculty-dashboard.html')
+    
 
 def studentdetail(request, pk):
     user = User.objects.get(id=pk)

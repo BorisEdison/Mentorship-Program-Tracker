@@ -42,7 +42,9 @@
         <div class="ms-auto">
           <a class="navbar-brand" href="#">
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
-            Prof. REVATHY
+            {% if user.is_authenticated %}
+            {{user.first_name}}
+            {% endif %}
           </a>
         </div>
 
@@ -154,7 +156,7 @@
             <div class="form-group col-md-10">
               <label for="inputEmail4">Add Photo</label>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
+                <input type="file" class="custom-file-inpuxt" id="customFile">
                 <label class="custom-file-label" for="customFile">Choose file</label>
               </div>
             </div>

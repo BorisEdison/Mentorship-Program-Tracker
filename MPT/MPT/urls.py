@@ -7,7 +7,7 @@ from Register import views
 urlpatterns = [
     path('admin/', admin_site.urls),
     path('', include('AdminPage.urls')),
-    path('',views.login),
+    path('',views.login,name='login'),
     path('', include('Register.urls')),
 
 ]

@@ -41,8 +41,8 @@ def user(request):
                 user.save()
                 return render(request, 'login-page.html')
  
-    else: 
-        messages.info(request, "Check Password")
+        else: 
+            messages.info(request, "Check Password")
 
     return render(request, 'register.html')
 
@@ -53,13 +53,16 @@ def login(request):
 
         user = auth.authenticate(username=username, password=password)
         
-        if user is not None:
+        # if user is not None:
+        if user:
             auth.login(request, user)
             if request.user.is_staff:
                 return redirect('/facultydashboard')
+                # return render(request, 'faculty-dashboard.html')
 
             else:
-                return render(request, 'student-dashboard.html')
+                # return render(request, 'student-dashboard.html')
+                return redirect('/studentdashboard')
         
         else:
             messages.info(request, "Check your cerdentials")
@@ -67,5 +70,3 @@ def login(request):
 
     else: 
         return render(request, 'login-page.html')
-
-

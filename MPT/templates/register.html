@@ -80,7 +80,13 @@
         <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Reigster</button>
         <p style="opacity: 0.8; text-align: center;">Already have an account? <a href="LoginPage"><strong>Login</strong></a></p>
       </div>
-
+      {% if messages %}
+      {% for message in messages %}
+          {%  if forloop.first  %}
+        {{ message }}
+          {% endif %}
+      {% endfor %}
+      {% endif %}
     </form>
 
   </main>

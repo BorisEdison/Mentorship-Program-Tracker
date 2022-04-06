@@ -38,13 +38,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar-content">
         <div class="ms-auto">
+          {% if user.is_authenticated %}
+
           <a class="navbar-brand" href="#">
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
-            Prof. REVATHY
-            {% comment %} {% if request.user.is_staff %}
             {{user.first_name}}
-            {% endif %} {% endcomment %}
+            {% comment %} Prof. Revathy {% endcomment %}
           </a>
+          {% endif %}
         </div>
 
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -581,40 +582,42 @@
           <ul id="grd">
           
               
-            {% for users in user %}
-            <li class="shrink grid-li">
+            {% comment %} {% for users in user %} {% endcomment %}
+            {% comment %} <li class="shrink grid-li">
               <!-- <input type="checkbox" id="cb1" /> -->
               <span class="grd-cell">
-                <!-- <label for="cb1"> -->
+                 <label for="cb1">  {% endcomment %}
                
                   
                 
-                  <a href="{% url 'studentdetail' users.id %}"><img class="grd-img" src="{% static 'content/logo.png' %}" /></a>
-                <!-- <H6>Boris Edison 14</H6> -->
-                <!-- </label> -->
+                  {% comment %} <a href="{% url 'studentdetail' users.id %}"><img class="grd-img" src="{% static 'content/logo.png' %}" /></a> {% endcomment %}
+                  {% comment %} <a href=""><img class="grd-img" src="{% static 'content/logo.png' %}" /></a>
+                <H6>Boris Edison 14</H6>
+                 </label> 
                 <span class="grd-overlay">
                 </span>
-                <span class="grd-text">
+                <span class="grd-text"> 
                   {{users.name}}
                 </span>
               </span>
             </li>
-            {% endfor %}
-            <!--<li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/mentee/alston.png" /><span class="grd-overlay"></span><span class="grd-text">Alston Fernandes</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
-            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="../content/logo.png" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li> -->
+             {% endfor %} {% endcomment %}
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}"/><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}"/><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/alston.png' %}" /><span class="grd-overlay"></span><span class="grd-text">Alston Fernandes</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}"/><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li>
+            <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" /><span class="grd-overlay"></span><span class="grd-text">DBIT</span></span></li> 
           </ul>
         </div>
       </div>
