@@ -54,18 +54,20 @@
     </form>
 
     <div>
-      
+
       {% comment %} {% if messages %}
-      <h2>{{ messages.0 }}</h2>   <!-- for printing first message only-->
+      <h2>{{ messages.0 }}</h2> <!-- for printing first message only-->
       {% endif %} {% endcomment %}
 
       {% if messages %}
-    {% for message in messages %}
-        {%  if forloop.first  %}
-      {{ message }}
-        {% endif %}
-    {% endfor %}
-    {% endif %}
+      {% for message in messages %}
+      {%  if forloop.first  %}
+      <div class="alert alert-danger d-flex align-items-center mb-0" style="height: 20px" role="alert">
+        {{ message }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
 
     </div>
   </main>

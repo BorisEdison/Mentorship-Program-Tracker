@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- Local Stylesheet -->
-  <link rel="stylesheet" href= "{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
   <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 
 </head>
@@ -57,7 +57,7 @@
     </div>
   </nav>
 
-<!-- nav-tab -->
+  <!-- nav-tab -->
   <div class="container-fluid">
 
     <nav class="">
@@ -88,13 +88,13 @@
               <div class="d-flex bd-highlight mb-3">
 
                 <div class="p-2 bd-highlight">
-                  <button class="btn btn-light  btn-sm"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-light  btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
                     Refresh List
                   </button>
-                </div>  
+                </div>
 
-                
+
                 <div class="p-2 bd-highlight">
                   <input class="form-control" id="myInput" type="text" placeholder="Search..">
                 </div>
@@ -102,9 +102,9 @@
                 <div class="ms-auto p-2 bd-highlight">
                   <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
-                      Download
-                    </button>                        
-                  </div>
+                    Download
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -199,46 +199,46 @@
             <!-- buttons -->
             <div class="container-fluid" style="overflow-x: auto;">
 
-                <div class="d-flex bd-highlight mb-3">
+              <div class="d-flex bd-highlight mb-3">
 
-                  <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                      <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>                
-                      Add Users
-                      </button>                        
-                    </div>             
-
-                  <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                      <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>                
-                      Assign Roles
-                      </button>                        
-                    </div>
-
-                  <div class="p-2 bd-highlight">
-                    <button class="btn btn-light  btn-sm"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
-                      Refresh List
-                    </button>
-                  </div>
-
-                  <div class="p-2 bd-highlight">
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                  </div>
-
-                  <div class="ms-auto p-2 bd-highlight">
-                    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                      <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
-                        Download
-                      </button>                        
-                    </div>
-
+                <div class="p-2 bd-highlight">
+                  <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>
+                    Add Users
+                  </button>
                 </div>
+
+                <div class="p-2 bd-highlight">
+                  <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <span class="iconify" data-icon="clarity:assign-user-line" data-width="22" data-height="22"></span>
+                    Assign Roles
+                  </button>
+                </div>
+
+                <div class="p-2 bd-highlight">
+                  <button class="btn btn-light  btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
+                    Refresh List
+                  </button>
+                </div>
+
+                <div class="p-2 bd-highlight">
+                  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                </div>
+
+                <div class="ms-auto p-2 bd-highlight">
+                  <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
+                    Download
+                  </button>
+                </div>
+
+              </div>
             </div>
 
             <!-- table -->
             <div class="table-div m-4 mt-4 mb-4">
-              <table class="table" >
+              <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">name</th>
@@ -248,19 +248,19 @@
                     <th scope="col">Role</th>
                     <th scope="col">Department</th>
                     <th scope="col">Pno</th>
-                    
-                    
+
+
                   </tr>
                 </thead>
                 <tbody id="myTable">
-                  
+
                   {% for users in user %}
                   <tr>
                     <th scope="row">{{users.first_name}}</th>
                     <td>{{users.username}}</td>
                     <td>{{users.email}}</td>
-                   
-                   
+
+
                     <td>
                       <span class="iconify" data-icon="bx:edit"></span>
                       <span class="iconify" data-icon="ant-design:copy-outlined"></span>
@@ -269,9 +269,9 @@
                     </td>
                   </tr>
                   {% endfor %}
-                  
 
-                   <!-- <tr>
+
+                  <!-- <tr>
                     <th scope="row">11-2-2022</th>
                     <td>4:00 pm</td>
                     <td>20 mins</td>

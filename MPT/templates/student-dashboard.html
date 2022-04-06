@@ -44,6 +44,7 @@
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
             {{user.first_name}}
           </a>
+
           {% endif %}
         </div>
 
@@ -58,8 +59,8 @@
 
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notification">
             <li class="nav-item-main">
-                <a class="nav-link active" id="iconifyNotification" aria-current="page" >
-                <span class="iconify iconify-navbar" data-icon="clarity:notification-solid" data-width="24" data-height="26" ></span>
+              <a class="nav-link active" id="iconifyNotification" aria-current="page">
+                <span class="iconify iconify-navbar" data-icon="clarity:notification-solid" data-width="24" data-height="26"></span>
               </a>
             </li>
           </span>
@@ -91,26 +92,38 @@
       <section class="m-5">
         <span class="stu-prof-info">
           <div class="stu-info">
-            <img src="{% static 'content/mentee/boris.png' %}" class="stu-img" alt="hero">
-            <span>
-              <p>FName:Hehe</p>
-              <p>LName:Hehe</p>
-              <p>Roll No:153</p>
-              <p>Address:HeheXDlolLMAO ROFLidc</p>
-            </span>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6 d-flex align-items-center" style="justify-content: center;">
+                <img src="{% static 'content/mentee/boris.png' %}" class="stu-img" style="height: 22vh" alt="hero">
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6 align-items-center mt-2" style="justify-content: center; align-items: center;">
+                <p style="font-size: 16px">Name: Boris Edison</p>
+                <p style="font-size: 16px">Roll no.: 14</p>
+                <p style="font-size: 16px">Year: SE</p>
+                <p style="font-size: 16px">Dept.: Comp</p>
+                <p style="font-size: 16px">DOB: 28/09/2001</p>
+                <p style="font-size: 16px">Address: Bhandup</p>
+              </div>
+
+              <div class="col-lg-4">
+              </div>
+
+            </div>
           </div>
+
         </span>
-        <p style="font-size: 36px; padding-top: 2rem;">First Year</p>
+        <p style="font-size: 25px; padding-top: 2rem;"><strong>First Year</strong></p>
       </section>
 
       <section class="graphs">
         <span>
           <canvas id="donutGraphSem1" style="width:82%;"></canvas>
-          <canvas id="barGraphSem1" class="pt-2" style="width:82%;"></canvas>
+          <canvas id="barGraphSem1" class="pt-2" style=""></canvas>
         </span>
         <span>
-          <canvas id="donutGraphSem2" style="width:82%;"></canvas>
-          <canvas id="barGraphSem2" class="pt-2" style="width:82%;"></canvas>
+          <canvas id="donutGraphSem2" style="width: 82%"></canvas>
+          <canvas id="barGraphSem2" class="pt-2" style=""></canvas>
         </span>
       </section>
 

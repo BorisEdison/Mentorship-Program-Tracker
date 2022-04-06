@@ -250,8 +250,7 @@ h6 {
 
 /* Student Dashboard */
 .stu-prof-info {
-  display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .graphs {
   display: flex;
@@ -262,18 +261,13 @@ h6 {
     gap: 2rem;
     flex-direction: column;
     align-items: center;
+    overflow-x: auto;
   }
-
 }
 .stu-img{
   display: block;
-  width: 100%;
-  height: auto;
   border: none;
   border-radius: 10px;
-}
-.stu-info {
-  display: flex;
 }
 .stu-info > img {
   width: 120px;
@@ -285,14 +279,9 @@ h6 {
   max-width: 20ch;
   overflow-wrap: normal;
 }
-
 .stu-info > span > p {
   font-size: 20px;
 }
-.meet-info {
-  display: flex;
-}
-
 
 
 /* checkbox */
