@@ -116,6 +116,23 @@ h6 {
   padding-right: 0;
 }
 
+/* select button */
+.select-btn{
+  width: auto;
+  border-radius: 7px;
+  background-color: #018383;
+  color: white;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+}  
+/* .cancel-btn{
+  width: auto;
+  margin-left: 10px;
+  border-radius: 7px;
+  background-color: #8C0000;
+  color: white;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+}   */
+
 /* student profile grid */
 #grd {
   max-width: 700px;

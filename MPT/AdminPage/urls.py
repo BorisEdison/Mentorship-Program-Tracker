@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import EditView
+
 
 urlpatterns = [
     path('AdminPage', views.Adminpage, name= 'admin'),
