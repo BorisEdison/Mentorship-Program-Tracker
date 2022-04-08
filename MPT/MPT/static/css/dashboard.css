@@ -266,9 +266,9 @@ h6 {
 }
 
 /* Student Dashboard */
-.stu-prof-info {
-  /* justify-content: space-between; */
-}
+/* .stu-prof-info {
+  justify-content: space-between;
+} */
 .graphs {
   display: flex;
   justify-content: space-evenly;

@@ -51,6 +51,25 @@ var xValues = ["Engg. Maths 1", "Engg. Physics 1", "Engg. Chemistry 1", "Basic E
 var yValues = [55, 49, 44, 24, 15];
 var barColors = ["#8C0000", "#F90716","#018383","#04009A","#851DE0"];
 
+var stackedText = {
+  id: 'stackedText',
+  afterDatasetsDraw(chart, args, options) {
+    const {ctx, data, chartArea: {top,bottom , left ,right,width,height}} = chart;
+
+    ctx.save();
+    ctx.font = 'bolder 13px Arial';
+    ctx.fillStyle = 'rgbs(225,26,104,1)';
+    ctx.textAlign = 'center'
+    ctx.fillText('9.56',160,115 );
+    ctx.restore()
+
+    ctx.font = 'bold 8px Arial';
+    ctx.fillStyle = 'rgbs(225,26,104,1)';
+    ctx.textAlign = 'center'
+    ctx.fillText('CGPA',160,125 );
+  }
+}
+
 new Chart("donutGraphSem1", {
   type: "doughnut",
   data: {
@@ -64,6 +83,7 @@ new Chart("donutGraphSem1", {
     display:true,
     position: 'right'
   },
+  plugins: [stackedText]
 });
 
 
@@ -118,6 +138,25 @@ new Chart("barGraphSem2", {
   }
 });
 
+var stackedText = {
+  id: 'stackedText',
+  afterDatasetsDraw(chart, args, options) {
+    const {ctx, data, chartArea: {top,bottom , left ,right,width,height}} = chart;
+
+    ctx.save();
+    ctx.font = 'bolder 13px Arial';
+    ctx.fillStyle = 'rgbs(225,26,104,1)';
+    ctx.textAlign = 'center'
+    ctx.fillText('9.05',160,115 );
+    ctx.restore()
+
+    ctx.font = 'bold 8px Arial';
+    ctx.fillStyle = 'rgbs(225,26,104,1)';
+    ctx.textAlign = 'center'
+    ctx.fillText('CGPA',160,125 );
+  }
+}
+
 // doughnut 2
 var xValues = ["Engg. Maths 2", "Engg. Physics 2", "Engg. Chemistry 2", "Pro. Comm. Ethics", "Engg. Drawing"];
 var yValues = [80, 90, 100, 70, 55];
@@ -135,4 +174,5 @@ new Chart("donutGraphSem2", {
   legend:{
     display:false,
   },
+  plugins: [stackedText]
 });

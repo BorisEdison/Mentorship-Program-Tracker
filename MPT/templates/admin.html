@@ -147,38 +147,6 @@
                     <td>Boris Edison</td>
                   </tr>
 
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:30 pm</td>
-                    <td>16 mins</td>
-                    <td>Online</td>
-                    <td>Royce Vaz</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:00 pm</td>
-                    <td>20 mins</td>
-                    <td>Online</td>
-                    <td>Aleron Jaisalroyan</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">2-2-2022</th>
-                    <td>2:00 pm</td>
-                    <td>13 mins</td>
-                    <td>Offline</td>
-                    <td>Boris Edison</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:30 pm</td>
-                    <td>16 mins</td>
-                    <td>Online</td>
-                    <td>Royce Vaz</td>
-                  </tr>
-
                 </tbody>
               </table>
             </div>
@@ -241,14 +209,11 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">name</th>
+
+                    <th scope="col">Name</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Action</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Pno</th>
-
 
                   </tr>
                 </thead>
@@ -256,68 +221,20 @@
 
                   {% for users in user %}
                   <tr>
+
                     <th scope="row">{{users.first_name}}</th>
                     <td>{{users.username}}</td>
                     <td>{{users.email}}</td>
-
-
                     <td>
                       <span class="iconify" data-icon="bx:edit"></span>
                       <span class="iconify" data-icon="ant-design:copy-outlined"></span>
                       <span class="iconify" data-icon="ant-design:delete-filled"></span>
                       <span class="iconify" data-icon="ri:indeterminate-circle-fill"></span>
                     </td>
+
                   </tr>
+
                   {% endfor %}
-
-
-                  <!-- <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:00 pm</td>
-                    <td>20 mins</td>
-                    <td>Online</td>
-                    <td>Aleron Jaisalroyan</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">2-2-2022</th>
-                    <td>2:00 pm</td>
-                    <td>13 mins</td>
-                    <td>Offline</td>
-                    <td>Boris Edison</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:30 pm</td>
-                    <td>16 mins</td>
-                    <td>Online</td>
-                    <td>Royce Vaz</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:00 pm</td>
-                    <td>20 mins</td>
-                    <td>Online</td>
-                    <td>Aleron Jaisalroyan</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">2-2-2022</th>
-                    <td>2:00 pm</td>
-                    <td>13 mins</td>
-                    <td>Offline</td>
-                    <td>Boris Edison</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">11-2-2022</th>
-                    <td>4:30 pm</td>
-                    <td>16 mins</td>
-                    <td>Online</td>
-                    <td>Royce Vaz</td>
-                  </tr>   -->
 
                 </tbody>
               </table>
