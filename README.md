@@ -3,17 +3,45 @@
 
 <strong>Project [template](https://www.figma.com/file/haofGDovUBBTcLC6TTpRqT/mentoring-project-tracking-app?node-id=65%3A91)</strong> made using Figma
 
-Step 1: Install Virtual Environment 
-`pip install --user virtualenv`
+## Getting Started  <a id="gettingstarted"></a>
 
-Step 2: Setup Virtual Environment 
-`python -m virtualenv env`
+#### Step 1:
 
-Step 3: Activate Virtual Environment
-`env\scripts\activate`
+Download or clone this repository by using the command given below:
 
-Step 4: Install Requirements Packages 
-`pip freeze > requirements.txt`
+```
+git clone https://github.com/05Alston/mentoring-program-tracker.git
+```
 
-Step 5: Run Django Server
-`python manage.py runserver`
+#### Step 2:
+
+Install Virtual Environment:
+```
+pip install --user virtualenv
+```
+
+#### Step 3:
+Setup Virtual Environment:
+```
+python -m virtualenv env
+```
+
+#### Step 4:
+Activate Virtual Environment:
+```
+env\scripts\activate
+```
+
+#### Step 5:
+
+Install Requirements Packages:
+```
+pip freeze > requirements.txt
+```
+
+#### Step 6:
+
+Run Django Server:
+```
+python manage.py runserver
+```
