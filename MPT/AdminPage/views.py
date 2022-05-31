@@ -24,7 +24,6 @@ def student(request):
     return render(request, 'student-dashboard.html')
 
 def faculty(request):
-
     return render(request, 'faculty-dashboard.html')
     
 
@@ -45,29 +44,29 @@ def studentdetail(request, pk):
 # def edit()
 
 
-def edit(request):
-    # user=User.objects.get(request.user.id)
-    context={}
-    # user_id = User.request.user.id
+# def edit(request):
+#     # user=User.objects.get(request.user.id)
+#     context={}
+#     # user_id = User.request.user.id
 
-    if request.method=="POST":
-        fName = request.POST['fName']
-        # Lname= request.POST['Lname']
-        username= request.POST['username']
-        # department= request.POST['department']
-        # phone= request.POST['phone']
-        # email= request.POST['email']
-        # email1= request.POST['email1']
-        # password1= request.POST['password1']
-        # password2= request.POST['password2']
-        user = User.objects.get(id=request.user.id)
-        user.first_name= fName
-        user.save()
-        print(" gg")
-        return render(request, 'login-page.html')
+#     if request.method=="POST":
+#         fName = request.POST['fName']
+#         # Lname= request.POST['Lname']
+#         username= request.POST['username']
+#         # department= request.POST['department']
+#         # phone= request.POST['phone']
+#         # email= request.POST['email']
+#         # email1= request.POST['email1']
+#         # password1= request.POST['password1']
+#         # password2= request.POST['password2']
+#         user = User.objects.get(id=request.user.id)
+#         user.first_name= fName
+#         user.save()
+#         print(" gg")
+#         return render(request, 'login-page.html')
 
-    else:
-        return render(request,'edit.html')
+#     else:
+#         return render(request,'edit.html')
 
 def stud_prof(request):
     return render(request, 'student-profile.html')

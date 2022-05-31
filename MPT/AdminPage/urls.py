@@ -8,6 +8,6 @@ urlpatterns = [
     path('studentdashboard', views.student, name= 'student'),
     path('facultydashboard/<str:pk>/', views.studentdetail, name= 'studentdetail'),
     # path('EditPage/<str:pk>/', EditView.as_view(), name="Edit"),
-    path('EditPage/', views.edit, name="Edit"),
+    # path('EditPage/', views.edit, name="Edit"),
     path("ViewProfile", views.stud_prof, name="student-profile")
 ]

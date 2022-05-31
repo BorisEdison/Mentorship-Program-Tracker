@@ -52,7 +52,7 @@
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit Profile">
             <li class="nav-item-main">
 
-              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="EditPage/">
+              <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="{% url 'Edit'  %}">
                 {% comment %} <a class="nav-link active" id="iconifyEditProfile" aria-current="page" href="/EditPage/{% for i in user %}{{i.id}}{% endfor %}"> {% endcomment %}
                   <span class="iconify iconify-navbar" data-icon="akar-icons:edit" data-width="26" data-height="26"></span>
                 </a>
