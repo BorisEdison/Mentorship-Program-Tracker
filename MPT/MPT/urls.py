@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('AdminPage.urls')),
     path('', include('Register.urls')),
     path('', include('Login.urls')),    
+    path('', include('EditUser.urls')),    
 ]
 
 
