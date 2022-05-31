@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AdminPage.apps.AdminpageConfig',
-    'Register.apps.RegisterConfig'
+    'Register.apps.RegisterConfig',
+    'Login.apps.LoginConfig'
 ]
 
 MIDDLEWARE = [
