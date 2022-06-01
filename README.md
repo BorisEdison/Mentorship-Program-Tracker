@@ -36,7 +36,7 @@ env\scripts\activate
 
 Install Requirements Packages:
 ```
-pip freeze > requirements.txt
+pip install -r requirements.txt
 ```
 
 #### Step 6:
