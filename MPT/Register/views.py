@@ -28,21 +28,21 @@ def user(request):
         if password1==password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username Already Taken")
-                return redirect('/Sign-Up')
+                return render(request, 'register.html')
                 
 
 
             elif User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
-                return redirect('/Sign-Up')
+                return render(request, 'register.html')
 
             else: 
                 user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
                 user.save()
-                return redirect('')
+                return render(request, 'login-page.html')
  
         else: 
             messages.info(request, "Check Password")
 
-    return redirect('/Sign-Up')
+    return render(request, 'register.html')
 

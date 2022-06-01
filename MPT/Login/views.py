@@ -17,7 +17,6 @@ def login(request):
         if user:
             auth.login(request, user)
             if request.user.is_staff:
-                print("gg")
                 return redirect('/facultydashboard')
                
             else:
