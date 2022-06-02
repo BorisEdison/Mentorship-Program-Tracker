@@ -224,8 +224,8 @@ h6 {
 .shrink:hover,
 .shrink:focus,
 .shrink:active {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
+  /* -webkit-transform: scale(0.9); 
+  transform: scale(0.9); */
 }
 ::-webkit-scrollbar {
   z-index: 30;
@@ -301,6 +301,11 @@ h6 {
 }
 
 
+.cb-choose{
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
 /* checkbox */
 /* ul {
   list-style-type: none;
