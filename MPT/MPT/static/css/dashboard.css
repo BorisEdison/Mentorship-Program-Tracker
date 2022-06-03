@@ -209,6 +209,13 @@ h6 {
   background-color: transparent;
 }
 
+/* select-checkbox */
+.cb-choose{
+  position: absolute;
+  right: 25px;
+  top: 30px;
+}
+
 /* Media query */
 /* Student grid */
 @media (max-width: 9000px) {
@@ -263,11 +270,4 @@ h6 {
 }
 .stu-info > span > p {
   font-size: 20px;
-}
-
-
-.cb-choose{
-  position: absolute;
-  right: 20px;
-  top: 30px;
 }
