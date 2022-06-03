@@ -36,7 +36,7 @@
         <div class="col-6">
           {% csrf_token %}
           <div class="">
-            <input type="text" name="name" class="form-control top" placeholder="First Name" required>
+            <input type="text" name="fname" class="form-control top" placeholder="First Name" required>
           </div>
 
           <div class="">
@@ -60,7 +60,7 @@
           </div>
 
           <div class="">
-            <input type="tel" name="phone" class="form-control middle" placeholder="Contact No." pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" required>
+            <input type="tel" name="phone" class="form-control middle" placeholder="Contact No." pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
           </div>
 
           <div class="">

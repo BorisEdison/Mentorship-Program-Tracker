@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
+from .models import Student
 
 Desc = 'Add College Email-ID'
 class UserAdminConfig(UserAdmin):
@@ -36,3 +37,4 @@ class Admin(admin.AdminSite):
 
 admin_site = Admin(name='MPTAdmin')
 admin_site.register(User,UserAdminConfig)
+admin_site.register(Student)

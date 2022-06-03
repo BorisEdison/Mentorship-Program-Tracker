@@ -1,10 +1,13 @@
 from email import message
+import imp
 from unicodedata import name
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
+from AdminPage.models import Student
+
 
 
 def logout(request):
@@ -15,7 +18,7 @@ def logout(request):
 # Registration
 def user(request):
     if request.method == 'POST':
-        fname= request.POST['name']
+        fname= request.POST['fname']
         Lname= request.POST['Lname']
         username= request.POST['username']
         #department= request.POST['department']
@@ -39,6 +42,8 @@ def user(request):
             else: 
                 user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
                 user.save()
+                student = Student(phone=phone)
+                student.save()
                 return render(request, 'login-page.html')
  
         else: 
