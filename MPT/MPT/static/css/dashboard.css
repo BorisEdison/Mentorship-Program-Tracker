@@ -245,14 +245,6 @@ h6 {
   display: flex;
   justify-content: space-evenly;
 }
-@media (max-width:800px) {
-  .graphs,.stu-prof-info {
-    gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: auto;
-  }
-}
 .stu-img{
   display: block;
   border: none;
@@ -270,4 +262,16 @@ h6 {
 }
 .stu-info > span > p {
   font-size: 20px;
+}
+
+@media (max-width:800px) {
+  .accordion-div{
+    padding-top: 1rem  !important;
+  }
+}
+
+@media (max-width:992px) {
+  .accordion-div{
+    padding-top: 1rem  !important;
+  }
 }
