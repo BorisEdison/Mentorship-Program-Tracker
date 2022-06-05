@@ -15,19 +15,36 @@ def edit(request):
     # user_id = User.request.user.id
 
     if request.method=="POST":
-        fName = request.POST['fName']
-        # Lname= request.POST['Lname']
-        username= request.POST['username']
-        # department= request.POST['department']
-        # phone= request.POST['phone']
-        # email= request.POST['email']
-        # email1= request.POST['email1']
-        # password1= request.POST['password1']
-        # password2= request.POST['password2']
-        user = User.objects.get(id=request.user.id)
-        user.first_name= fName
-        user.save()
-        return redirect('/facultydashboard')
+        if request.user.is_staff:
+            fName = request.POST['fName']
+            # Lname= request.POST['Lname']
+            username= request.POST['username']
+            # department= request.POST['department']
+            # phone= request.POST['phone']
+            # email= request.POST['email']
+            # email1= request.POST['email1']
+            # password1= request.POST['password1']
+            # password2= request.POST['password2']
+            user = User.objects.get(id=request.user.id)
+            user.first_name= fName
+            user.save()
+            return redirect('/facultydashboard')
+
+        else:
+            fName = request.POST['fName']
+            # Lname= request.POST['Lname']
+            username= request.POST['username']
+            # department= request.POST['department']
+            # phone= request.POST['phone']
+            # email= request.POST['email']
+            # email1= request.POST['email1']
+            # password1= request.POST['password1']
+            # password2= request.POST['password2']
+            user = User.objects.get(id=request.user.id)
+            user.first_name= fName
+            user.save()
+            return redirect('/studentdashboard')
+
 
     else:
         return render(request,'edit.html')

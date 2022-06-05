@@ -24,7 +24,9 @@ def student(request):
     return render(request, 'student-dashboard.html')
 
 def faculty(request):
-    return render(request, 'faculty-dashboard.html')
+    user = User.objects.all()
+    context = {'user': user}
+    return render(request, 'faculty-dashboard.html', context)
     
 
 def studentdetail(request, pk):

@@ -304,15 +304,22 @@
                   </span>
                 </li>
                 {% endfor %} {% endcomment %}
-                <a href="ViewProfile">
+
+                {% for users in user %}
+                {% if users.is_staff %}
+                {% else %}
+                 <a href="ViewProfile">
                   <li class="shrink grid-li">
                     <span class="grd-cell">
                       <img class="grd-img" src="{% static 'content/mentee/boris.png' %}" /><span class="grd-overlay">
-                      </span><span class="grd-text">Boris
-                        Edison</span></span>
+                      </span><span class="grd-text"> {{users.first_name}}
+                        </span></span>
                     <input type="checkbox" class="cb-choose" name="cb-choose">
                   </li>
                 </a>
+                
+                {% endif %}
+                {% endfor %}
                 <li class="shrink grid-li">
                   <span class="grd-cell">
                     <img class="grd-img" src="{% static 'content/mentee/bipin.png' %}" /><span
