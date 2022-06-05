@@ -39,7 +39,7 @@ def user(request):
             else: 
                 user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
                 user.save()
-                return render(request, 'login-page.html')
+                return redirect('/')
  
         else: 
             messages.info(request, "Check Password")
