@@ -27,6 +27,7 @@ def edit(request):
             # password2= request.POST['password2']
             user = User.objects.get(id=request.user.id)
             user.first_name= fName
+            user.username=username
             user.save()
             return redirect('/facultydashboard')
 
@@ -42,6 +43,7 @@ def edit(request):
             # password2= request.POST['password2']
             user = User.objects.get(id=request.user.id)
             user.first_name= fName
+            user.username=username
             user.save()
             return redirect('/studentdashboard')
 

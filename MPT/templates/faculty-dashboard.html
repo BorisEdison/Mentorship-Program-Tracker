@@ -44,7 +44,6 @@
           <a class="navbar-brand" href="#">
             <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
             {{user.first_name}}
-            {% comment %} Prof. Revathy {% endcomment %}
           </a>
           {% endif %}
         </div>
@@ -73,14 +72,13 @@
             </li>
           </span>
 
-          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
+          {% comment %} <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
             <li class="nav-item-main">
-              <a class="nav-link" id="iconifyMessage" href="#">
-                <span class="iconify iconify-navbar" data-icon="bx:message-detail" data-width="24"
-                  data-height="26"></span>
+              <a class="nav-link" id="darkmode" href="#">
+
               </a>
             </li>
-          </span>
+          </span> {% endcomment %}
 
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
             <li class="nav-item-main">
@@ -236,13 +234,28 @@
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <button class="nav-link active nav-pills-link" id="dashboard-tab" data-bs-toggle="pill"
                 data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+                <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
                 Dashboard
               </button>
 
               <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill"
                 data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+                <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
                 Analytics
               </button>
+              
+              <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill"
+                data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+                <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>                
+                Calender
+              </button>
+
+              <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill"
+              data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+              <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>              
+              Message
+            </button>
+
           </div>
         </div>
       </div>
@@ -377,6 +390,14 @@
                 Where can I get some?
                 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
               </p>
+
+            </div>
+
+            <div class="tab-pane fade" id="calender" role="tabpanel" aria-labelledby="calender">
+
+            </div>
+
+            <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message">
 
             </div>
 

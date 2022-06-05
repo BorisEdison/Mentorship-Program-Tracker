@@ -65,13 +65,11 @@
             </li>
           </span>
 
-          <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
+          {% comment %} <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Message">
             <li class="nav-item-main">
-              <a class="nav-link" id="iconifyMessage" href="#">
-                <span class="iconify iconify-navbar" data-icon="bx:message-detail" data-width="24" data-height="26"></span>
-              </a>
+
             </li>
-          </span>
+          </span> {% endcomment %}
 
           <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
             <li class="nav-item-main">
@@ -216,12 +214,27 @@
         <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <button class="nav-link active nav-pills-link" id="dashboard-tab" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+              <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
               Dashboard
             </button>
 
             <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+              <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
               Analytics
             </button>
+                          
+            <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill"
+              data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+              <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>                
+              Calender
+            </button>
+
+            <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill"
+              data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+              <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>              
+              Message
+            </button>
+
           </div>
         </div>
       </div>
@@ -285,30 +298,89 @@
                         <div class="accordion accordion-flush" style="border-radius: 4px" id="accordionFlushExample">
 
                           <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <h2 class="accordion-header" id="flush-headingBasic">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBasic" aria-expanded="false" aria-controls="flush-collapseBasic">
                                 Basic Information
                               </button>
                             </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-collapseBasic" class="accordion-collapse collapse" aria-labelledby="flush-headingBasic" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
-                                <p style="font-size: 16px">Name: Boris Edison</p>
-                                <p style="font-size: 16px">Roll no.: 14</p>
-                                <p style="font-size: 16px">Year: SE</p>
-                                <p style="font-size: 16px">Dept.: Comp</p>
-                                <p style="font-size: 16px">DOB: 28/09/2001</p>
-                                <p style="font-size: 16px">Address: Bhandup</p>
+
+                                <div class = "row">
+
+                                  <div class = "col-lg-6 col-md-12 col-sm-12">
+                                    <div class="row">
+                                      <div class="col-6">
+                                          <p><strong>Name</strong></p>
+                                          <p><strong>Roll no</strong></p>
+                                          <p><strong>Year</strong></p>
+                                          <p><strong>Department</strong></p>
+                                          <p><strong>DOB</strong></p>
+                                          <p><strong>Address</strong></p>
+                                      </div>
+                                      <div class="col-6">
+                                          <p>Boris Edison</p>
+                                          <p>14</p>
+                                          <p>SE</p>
+                                          <p>Computer</p>
+                                          <p>28/09/2001</p>
+                                          <p>Bhandup</p>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class = "col-lg-6 col-md-12 col-sm-12">
+                                    <div class="row">
+                                      <div class="col-6">
+                                        <p><strong>Name</strong></p>
+                                        <p><strong>Roll no</strong></p>
+                                        <p><strong>Year</strong></p>
+                                        <p><strong>Department</strong></p>
+                                        <p><strong>DOB</strong></p>
+                                        <p><strong>Address</strong></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Boris Edison</p>
+                                        <p>14</p>
+                                        <p>SE</p>
+                                        <p>Computer</p>
+                                        <p>28/09/2001</p>
+                                        <p>Bhandup</p>
+                                    </div>
+                                  </div>
+                                  </div>
+
+                                </div>
+
+ 
+
                               </div>
                             </div>
                           </div>
 
                           <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <h2 class="accordion-header" id="flush-headingGuardian">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseGuardian" aria-expanded="false" aria-controls="flush-collapseGuardian">
+                                Guardian Information
+                              </button>
+                            </h2>
+                            <div id="flush-collapseGuardian" class="accordion-collapse collapse" aria-labelledby="flush-headingGuardian" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingHealth">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseHealth" aria-expanded="false" aria-controls="flush-collapseHealth">
                                 Health Information
                               </button>
                             </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-collapseHealth" class="accordion-collapse collapse" aria-labelledby="flush-headingHealth" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                                 commodo
@@ -319,12 +391,12 @@
                           </div>
 
                           <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingThree">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                Goals
+                            <h2 class="accordion-header" id="flush-headingGoal">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseGoal" aria-expanded="false" aria-controls="flush-collapseGoal">
+                                Goals, Hobbies and Extra Curriculars
                               </button>
                             </h2>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-collapseGoal" class="accordion-collapse collapse" aria-labelledby="flush-headingGoal" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                                 commodo
@@ -333,6 +405,8 @@
                               </div>
                             </div>
                           </div>
+
+
 
                         </div>
                       </div>
@@ -459,6 +533,14 @@
             </div>
 
             <div class="tab-pane fade" id="analytics" role="tabpanel" aria-labelledby="analytics">
+
+            </div>
+
+            <div class="tab-pane fade" id="calender" role="tabpanel" aria-labelledby="calender">
+
+            </div>
+
+            <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message">
 
             </div>
 
