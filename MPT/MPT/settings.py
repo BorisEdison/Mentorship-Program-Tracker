@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'AdminPage.apps.AdminpageConfig',
     'Register.apps.RegisterConfig',
     'Login.apps.LoginConfig',
-    'EditUser.apps.EdituserConfig'
+    'EditUser.apps.EdituserConfig',
+    'guardian',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)

@@ -8,16 +8,15 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
+from Register.models import StudentProfile
 
 def edit(request):
-    # user=User.objects.get(request.user.id)
     context={}
-    # user_id = User.request.user.id
-
+    profile = StudentProfile.objects.get(user__id=request.user.id)
     if request.method=="POST":
         if request.user.is_staff:
             fName = request.POST['fName']
-            # Lname= request.POST['Lname']
+            Lname= request.POST['LName']
             username= request.POST['username']
             # department= request.POST['department']
             # phone= request.POST['phone']
@@ -28,14 +27,15 @@ def edit(request):
             user = User.objects.get(id=request.user.id)
             user.first_name= fName
             user.username=username
+            user.last_name=Lname
             user.save()
             return redirect('/facultydashboard')
 
         else:
             fName = request.POST['fName']
-            # Lname= request.POST['Lname']
-            username= request.POST['username']
-            # department= request.POST['department']
+            Lname = request.POST['LName']
+            username = request.POST['username']
+            department = request.POST['department']
             # phone= request.POST['phone']
             # email= request.POST['email']
             # email1= request.POST['email1']
@@ -44,10 +44,14 @@ def edit(request):
             user = User.objects.get(id=request.user.id)
             user.first_name= fName
             user.username=username
+            user.last_name=Lname
             user.save()
+
+            profile.department= department
+            profile.save()
             return redirect('/studentdashboard')
 
 
     else:
-        return render(request,'edit.html')
+        return render(request,'edit.html', {'profile': profile})
 

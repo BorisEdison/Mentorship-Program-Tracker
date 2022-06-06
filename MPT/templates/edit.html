@@ -113,7 +113,7 @@
               </div>
               <div class="form-group col-md-10">
                 <label for="inputLname">Last Name</label>
-                <input type="text" class="form-control" name="lName" id="inputLname" placeholder="Last Name">
+                <input type="text" class="form-control" name="LName" id="inputLname" placeholder="Last Name" value='{{user.last_name}}'>
               </div>
               <div class="form-group col-md-10">
                 <label for="inputEmail">Email</label>
@@ -136,8 +136,8 @@
             <!-- right-column -->
             <div class="col-lg-6 col-md-6 col-sm-12">
               <div class="form-group col-md-10">
-                <label for="inputCountry">Country</label>
-                <input type="text" class="form-control" id="inputCountry" placeholder="Country">
+                <label for="inputCountry">Department</label>
+                <input type="text" class="form-control" id="inputCountry" name="department" placeholder="Country" value='{{profile.department}}'>
               </div>
               <div class="form-group col-md-10">
                 <label for="inputState">State</label>
