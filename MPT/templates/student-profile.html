@@ -198,7 +198,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -264,17 +264,35 @@
 
                     <!-- Edit Student Details Modal -->
                     <div class="modal fade" id="edit-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                      <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum
+                            <nav class="">
+                              <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false">
+                                  Details
+                                </button>
+                                <button class="nav-link" id="nav-marks-tab" data-bs-toggle="tab" data-bs-target="#nav-marks" type="button" role="tab" aria-controls="nav-marks-tab" aria-selected="true">
+                                  Marks
+                                </button>
+                              </div>
+                            </nav>
+        
+                            <div class="tab-content mt-5" id="nav-tabContent">
+                              <!-- Details -->
+                              <div class="tab-pane fade table-div" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+
+                              </div>
+        
+                              <!-- Marks -->
+                              <div class="tab-pane fade show active" id="nav-marks" role="tabpanel" aria-labelledby="nav-marks-tab">
+                              
+                              </div>
+                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-primary btn-sm">Save changes</button>
