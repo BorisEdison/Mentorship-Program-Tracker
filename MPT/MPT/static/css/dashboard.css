@@ -241,6 +241,11 @@ h6 {
 /* .stu-prof-info {
   justify-content: space-between;
 } */
+.scrollspy-example {
+  position: relative;
+  height: 250px;
+  overflow: auto;
+}
 .graphs {
   display: flex;
   justify-content: space-evenly;
