@@ -271,61 +271,124 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <nav class="">
-                              <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false">
-                                  Details
-                                </button>
-                                <button class="nav-link" id="nav-marks-tab" data-bs-toggle="tab" data-bs-target="#nav-marks" type="button" role="tab" aria-controls="nav-marks-tab" aria-selected="true">
-                                  Marks
-                                </button>
+
+                            <div class="row">
+                              <div class="col-sm-3" id="spy">
+                                <ul class="nav nav-pills flex-column">
+                                  <li class="nav-item"><a class="nav-link active" href="#basic">Basic Information</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#guardian">Guardian Information</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#health">Health Information</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#goal">Goals, Hobbies and Extra Curriculars</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#marks">Marks</a></li>
+
+                                </ul>
                               </div>
-                            </nav>
-        
-                            <div class="tab-content mt-5" id="nav-tabContent">
-                              <!-- Details -->
-                              <div class="tab-pane fade table-div" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+                              <div class="col-sm-9 scrollspy-example" data-spy="scroll" data-target="#spy">
 
-                                <div class="row">
-                                  <div class="col-sm-3" id="spy">
-                                    <ul class="nav nav-pills flex-column">
-                                      <li class="nav-item"><a class="nav-link active" href="#basic">Basic Information</a></li>
-                                      <li class="nav-item"><a class="nav-link" href="#guardian">Guardian Information</a></li>
-                                      <li class="nav-item"><a class="nav-link" href="#health">Health Information</a></li>
-                                      <li class="nav-item"><a class="nav-link" href="#goal">Goals, Hobbies and Extra Curriculars</a></li>
-                                    </ul>
+                                <div id="basic">
+                                  <p style="font-size: 20px;"><strong>Basic Information</strong></p>
+
+                                  <div class="row pt-2">
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputFname">First Name</label>
+                                        <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputMname">Middle Name</label>
+                                        <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="col-sm-9 scrollspy-example" data-spy="scroll" data-target="#spy">
 
-                                      <div id="basic">
-                                        <h2>First Section</h2>
-
+                                  <div class="row pt-2">
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputLname">Last Name</label>
+                                        <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value=''>
                                       </div>
+                                    </div>
 
-                                      <div id="guardian">
-                                        <h2>Second Section</h2>
-
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputRno">Roll No</label>
+                                        <input type="number" name='rNo' id="inputRno" class="form-control" placeholder="Roll No" min="1" max="70" value=''>
                                       </div>
-
-                                      <div id="health">
-                                        <h2>Third Section</h2>
-
-                                      </div>
-
-                                      <div id="goal">
-                                        <h2>Fourth Section</h2>
-
-                                      </div>
-                                      
+                                    </div>
                                   </div>
+
+                                  <div class="row pt-2">
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputYear">Year</label> <br>
+                                        <select id="inputYear" style="height: 36px; width: 70px" name="year">
+                                          <option value="FE">FE</option>
+                                          <option value="SE">SE</option>
+                                          <option value="TE">TE</option>
+                                          <option value="BE">BE</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputDept">Department</label> <br>
+                                        <select id="inputDept" style="height: 36px;" name="dept">
+                                          <option value="Computer">Computer</option>
+                                          <option value="IT">IT</option>
+                                          <option value="EXTC">EXTC</option>
+                                          <option value="Mechanical">Mechanical</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row pt-2">
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputDob">Date Of Birth</label>
+                                        <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" min="1" max="70" value=''>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputAddress">Address</label>
+                                        <input type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
                                 </div>
-                              </div>
-        
-                              <!-- Marks -->
-                              <div class="tab-pane fade show active" id="nav-marks" role="tabpanel" aria-labelledby="nav-marks-tab">
-                              
+
+                                <div id="guardian">
+                                  <p style="font-size: 20px; padding-top: 2rem;"><strong>Guardian Information</strong></p>
+
+                                </div>
+
+                                <div id="health">
+                                  <p style="font-size: 20px; padding-top: 2rem;"><strong>Health Information</strong></p>
+
+                                </div>
+
+                                <div id="goal">
+                                  <p style="font-size: 20px; padding-top: 2rem;"><strong>Goals, Hobbies and Extra Curriculars</strong></p>
+
+                                </div>
+
+                                <div id="marks">
+                                  <p style="font-size: 20px; padding-top: 2rem;"><strong>Marks</strong></p>
+
+                                </div>
+
                               </div>
                             </div>
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-primary btn-sm">Save changes</button>
@@ -486,7 +549,7 @@
 
                                   <!--Left Column-->
                                   <div class="col-lg-6 col-md-12 col-sm-12">
-                                    
+
                                     <p style="display: flex; justify-content: center;"><strong>Mother</strong></p>
                                     <div class="row">
 
@@ -570,7 +633,7 @@
 
                                   <!--Left Column-->
                                   <div class="col-lg-6 col-md-12 col-sm-12">
-                                    
+
                                     <div class="row">
 
                                       <!--Addiction-->
@@ -636,7 +699,7 @@
 
                                   <!--Left Column-->
                                   <div class="col-lg-6 col-md-12 col-sm-12">
-                                    
+
                                     <div class="row">
 
                                       <!--Aim For Life-->
@@ -716,7 +779,7 @@
                                             <p>DBIT SevaTech</p>
                                           </li>
 
-                                        </ul>                                      
+                                        </ul>
                                       </div>
 
                                     </div>
@@ -728,8 +791,6 @@
                               </div>
                             </div>
                           </div>
-
-
 
                         </div>
                       </div>
