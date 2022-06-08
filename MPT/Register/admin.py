@@ -1,5 +1,7 @@
 import imp
 from django.contrib import admin
-from .models import StudentProfile
-from guardian.admin import GuardedModelAdmin
+from accounts.models import StudentProfile
+
+
+
 

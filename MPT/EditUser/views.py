@@ -8,7 +8,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
-from Register.models import StudentProfile
+from accounts.models import StudentProfile
+
 
 def edit(request):
     context={}

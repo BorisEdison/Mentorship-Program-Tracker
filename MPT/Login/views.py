@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
+from accounts.models import StudentProfile
 
 def login(request):
     if request.method == 'POST':
