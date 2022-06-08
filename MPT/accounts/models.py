@@ -103,3 +103,23 @@ class Mentor_assign(models.Model):
     def __str__(self):
         return self.Mentee.username + ' is assigned to '+self.Mentor.username
     
+
+
+def get_mentee(mentor):
+    mentee_list=[]
+    for mentee in Mentor_assign.objects.filter(Mentor=mentor):
+        mentee_list.append(mentee.Mentee)
+        mentee_list.extend(get_mentee(mentee.Mentee))
+    return mentee_list
+
+
+def user_post_save(sender, instance, created, **kwargs):
+    if created:
+        if instance.is_staff:
+            instance.groups.add(auth.Group.objects.get(name='Mentor'))
+
+
+def user_post_save_mentee(sender, instance, created, **kwargs):
+    if created:
+        if not instance.is_staff:
+            instance.groups.add(auth.Group.objects.get(name='Mentee'))
