@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'Login.apps.LoginConfig',
     'EditUser.apps.EdituserConfig',
     'accounts.apps.AccountsConfig',
-    'guardian',
+    
 ]
 
 MIDDLEWARE = [
@@ -125,5 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', # this is default
-    'guardian.backends.ObjectPermissionBackend',
+    # 'guardian.backends.ObjectPermissionBackend',
 )

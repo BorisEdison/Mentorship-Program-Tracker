@@ -13,7 +13,6 @@ from accounts.models import StudentProfile
 
 def edit(request):
     context={}
-    profile = StudentProfile.objects.get(user__id=request.user.id)
     if request.method=="POST":
         if request.user.is_staff:
             fName = request.POST['fName']
@@ -33,6 +32,7 @@ def edit(request):
             return redirect('/facultydashboard')
 
         else:
+            profile = StudentProfile.objects.get(user__id=request.user.id)
             fName = request.POST['fName']
             Lname = request.POST['LName']
             username = request.POST['username']
@@ -50,9 +50,10 @@ def edit(request):
 
             profile.department= department
             profile.save()
+            context={'profile': profile}
             return redirect('/studentdashboard')
 
 
     else:
-        return render(request,'edit.html', {'profile': profile})
+        return render(request,'edit.html', context)
 

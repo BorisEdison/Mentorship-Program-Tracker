@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
-from accounts.models import StudentProfile, MentorProfile
+from accounts.models import StudentProfile, MentorProfile,Mentor_assign
 
 # Register your models here.
 
@@ -42,7 +42,7 @@ admin_site = Admin(name='MPTAdmin')
 admin_site.register(User,UserAdminConfig)
 admin_site.register(StudentProfile)
 admin_site.register(MentorProfile)
-
+admin_site.register(Mentor_assign)
 # @admin.register(StudentProfile)
 # class Profile(GuardedModelAdmin):
 #     list_display = ('current_rollNo',)

@@ -1,6 +1,9 @@
 from re import M
 from django.db import models
 from django.contrib.auth.models import User, auth
+from datetime import datetime
+from django.utils import timezone
+
 
 
 class StudentProfile(models.Model):
@@ -89,3 +92,14 @@ class MentorProfile(models.Model):
 
     class meta:
         permissions = (("is_staff", "is a staff"),)
+
+
+class Mentor_assign(models.Model):
+    Mentor=models.ForeignKey(MentorProfile, on_delete=models.SET_NULL,null=True)
+    Mentee=models.ForeignKey(StudentProfile, on_delete=models.SET_NULL,null=True)
+    date_added = models.DateTimeField(default=timezone.now) 
+    date_updated = models.DateTimeField(auto_now=True) 
+
+    def __str__(self):
+        return self.Mentee.username + ' is assigned to '+self.Mentor.username
+    
