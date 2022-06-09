@@ -221,3 +221,12 @@ new Chart("donutGraphSem2", {
   },
   plugins: [stackedText],
 });
+
+
+let donut1 = document.getElementById("donutGraphSem1")
+let donut2 = document.getElementById("donutGraphSem2")
+
+donut1.width = "500"
+donut1.height = "250"
+donut2.width = "500"
+donut2.height = "250"
