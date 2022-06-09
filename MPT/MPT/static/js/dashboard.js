@@ -1,13 +1,12 @@
+// ----------------- Select button on teacher dash ------------------------ //
 let btns = document.getElementsByName("btn-show");
 let cbs = document.getElementsByName("cb-choose");
 let btn_select = document.getElementById("btn-select");
-
 let btn_sel_all = document.getElementById("sel-all-btn");
 let btn_cancel = document.getElementById("cancel-btn");
 let btn_schedule = document.getElementById("schedule-btn");
 
 const btn_status = (status) => {
-//   console.log("Hello");
   btns.forEach((btn) => {
     btn.style.opacity = status ? "0" : "1";
   });
@@ -18,7 +17,6 @@ const btn_status = (status) => {
   btn_cancel.disabled = status;
   btn_schedule.disabled = status;
 };
-// console.log('hey');
 btn_status(true);
 btn_select.addEventListener("click", () => {
   btn_status(false);
@@ -38,7 +36,7 @@ btn_cancel.addEventListener("click", () => {
 });
 
 btn_schedule.addEventListener("click", () => {
-  alert("Get some stuff done!!!");
+  alert("Yay! You scheduled stuffs😎");
   btn_status(true);
   cbs.forEach((cb) => {
     cb.checked = false;

@@ -13,6 +13,11 @@
     top: auto;
     left: 5%;
   }
+  .nav-item-main > .nav-link,
+  .nav-item-main > .nav-link:focus,
+  .nav-item-main > .nav-link:hover{
+    color: #fff;
+  }
   .navbar-toggler {
     border: none;
     padding: 0;

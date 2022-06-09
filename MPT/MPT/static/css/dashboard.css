@@ -6,7 +6,7 @@ body {
 }
 a {
   color: white;
-  text-shadow: 0 0 2px rgb(0, 0, 0);
+  /* text-shadow: 0 0 2px rgb(0, 0, 0); */
   text-decoration: none;
   transition: color 0.3s ease;
 }
