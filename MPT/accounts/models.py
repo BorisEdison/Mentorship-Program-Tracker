@@ -100,8 +100,8 @@ class Mentor_assign(models.Model):
     date_added = models.DateTimeField(default=timezone.now) 
     date_updated = models.DateTimeField(auto_now=True) 
 
-    def __str__(self):
-        return self.Mentee.username + ' is assigned to '+self.Mentor.username
+    # def __str__(self):
+    #     return self.Mentee.user.username + ' is assigned to '+self.Mentor.user.username
     
 
 
