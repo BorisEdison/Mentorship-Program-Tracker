@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
-from accounts.models import StudentProfile
+from accounts.models import StudentProfile, MentorProfile
 
 
 def logout(request):
@@ -40,6 +40,11 @@ def user(request):
             else: 
                 user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
                 user.save()
+                u = User.objects.get(username=request.POST['username'])
+                profile =StudentProfile(user = u)
+                # print(request.profile)
+                profile.save()
+                print("profile saved")
                 return redirect('/')
  
         else: 
