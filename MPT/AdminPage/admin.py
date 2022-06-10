@@ -1,20 +1,30 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
 from accounts.models import StudentProfile, MentorProfile,Mentor_assign
 from accounts.models import User
+from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
 # Register your models here.
 
 Desc = 'Add College Email-ID'
 
 class CustomUserAdmin(UserAdmin):
-    
+    # add_form=CustomUserCreationForm
+    # form=CustomUserChangeForm
     model=User
     list_display=('email','staff','active','superuser',)
     list_filter=('email','staff','active','superuser',)
-
     fieldsets = (
+        (None, {
+            "fields": (
+                'email','password'
+            ),
+        }),
+        ('Permissions',{'fields':('staff','active',)}),
+    )
+    
+    add_fieldsets = (
         (None, {
             'classes':('wide',),
             "fields": (

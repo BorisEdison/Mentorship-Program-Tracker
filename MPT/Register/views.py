@@ -2,10 +2,11 @@ from email import message
 from unicodedata import name
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
+# from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from accounts.models import StudentProfile, MentorProfile
+from accounts.models import User
 
 
 def logout(request):

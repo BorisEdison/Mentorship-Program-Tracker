@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import BaseUserManager
 class CustomUserManager(BaseUserManager):
     '''for using email as unique identifier instead of username '''
 
-    def create_user(self, email, password=None, is_active=True, is_staff=False, is_superuser=False):
+    def create_user(self, email, password, is_active=True, is_staff=False, is_superuser=False):
 
         # create and save user with email and password
 
@@ -13,9 +13,11 @@ class CustomUserManager(BaseUserManager):
 
         if not password:
             raise ValueError('Password is mandatory')
+        # email=self.normalize_email(email)
         User = self.model(
             email=self.normalize_email(email)
         )
+        # User=self.model(email=email,**extra_fields)
         User.active = is_active
         User.staff = is_staff
         User.superuser = is_superuser
@@ -23,7 +25,7 @@ class CustomUserManager(BaseUserManager):
         User.save(using=self.db)
         return User
 
-    def create_staffuser(self, email, password=None):
+    def create_staffuser(self, email, password):
         User = self.create_user(
             email, 
             password=password, 
@@ -31,8 +33,22 @@ class CustomUserManager(BaseUserManager):
             )
         return User
 
+    # def create_superuser(self,email,password=None):
 
-    def create_superuser(self, email, password=None):
+    #     #create and save superuser with email and password
+    #     extra_fields.setdefault('is_staff',True)
+    #     extra_fields.setdefault('is_superuser',True)
+    #     extra_fields.setdefault('is_active',True)
+
+    #     if extra_fields.get('is_staff') is not True:
+    #         raise ValueError(('Superuser must have have is_staff=True.'))
+
+    #     if extra_fields.get('is_superuser') is not True:
+    #         raise ValueError(('Superuser must have is_superuser=True'))
+
+    #     return self.create_user(email, password,**extra_fields)
+
+    def create_superuser(self, email, password):
         User = self.create_user(
             email,
             password=password,
