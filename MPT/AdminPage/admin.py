@@ -10,8 +10,8 @@ from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
 Desc = 'Add College Email-ID'
 
 class CustomUserAdmin(UserAdmin):
-    # add_form=CustomUserCreationForm
-    # form=CustomUserChangeForm
+    add_form=CustomUserCreationForm
+    form=CustomUserChangeForm
     model=User
     list_display=('email','staff','active','superuser',)
     list_filter=('email','staff','active','superuser',)
@@ -21,17 +21,25 @@ class CustomUserAdmin(UserAdmin):
                 'email','password'
             ),
         }),
-        ('Permissions',{'fields':('staff','active',)}),
+        ('Permissions', {'fields': ('staff', 'active'),
+            'classes': ('collapse',),
+        }),
     )
     
     add_fieldsets = (
         (None, {
             'classes':('wide',),
             "fields": (
-                'email','password1','password2','staff','active'
+                'email','password1','password2','first_name','last_name','phone','staff','active',
             ),
         }),
     )
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['first_name'].required = False
+        form.base_fields['last_name'].required = False
+        form.base_fields['phone'].required = False
+        return form
     
     search_fields=('email',)
     ordering=('email',)

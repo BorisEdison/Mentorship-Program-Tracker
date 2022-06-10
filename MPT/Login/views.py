@@ -6,15 +6,13 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from accounts.models import StudentProfile
+from accounts.models import User
 
 def login(request):
     if request.method == 'POST':
-        username= request.POST['username']
+        email= request.POST['email']
         password= request.POST['password']
-
-        user = auth.authenticate(username=username, password=password)
-        
-        # if user is not None:
+        user = auth.authenticate(email=email, password=password)
         if user:
             auth.login(request, user)
             if request.user.is_staff:

@@ -15,6 +15,10 @@ class User(AbstractUser):
     active = models.BooleanField(default=True)
     staff=models.BooleanField(default=False)
     superuser=models.BooleanField(default=False)
+    first_name=models.CharField(max_length=50,null=True)
+    last_name=models.CharField(max_length=50,null=True)
+    phone= models.CharField(max_length=12,null=True,blank=True)
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()

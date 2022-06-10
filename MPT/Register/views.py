@@ -19,7 +19,7 @@ def user(request):
     if request.method == 'POST':
         fname= request.POST['name']
         Lname= request.POST['Lname']
-        username= request.POST['username']
+        # username= request.POST['username']
         #department= request.POST['department']
         phone= request.POST['phone']
         email= request.POST['email']
@@ -28,20 +28,15 @@ def user(request):
         password2= request.POST['password2']
 
         if password1==password2:
-            if User.objects.filter(username=username).exists():
-                messages.info(request, "Username Already Taken")
-                return render(request, 'register.html')
                 
-
-
-            elif User.objects.filter(email=email).exists():
+            if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
                 return render(request, 'register.html')
 
             else: 
-                user= User.objects.create_user(username=username, password= password1, first_name=fname, last_name=Lname, email=email)
+                user= User.objects.create_user(email=email, password= password1, first_name=fname, last_name=Lname,phone=phone)
                 user.save()
-                u = User.objects.get(username=request.POST['username'])
+                u = User.objects.get(email=request.POST['email'])
                 profile =StudentProfile(user = u)
                 # print(request.profile)
                 profile.save()

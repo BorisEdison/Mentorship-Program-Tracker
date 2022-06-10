@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import BaseUserManager
 class CustomUserManager(BaseUserManager):
     '''for using email as unique identifier instead of username '''
 
-    def create_user(self, email, password, is_active=True, is_staff=False, is_superuser=False):
+    def create_user(self, email, password, is_active=True, is_staff=False, is_superuser=False,first_name=None,last_name=None,phone=None):
 
         # create and save user with email and password
 
@@ -13,15 +13,18 @@ class CustomUserManager(BaseUserManager):
 
         if not password:
             raise ValueError('Password is mandatory')
-        # email=self.normalize_email(email)
+
+
         User = self.model(
             email=self.normalize_email(email)
         )
-        # User=self.model(email=email,**extra_fields)
         User.active = is_active
         User.staff = is_staff
         User.superuser = is_superuser
         User.set_password(password)
+        User.first_name=first_name
+        User.last_name=last_name
+        User.phone=phone
         User.save(using=self.db)
         return User
 
