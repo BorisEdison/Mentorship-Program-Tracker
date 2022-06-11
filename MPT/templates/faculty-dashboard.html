@@ -39,13 +39,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar-content">
         <div class="ms-auto">
-          {% if user.is_authenticated %}
-
           <a class="navbar-brand" href="#">
-            <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
+            {% if user.is_authenticated %}
+              {% if user.profile_img %}
+                <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="">
+              {% endif %}
             {{user.first_name}}
+            {% endif %}
           </a>
-          {% endif %}
         </div>
 
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">

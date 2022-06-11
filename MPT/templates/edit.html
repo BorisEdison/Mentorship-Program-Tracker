@@ -42,10 +42,9 @@
         <div class="ms-auto">
           <a class="navbar-brand" href="#">
             {% if user.is_authenticated %}
-            {% comment %} <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt=""> {% endcomment %}
-            {% if user.profile_img %}
-              <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="">
-            {% endif %}
+              {% if user.profile_img %}
+                <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="">
+              {% endif %}
             {{user.first_name}}
             {% endif %}
           </a>
@@ -110,10 +109,10 @@
                 <label for="inputFname">First Name</label>
                 <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
               </div>
-              <div class="form-group col-md-10">
+              {% comment %} <div class="form-group col-md-10">
                 <label for="inputMname">Username</label>
                 <input type="text" class="form-control" name="username" id="inputMname" placeholder="Username" value='{{user.username}}'>
-              </div>
+              </div> {% endcomment %}
               <div class="form-group col-md-10">
                 <label for="inputLname">Last Name</label>
                 <input type="text" class="form-control" name="LName" id="inputLname" placeholder="Last Name" value='{{user.last_name}}'>
@@ -160,10 +159,11 @@
               <div class="form-group col-md-10">
                 <label for="inputEmail4">Add Photo</label>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize"  {% if user.profile_img %}
-                  value="{{user.profile_img.url}}" 
-                {% endif %}>
-                  {% comment %} id="customFile" {% endcomment %}
+                  <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize"  value='{{user.profile_img}}'>
+                  {% if user.profile_img != 'logo.png' %}
+                     image added:
+                    <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+                  {% endif %}
                 </div>
               </div>
             </div>
