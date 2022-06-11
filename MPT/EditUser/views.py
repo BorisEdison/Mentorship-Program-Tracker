@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile
 from accounts.models import User
