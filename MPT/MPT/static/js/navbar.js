@@ -39,3 +39,20 @@ if (mediaQuery.matches) {
     });
   })();
 }
+
+
+// ----------------- Toggle Dark Mode ----------------- //
+let toggle = document.getElementById("dark-mode-toggle");
+
+toggle.addEventListener('click',()=>{
+  // TODO: Fix tooltip not updating
+  // TODO: Add dark classes
+  if(toggle.childNodes[1].childNodes[1].childNodes[0].getAttribute("data-icon") == "akar-icons:sun"){
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "bi:moon");
+    // toggle.setAttribute("title", "Switch To Light Mode");
+  }
+  else{
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "akar-icons:sun");
+    // toggle.setAttribute("title", "Switch To Dark Mode");
+  }
+})
