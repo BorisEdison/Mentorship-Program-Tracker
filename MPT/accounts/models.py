@@ -18,7 +18,8 @@ class User(AbstractUser):
     first_name=models.CharField(max_length=50,null=True)
     last_name=models.CharField(max_length=50,null=True)
     phone= models.CharField(max_length=12,null=True,blank=True)
-    
+    profile_img = models.ImageField(default='logo.png',null=True, blank=True,upload_to='images/')
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()

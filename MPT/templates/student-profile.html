@@ -43,7 +43,7 @@
           {% if user.is_authenticated %}
 
           <a class="navbar-brand" href="#">
-            <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="">
+            <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="">
             {{user.first_name}}
           </a>
           {% endif %}

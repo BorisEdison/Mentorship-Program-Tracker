@@ -27,9 +27,11 @@ def edit(request):
                 # email1= request.POST['email1']
                 # password1= request.POST['password1']
                 # password2= request.POST['password2']
+                profile_img= request.FILES['profile_img']
                 user = User.objects.get(id=request.user.id)
                 user.first_name= fName
                 user.username=username
+                user.profile_img=profile_img
                 user.last_name=Lname
                 user.save()
 
@@ -53,10 +55,12 @@ def edit(request):
             # email1= request.POST['email1']
             # password1= request.POST['password1']
             # password2= request.POST['password2']
+            profile_img= request.FILES['profile_img']
             user = User.objects.get(id=request.user.id)
             user.first_name= fName
             user.username=username
             user.last_name=Lname
+            user.profile_img=profile_img
             user.save()
 
             profile.department= department

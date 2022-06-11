@@ -18,28 +18,31 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {
             "fields": (
-                'email','password'
+                'email','password','first_name','last_name','phone','profile_img',
             ),
         }),
         ('Permissions', {'fields': ('staff', 'active'),
             'classes': ('collapse',),
         }),
     )
-    
-    add_fieldsets = (
-        (None, {
-            'classes':('wide',),
-            "fields": (
-                'email','password1','password2','first_name','last_name','phone','staff','active',
-            ),
-        }),
-    )
+
     def get_form(self, request, obj=None, **kwargs):
         form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['first_name'].required = False
         form.base_fields['last_name'].required = False
         form.base_fields['phone'].required = False
+        form.base_fields['profile_img'].required = False
         return form
+
+    add_fieldsets = (
+        (None, {
+            'classes':('wide',),
+            "fields": (
+                'email','password1','password2','first_name','last_name','phone','profile_img','staff','active',
+            ),
+        }),
+    )
+    
     
     search_fields=('email',)
     ordering=('email',)
