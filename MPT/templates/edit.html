@@ -99,7 +99,7 @@
         </div>
 
         {% csrf_token %}
-        <div class="container mt-5 mb-3">
+        <div class="container mt-4 mb-3">
 
           <div class="row">
 
@@ -212,6 +212,76 @@
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Sixth Row  -->
+            <div class="row pt-2">
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputQuali">Qualification</label>
+                  <input type="text" name='Quali' class="form-control" id="inputQuali"
+                    placeholder="Qualification" value=''>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputGender">Gender</label> <br>
+                  <select id="inputGender" style="height: 36px;" name="gender">
+                    <option value="-----">-----</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Seventh Row  -->
+            <div class="row pt-2">
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputBGroup">Blood Group</label> <br>
+                  <select id="inputBGroup" style="height: 36px;" name="bGroup">
+                    <option value="-----">-----</option>
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="AB+">AB+</option>                                         
+                    <option value="A-">A-</option>                                         
+                    <option value="B-">B-</option>
+                    <option value="O-">O-</option>                                          
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputMtoungue">Mother Tongue</label>
+                  <input type="text" name='mTongue' class="form-control" id="inputMtongue"
+                    placeholder="Mother Tongue" value=''>
+                </div>
+              </div>
+            </div>
+
+            <!-- Eighth Row  -->
+            <div class="row pt-2">
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputReligion">Religion</label>
+                  <input type="text" name='Religion' class="form-control" id="inputReligion"
+                    placeholder="Religion" value=''>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group col-md-10">
+                  <label for="inputContactNo">Contact No.</label>
+                  <input type="tel" name="phone" class="form-control" id="inputContactNo" 
+                  placeholder="Contact No." pattern="[0-9]{10}">
+                </div>
+              </div>
+
             </div>
 
           </div>
