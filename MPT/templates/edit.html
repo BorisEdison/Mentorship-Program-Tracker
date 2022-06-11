@@ -24,7 +24,7 @@
   <nav class="navbar navbar-main sticky-top navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px">
+        <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
         DBIT
       </a>
 
@@ -43,7 +43,7 @@
           <a class="navbar-brand" href="#">
             {% if user.is_authenticated %}
               {% if user.profile_img %}
-                <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px">
+                <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
               {% endif %}
             {{user.first_name}}
             {% endif %}
