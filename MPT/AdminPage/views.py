@@ -9,7 +9,7 @@ from django.views import generic
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile
-from django.contrib.auth.decorators import permission_required
+# from django.contrib.auth.decorators import permission_required
 from accounts.models import User
 
 # Create your views here.
@@ -27,7 +27,7 @@ def Adminpage(request):
 def student(request):
     return render(request, 'student-dashboard.html')
 
-@permission_required('is_staff')
+
 def faculty(request):
     user = User.objects.all()  #here we need to get assigning ka model them sort
     context = {'user': user}

@@ -81,7 +81,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -119,7 +119,7 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 
