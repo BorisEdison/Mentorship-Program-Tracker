@@ -81,8 +81,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name
-
+        return str(self.id)
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -120,10 +119,8 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name
+        return str(self.id)
 
-    class meta:
-        permissions = (("is_staff", "is a staff"),)
 
 
 class Mentor_assign(models.Model):

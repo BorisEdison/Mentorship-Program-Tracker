@@ -2,7 +2,7 @@ from email import message
 from unicodedata import name
 from django.shortcuts import redirect, render
 from django.contrib import messages
-# from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from accounts.models import StudentProfile, MentorProfile
@@ -14,8 +14,9 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-# Registration
-def user(request):
+# Student Registration
+def StudentRegister(request):
+   
     if request.method == 'POST':
         fname= request.POST['name']
         Lname= request.POST['Lname']
@@ -45,6 +46,45 @@ def user(request):
  
         else: 
             messages.info(request, "Check Password")
+    context = {'page': 'StudentUser',
+                'title': 'New Account'
+                }
 
-    return render(request, 'register.html')
+    return render(request, 'register.html', context)
 
+# Faculty Registration
+def FacultyRegister(request):
+    
+    if request.method == 'POST':
+        # fname= request.POST['name']
+        # Lname= request.POST['Lname']
+        # phone= request.POST['phone']
+        email= request.POST['email']
+        email1= request.POST['email1']
+        password1= request.POST['password1']
+        password2= request.POST['password2']
+
+        if password1==password2:
+                
+            if User.objects.filter(email=email).exists():
+                messages.info(request, "Email Already Taken")
+                return render(request, 'register.html')
+
+            else: 
+                user= User.objects.create_staffuser(email=email, password= password1)
+                user.save()
+                u = User.objects.get(email=request.POST['email'])
+                profile =MentorProfile(user = u)
+                # print(request.profile)
+                profile.save()
+                print("Teacher saved")
+                return HttpResponse("hello")
+ 
+        else: 
+            messages.info(request, "Check Password")
+
+    context = {'page': 'SuperUser',
+                'title': 'Add New Teacher'
+                }
+
+    return render(request, 'register.html', context)

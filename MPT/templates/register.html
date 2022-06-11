@@ -20,6 +20,7 @@
 </head>
 
 <body class="">
+  
   <div class="logo">
     <a class="" href="#">
       <img style="border-radius: 10px;" src="{% static 'content/logo.png' %}" width="60" height="60" alt="">
@@ -27,9 +28,10 @@
   </div>
 
   <main class="form-signin" style="max-width: 600px; ">
+    {% if page == 'StudentUser' %}
     <form action="Sign-Up" method="POST">
 
-      <h1 class="h3 mb-3">New Account</h1>
+      <h1 class="h3 mb-3">{{title}}</h1>
       <p style="opacity: 0.7;">Register by entering information below</p>
       <div class="row">
 
@@ -95,6 +97,78 @@
 
     </form>
 
+
+    {% elif page == 'SuperUser' %}
+
+
+    <form action="Add-Faculty" method="POST">
+
+      <h1 class="h3 mb-3">{{title}}</h1>
+      <p style="opacity: 0.7;">Register by entering information below</p>
+      <div class="row">
+
+        <div class="col-6">
+          {% csrf_token %}
+          {% comment %}<div class="">
+            <input type="text" name="name" class="form-control top" placeholder="First Name" required>
+          </div>
+
+          <div class="">
+            <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
+          </div>
+          
+           <div class="">
+            <input type="text" name="username" class="form-control middle" placeholder="username" required>
+          </div> {% endcomment %}
+
+          <div class="">
+            <input type="email" name="email" class="form-control middle" placeholder="Email" required>
+          </div>
+          
+          <div class="">
+            <input type="email" name="email1" class="form-control bottom" placeholder="Re-enter Email" required>
+          </div>
+
+        </div>
+
+
+
+        <div class="col-6">
+
+          {% comment %}<div class="">
+            <input type="tel" name="phone" class="form-control top" placeholder="Contact No." pattern="[0-9]{10}" required>
+          </div> {% endcomment %}
+
+          <div class="">
+            <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
+          </div>
+
+          <div class="">
+            <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="d-grid col-6 mx-auto">
+        <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Reigster</button>
+        <!-- <p style="opacity: 0.8; text-align: center;">Already have an account? <a href="/"><strong>Login</strong></a></p> -->
+
+        {% if messages %}
+        {% for message in messages %}
+        {%  if forloop.first  %}
+        <div class="alert alert-danger d-flex align-items-center mb-0" style="height: 20px; width:30; justify-content: center;" role="alert">
+          {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        
+      </div>
+
+    </form>
+    {% endif %}
   </main>
 
   <!-- jQuery -->
@@ -102,7 +176,7 @@
 
   <!-- Local -->
   <script src="{% static 'js/login.js' %}"></script>
-
+  
 </body>
 
 </html>
