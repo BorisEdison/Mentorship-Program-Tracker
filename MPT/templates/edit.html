@@ -104,7 +104,9 @@
             <!-- left-column -->
             <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- <form action="EditPage/" method="POST"> -->
+
               {% csrf_token %}
+
               <div class="form-group col-md-10">
                 <label for="inputFname">First Name</label>
                 <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
@@ -137,27 +139,30 @@
 
             <!-- right-column -->
             <div class="col-lg-6 col-md-6 col-sm-12">
+
+              <div class="form-group col-md-10">
+                <label for="inputMname">Middle Name</label>
+                <input type="text" name='mName' class="form-control" id="inputMname"
+                  placeholder="Middle Name" value=''>
+              </div>
+
               <div class="form-group col-md-10">
                 <label for="inputCountry">Department</label>
                 <input type="text" class="form-control" id="inputCountry" name="department" placeholder="Country" value='{{profile.department}}'>
               </div>
+
               <div class="form-group col-md-10">
                 <label for="inputState">State</label>
                 <input type="text" class="form-control" id="inputState" placeholder="State">
               </div>
+
               <div class="form-group col-md-10">
                 <label for="inputCity">City</label>
                 <input type="text" class="form-control" id="inputCity" placeholder="City">
               </div>
+
               <div class="form-group col-md-10">
-                <label for="inputTime">Timezone</label>
-                <select id="inputTime" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-10">
-                <label for="inputEmail4">Add Photo</label>
+                <label for="inputEmail4">Profile Picture</label>
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize"  value='{{user.profile_img}}'>
                   {% if user.profile_img != 'logo.png' %}

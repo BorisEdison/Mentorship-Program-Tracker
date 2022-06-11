@@ -350,7 +350,28 @@
                                       </div>
                                     </div>
                                   </div>
+
                                   <!-- Third Row  -->
+                                  <div class="row pt-2">
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputStudentId">Student Id</label>
+                                        <input type="number" name='sId' id="inputStudentId" class="form-control"
+                                          placeholder="Student Id" value=''>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputDob">Date Of Birth</label>
+                                        <input type="date" name='dob' id="inputDob" class="form-control"
+                                          placeholder="Date Of Birth" min="1" max="70" value=''>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Forth Row  -->
                                   <div class="row pt-2">
                                     <div class="col-6">
                                       <div class="form-group col-md-10">
@@ -378,23 +399,27 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <!-- Fourth Row  -->
-                                  <div class="row pt-2">
-                                    <div class="col-6">
-                                      <div class="form-group col-md-10">
-                                        <label for="inputDob">Date Of Birth</label>
-                                        <input type="date" name='dob' id="inputDob" class="form-control"
-                                          placeholder="Date Of Birth" min="1" max="70" value=''>
-                                        </select>
-                                      </div>
-                                    </div>
 
+                                  <!-- Fifth Row  -->
+                                  <div class="row pt-2">
                                     <div class="col-6">
                                       <div class="form-group col-md-10">
                                         <label for="inputAddress">Address</label>
                                         <input type="text" name='Address' class="form-control" id="inputAddress"
                                           placeholder="Address" value=''>
                                         </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                      <div class="form-group col-md-10">
+                                        <label for="inputEmail4">Profile Picture</label>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize"  value='{{user.profile_img}}'>
+                                          {% if user.profile_img != 'logo.png' %}
+                                            <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+                                          {% endif %}
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
