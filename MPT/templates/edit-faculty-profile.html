@@ -1,251 +1,202 @@
 {% load static %}
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Profile</title>
+<form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  {% csrf_token %}
+  <div class="container mt-2 mb-3">
+    <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+      <strong>Edit Profile</strong>
+    </p>
+    <div class="row">
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-
-  <!-- Local Stylesheet -->
-  <link rel="stylesheet" href="{% static 'css/edit.css' %}">
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
-</head>
-
-<body>
-
-  <!--navbar-->
-  {% include 'faculty-navbar.html' %}
-
-  <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
-    <!-- window -->
-    <div class="container-fluid mb-5">
-      <div class="sidebar flex-shrink-0 dashboard-navigation">
-
-        <!-- window-heading -->
-        <div class="window-heading d-flex align-items-center justify-content-center">
-          <h5>Edit Profile</h5>
-        </div>
-
-        {% csrf_token %}
-        <div class="container mt-4 mb-3">
-
-          <div class="row">
-
-            <!-- First Row  -->
-            <div class="row">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputFname">First Name</label>
-                  <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputMname">Middle Name</label>
-                  <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
-                </div>
-              </div>
-            </div>
-
-            <!-- Second Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputLname">Last Name</label>
-                  <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value=''>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputTeacherId">Teacher Id</label>
-                  <input type="number" name='rNo' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value=''>
-                </div>
-              </div>
-            </div>
-
-            <!-- Third Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputYear">Year</label> <br>
-                  <select id="inputYear" style="height: 36px; width: 70px" name="year">
-                    <option value="----">----</option>
-                    <option value="FE">FE</option>
-                    <option value="SE">SE</option>
-                    <option value="TE">TE</option>
-                    <option value="BE">BE</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputDept">Department</label> <br>
-                  <select id="inputDept" style="height: 36px;" name="dept">
-                    <option value="--------------">--------------</option>
-                    <option value="Computer">Computer</option>
-                    <option value="IT">IT</option>
-                    <option value="EXTC">EXTC</option>
-                    <option value="Mechanical">Mechanical</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Forth Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputDob">Date Of Birth</label>
-                  <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value=''>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputDoj">Date of Joining</label>
-                  <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Fifth Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputEmail4">Profile Picture</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
-                    {% if user.profile_img != 'logo.png' %}
-                    image added:
-                    <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sixth Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputQuali">Qualification</label>
-                  <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputGender">Gender</label> <br>
-                  <select id="inputGender" style="height: 36px;" name="gender">
-                    <option value="-----">-----</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Seventh Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputBGroup">Blood Group</label> <br>
-                  <select id="inputBGroup" style="height: 36px;" name="bGroup">
-                    <option value="-----">-----</option>
-                    <option value="A+">A+</option>
-                    <option value="B+">B+</option>
-                    <option value="O+">O+</option>
-                    <option value="AB+">AB+</option>
-                    <option value="A-">A-</option>
-                    <option value="B-">B-</option>
-                    <option value="O-">O-</option>
-                    <option value="AB-">AB-</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputMtoungue">Mother Tongue</label>
-                  <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value=''>
-                </div>
-              </div>
-            </div>
-
-            <!-- Eighth Row  -->
-            <div class="row pt-2">
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputReligion">Religion</label>
-                  <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value=''>
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group col-md-10">
-                  <label for="inputContactNo">Contact No.</label>
-                  <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
-                </div>
-              </div>
-
-            </div>
-
+      <!-- First Row  -->
+      <div class="row">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
+            <label for="inputFname">First Name</label>
           </div>
         </div>
 
-        <!-- buttons -->
-        <div class="d-flex align-items-center justify-content-center m-3">
-
-          <button type="submit" class="btn btn-sm update-btn ms-auto">
-            UPDATE PROFILE
-          </button>
-
-          <button type="button" class="btn btn-sm cancel-btn" onClick="javascript:history.go(-1);">
-            CANCEL
-            {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-          </button>
-
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
+            <label for="inputMname">Middle Name</label>
+          </div>
         </div>
       </div>
+
+      <!-- Second Row  -->
+      <div class="row pt-3">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value=''>
+            <label for="inputLname">Last Name</label>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="number" name='rNo' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value=''>
+            <label for="inputTeacherId">Teacher Id</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Row  -->
+      <div class="row pt-3">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputYear" class="form-select" name="year">
+              <option value="----">----</option>
+              <option value="FE">FE</option>
+              <option value="SE">SE</option>
+              <option value="TE">TE</option>
+              <option value="BE">BE</option>
+            </select>
+            <label for="inputYear">Year</label> <br>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputDept" class="form-select" name="dept">
+              <option value="--------------">--------------</option>
+              <option value="Computer">Computer</option>
+              <option value="IT">IT</option>
+              <option value="EXTC">EXTC</option>
+              <option value="Mechanical">Mechanical</option>
+            </select>
+            <label for="inputDept">Department</label> <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forth Row  -->
+      <div class="row">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputBGroup" class="form-select" name="bGroup">
+              <option value="-----">-----</option>
+              <option value="A+">A+</option>
+              <option value="B+">B+</option>
+              <option value="O+">O+</option>
+              <option value="AB+">AB+</option>
+              <option value="A-">A-</option>
+              <option value="B-">B-</option>
+              <option value="O-">O-</option>
+              <option value="AB-">AB-</option>
+            </select>
+            <label for="inputBGroup">Blood Group</label> <br>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputGender" class="form-select" name="gender">
+              <option value="-----">-----</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <label for="inputGender">Gender</label> <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fifth Row  -->
+      <div class="row">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value=''>
+            <label for="inputDob">Date Of Birth</label>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
+            <label for="inputDoj">Date of Joining</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sixth Row  -->
+      <div class="row pt-3">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
+            <label for="inputAddress">Address</label>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+
+          <div class="form-group form-floating col-md-10">
+            {% comment %} <div class="custom-file"> {% endcomment %}
+              <input class="form-control form-control-sm custom-file-input" name='profile_img' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
+              <label for="formFile" class="form-label">Profile Picture</label>
+              {% comment %} {% if user.profile_img != 'logo.png' %}
+              image added:
+              <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+              {% endif %} {% endcomment %}
+
+              {% comment %}
+            </div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Seventh Row  -->
+      <div class="row pt-3">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
+            <label for="inputQuali">Qualification</label>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value=''>
+            <label for="inputMtoungue">Mother Tongue</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eighth Row  -->
+      <div class="row pt-3">
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value=''>
+            <label for="inputReligion">Religion</label>
+          </div>
+        </div>
+
+        <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
+            <label for="inputContactNo">Contact No.</label>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </form>
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </script>
+  </div>
 
-  <!-- iconify -->
-  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+  <!-- buttons -->
+  <div class="d-flex align-items-center justify-content-center m-3 mt-5">
 
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  </script>
+    <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      UPDATE PROFILE
+    </button>
 
-  <!-- Local -->
-  <script src="{% static 'js/edit.js' %}"></script>
-  <script src="{% static 'js/navbar.js' %}"></script>
+    <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      CANCEL
+      {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
+    </button>
 
-</body>
+  </div>
 
-</html>
+</form>

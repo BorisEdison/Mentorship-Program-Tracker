@@ -23,7 +23,7 @@
 <body>
 
   <!--navbar-->
-  {% include 'faculty-navbar.html' %}
+  {% include 'navbar.html' %}
 
   <!-- Dashboard Buttons -->
   <div class="container">
@@ -165,14 +165,19 @@
               Analytics
             </button>
 
-            <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill" data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="calendar-tab" data-bs-toggle="pill" data-bs-target="#calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">
               <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>
               Calender
             </button>
 
-            <button class="nav-link nav-pills-link" id="analytics-tab" data-bs-toggle="pill" data-bs-target="#calender" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="message-tab" data-bs-toggle="pill" data-bs-target="#message" type="button" role="tab" aria-controls="message" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Message
+            </button>
+
+            <button class="nav-link nav-pills-link" id="edit-tab" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+              <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
+              Edit Profile
             </button>
 
           </div>
@@ -335,6 +340,12 @@
             </div>
 
             <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message">
+
+            </div>
+
+            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit">
+
+              {% include 'edit-faculty-profile.html' %}
 
             </div>
 
