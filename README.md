@@ -9,39 +9,46 @@
 
 Download or clone this repository by using the command given below:
 
-```
+`
 git clone https://github.com/05Alston/mentoring-program-tracker.git
-```
+`
 
 #### Step 2:
 
 Install Virtual Environment:
-```
-pip install --user virtualenv
-```
+
+- Windows <br>
+`pip install --user virtualenv`
+
+- Mac <br>
+`sudo pip3 install virtualenv`
 
 #### Step 3:
 Setup Virtual Environment:
-```
-python -m virtualenv env
-```
+
+- Windows <br>
+`python -m virtualenv env`
+
+- Mac <br>
+`virtualenv -p python env`
 
 #### Step 4:
 Activate Virtual Environment:
-```
-env\scripts\activate
-```
+
+- Windows <br>
+`env\scripts\activate`
+
+- Mac <br>
+`source env/bin/activate`
 
 #### Step 5:
 
 Install Requirements Packages:
-```
-pip install -r requirements.txt
-```
+
+`pip install -r requirements.txt`
 
 #### Step 6:
 
 Run Django Server:
-```
-python manage.py runserver
-```
+
+`python manage.py runserver`
