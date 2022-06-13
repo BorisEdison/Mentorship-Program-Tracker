@@ -84,7 +84,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.user.email+ self.user.first_name)
+        return str(self.user.email + self.user.first_name)
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -122,7 +122,7 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.user.email+ self.user.email)
+        return str(self.id)
 
     # def get_absolute_url(self):
     #     return reverse("faculty", kwargs={'pk' : self.id})
