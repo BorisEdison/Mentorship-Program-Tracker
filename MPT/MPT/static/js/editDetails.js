@@ -24,7 +24,6 @@ editBody.forEach((elem) => {
 // ------------------------  Marks Dynamic Fields ------------------------- //
 let addSemDetail = document.getElementById("add-marks-btn");
 let marksTab = document.getElementById("marks").childNodes[3];
-console.log(marksTab);
 //  newtab goes into event listener
 let newtab =
   '<div class="marks-detail">\
@@ -86,6 +85,6 @@ let newtab =
               </div>';
 
 addSemDetail.addEventListener("click", () => {
-  alert("You unlocked an easter egg");
+  // alert("You unlocked an easter egg");
   marksTab.innerHTML += newtab;
 });
