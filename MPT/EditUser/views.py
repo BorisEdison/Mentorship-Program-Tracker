@@ -8,24 +8,24 @@ from django.urls import reverse_lazy
 from django.views import generic
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile,User
+from accounts.models import StudentProfile,User, MentorProfile
 
 
-#  need to do 1-1 relationship with user and mentor while registration 
+# need to do 1-1 relationship with user and mentor while registration 
 def edit(request):
     context={}
     if request.user.is_staff:
-            # profile = MentorProfile.objects.get(user__id=request.user.id)
+            profile = MentorProfile.objects.get(user__id=request.user.id)
             if request.method=="POST":
                 fName = request.POST['fName']
-                Lname= request.POST['LName']
-                department= request.POST['department']
+                Lname= request.POST['lName']
+                department= request.POST['dept']
                 # phone= request.POST['phone']
                 # email= request.POST['email']
                 # email1= request.POST['email1']
                 # password1= request.POST['password1']
                 # password2= request.POST['password2']
-                profile_img= request.FILES['profile_img']
+                profile_img= request.FILES['profileImg']
                 user = User.objects.get(id=request.user.id)
                 if str(user.profile_img) != 'logo.png': # if user already has profile image then delete it
                     user.profile_img.delete()
@@ -34,12 +34,12 @@ def edit(request):
                 user.last_name=Lname
                 user.save()
 
-                # profile.Branch = department
-                # profile.save()
-                # context={'profile': profile}
+                profile.Branch = department
+                profile.save()
+                context={'profile': profile}
                 return redirect('/facultydashboard')
             else:
-                return render(request,'edit.html', context)
+                return render(request,'edit-faculty-profile.html', context)
 
     else:
         profile = StudentProfile.objects.get(user__id=request.user.id)
@@ -69,4 +69,4 @@ def edit(request):
 
 
         else:
-            return render(request,'edit.html', context)
+            return render(request,'edit-student-details.html', context)

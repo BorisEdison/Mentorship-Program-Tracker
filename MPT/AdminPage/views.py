@@ -28,16 +28,6 @@ def student(request):
     return render(request, 'student-dashboard.html')
 
 
-def faculty(request):
-    user = User.objects.all()  #here we need to get assigning ka model them sort
-    context = {'user': user}
-    return render(request, 'faculty-dashboard.html', context)
-    
 
-def studentdetail(request, pk):
-    user = User.objects.get(id=pk)
-    context = {'users': user}
-    return render(request, 'student-profile.html', context)
-
-def stud_prof(request):
-    return render(request, 'student-profile.html')
+# def stud_prof(request):
+#     return render(request, 'student-profile.html')
