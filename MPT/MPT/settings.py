@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'Login.apps.LoginConfig',
     'EditUser.apps.EdituserConfig',
     'accounts.apps.AccountsConfig',
-    
+    'FacultyDashboard.apps.FacultydashboardConfig',   
 ]
 
 MIDDLEWARE = [

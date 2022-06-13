@@ -12,11 +12,15 @@ def login(request):
     if request.method == 'POST':
         email= request.POST['email']
         password= request.POST['password']
+        loggedInUser = User.objects.get(email = email)
+        print(loggedInUser.id)
         user = auth.authenticate(email=email, password=password)
         if user:
             auth.login(request, user)
+            print('hello', loggedInUser.id)
             if request.user.is_staff:
-                return redirect('/facultydashboard')
+                
+                return redirect('/facultydashboard/')  #here is the issue regarding login, have to pass loggedinuser
                
             else:
                 return redirect('/studentdashboard')

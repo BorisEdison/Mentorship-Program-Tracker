@@ -233,14 +233,14 @@
                 </li>
                 {% endfor %} {% endcomment %}
 
-                {% for users in user %}
+                {% for users in students %}
                 {% if users.is_staff %}
                 {% else %}
-                <a href="ViewProfile">
+                <a href="{% url 'studentdetail' users.id %}">
                   <li class="shrink grid-li">
                     <span class="grd-cell">
                       <img class="grd-img" src="{% static 'content/mentee/boris.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay">
-                      </span><span class="grd-text"> {{users.first_name}}
+                      </span><span class="grd-text"> {{users.Mentee.user.email}}
                       </span></span>
                     <input type="checkbox" class="cb-choose" name="cb-choose">
                   </li>
