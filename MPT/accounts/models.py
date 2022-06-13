@@ -27,19 +27,19 @@ class User(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.email
+        return str(self.user.email)
 
     @property
     def is_staff(self):
-        return self.staff
+        return str(self.staff)
     
     @property
     def is_active(self):
-        return self.active
+        return str(self.active)
 
     @property
     def is_superuser(self):
-        return self.superuser
+        return str(self.superuser)
 
 class StudentProfile(models.Model):
     gender_choices = [
@@ -84,7 +84,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.user.email+ self.user.first_name)
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -122,7 +122,7 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.user.email+ self.user.email)
 
     # def get_absolute_url(self):
     #     return reverse("faculty", kwargs={'pk' : self.id})
@@ -136,8 +136,8 @@ class Mentor_assign(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
 
-    # def __str__(self):
-    #     return self.Mentee.user.username + ' is assigned to '+self.Mentor.user.username
+    def __str__(self):
+        return str(self.Mentee.user.email + '   is assigned to    '+self.Mentor.user.email)
 
 
 def get_mentee(mentor):
