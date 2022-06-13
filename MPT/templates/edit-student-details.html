@@ -27,135 +27,153 @@
       <!-- First Row  -->
       <div class="row pt-2">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputFname">First Name</label>
+          <div class="form-group form-floating col-md-10">
             <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
+            <label for="inputFname">First Name</label>
           </div>
         </div>
 
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputMname">Middle Name</label>
+          <div class="form-group form-floating col-md-10">
             <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
+            <label for="inputMname">Middle Name</label>
           </div>
         </div>
       </div>
 
       <!-- Second Row  -->
-      <div class="row pt-2">
+      <div class="row pt-3">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputLname">Last Name</label>
+          <div class="form-group form-floating col-md-10">
             <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value=''>
+            <label for="inputLname">Last Name</label>
           </div>
         </div>
 
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputRno">Roll No</label>
+          <div class="form-group form-floating col-md-10">
             <input type="number" name='rNo' id="inputRno" class="form-control" placeholder="Roll No" min="1" max="70" value=''>
+            <label for="inputRno">Roll No</label>
           </div>
         </div>
       </div>
 
       <!-- Third Row  -->
-      <div class="row pt-2">
+      <div class="row pt-3">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputStudentId">Student Id</label>
+          <div class="form-group form-floating col-md-10">
             <input type="number" name='sId' id="inputStudentId" class="form-control" placeholder="Student Id" value=''>
+            <label for="inputStudentId">Student Id</label>
           </div>
         </div>
 
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputDob">Date Of Birth</label>
+          <div class="form-group form-floating col-md-10">
             <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value=''>
+            <label for="inputDob">Date Of Birth</label>
             </select>
           </div>
         </div>
       </div>
 
-      <!-- Forth Row  -->
-      <div class="row pt-2">
+      <!-- Fourth Row  -->
+      <div class="row pt-3">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputYear">Year</label> <br>
-            <select id="inputYear" style="height: 36px; width: 70px" name="year">
+          <div class="form-group form-floating col-md-10">
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
+            <label for="inputAddress">Address</label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            {% comment %} <div class="custom-file"> {% endcomment %}
+              <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
+              <label for="formFile" class="form-label">Profile Picture</label>
+              {% comment %} {% if user.profile_img != 'logo.png' %}
+              image added:
+              <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+              {% endif %} {% endcomment %}
+
+              {% comment %}
+            </div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Fifth Row  -->
+      <div class="row pt-3">
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value=''>
+            <label for="inputReligion">Religion</label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
+            <label for="inputContactNo">Contact No.</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sixth Row  -->
+      <div class="row pt-3">
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputYear" class="form-select" name="year">
               <option value="----">----</option>
               <option value="FE">FE</option>
               <option value="SE">SE</option>
               <option value="TE">TE</option>
               <option value="BE">BE</option>
             </select>
+            <label for="inputYear">Year</label> <br>
           </div>
         </div>
 
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputDept">Department</label> <br>
-            <select id="inputDept" style="height: 36px;" name="dept">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputDept" class="form-select" name="dept">
               <option value="--------------">--------------</option>
               <option value="Computer">Computer</option>
               <option value="IT">IT</option>
               <option value="EXTC">EXTC</option>
               <option value="Mechanical">Mechanical</option>
             </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fifth Row  -->
-      <div class="row pt-2">
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputAddress">Address</label>
-            <input type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputEmail4">Profile Picture</label>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name='profile_img' accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
-              {% if user.profile_img != 'logo.png' %}
-              <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sixth Row  -->
-      <div class="row pt-2">
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputYoa">Year of Admission</label>
-            <input type="month" name='Yoa' id="inputYoa" class="form-control" placeholder="Year of Admission" value=''>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputGender">Gender</label> <br>
-            <select id="inputGender" style="height: 36px;" name="gender">
-              <option value="-----">-----</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
+            <label for="inputDept">Department</label> <br>
           </div>
         </div>
       </div>
 
       <!-- Seventh Row  -->
-      <div class="row pt-2">
+      <div class="row">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputBGroup">Blood Group</label> <br>
-            <select id="inputBGroup" style="height: 36px;" name="bGroup">
+          <div class="form-group form-floating col-md-10">
+            <input type="month" name='Yoa' id="inputYoa" class="form-control" placeholder="Year of Admission" value=''>
+            <label for="inputYoa">Year of Admission</label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputGender" class="form-select" name="gender">
+              <option value="-----">-----</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <label for="inputGender">Gender</label> <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eighth Row  -->
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputBGroup" class="form-select" name="bGroup">
               <option value="-----">-----</option>
               <option value="A+">A+</option>
               <option value="B+">B+</option>
@@ -166,157 +184,159 @@
               <option value="O-">O-</option>
               <option value="AB-">AB-</option>
             </select>
+            <label for="inputBGroup">Blood Group</label> <br>
           </div>
         </div>
 
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputMtoungue">Mother Tongue</label>
+          <div class="form-group form-floating col-md-10">
             <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value=''>
+            <label for="inputMtoungue">Mother Tongue</label>
           </div>
         </div>
-      </div>
-
-      <!-- Eighth Row  -->
-      <div class="row pt-2">
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputReligion">Religion</label>
-            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value=''>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputContactNo">Contact No.</label>
-            <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
-          </div>
-        </div>
-
       </div>
 
     </div>
 
     <div id="guardian" name="edit-body">
-      <p style="font-size: 20px; padding-top: 2rem;"><strong>Guardian Information</strong>
+      <p style="font-size: 20px; padding-top: 1rem;"><strong>Guardian Information</strong>
       </p>
-      <!-- Father Details -->
-      <p style="font-size: 16px;" class="pt-2"><strong>Father</strong>
-      </p>
-      <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputname">Full Name</label>
-            <input type="text" name='name' class="form-control" id="inputname" placeholder="Father's Name" value=''>
-          </div>
-        </div>
-      </div>
-
-      <div class="row pt-2">
+      <div class="row">
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputQualfication">Highest Qualification</label> <br>
-            <select id="inputQualification" style="height: 36px;" name="qualification">
-              <option value="-">--</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-            </select>
+
+          <!-- Father Details -->
+          <p class="pt-2"><strong>Father</strong></p>
+          <div class="row pt-2">
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='name' class="form-control" id="inputname" placeholder="Father's Name" value=''>
+                <label for="inputname">Full Name</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row pt-3">
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputQualification" class="form-select" name="qualification">
+                  <option value="-">--</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+                <label for="inputQualfication">Highest Qualification</label> <br>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputIncome" class="form-select" name="income">
+                  <option value="-">--</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+                <label for="inputIncome">Yearly Income</label> <br>
+              </div>
+            </div>
           </div>
         </div>
 
+
+        <!-- Mother Details -->
         <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputIncome">Yearly Income</label> <br>
-            <select id="inputIncome" style="height: 36px;" name="income">
-              <option value="-">--</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <!-- Mother Details -->
-      <p style="font-size: 16px;" class="pt-4"><strong>Mother</strong>
-      </p>
+          <p class="pt-2"><strong>Mother</strong></p>
 
-      <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputname">Full Name</label>
-            <input type="text" name='name' class="form-control" id="inputname" placeholder="Mother's Name" value=''>
+          <div class="row pt-2">
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='name' class="form-control" id="inputname" placeholder="Mother's Name" value=''>
+                <label for="inputname">Full Name</label>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row pt-2">
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputQualification">Highest Qualification</label> <br>
-            <select id="inputQualification" style="height: 36px;" name="qualification">
-              <option value="-">--</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-            </select>
+          <div class="row pt-3">
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputQualification" class="form-select" name="qualification">
+                  <option value="-">--</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+                <label for="inputQualification">Highest Qualification</label> <br>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputIncome" class="form-select" name="income">
+                  <option value="-">--</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+                <label for="inputIncome">Yearly Income</label> <br>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-6">
-          <div class="form-group col-md-10">
-            <label for="inputIncome">Yearly Income</label> <br>
-            <select id="inputIncome" style="height: 36px;" name="income">
-              <option value="-">--</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-            </select>
-          </div>
-        </div>
       </div>
     </div>
 
+    <!--Health Information-->
     <div id="health" name="edit-body">
-      <p style="font-size: 20px; padding-top: 2rem;"><strong>Health Information</strong></p>
+      <p style="font-size: 20px; padding-top: 1rem;"><strong>Health Information</strong></p>
+
       <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputAddiction">Addiction</label>
-            <input type="text" name='name' class="form-control" id="inputAddiction" placeholder="Comma separated" value=''>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='name' class="form-control" id="inputAddiction" placeholder="" value=''>
+              <label for="inputAddiction">Addiction</label>
+            </div>
+
           </div>
-        </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputIllness">Illness</label>
-            <input type="text" name='name' class="form-control" id="inputIllness" placeholder="Comma separated" value=''>
+
+          <div class="row pt-3">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='name' class="form-control" id="inputIllness" placeholder="" value=''>
+              <label for="inputIllness">Illness</label>
+            </div>
           </div>
+
         </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputPhobias">Phobia</label>
-            <input type="text" name='name' class="form-control" id="inputPhobias" placeholder="Comma separated" value=''>
+
+        <div class="col-6">
+
+          <div class="row">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='name' class="form-control" id="inputPhobias" placeholder="" value=''>
+              <label for="inputPhobias">Phobia</label>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-12">
-          <div class="form-group col-md-10">
-            <label for="inputTreatments">Treatments</label>
-            <input type="text" name='name' class="form-control" id="inputTreatments" placeholder="Comma separated" value=''>
+
+          <div class="row pt-3">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='name' class="form-control" id="inputTreatments" placeholder="" value=''>
+              <label for="inputTreatments">Treatments</label>
+            </div>
           </div>
+
         </div>
+
       </div>
+
     </div>
 
+    <!--Goals, Hobbies and Extra Curriculars-->
     <div id="goal" name="edit-body">
       <p style="font-size: 20px; padding-top: 2rem;"><strong>Goals, Hobbies and Extra
           Curriculars</strong></p>

@@ -37,24 +37,28 @@
 
         <div class="col-6">
           {% csrf_token %}
-          <div class="">
+          <div class="form-floating">
             <input type="text" name="name" class="form-control top" placeholder="First Name" required>
+            <label for="inputFname">First Name</label>
           </div>
 
-          <div class="">
+          <div class="form-floating">
             <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
+            <label for="inpuLname">Last Name</label>
           </div>
 
           {% comment %} <div class="">
             <input type="text" name="username" class="form-control middle" placeholder="username" required>
           </div> {% endcomment %}
 
-          <div class="">
+          <div class="form-floating">
             <input type="email" name="email" class="form-control middle" placeholder="Email" required>
+            <label for="inputemail">Email</label>
           </div>
 
-          <div class="">
+          <div class="form-floating">
             <input type="email" name="email1" class="form-control bottom" placeholder="Re-enter Email" required>
+            <label for="inputemail1">Re-enter Email</label>
           </div>
 
         </div>
@@ -63,16 +67,24 @@
 
         <div class="col-6">
 
-          <div class="">
-            <input type="tel" name="phone" class="form-control top" placeholder="Contact No." pattern="[0-9]{10}" required>
+          <div class="form-floating">
+            <input type="text" name="Mname" class="form-control top" placeholder="Middle Name" required>
+            <label for="inputMname">Middle Name</label>
           </div>
 
-          <div class="">
+          <div class="form-floating">
+            <input type="tel" name="phone" class="form-control middle" placeholder="Contact No." pattern="[0-9]{10}" required>
+            <label for="inputphone">Contact No.</label>
+          </div>
+
+          <div class="form-floating">
             <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
+            <label for="inputpassword1">Password</label>
           </div>
 
-          <div class="">
+          <div class="form-floating">
             <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
+            <label for="inputpassword2">Confirm Password</label>
           </div>
 
         </div>
@@ -80,7 +92,7 @@
       </div>
 
       <div class="d-grid col-6 mx-auto">
-        <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Reigster</button>
+        <button class=" btn btn-lg btn-primary" style="text-align: center;" type="submit">Reigster</button>
         <p style="opacity: 0.8; text-align: center;">Already have an account? <a href="/"><strong>Login</strong></a></p>
 
         {% if messages %}

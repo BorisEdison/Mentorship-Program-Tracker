@@ -33,11 +33,13 @@
       <h1 class="h3 mb-3">Welcome to MPT</h1>
       <p style="opacity: 0.7;">Login by entering information below</p>
       {% csrf_token %}
-      <div class="">
+      <div class="form-floating">
         <input type="email" name="email" class="form-control top" placeholder="Email" required>
+        <label for="inputEmail">Email</label>
       </div>
-      <div class="">
+      <div class="form-floating">
         <input type="password" name="password" class="form-control bottom" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
       </div>
 
       <p><a href=""><strong>Forgot password?</strong></a></p>
@@ -48,7 +50,7 @@
         Remember Me
       </label>
 
-      <button class="w-100 btn btn-md btn-primary" style="text-align: center;" type="submit">Login</button>
+      <button class="w-100 btn btn-lg btn-primary" style="text-align: center;" type="submit">Login</button>
       <p style="opacity: 0.8;">Don't have an account? <a href="/Sign-Up"><strong>Register</strong></a></p>
 
     </form>

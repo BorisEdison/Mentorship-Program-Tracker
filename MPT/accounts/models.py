@@ -27,7 +27,7 @@ class User(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return str(self.user.email)
+        return str(self.email)
 
     @property
     def is_staff(self):

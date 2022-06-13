@@ -69,6 +69,14 @@
         <button class="nav-link active" id="nav-users-tab" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users-tab" aria-selected="true">
           Users
         </button>
+
+        <button class="nav-link" id="nav-mentors-tab" data-bs-toggle="tab" data-bs-target="#nav-mentors" type="button" role="tab" aria-controls="nav-mentors-tab" aria-selected="true">
+          Mentors
+        </button>
+
+        <button class="nav-link" id="nav-students-tab" data-bs-toggle="tab" data-bs-target="#nav-students" type="button" role="tab" aria-controls="nav-students-tab" aria-selected="true">
+          Students
+        </button>
       </div>
     </nav>
 
@@ -88,8 +96,8 @@
               <div class="d-flex bd-highlight mb-3">
 
                 <div class="p-2 bd-highlight">
-                  <button class="btn btn-light  btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
+                  <button type="button" onClick="window.location.reload()" class="btn btn-light  btn-sm btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="iconify" data-icon="ci:refresh-02" data-width="25" data-height="25"></span>
                     Refresh List
                   </button>
                 </div>
@@ -100,7 +108,7 @@
                 </div>
 
                 <div class="ms-auto p-2 bd-highlight">
-                  <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <button type="button" onclick="window.location.href = '{% url 'Edit'  %}';" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
                     Download
                   </button>
@@ -241,6 +249,14 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!--Mentors-->
+      <div class="tab-pane fade" id="nav-mentors" role="tabpanel" aria-labelledby="nav-mentors-tab">
+      </div>
+
+      <!--Student-->
+      <div class="tab-pane fade" id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
       </div>
     </div>
 
