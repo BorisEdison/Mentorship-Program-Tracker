@@ -122,7 +122,7 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.user.email)
 
     # def get_absolute_url(self):
     #     return reverse("faculty", kwargs={'pk' : self.id})
