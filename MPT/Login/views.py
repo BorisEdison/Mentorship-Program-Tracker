@@ -22,7 +22,8 @@ def login(request):
                 
                 loggedInUser = MentorProfile.objects.get(user__email = email)
                 print(loggedInUser.id)
-                return redirect("faculty", pk = loggedInUser)  
+                return redirect("faculty", pk = loggedInUser.id)  
+                # return redirect(MentorProfile.get_absolute_url)  
                
             else:
                 return redirect('/studentdashboard')
