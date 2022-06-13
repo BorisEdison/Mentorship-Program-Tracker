@@ -5,22 +5,24 @@ from django.contrib import messages
 from django.contrib.auth.models import auth
 from django.http import HttpResponse
 from django.contrib.auth import logout
-from accounts.models import StudentProfile, User
+from accounts.models import StudentProfile, User , MentorProfile
 
 
 def login(request):
     if request.method == 'POST':
         email= request.POST['email']
         password= request.POST['password']
-        loggedInUser = User.objects.get(email = email)
-        print(loggedInUser.id)
+        # loggedInUser = User.objects.get(email = email)
+        # print(loggedInUser.id)
         user = auth.authenticate(email=email, password=password)
         if user:
             auth.login(request, user)
-            print('hello', loggedInUser.id)
+            # print('hello', loggedInUser.id)
             if request.user.is_staff:
                 
-                return redirect('/facultydashboard/')  #here is the issue regarding login, have to pass loggedinuser
+                loggedInUser = MentorProfile.objects.get(user__email = email)
+                print(loggedInUser.id)
+                return redirect("faculty", pk = loggedInUser)  
                
             else:
                 return redirect('/studentdashboard')

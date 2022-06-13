@@ -5,7 +5,9 @@ from datetime import datetime
 from django.utils import timezone
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 from .managers import CustomUserManager
+
 
 
 class User(AbstractUser):
@@ -122,6 +124,8 @@ class MentorProfile(models.Model):
     def __str__(self):
         return str(self.id)
 
+    # def get_absolute_url(self):
+    #     return reverse("faculty", kwargs={'pk' : self.id})
 
 
 class Mentor_assign(models.Model):
