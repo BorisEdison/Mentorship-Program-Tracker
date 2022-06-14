@@ -35,8 +35,8 @@
       <p style="opacity: 0.7;">Register by entering information below</p>
       <div class="row">
 
+        {% csrf_token %}
         <div class="col-6">
-          {% csrf_token %}
           <div class="form-floating">
             <input type="text" name="name" class="form-control top" placeholder="First Name" required>
             <label for="inputFname">First Name</label>
@@ -164,7 +164,7 @@
       </div>
 
       <div class="d-grid col-6 mx-auto">
-        <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Reigster</button>
+        <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Register</button>
         <!-- <p style="opacity: 0.8; text-align: center;">Already have an account? <a href="/"><strong>Login</strong></a></p> -->
 
         {% if messages %}

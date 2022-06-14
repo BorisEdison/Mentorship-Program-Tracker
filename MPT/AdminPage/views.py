@@ -24,7 +24,8 @@ def Adminpage(request):
 #     return render(request, 'faculty-dashboard.html', context)
 
 def student(request, pk):
-    student = StudentProfile.objects.get(id=pk)
+    user = User.objects.get(id=pk)
+    student=StudentProfile.objects.get(user=user)
     context = {'student' : student}
     return render(request, 'student-dashboard.html', context)
 
