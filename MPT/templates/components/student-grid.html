@@ -1,0 +1,90 @@
+{% load static %}
+
+<ul id="grd">
+    <!-- buttons -->
+    <div class="d-flex align-items-center justify-content-center m-3 mb-0">
+      <button type="button" class="btn btn-sm select-btn" id="btn-select" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <span class="iconify" data-icon="fluent:checkbox-person-24-regular" data-width="20" data-height="20"></span>
+        Select
+      </button>
+
+
+      <button type="button" class="btn btn-sm select-btn" name="btn-show" id="sel-all-btn" style=" margin-left: 10px; width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <span class="iconify" data-icon="fluent:select-all-on-24-regular" data-width="20" data-height="20"></span>
+        Select All
+      </button>
+
+      <button type="reset" class="btn btn-sm select-btn" name="btn-show" id="cancel-btn" style=" margin-left: 10px; width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <span class="iconify" data-icon="mdi:account-cancel-outline" data-width="20" data-height="20"></span>
+        Cancel
+      </button>
+
+      <button type="button" class="btn btn-sm ms-auto select-btn" name="btn-show" id="schedule-btn" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <span class="iconify" data-icon="akar-icons:schedule" data-width="20" data-height="20"></span>
+        Schedule meeting
+      </button>
+
+    </div>
+
+    {% comment %} {% for users in user %} {% endcomment %}
+    {% comment %} <li class="shrink grid-li">
+      <span class="grd-cell">
+        <label for="cb1"> {% endcomment %}
+          {% comment %} <a href="{% url 'studentdetail' users.id %}"><img class="grd-img" src="{% static 'content/logo.png' %}" /></a> {% endcomment %}
+          {% comment %} <a href=""><img class="grd-img" src="{% static 'content/logo.png' %}" /></a>
+          <H6>Boris Edison 14</H6>
+        </label>
+        <span class="grd-overlay">
+        </span>
+        <span class="grd-text">
+          {{users.name}}
+        </span>
+      </span>
+    </li>
+    {% endfor %} {% endcomment %}
+
+    {% for users in students %}
+    {% if users.is_staff %}
+    {% else %}
+    <a href="{% url 'studentdetail' users.id %}">
+      <li class="shrink grid-li">
+        <span class="grd-cell">
+          <img class="grd-img" src="{% static 'content/mentee/boris.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay">
+          </span><span class="grd-text"> {{users.Mentee.user.email}}
+          </span></span>
+        <input type="checkbox" class="cb-choose" name="cb-choose">
+      </li>
+    </a>
+
+    {% endif %}
+    {% endfor %}
+    <li class="shrink grid-li">
+      <span class="grd-cell">
+        <img class="grd-img" src="{% static 'content/mentee/bipin.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span class="grd-text">Bipin Giri</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/alston.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span
+          class="grd-text">Alston Fernandes</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/hrishikesh.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span
+          class="grd-text">Hrishikesh Panigrahi</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/royce.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span class="grd-text">Royce
+          Vaz</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/aleron.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span
+          class="grd-text">Aleron Jaisalroyan</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span
+          class="grd-text">DBIT</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay"></span><span
+          class="grd-text">DBIT</span></span>
+      <input type="checkbox" class="cb-choose" name="cb-choose">
+    </li>
+  </ul>

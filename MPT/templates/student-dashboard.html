@@ -23,7 +23,7 @@
 <body>
 
   <!--navbar-->
-  {% include 'navbar.html' %}
+  {% include 'components/navbar.html' %}
 
   <!-- sidebar -->
   <div class="container-fluid mb-5">
@@ -65,7 +65,7 @@
 
                     <!--Student Name-->
                     <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
-                      <strong>{{user.first_name}} {{user.last_name}}</strong>
+                      <strong>Boris Edison</strong>
                     </p>
 
                     <!--Edit Student Details Button-->
@@ -88,7 +88,7 @@
                           <div class="modal-body">
 
                             <!--Edit Student Details-->
-                            {% include 'edit-student-details.html' %}
+                            {% include 'components/edit-student-details.html' %}
 
                           </div>
                           <div class="modal-footer">
@@ -111,7 +111,7 @@
                         <div class="accordion accordion-flush" style="border-radius: 4px" id="accordionFlushExample">
 
                           <!--Student Information Accordion-->
-                          {% include 'accordion-stu-info.html' %}
+                          {% include 'components/accordion-stu-info.html' %}
 
                         </div>
                       </div>
@@ -223,7 +223,8 @@
 
         </div>
       </div>
-
+    </div>
+  </div>
       <!-- Charts.js -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
