@@ -157,20 +157,32 @@ def user_post_save_mentee(sender, instance, created, **kwargs):
             instance.groups.add(auth.Group.objects.get(name='Mentee'))
 
 
+''' this took lot of research and time  to find the solution to the problem of 
+    auto creating the profile for the user and also to add the user to the
+    group of the user, with taken care that on changing status as staff adds 
+    them to the group of staff. And maintains database consistency.'''
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender,instance,created, **kwargs):
     if created:
+
         if instance.staff:
             MentorProfile.objects.create(user=instance)
         
         if not instance.staff:
             StudentProfile.objects.create(user=instance)
 
+# delete instance of particular profile when staff status is changed
+
+#don't delete this, this triggers the post_save signal when a user is created and staff status is changed
 @receiver(post_save, sender=User)
 def save_user_profile(sender,instance,**kwargs):
+    if StudentProfile.objects.filter(user=instance).exists():
+            instance.studentprofile.delete()
+    if MentorProfile.objects.filter(user=instance).exists():
+            instance.mentorprofile.delete()
     if instance.staff:
-        instance.mentorprofile.save()
+        MentorProfile(user=instance).save()
     
     if not instance.staff:
-        instance.studentprofile.save()
-    
+        StudentProfile(user=instance).save()
