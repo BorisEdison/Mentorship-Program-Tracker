@@ -12,21 +12,27 @@ def login(request):
     if request.method == 'POST':
         email= request.POST['email']
         password= request.POST['password']
-        # loggedInUser = User.objects.get(email = email)
-        # print(loggedInUser.id)
+        
         user = auth.authenticate(email=email, password=password)
+        print(request.user.is_staff)
         if user:
-            auth.login(request, user)
-            # print('hello', loggedInUser.id)
-            if request.user.is_staff:
-                
+
+            if request.user.is_staff == True:
+                print("hello")
+                auth.login(request, user)
+                print("hello1")
                 loggedInUser = MentorProfile.objects.get(user__email = email)
                 print(loggedInUser.id)
                 return redirect("faculty", pk = loggedInUser.id)  
-                # return redirect(MentorProfile.get_absolute_url)  
+                  
                
             else:
-                return redirect('/studentdashboard')
+                print("hello2")
+                auth.login(request, user)
+                print("hello3")
+                loggedInUser = StudentProfile.objects.get(user__email = email)
+                print(loggedInUser.id)
+                return redirect('student', pk = loggedInUser.id)
         
         else:
             messages.info(request, "Check your cerdentials")
