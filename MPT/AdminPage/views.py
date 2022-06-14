@@ -1,6 +1,5 @@
 from audioop import reverse
 import genericpath
-from sre_constants import SUCCESS
 from typing import Generic
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -24,8 +23,10 @@ def Adminpage(request):
 #     context = {'user': user}
 #     return render(request, 'faculty-dashboard.html', context)
 
-def student(request):
-    return render(request, 'student-dashboard.html')
+def student(request, pk):
+    student = StudentProfile.objects.get(id=pk)
+    context = {'student' : student}
+    return render(request, 'student-dashboard.html', context)
 
 
 

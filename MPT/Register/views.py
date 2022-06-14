@@ -46,6 +46,7 @@ def StudentRegister(request):
  
         else: 
             messages.info(request, "Check Password")
+    
     context = {'page': 'StudentUser',
                 'title': 'New Account'
                 }
