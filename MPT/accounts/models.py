@@ -5,9 +5,9 @@ from datetime import datetime
 from django.utils import timezone
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractUser
-from django.urls import reverse
 from .managers import CustomUserManager
-
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class User(AbstractUser):
@@ -66,7 +66,6 @@ class StudentProfile(models.Model):
         ('AB-', 'AB-'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # name = models.CharField(max_length=50)
     current_rollNo = models.IntegerField(unique=True, null=True)
     AimForLife = models.CharField(max_length=100, blank=True, null=True)
     reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
@@ -84,7 +83,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.user.email + self.user.first_name)
+        return str(self.user.email +' => '+ self.user.first_name)
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -158,3 +157,22 @@ def user_post_save_mentee(sender, instance, created, **kwargs):
     if created:
         if not instance.is_staff:
             instance.groups.add(auth.Group.objects.get(name='Mentee'))
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender,instance,created, **kwargs):
+    if created:
+        if instance.staff:
+            MentorProfile.objects.create(user=instance)
+        
+        if not instance.staff:
+            StudentProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender,instance,**kwargs):
+    if instance.staff:
+        instance.mentorprofile.save()
+    
+    if not instance.staff:
+        instance.studentprofile.save()
+    
