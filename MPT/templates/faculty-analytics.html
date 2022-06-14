@@ -154,12 +154,12 @@
         <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty-dashboard.html'  %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href ='faculty-dashboard.html';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
               <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
               Dashboard
             </button>
 
-            <button class="nav-link active nav-pills-link" id="analytics-tab" onclick="window.location.href = 'faculty-analytics.html';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+            <button class="nav-link active nav-pills-link" id="analytics-tab" onClick="window.location.reload()" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
               <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
               Analytics
             </button>
