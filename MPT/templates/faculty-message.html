@@ -50,99 +50,8 @@
       <!-- Meetings modal Section-->
       <div class="modal-body">
 
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Meetings</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="modal-body">
-                  <div class="container-fluid">
+        {% include 'components/meetings-modal.html' %}
 
-                    <nav class="">
-                      <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
-                        <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-prevoius" aria-selected="false">Previous Meetings</button>
-                        <button class="nav-link active" id="nav-upcoming-tab" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab" aria-controls="nav-upcoming-tab" aria-selected="true">Upcoming Meetings</button>
-                      </div>
-                    </nav>
-
-                    <div class="tab-content mt-5" id="nav-tabContent">
-                      <!-- Previous -->
-                      <div class="tab-pane fade table-div" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
-                        <table class="table table-striped table-hover table-sm">
-                          <thead>
-                            <tr>
-                              <th scope="col">Date</th>
-                              <th scope="col">Time</th>
-                              <th scope="col">Duration</th>
-                              <th scope="col">Mode</th>
-                              <th scope="col">Participants</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">11-2-2022</th>
-                              <td>4:30 pm</td>
-                              <td>16 mins</td>
-                              <td>Online</td>
-                              <td>Royce Vaz</td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">11-2-2022</th>
-                              <td>4:00 pm</td>
-                              <td>20 mins</td>
-                              <td>Online</td>
-                              <td>Aleron Jaisalroyan</td>
-                            </tr>
-
-                          </tbody>
-                        </table>
-                      </div>
-
-                      <!-- Upcoming -->
-                      <div class="tab-pane fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
-                        <table class="table table-striped table-hover table-sm">
-                          <thead>
-                            <tr>
-                              <th scope="col">Date</th>
-                              <th scope="col">Time</th>
-                              <th scope="col">Mode</th>
-                              <th scope="col">Participants</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">2-4-2022</th>
-                              <td>4:00 pm</td>
-                              <td>Online</td>
-                              <td>Alston Fernandes</td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row">2-4-2022</th>
-                              <td>4:30 pm</td>
-                              <td>Online</td>
-                              <td>Bipin Giri</td>
-                            </tr>
-
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -154,12 +63,14 @@
         <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = 'faculty-dashboard.html';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = 'faculty-dashboard.html';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+              aria-selected="true">
               <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
               Dashboard
             </button>
 
-            <button class="nav-link nav-pills-link" id="analytics-tab" onclick="window.location.href = 'faculty-analytics.html';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="analytics-tab" onclick="window.location.href = 'faculty-analytics.html';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics"
+              aria-selected="false">
               <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
               Analytics
             </button>
@@ -216,20 +127,20 @@
     </div>
   </div>
 
-      <!-- Bootstrap -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-      </script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
 
-      <!-- iconify -->
-      <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+  <!-- iconify -->
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 
-      <!-- jQuery -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-      </script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
 
-      <!-- Local -->
-      <script src="{% static 'js/dashboard.js' %}"></script>
-      <script src="{% static 'js/navbar.js' %}"></script>
+  <!-- Local -->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+  <script src="{% static 'js/navbar.js' %}"></script>
 
 </body>
 
