@@ -9,8 +9,9 @@ urlpatterns = [
     path('', include('AdminPage.urls')),
     path('', include('Register.urls')),
     path('', include('Login.urls')),    
-    path('edit/', include('EditUser.urls')),    
-    path('', include('FacultyDashboard.urls')),    
+    path('', include('FacultyDashboard.urls')),  
+    path('', include('EditUser.urls')),    
+  
 ]
 
 from django.conf import settings

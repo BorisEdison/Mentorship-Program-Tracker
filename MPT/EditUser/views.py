@@ -7,15 +7,18 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
 # from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile,User, MentorProfile
 
 
 # need to do 1-1 relationship with user and mentor while registration 
+@login_required
 def edit(request):
     context={}
     if request.user.is_staff:
-            profile = MentorProfile.objects.get(user__id=request.user.id)
+            user=User.objects.get(email=request.user.email)
+            profile = MentorProfile.objects.get(user=user)
             if request.method=="POST":
                 fName = request.POST['fName']
                 Lname= request.POST['lName']
@@ -37,10 +40,9 @@ def edit(request):
                 profile.Branch = department
                 profile.save()
                 context={'profile': profile}
-                return redirect('/facultydashboard')
+                return redirect('/facultydashboard/'+str(user.id))
             else:
-                return render(request,'edit-faculty-profile.html', context)
-
+                return render(request,'faculty-edit.html', context)
     else:
         profile = StudentProfile.objects.get(user__id=request.user.id)
         print(request.user)

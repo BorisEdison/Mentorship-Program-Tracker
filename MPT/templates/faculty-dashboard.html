@@ -154,7 +154,7 @@
         <div class="sidebar flex-shrink-0 p-3 dashboard-navigation">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-            <button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.reload()" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+            <button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.reload();" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
               <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
               Dashboard
             </button>
@@ -174,7 +174,7 @@
               Message
             </button>
 
-            <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = 'faculty-edit.html';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
               <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
               Edit Profile
             </button>

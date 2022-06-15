@@ -7,12 +7,12 @@ from django.urls import reverse_lazy
 from django.views import generic
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile
+from accounts.models import StudentProfile,User
 # from django.contrib.auth.decorators import permission_required
-from accounts.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def Adminpage(request):
     user = User.objects.all()
     context = {'user': user} 
@@ -23,6 +23,7 @@ def Adminpage(request):
 #     context = {'user': user}
 #     return render(request, 'faculty-dashboard.html', context)
 
+@login_required
 def student(request, pk):
     user = User.objects.get(id=pk)
     student=StudentProfile.objects.get(user=user)

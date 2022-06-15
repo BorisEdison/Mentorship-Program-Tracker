@@ -175,6 +175,7 @@ def create_user_profile(sender,instance,created, **kwargs):
 # delete instance of particular profile when staff status is changed
 
 #don't delete this, this triggers the post_save signal when a user is created and staff status is changed
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender,instance,**kwargs):
     if StudentProfile.objects.filter(user=instance).exists():

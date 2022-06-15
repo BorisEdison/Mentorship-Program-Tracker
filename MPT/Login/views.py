@@ -8,18 +8,22 @@ from django.contrib.auth import logout
 from accounts.models import User
 
 def login(request):
+    logout(request)
     if request.method == 'POST':
         email= request.POST['email']
         password= request.POST['password']
         user = auth.authenticate(email=email, password=password)
         if user:
-            auth.login(request, user)
-            if request.user.staff==True:
-                print(user.staff)
-                return redirect('/facultydashboard/'+str(user.id),pk=user.id)
-               
+            if user.is_active:
+                auth.login(request, user)
+                if request.user.staff==True:
+                    # print(user.staff)
+                    return redirect('/facultydashboard/'+str(user.id),pk=user.id)
+                
+                else:
+                    return redirect('/studentdashboard/'+str(user.id),pk=user.id)
             else:
-                return redirect('/studentdashboard/'+str(user.id),pk=user.id)
+                messages.info(request, 'Activate Your Account First then try to login...')
         
         else:
             messages.info(request, "Check your cerdentials")

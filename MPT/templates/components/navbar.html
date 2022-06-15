@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-main sticky-top navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" onClick="window.location.reload();">
       <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
       DBIT
     </a>
@@ -19,7 +19,7 @@
       <div class="ms-auto">
         {% if user.is_authenticated %}
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" onClick="window.location.reload();">
           <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
           {{user.first_name}}
         </a>
@@ -44,7 +44,7 @@
 
         <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
           <li class="nav-item-main">
-            <a class="nav-link" id="iconifyLogOut" href="#">
+            <a class="nav-link" id="iconifyLogOut" href="{% url 'logout' %}">
               <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
             </a>
           </li>

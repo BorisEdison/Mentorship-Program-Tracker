@@ -4,17 +4,11 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import auth
 from django.http import HttpResponse
-from django.contrib.auth import logout
 from accounts.models import StudentProfile, MentorProfile
 from accounts.models import User
 
 
-def logout(request):
-    # logout(request)
-    auth.logout(request)
-    return redirect('/')
-
-# Student Registration
+# Student Registration + teacher registeration as student from registeration page
 def StudentRegister(request):
     if request.method == 'POST':
         fname= request.POST['name']
@@ -51,7 +45,7 @@ def StudentRegister(request):
                 }
     return render(request, 'register.html',context)
 
-# Faculty Registration
+# Faculty Registration from admin side 
 def FacultyRegister(request):
     
     if request.method == 'POST':
