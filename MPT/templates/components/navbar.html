@@ -21,7 +21,7 @@
 
         <a class="navbar-brand" onClick="window.location.reload();">
           <img src="{{user.profile_img.url}}" class=" me-2" width="42" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
-          {{user.first_name}}
+          {% if user.first_name and user.last_name %}{{user.first_name}} {{user.last_name}} {% endif %}
         </a>
         {% endif %}
       </div>
