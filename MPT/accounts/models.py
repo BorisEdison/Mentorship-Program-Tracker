@@ -1,4 +1,3 @@
-from re import M
 from django.db import models
 from django.contrib.auth.models import User, auth
 from datetime import datetime
@@ -86,6 +85,72 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return str(self.user.email +' => '+ self.user.first_name)
+
+
+class StudentDetails(models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True )
+    current_rollNo = models.IntegerField(unique=True, null=True)
+    AimForLife = models.CharField(max_length=100, blank=True, null=True)
+    reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
+    semester = models.CharField(max_length=50, blank=True, null=True)
+    Course = models.CharField(max_length=50, blank=True, null=True)
+    YearOfAdmission = models.IntegerField(null=True)
+    
+
+    def __str__(self):
+        return str(self.current_rollNo)+ '' + self.student.user.first_name 
+
+class StudentContactDetail (models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    conct_no = models.IntegerField(null=True, blank=True) #we need to use phonefield 
+
+    # pip install django-phonenumber-field[phonenumbers] 
+    # conct_no = PhoneNumberField(null = True, blank = True) # Here
+
+    def __str__(self):
+        return self.student.user.first_name 
+
+class StudentHobbies (models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    hobby = models.CharField(max_length=70, null=True, blank=True)
+
+    def __str__(self):
+        return self.student.user.first_name 
+
+class GuardianDetails(models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=80, null=True, blank=True)
+    email = models.EmailField(max_length=255, unique=True)
+    relationshipWithStudent = models.CharField(max_length= 50, null=True, blank=True)
+    motherHighestEducation = models.CharField(max_length=50, null=True,  blank=True)
+    fatherHighestEducation = models.CharField(max_length=50, null=True, blank=True)
+    motherOccupation = models.CharField(max_length=50, null=True, blank=True)
+    fatherOccupation = models.CharField(max_length=50, null=True, blank=True)
+    yearlyIncome = models.IntegerField( null=True, blank=True)
+    mother_tongue = models.CharField(max_length=50, null=True, blank=True)
+    religion = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.name+ 'Guardian of' + self.student.user.first_name
+
+
+class StudentExtraCurricular(models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    activityName = models.CharField(max_length=100, null=True, blank=True)
+    achievements = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.student.user.first_name
+
+class StudentMedicalReport(models.Model):
+    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    addiction = models.CharField(max_length=100, null=True, blank=True)
+    phobia = models.CharField(max_length=100, null=True, blank=True) 
+    illness = models.CharField(max_length=100, null=True, blank=True)
+    treatment = models.CharField(max_length=200, null=True, blank=True) 
+
+    def __str__(self):
+        return self.student.user.first_name
 
 class MentorProfile(models.Model):
     gender_choices = [

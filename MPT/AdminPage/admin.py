@@ -2,7 +2,17 @@ from django.contrib import admin
 # from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
-from accounts.models import StudentProfile, MentorProfile,Mentor_assign
+# importing Student
+from accounts.models import (
+    StudentProfile, 
+    StudentDetails, 
+    StudentContactDetail, 
+    StudentHobbies, 
+    GuardianDetails, 
+    StudentExtraCurricular, 
+    StudentMedicalReport,)
+# importing Mentor
+from accounts.models import MentorProfile,Mentor_assign
 from accounts.models import User
 from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
 # Register your models here.
@@ -82,6 +92,12 @@ admin_site = Admin(name='MPTAdmin')
 # admin_site.register(User,UserAdminConfig)
 admin_site.register(User,CustomUserAdmin)
 admin_site.register(StudentProfile)
+admin_site.register(StudentDetails)
+admin_site.register(StudentContactDetail)
+admin_site.register(StudentHobbies)
+admin_site.register(GuardianDetails)
+admin_site.register(StudentExtraCurricular)
+admin_site.register(StudentMedicalReport)
 admin_site.register(MentorProfile)
 admin_site.register(Mentor_assign)
 
