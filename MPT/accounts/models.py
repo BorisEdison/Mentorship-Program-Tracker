@@ -81,6 +81,8 @@ class StudentProfile(models.Model):
     city = models.CharField(max_length=50, null=True)
     State = models.CharField(max_length=50, null=True)
     Country = models.CharField(max_length=50, null=True)
+    religion = models.CharField(max_length=50, null=True)
+    mother_tongue = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return str(self.user.email +' => '+ self.user.first_name)
@@ -119,6 +121,9 @@ class MentorProfile(models.Model):
     city = models.CharField(max_length=50, null=True)
     State = models.CharField(max_length=50, null=True)
     Country = models.CharField(max_length=50, null=True)
+    religion = models.CharField(max_length=50, null=True)
+    mother_tongue = models.CharField(max_length=50, null=True)
+    id = models.BigAutoField(primary_key=True)
 
     def __str__(self):
         return str(self.user.email)
@@ -128,8 +133,8 @@ class MentorProfile(models.Model):
 
 
 class Mentor_assign(models.Model):
-    Mentor = models.OneToOneField(MentorProfile, on_delete=models.SET_NULL, null=True)
-    Mentee = models.ForeignKey(StudentProfile, on_delete=models.SET_NULL, null=True)
+    Mentor = models.ForeignKey(MentorProfile, on_delete=models.SET_NULL, null=True)
+    Mentee = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -162,28 +167,28 @@ def user_post_save_mentee(sender, instance, created, **kwargs):
     group of the user, with taken care that on changing status as staff adds 
     them to the group of staff. And maintains database consistency.'''
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender,instance,created, **kwargs):
-    if created:
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender,instance,created, **kwargs):
+#     if created:
 
-        if instance.staff:
-            MentorProfile.objects.create(user=instance)
+#         if instance.staff:
+#             MentorProfile.objects.create(user=instance)
         
-        if not instance.staff:
-            StudentProfile.objects.create(user=instance)
+#         if not instance.staff:
+#             StudentProfile.objects.create(user=instance)
 
-# delete instance of particular profile when staff status is changed
+# # delete instance of particular profile when staff status is changed
 
-#don't delete this, this triggers the post_save signal when a user is created and staff status is changed
+# #don't delete this, this triggers the post_save signal when a user is created and staff status is changed
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender,instance,**kwargs):
-    if StudentProfile.objects.filter(user=instance).exists():
-            instance.studentprofile.delete()
-    if MentorProfile.objects.filter(user=instance).exists():
-            instance.mentorprofile.delete()
-    if instance.staff:
-        MentorProfile(user=instance).save()
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender,instance,**kwargs):
+#     if StudentProfile.objects.filter(user=instance).exists():
+#             instance.studentprofile.delete()
+#     if MentorProfile.objects.filter(user=instance).exists():
+#             instance.mentorprofile.delete()
+#     if instance.staff:
+#         MentorProfile(user=instance).save()
     
-    if not instance.staff:
-        StudentProfile(user=instance).save()
+#     if not instance.staff:
+#         StudentProfile(user=instance).save()

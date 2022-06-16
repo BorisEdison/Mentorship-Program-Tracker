@@ -16,18 +16,33 @@ from accounts.models import StudentProfile,User, MentorProfile
 @login_required
 def edit(request):
     context={}
+    # print(request.user)
+    # print(request.user.id)
     if request.user.is_staff:
-            user=User.objects.get(email=request.user.email)
-            profile = MentorProfile.objects.get(user=user)
+            profile = MentorProfile.objects.get(user__id=request.user.id)
+            print("mentor id",profile.id)
+            print("user id",profile.user.id)
+
+            print(profile.Branch)
+
+            context={   'profile': profile,
+                        'id': request.user.id}
+
             if request.method=="POST":
+                print("user id after post",profile.user.id)
+                print("mentor id after post",profile.id)
+
                 fName = request.POST['fName']
                 Lname= request.POST['lName']
                 department= request.POST['dept']
+                motherTongue= request.POST['mTongue']
+                religion= request.POST['Religion']
                 # phone= request.POST['phone']
                 # email= request.POST['email']
                 # email1= request.POST['email1']
                 # password1= request.POST['password1']
                 # password2= request.POST['password2']
+                city = request.POST['city']
                 profile_img= request.FILES['profileImg']
                 user = User.objects.get(id=request.user.id)
                 if str(user.profile_img) != 'logo.png': # if user already has profile image then delete it
@@ -37,14 +52,20 @@ def edit(request):
                 user.last_name=Lname
                 user.save()
 
+                profile.city = city
                 profile.Branch = department
+                profile.mother_tongue = motherTongue
+                profile.religion = religion
+                # print(profile.city)
                 profile.save()
-                context={'profile': profile}
-                return redirect('/facultydashboard/'+str(user.id))
+                # print("hello1")
+                return redirect('faculty', pk = user.id)
             else:
                 return render(request,'faculty-edit.html', context)
+
     else:
         profile = StudentProfile.objects.get(user__id=request.user.id)
+        context={'profile': profile}
         print(request.user)
         if request.method=="POST":
             fName = request.POST['fName']
@@ -66,7 +87,7 @@ def edit(request):
 
             profile.department= department
             profile.save()
-            context={'profile': profile}
+            
             return redirect('/studentdashboard')
 
 
