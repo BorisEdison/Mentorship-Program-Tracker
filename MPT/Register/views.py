@@ -32,7 +32,7 @@ def StudentRegister(request):
                 # profile =StudentProfile(user = u)
                 # # print(request.profile)
                 # profile.save()
-                # print("profile saved")
+                print("profile saved")
                 return redirect('/')
  
         else: 
@@ -45,7 +45,7 @@ def StudentRegister(request):
                 }
     return render(request, 'register.html',context)
 
-# Faculty Registration from admin side 
+# Faculty Registration
 def FacultyRegister(request):
     
     if request.method == 'POST':
@@ -66,12 +66,7 @@ def FacultyRegister(request):
             else: 
                 user= User.objects.create_staffuser(email=email, password= password1)
                 user.save()
-                # u = User.objects.get(email=request.POST['email'])
-                # profile =MentorProfile(user = u)
-                # # print(request.profile)
-                # profile.save()
-                print("Teacher saved")
-                return HttpResponse("hello")
+                return redirect('/AdminPage')
  
         else: 
             if password1!=password2:
