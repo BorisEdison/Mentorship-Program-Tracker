@@ -20,7 +20,7 @@
         {% if user.is_authenticated %}
 
         <a class="navbar-brand" onClick="window.location.reload();">
-          <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+          <img src="{{user.profile_img.url}}" class=" me-2" width="42" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
           {{user.first_name}}
         </a>
         {% endif %}
