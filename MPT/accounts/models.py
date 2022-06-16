@@ -123,7 +123,6 @@ class MentorProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
-    id = models.BigAutoField(primary_key=True)
 
     def __str__(self):
         return str(self.user.email)
@@ -150,16 +149,16 @@ def get_mentee(mentor):
     return mentee_list
 
 
-def user_post_save(sender, instance, created, **kwargs):
-    if created:
-        if instance.is_staff:
-            instance.groups.add(auth.Group.objects.get(name='Mentor'))
+# def user_post_save(sender, instance, created, **kwargs):
+#     if created:
+#         if instance.is_staff:
+#             instance.groups.add(auth.Group.objects.get(name='Mentor'))
 
 
-def user_post_save_mentee(sender, instance, created, **kwargs):
-    if created:
-        if not instance.is_staff:
-            instance.groups.add(auth.Group.objects.get(name='Mentee'))
+# def user_post_save_mentee(sender, instance, created, **kwargs):
+#     if created:
+#         if not instance.is_staff:
+#             instance.groups.add(auth.Group.objects.get(name='Mentee'))
 
 
 ''' this took lot of research and time  to find the solution to the problem of 
@@ -167,28 +166,44 @@ def user_post_save_mentee(sender, instance, created, **kwargs):
     group of the user, with taken care that on changing status as staff adds 
     them to the group of staff. And maintains database consistency.'''
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender,instance,created, **kwargs):
-#     if created:
 
-#         if instance.staff:
-#             MentorProfile.objects.create(user=instance)
+@receiver(post_save, sender=User)
+def create_user_profile(sender,instance,created, **kwargs):
+    if created:
+
+        if instance.staff:
+            MentorProfile.objects.create(user=instance)
         
-#         if not instance.staff:
-#             StudentProfile.objects.create(user=instance)
+        if not instance.staff:
+            StudentProfile.objects.create(user=instance)
 
-# # delete instance of particular profile when staff status is changed
 
-# #don't delete this, this triggers the post_save signal when a user is created and staff status is changed
+@receiver(post_save, sender=User)
+def save_user_profile(sender,instance, **kwargs):
+    if instance.staff:
+        try:
+            mentor_profile = MentorProfile.objects.get(user=instance)
+        except MentorProfile.DoesNotExist:
+            MentorProfile.objects.create(user=instance)
+        else:
+            mentor_profile.save()
+    else:
+        try:
+            student_profile = StudentProfile.objects.get(user=instance)
+        except StudentProfile.DoesNotExist:
+            StudentProfile.objects.create(user=instance)
+        else:
+            student_profile.save()
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender,instance,**kwargs):
-#     if StudentProfile.objects.filter(user=instance).exists():
-#             instance.studentprofile.delete()
-#     if MentorProfile.objects.filter(user=instance).exists():
-#             instance.mentorprofile.delete()
-#     if instance.staff:
-#         MentorProfile(user=instance).save()
-    
-#     if not instance.staff:
-#         StudentProfile(user=instance).save()
+@receiver(post_save, sender=User)
+def save_user_profile(sender,instance, **kwargs):
+    if not instance.staff:
+        try:
+            MentorProfile.objects.get(user=instance).delete()
+        except:
+            pass
+    if instance.staff:
+        try:
+            StudentProfile.objects.get(user=instance).delete()
+        except:
+            pass

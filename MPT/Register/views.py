@@ -28,10 +28,10 @@ def StudentRegister(request):
             else: 
                 user= User.objects.create_user(email=email, password= password1, first_name=fname, last_name=Lname,phone=phone)
                 user.save()
-                u = User.objects.get(email=request.POST['email'])
-                profile =StudentProfile(user = u)
-                # print(request.profile)
-                profile.save()
+                # u = User.objects.get(email=request.POST['email'])
+                # profile =StudentProfile(user = u)
+                # # print(request.profile)
+                # profile.save()
                 print("profile saved")
                 return redirect('/')
  
@@ -66,12 +66,7 @@ def FacultyRegister(request):
             else: 
                 user= User.objects.create_staffuser(email=email, password= password1)
                 user.save()
-                u = User.objects.get(email=request.POST['email'])
-                profile = MentorProfile(user = u)
-                print(profile)
-                profile.save()
-                print("Teacher saved")
-                return HttpResponse("hello")
+                return redirect('/AdminPage')
  
         else: 
             if password1!=password2:
