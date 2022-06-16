@@ -102,6 +102,7 @@ new Chart("donutGraphSem1", {
       },
     ],
   },
+  maintainAspectRatio: false,
   // legend: {
   //   display: true,
   //   position: "right",
@@ -216,17 +217,9 @@ new Chart("donutGraphSem2", {
       },
     ],
   },
+  maintainAspectRatio: false,
   legend: {
     display: false,
   },
   plugins: [stackedText],
 });
-
-
-let donut1 = document.getElementById("donutGraphSem1")
-let donut2 = document.getElementById("donutGraphSem2")
-
-donut1.width = "500"
-donut1.height = "250"
-donut2.width = "500"
-donut2.height = "250"
