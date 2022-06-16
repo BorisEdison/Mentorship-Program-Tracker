@@ -13,6 +13,7 @@ const btn_status = (status) => {
   cbs.forEach((cb) => {
     cb.style.opacity = status ? "0" : "1";
   });
+  btn_select.style.display = status ? "block" : "none";
   btn_sel_all.disabled = status;
   btn_cancel.disabled = status;
   btn_schedule.disabled = status;
