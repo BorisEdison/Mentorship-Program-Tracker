@@ -18,6 +18,7 @@ class User(AbstractUser):
     superuser=models.BooleanField(default=False)
     first_name=models.CharField(max_length=50,null=True)
     last_name=models.CharField(max_length=50,null=True)
+    middle_name=models.CharField(max_length=50,null=True)
     phone= models.CharField(max_length=10,null=True,blank=True)
     profile_img = models.ImageField(default='logo.png',null=True, blank=True,upload_to='images/')
 
@@ -77,6 +78,7 @@ class StudentProfile(models.Model):
     Branch = models.CharField(max_length=70, null=True, choices=branch_choices)
     Address = models.TextField(max_length=250, null=True)
     State = models.CharField(max_length=50, null=True)
+    City = models.CharField(max_length=50, null=True)
     Country = models.CharField(max_length=50, null=True)
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
@@ -182,6 +184,7 @@ class MentorProfile(models.Model):
         max_length=50, null=True, choices=Blood_grp_choices)
     Branch = models.CharField(max_length=70, null=True, choices=branch_choices)
     Address = models.TextField(max_length=250, null=True)
+    City = models.CharField(max_length=50, null=True)
     State = models.CharField(max_length=50, null=True,default='Maharashtra')
     Country = models.CharField(max_length=50, null=True,default='India')
     religion = models.CharField(max_length=50, null=True)

@@ -33,7 +33,7 @@
 
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
+              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.user.middle_name}}'>
               <label for="inputMname">Middle Name</label>
             </div>
           </div>
@@ -52,10 +52,10 @@
 
             <div class="form-group col-md-10">
 
-              <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
+              <input class="form-control form-control-md custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img.url}}'>
               {% if user.profile_img != 'logo.png' %}
-              <strong>Image added:</strong>
-              <a href='{{user.profile_img.url}}' style="color: #212529">{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+              <p style="color: #212529" ><strong>Image added:</strong>
+               {{user.profile_img |make_list|slice:'7:'|join:''}}</p>
               {% endif %}
 
             </div>

@@ -53,6 +53,7 @@ def edit(request):
 
             fName = request.POST['fName']
             Lname = request.POST['lName']
+            Mname = request.POST['mName']
             motherTongue = request.POST['mTongue']
             religion = request.POST['Religion']
             phone = request.POST['phone']
@@ -61,6 +62,7 @@ def edit(request):
             Addr = request.POST['Address']
             Qualification = request.POST['Quali']
             Teacherid = request.POST['T_Id']
+            city= request.POST['city']
             try:
                 if request.POST['dept'] :
                     department = request.POST['dept']
@@ -105,11 +107,13 @@ def edit(request):
                 pass
         
             user.first_name = fName
+            user.middle_name=Mname
             user.last_name = Lname
             user.phone = phone
             user.save()
             
             profile.Teacher_id = Teacherid
+            profile.City = city
             profile.qualification= Qualification
             profile.State = State
             profile.Address= Addr

@@ -18,6 +18,7 @@ def StudentRegister(request):
         email1= request.POST['email1']
         password1= request.POST['password1']
         password2= request.POST['password2']
+        mid_name= request.POST['Mname']
 
         if password1==password2 and email==email1:
                 
@@ -26,7 +27,7 @@ def StudentRegister(request):
                 return render(request, 'register.html')
 
             else: 
-                user= User.objects.create_user(email=email, password= password1, first_name=fname, last_name=Lname,phone=phone)
+                user= User.objects.create_user(email=email, password= password1, first_name=fname, last_name=Lname,middle_name=mid_name,phone=phone)
                 user.save()
                 # u = User.objects.get(email=request.POST['email'])
                 # profile =StudentProfile(user = u)
