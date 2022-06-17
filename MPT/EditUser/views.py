@@ -53,33 +53,52 @@ def edit(request):
 
             fName = request.POST['fName']
             Lname = request.POST['lName']
-            department = request.POST['dept']
             motherTongue = request.POST['mTongue']
             religion = request.POST['Religion']
             phone = request.POST['phone']
             city = request.POST['city']
-            blood_group = request.POST['blood_group']
-            gender = request.POST['gender']
-            DateofBirth = request.POST['dob']
+            try:
+                if request.POST['dept'] :
+                    department = request.POST['dept']
+                    profile.Branch = department
+            except:
+                pass
+            try:
+                if request.POST['blood_group']:
+                    blood_group = request.POST['blood_group']
+                    profile.Blood_grp = blood_group
+            except:
+                pass
+            try:
+                if request.POST['gender']:
+                    gender = request.POST['gender']
+                    profile.Gender = gender
+            except:
+                pass
+            try:
+                if request.POST['dob']:
+                    DateofBirth = request.POST['dob']
+                    profile.DateofBirth = DateofBirth
+            except:
+                pass
+
             user = User.objects.get(id=request.user.id)
-
-            if 'profileImg' in request.FILES:
-                profile_img = request.FILES['profileImg']
-                # if user already has profile image then delete it
-                if str(user.profile_img) != 'logo.png':
-                    user.profile_img.delete()
-                user.profile_img = profile_img
-
+            try:
+                if 'profileImg' in request.FILES:
+                    profile_img = request.FILES['profileImg']
+                    # if user already has profile image then delete it
+                    if str(user.profile_img) != 'logo.png':
+                        user.profile_img.delete()
+                    user.profile_img = profile_img
+            except:
+                pass
+        
             user.first_name = fName
             user.last_name = Lname
             user.phone = phone
             user.save()
 
             profile.city = city
-            profile.Blood_grp = blood_group
-            profile.Branch = department
-            profile.DateofBirth = DateofBirth
-            profile.Gender = gender
             profile.mother_tongue = motherTongue
             profile.religion = religion
             profile.save()
