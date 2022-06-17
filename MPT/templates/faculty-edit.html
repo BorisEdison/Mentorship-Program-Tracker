@@ -288,70 +288,69 @@
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- Seventh Row  -->
-                  <div class="row pt-3">
-                    <div class="col-6" style="display: flex; justify-content: center;">
-                      <div class="form-group form-floating col-md-10">
-                        <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
-                        <label for="inputQuali">Qualification</label>
+                    <!-- Seventh Row  -->
+                    <div class="row pt-3">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
+                          <label for="inputQuali">Qualification</label>
+                        </div>
+                      </div>
+
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+                          <label for="inputMtongue">Mother Tongue</label>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="col-6" style="display: flex; justify-content: center;">
-                      <div class="form-group form-floating col-md-10">
-                        <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
-                        <label for="inputMtongue">Mother Tongue</label>
+                    <!-- Eighth Row  -->
+                    <div class="row pt-3">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+                          <label for="inputReligion">Religion</label>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <!-- Eighth Row  -->
-                  <div class="row pt-3">
-                    <div class="col-6" style="display: flex; justify-content: center;">
-                      <div class="form-group form-floating col-md-10">
-                        <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
-                        <label for="inputReligion">Religion</label>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
+                          <label for="inputContactNo">Contact No.</label>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6" style="display: flex; justify-content: center;">
-                      <div class="form-group form-floating col-md-10">
-                        <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
-                        <label for="inputContactNo">Contact No.</label>
-                      </div>
                     </div>
 
                   </div>
 
                 </div>
 
+                <!-- buttons -->
+                <div class="d-flex align-items-center justify-content-center m-3 mt-5">
+
+                  <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+                    UPDATE PROFILE
+                  </button>
+
+                  <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+                    CANCEL
+                    {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
+                  </button>
+
+                </div>
+
+              </form>
+
             </div>
-
-            <!-- buttons -->
-            <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-
-              <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-                UPDATE PROFILE
-              </button>
-
-              <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-                CANCEL
-                {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-              </button>
-
-            </div>
-
-            </form>
 
           </div>
 
         </div>
-
       </div>
     </div>
-  </div>
   </div>
 
   <!-- Bootstrap -->
