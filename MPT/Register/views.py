@@ -64,7 +64,7 @@ def FacultyRegister(request):
                 return render(request, 'register.html')
 
             else: 
-                user= User.objects.create_superuser(email=email, password= password1)
+                user= User.objects.create_staffuser(email=email, password= password1)
                 user.save()
                 return redirect('/AdminPage')
  

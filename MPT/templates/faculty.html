@@ -64,7 +64,7 @@
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
             {% block dashboardButton %}
-            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = 'faculty-analytics.html';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
               aria-selected="true">
               <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
               Dashboard
@@ -80,7 +80,7 @@
             {% endblock %}
 
             {% block calendarButton %}
-            <button class="nav-link nav-pills-link" id="calendar-tab" onclick="window.location.href = 'faculty-calendar.html';" data-bs-toggle="pill" data-bs-target="#calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="calendar-tab" onclick="window.location.href = '{% url 'Cal' %}';" data-bs-toggle="pill" data-bs-target="#calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">
               <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>
               Calender
             </button>

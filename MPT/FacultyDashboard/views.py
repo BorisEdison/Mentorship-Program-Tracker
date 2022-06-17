@@ -29,10 +29,12 @@ def faculty(request,pk):
     # user_id = current_user.id
     # print(user_id)
     mentor = MentorProfile.objects.get(user__id=pk)
-    students = Mentor_assign.objects.filter(Mentor__id = pk )
+    students = Mentor_assign.objects.filter(Mentor__id=mentor.id)
+    #students = Mentor_assign.objects.filter(Mentor__id = pk )
     # students = mentee.StudentProfile_set.all()
+    print(mentor.id)
  
-    print(students)
+    #print(students)
     # user = User.objects.all()  
     context = { 'students': students,
                 'id': pk,
