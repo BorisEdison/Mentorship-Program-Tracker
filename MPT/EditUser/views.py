@@ -56,7 +56,11 @@ def edit(request):
             motherTongue = request.POST['mTongue']
             religion = request.POST['Religion']
             phone = request.POST['phone']
-            city = request.POST['city']
+            State = request.POST['state']
+            Country = request.POST['country']
+            Addr = request.POST['Address']
+            Qualification = request.POST['Quali']
+            Teacherid = request.POST['T_Id']
             try:
                 if request.POST['dept'] :
                     department = request.POST['dept']
@@ -82,6 +86,13 @@ def edit(request):
             except:
                 pass
 
+            try:
+                if request.POST['doj']:
+                    DateofJoining= request.POST['doj']
+                    profile.DateofJoining = DateofJoining
+            except:
+                pass
+
             user = User.objects.get(id=request.user.id)
             try:
                 if 'profileImg' in request.FILES:
@@ -97,8 +108,12 @@ def edit(request):
             user.last_name = Lname
             user.phone = phone
             user.save()
-
-            profile.city = city
+            
+            profile.Teacher_id = Teacherid
+            profile.qualification= Qualification
+            profile.State = State
+            profile.Address= Addr
+            profile.Country= Country
             profile.mother_tongue = motherTongue
             profile.religion = religion
             profile.save()

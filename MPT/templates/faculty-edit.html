@@ -33,8 +33,8 @@
 
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='city' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.city}}'>
-              <label for="inputMname">city</label>
+              <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
+              <label for="inputstate">State</label>
             </div>
           </div>
         </div>
@@ -50,8 +50,8 @@
 
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="number" name='rNo' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value=''>
-              <label for="inputTeacherId">Teacher Id</label>
+              <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
+              <label for="inputcountry">Country</label>
             </div>
           </div>
         </div>
@@ -60,14 +60,8 @@
         <div class="row pt-3">
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <select id="inputYear" class="form-select" name="year">
-                <option value="----">----</option>
-                <option value="FE">FE</option>
-                <option value="SE">SE</option>
-                <option value="TE">TE</option>
-                <option value="BE">BE</option>
-              </select>
-              <label for="inputYear">Year</label> <br>
+              <input type="text"  name='T_Id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{profile.Teacher_id}}'>
+              <label for="inputTeacherId">Teacher Id</label>
             </div>
           </div>
 
@@ -153,7 +147,7 @@
 
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
+              <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
               <label for="inputDoj">Date of Joining</label>
             </div>
           </div>
@@ -163,7 +157,7 @@
         <div class="row pt-3">
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
+              <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value='{{profile.Address}}'></textarea>
               <label for="inputAddress">Address</label>
             </div>
           </div>
@@ -187,7 +181,7 @@
         <div class="row pt-3">
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
+              <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
               <label for="inputQuali">Qualification</label>
             </div>
           </div>

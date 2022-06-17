@@ -18,7 +18,7 @@ class User(AbstractUser):
     superuser=models.BooleanField(default=False)
     first_name=models.CharField(max_length=50,null=True)
     last_name=models.CharField(max_length=50,null=True)
-    phone= models.CharField(max_length=12,null=True,blank=True)
+    phone= models.CharField(max_length=10,null=True,blank=True)
     profile_img = models.ImageField(default='logo.png',null=True, blank=True,upload_to='images/')
 
     USERNAME_FIELD = 'email'
@@ -69,15 +69,13 @@ class StudentProfile(models.Model):
     AimForLife = models.CharField(max_length=100, blank=True, null=True)
     reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
     semester = models.CharField(max_length=50, blank=True, null=True)
-    Course = models.CharField(max_length=50, blank=True, null=True)
-    YearOfAdmission = models.IntegerField(null=True)
-    department = models.CharField(max_length=50, null=True)
+    YearOfAdmission = models.PositiveIntegerField(null=True)
     DateofBirth = models.DateField(max_length=50, null=True)
     Gender = models.CharField(max_length=50, null=True, choices=gender_choices)
     Blood_grp = models.CharField(
         max_length=50, null=True, choices=Blood_grp_choices)
     Branch = models.CharField(max_length=70, null=True, choices=branch_choices)
-    city = models.CharField(max_length=50, null=True)
+    Address = models.TextField(max_length=250, null=True)
     State = models.CharField(max_length=50, null=True)
     Country = models.CharField(max_length=50, null=True)
     religion = models.CharField(max_length=50, null=True)
@@ -183,11 +181,14 @@ class MentorProfile(models.Model):
     Blood_grp = models.CharField(
         max_length=50, null=True, choices=Blood_grp_choices)
     Branch = models.CharField(max_length=70, null=True, choices=branch_choices)
-    city = models.CharField(max_length=50, null=True)
-    State = models.CharField(max_length=50, null=True)
-    Country = models.CharField(max_length=50, null=True)
+    Address = models.TextField(max_length=250, null=True)
+    State = models.CharField(max_length=50, null=True,default='Maharashtra')
+    Country = models.CharField(max_length=50, null=True,default='India')
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
+    qualification = models.CharField(max_length=50, null=True)
+    Teacher_id = models.CharField(max_length=50, null=True)
+    DateofJoining = models.DateField(max_length=50, null=True)
 
     def __str__(self):
         return str(self.user.email)
