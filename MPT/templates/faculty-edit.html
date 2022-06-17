@@ -118,240 +118,240 @@
 
             <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit">
 
-                           
-<form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
-  {% csrf_token %}
-  <div class="container mt-2 mb-3">
-    <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
-      <strong>Edit Profile</strong>
-    </p>
-    <div class="row">
+              <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
-      <!-- First Row  -->
-      <div class="row">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{profile.user.first_name}}'>
-            <label for="inputFname">First Name</label>
-          </div>
-        </div>
+                {% csrf_token %}
+                <div class="container mt-2 mb-3">
+                  <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+                    <strong>Edit Profile</strong>
+                  </p>
+                  <div class="row">
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='city' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.city}}'>
-            <label for="inputMname">city</label>
-          </div>
-        </div>
-      </div>
+                    <!-- First Row  -->
+                    <div class="row">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{profile.user.first_name}}'>
+                          <label for="inputFname">First Name</label>
+                        </div>
+                      </div>
 
-      <!-- Second Row  -->
-      <div class="row pt-3">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{profile.user.last_name}}'>
-            <label for="inputLname">Last Name</label>
-          </div>
-        </div>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='city' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.city}}'>
+                          <label for="inputMname">city</label>
+                        </div>
+                      </div>
+                    </div>
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="number" name='rNo' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value=''>
-            <label for="inputTeacherId">Teacher Id</label>
-          </div>
-        </div>
-      </div>
+                    <!-- Second Row  -->
+                    <div class="row pt-3">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{profile.user.last_name}}'>
+                          <label for="inputLname">Last Name</label>
+                        </div>
+                      </div>
 
-      <!-- Third Row  -->
-      <div class="row pt-3">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <select id="inputYear" class="form-select" name="year">
-              <option value="----">----</option>
-              <option value="FE">FE</option>
-              <option value="SE">SE</option>
-              <option value="TE">TE</option>
-              <option value="BE">BE</option>
-            </select>
-            <label for="inputYear">Year</label> <br>
-          </div>
-        </div>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="number" name='rNo' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value=''>
+                          <label for="inputTeacherId">Teacher Id</label>
+                        </div>
+                      </div>
+                    </div>
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <select id="inputDept" class="form-select" name="dept">
-              {% if not profile.Branch %}
-                <option disabled selected>Please Select Your Branch</option>
-              {% else %}
-                <option  disabled>Please Select Select Your Branch</option>
-              {% endif %}
-              {% for department in department_list %}
-                  {% if profile.Branch and profile.Branch == department %}
-                    <option selected>{{ department}}</option>
-                  {% else %}
-                    <option >{{ department }}</option>
-                  {% endif %}
-              {% endfor %}
+                    <!-- Third Row  -->
+                    <div class="row pt-3">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <select id="inputYear" class="form-select" name="year">
+                            <option value="----">----</option>
+                            <option value="FE">FE</option>
+                            <option value="SE">SE</option>
+                            <option value="TE">TE</option>
+                            <option value="BE">BE</option>
+                          </select>
+                          <label for="inputYear">Year</label> <br>
+                        </div>
+                      </div>
 
-            </select>
-            <label for="inputDept">Department</label> <br>
-          </div>
-        </div>
-      </div>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <select id="inputDept" class="form-select" name="dept">
+                            {% if not profile.Branch %}
+                            <option disabled selected>Please Select Your Branch</option>
+                            {% else %}
+                            <option disabled>Please Select Select Your Branch</option>
+                            {% endif %}
+                            {% for department in department_list %}
+                            {% if profile.Branch and profile.Branch == department %}
+                            <option selected>{{ department}}</option>
+                            {% else %}
+                            <option>{{ department }}</option>
+                            {% endif %}
+                            {% endfor %}
 
-      <!-- Forth Row  -->
-      <div class="row">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <select id="inputBGroup" class="form-select" name="blood_group">
+                          </select>
+                          <label for="inputDept">Department</label> <br>
+                        </div>
+                      </div>
+                    </div>
 
-              {% if not profile.Blood_grp %}
-                <option disabled selected>Please Select Your Blood Group</option>
-              {% else %}
-                <option  disabled>Please Select Your Blood Group</option>
-              {% endif %}
-              {% for bloodGroup in bloodGroup_list %}
-                  {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
-                    <option selected>{{ bloodGroup}}</option>
-                  {% else %}
-                    <option >{{ bloodGroup }}</option>
-                  {% endif %}
-              {% endfor %}
+                    <!-- Forth Row  -->
+                    <div class="row">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <select id="inputBGroup" class="form-select" name="blood_group">
 
-            </select>
-            <label for="inputBGroup">Blood Group</label> <br>
-          </div>
-        </div>
+                            {% if not profile.Blood_grp %}
+                            <option disabled selected>Please Select Your Blood Group</option>
+                            {% else %}
+                            <option disabled>Please Select Your Blood Group</option>
+                            {% endif %}
+                            {% for bloodGroup in bloodGroup_list %}
+                            {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
+                            <option selected>{{ bloodGroup}}</option>
+                            {% else %}
+                            <option>{{ bloodGroup }}</option>
+                            {% endif %}
+                            {% endfor %}
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <select id="inputGender" class="form-select" name="gender">
-              {% if not profile.Gender %}
-                <option disabled selected>Please Select Your Gender</option>
-              {% else %}
-                <option  disabled>Please Select Your Gender</option>
-              {% endif %}
-              {% if profile.Gender and profile.Gender == 'Male' %}
-                <option selected>Male</option>
-              {% else %}
-                <option>Male</option>
-              {% endif %}
-              {% if profile.Gender and profile.Gender == 'Female' %}
-                <option selected>Female</option>
-              {% else %}
-                <option>Female</option>
-              {% endif %}
+                          </select>
+                          <label for="inputBGroup">Blood Group</label> <br>
+                        </div>
+                      </div>
 
-            </select>
-            <label for="inputGender">Gender</label> <br>
-          </div>
-        </div>
-      </div>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <select id="inputGender" class="form-select" name="gender">
+                            {% if not profile.Gender %}
+                            <option disabled selected>Please Select Your Gender</option>
+                            {% else %}
+                            <option disabled>Please Select Your Gender</option>
+                            {% endif %}
+                            {% if profile.Gender and profile.Gender == 'Male' %}
+                            <option selected>Male</option>
+                            {% else %}
+                            <option>Male</option>
+                            {% endif %}
+                            {% if profile.Gender and profile.Gender == 'Female' %}
+                            <option selected>Female</option>
+                            {% else %}
+                            <option>Female</option>
+                            {% endif %}
 
-      <!-- Fifth Row  -->
-      <div class="row">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
-            <label for="inputDob">Date Of Birth</label>
-          </div>
-        </div>
+                          </select>
+                          <label for="inputGender">Gender</label> <br>
+                        </div>
+                      </div>
+                    </div>
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
-            <label for="inputDoj">Date of Joining</label>
-          </div>
-        </div>
-      </div>
+                    <!-- Fifth Row  -->
+                    <div class="row">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
+                          <label for="inputDob">Date Of Birth</label>
+                        </div>
+                      </div>
 
-      <!-- Sixth Row  -->
-      <div class="row pt-3">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
-            <label for="inputAddress">Address</label>
-          </div>
-        </div>
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
+                          <label for="inputDoj">Date of Joining</label>
+                        </div>
+                      </div>
+                    </div>
 
-        <div class="col-6" style="display: flex; justify-content: center;">
+                    <!-- Sixth Row  -->
+                    <div class="row pt-3">
+                      <div class="col-6" style="display: flex; justify-content: center;">
+                        <div class="form-group form-floating col-md-10">
+                          <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
+                          <label for="inputAddress">Address</label>
+                        </div>
+                      </div>
 
-          <div class="form-group form-floating col-md-10">
-          
-              <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
-              <label for="formFile" class="form-label">Profile Picture</label>
-               {% if user.profile_img != 'logo.png' %}
-              <strong> image added:</strong>
-              <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
-              {% endif %}
+                      <div class="col-6" style="display: flex; justify-content: center;">
 
-            </div> 
-          </div>
-        </div>
-      </div>
+                        <div class="form-group form-floating col-md-10">
 
-      <!-- Seventh Row  -->
-      <div class="row pt-3">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
-            <label for="inputQuali">Qualification</label>
-          </div>
-        </div>
+                          <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
+                          <label for="formFile" class="form-label">Profile Picture</label>
+                          {% if user.profile_img != 'logo.png' %}
+                          <strong> image added:</strong>
+                          <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+                          {% endif %}
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
-            <label for="inputMtoungue">Mother Tongue</label>
-          </div>
-        </div>
-      </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-      <!-- Eighth Row  -->
-      <div class="row pt-3">
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
-            <label for="inputReligion">Religion</label>
-          </div>
-        </div>
+                  <!-- Seventh Row  -->
+                  <div class="row pt-3">
+                    <div class="col-6" style="display: flex; justify-content: center;">
+                      <div class="form-group form-floating col-md-10">
+                        <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
+                        <label for="inputQuali">Qualification</label>
+                      </div>
+                    </div>
 
-        <div class="col-6" style="display: flex; justify-content: center;">
-          <div class="form-group form-floating col-md-10">
-            <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" >
-            <label for="inputContactNo">Contact No.</label>
-          </div>
-        </div>
+                    <div class="col-6" style="display: flex; justify-content: center;">
+                      <div class="form-group form-floating col-md-10">
+                        <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+                        <label for="inputMtongue">Mother Tongue</label>
+                      </div>
+                    </div>
+                  </div>
 
-      </div>
+                  <!-- Eighth Row  -->
+                  <div class="row pt-3">
+                    <div class="col-6" style="display: flex; justify-content: center;">
+                      <div class="form-group form-floating col-md-10">
+                        <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+                        <label for="inputReligion">Religion</label>
+                      </div>
+                    </div>
 
-    </div>
+                    <div class="col-6" style="display: flex; justify-content: center;">
+                      <div class="form-group form-floating col-md-10">
+                        <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
+                        <label for="inputContactNo">Contact No.</label>
+                      </div>
+                    </div>
 
-  </div>
+                  </div>
 
-  <!-- buttons -->
-  <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-
-    <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-      UPDATE PROFILE
-    </button>
-
-    <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-      CANCEL
-      {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-    </button>
-
-  </div>
-
-</form>
+                </div>
 
             </div>
 
+            <!-- buttons -->
+            <div class="d-flex align-items-center justify-content-center m-3 mt-5">
+
+              <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+                UPDATE PROFILE
+              </button>
+
+              <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+                CANCEL
+                {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
+              </button>
+
+            </div>
+
+            </form>
+
           </div>
 
         </div>
+
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Bootstrap -->
