@@ -33,8 +33,8 @@
 
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
-              <label for="inputstate">State</label>
+              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value=''>
+              <label for="inputMname">Middle Name</label>
             </div>
           </div>
         </div>
@@ -49,9 +49,15 @@
           </div>
 
           <div class="col-6" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
-              <label for="inputcountry">Country</label>
+
+            <div class="form-group col-md-10">
+
+              <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
+              {% if user.profile_img != 'logo.png' %}
+              <strong>Image added:</strong>
+              <a href='{{user.profile_img.url}}' style="color: #212529">{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
+              {% endif %}
+
             </div>
           </div>
         </div>
@@ -163,21 +169,31 @@
           </div>
 
           <div class="col-6" style="display: flex; justify-content: center;">
-
             <div class="form-group form-floating col-md-10">
-
-              <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
-              <label for="formFile" class="form-label">Profile Picture</label>
-              {% if user.profile_img != 'logo.png' %}
-              <strong> image added:</strong>
-              <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
-              {% endif %}
-
+              <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
+              <label for="inputcity">City</label>
             </div>
           </div>
         </div>
 
         <!-- Seventh Row  -->
+        <div class="row pt-3">
+          <div class="col-6" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
+              <label for="inputstate">State</label>
+            </div>
+          </div>
+
+          <div class="col-6" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
+              <label for="inputcountry">Country</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eight Row  -->
         <div class="row pt-3">
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
@@ -194,7 +210,7 @@
           </div>
         </div>
 
-        <!-- Eighth Row  -->
+        <!-- Ninth Row  -->
         <div class="row pt-3">
           <div class="col-6" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
