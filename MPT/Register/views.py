@@ -27,7 +27,7 @@ def StudentRegister(request):
                 return render(request, 'register.html')
 
             else: 
-                user= User.objects.create_user(email=email, password= password1, first_name=fname, last_name=Lname,middle_name=mid_name,phone=phone)
+                user= User.objects.create_user(usr_id = 'asdfgghjkl', email=email, password= password1, first_name=fname, last_name=Lname,middle_name=mid_name,phone=phone)
                 user.save()
                 # u = User.objects.get(email=request.POST['email'])
                 # profile =StudentProfile(user = u)
@@ -65,7 +65,7 @@ def FacultyRegister(request):
                 return render(request, 'register.html')
 
             else: 
-                user= User.objects.create_staffuser(email=email, password= password1)
+                user= User.objects.create_superuser(email=email, password= password1)
                 user.save()
                 return redirect('/AdminPage')
  

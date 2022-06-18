@@ -1,10 +1,11 @@
+from locale import normalize
 from django.contrib.auth.base_user import BaseUserManager
 
 
 class CustomUserManager(BaseUserManager):
     '''for using email as unique identifier instead of username '''
 
-    def create_user(self, email, password, is_active=True, is_staff=False, is_superuser=False,first_name=None,last_name=None,middle_name=None,phone=None):
+    def create_user(self,  usr_id, email, password, is_active=True, is_staff=False, is_superuser=False,first_name=None,last_name=None,middle_name=None,phone=None):
 
         # create and save user with email and password
 
@@ -18,6 +19,7 @@ class CustomUserManager(BaseUserManager):
         User = self.model(
             email=self.normalize_email(email)
         )
+        User.usr_id = usr_id
         User.active = is_active
         User.staff = is_staff
         User.superuser = is_superuser
@@ -29,8 +31,9 @@ class CustomUserManager(BaseUserManager):
         User.save(using=self.db)
         return User
 
-    def create_staffuser(self, email, password):
+    def create_staffuser(self, usr_id, email, password):
         User = self.create_user(
+            usr_id,
             email, 
             password=password, 
             is_staff=True,
@@ -39,8 +42,9 @@ class CustomUserManager(BaseUserManager):
         return User
 
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, usr_id, email, password):
         User = self.create_user(
+            usr_id,
             email,
             password=password,
             is_staff=True, 

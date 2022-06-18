@@ -25,7 +25,7 @@ def Adminpage(request):
 
 @login_required
 def student(request, pk):
-    user = User.objects.get(id=pk)
+    user = User.objects.get(usr_id=pk)
     student=StudentProfile.objects.get(user=user)
     context = {'student' : student}
     return render(request, 'student-dashboard.html', context)

@@ -10,6 +10,7 @@ from django.db.models.signals import post_save
 
 
 class User(AbstractUser):
+    usr_id = models.CharField(max_length=50,unique=True)
     username = None
     email = models.EmailField(max_length=255, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -23,7 +24,7 @@ class User(AbstractUser):
     profile_img = models.ImageField(default='logo.png',null=True, blank=True,upload_to='images/')
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['usr_id',]
     objects = CustomUserManager()
 
     def __str__(self):
@@ -66,11 +67,6 @@ class StudentProfile(models.Model):
         ('AB-', 'AB-'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    current_rollNo = models.IntegerField(unique=True, null=True)
-    AimForLife = models.CharField(max_length=100, blank=True, null=True)
-    reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
-    semester = models.CharField(max_length=50, blank=True, null=True)
-    YearOfAdmission = models.PositiveIntegerField(null=True)
     DateofBirth = models.DateField(max_length=50, null=True)
     Gender = models.CharField(max_length=50, null=True, choices=gender_choices)
     Blood_grp = models.CharField(

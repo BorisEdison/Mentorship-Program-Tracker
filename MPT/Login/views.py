@@ -20,10 +20,10 @@ def login(request):
                     return redirect('/AdminPage')
 
                 elif request.user.staff==True:
-                    return redirect('/facultydashboard/'+str(user.id),pk=user.id)
+                    return redirect('/facultydashboard/'+str(user.usr_id),pk=user.usr_id)
                 
                 else:
-                    return redirect('/studentdashboard/'+str(user.id),pk=user.id)
+                    return redirect('/studentdashboard/'+str(user.usr_id),pk=user.usr_id)
             else:
                 messages.info(request, 'Activate Your Account First then try to login...')
         
