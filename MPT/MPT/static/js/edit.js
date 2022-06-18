@@ -1,4 +1,3 @@
-
 const input = document.getElementById('imgsize')
 input.addEventListener('change', (event) => {
   const target = event.target

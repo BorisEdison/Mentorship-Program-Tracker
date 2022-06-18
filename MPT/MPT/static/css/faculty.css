@@ -193,6 +193,8 @@ h6 {
   /* -webkit-transform: scale(0.9); 
   transform: scale(0.9); */
 }
+
+/* scrollbar */
 ::-webkit-scrollbar {
   z-index: 30;
   width: 5px;
@@ -234,51 +236,5 @@ h6 {
 @media (max-width: 550px) {
   #grd .grid-li {
     width: 50%;
-  }
-}
-
-/* Student Dashboard */
-/* .stu-prof-info {
-  justify-content: space-between;
-} */
-.scrollspy-example {
-  position: relative;
-  height: 250px;
-  overflow: auto;
-}
-.graphs {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.stu-img{
-  display: block;
-  border: none;
-  border-radius: 10px;
-}
-.stu-info > img {
-  width: 120px;
-  height: auto;
-}
-.stu-info > span {
-  display: flex;
-  flex-direction: column;
-  max-width: 20ch;
-  overflow-wrap: normal;
-}
-.stu-info > span > p {
-  font-size: 20px;
-}
-
-@media (max-width:800px) {
-  .accordion-div{
-    padding-top: 1rem  !important;
-  }
-}
-
-@media (max-width:992px) {
-  .accordion-div{
-    padding-top: 1rem  !important;
   }
 }

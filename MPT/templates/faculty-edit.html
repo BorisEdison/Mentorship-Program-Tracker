@@ -24,14 +24,14 @@
 
         <!-- First Row  -->
         <div class="row">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{profile.user.first_name}}'>
               <label for="inputFname">First Name</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.user.middle_name}}'>
               <label for="inputMname">Middle Name</label>
@@ -41,37 +41,43 @@
 
         <!-- Second Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{profile.user.last_name}}'>
               <label for="inputLname">Last Name</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
-
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group col-md-10">
-
-              <input class="form-control form-control-md custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img.url}}'>
-              {% if user.profile_img != 'logo.png' %}
-              <p style="color: #212529" ><strong>Image added:</strong>
-               {{user.profile_img |make_list|slice:'7:'|join:''}}</p>
-              {% endif %}
-
+              <div class="file-upload">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileName">Choose File</div>
+                  <div class="file-select-name" id="noFile">
+                    {% if user.profile_img != 'logo.png' %}
+                    {{user.profile_img |make_list|slice:'7:'|join:''}}</p>
+                    {% else %}
+                    No file chosen...
+                    {% endif %}
+                  </div> 
+                  <input name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img.url}}'>
+                </div>
+              </div>
             </div>
           </div>
+          
         </div>
 
         <!-- Third Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text"  name='T_Id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{profile.Teacher_id}}'>
               <label for="inputTeacherId">Teacher Id</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <select id="inputDept" class="form-select" name="dept">
                 {% if not profile.Branch %}
@@ -95,7 +101,7 @@
 
         <!-- Forth Row  -->
         <div class="row">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <select id="inputBGroup" class="form-select" name="blood_group">
 
@@ -117,7 +123,7 @@
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <select id="inputGender" class="form-select" name="gender">
                 {% if not profile.Gender %}
@@ -144,14 +150,14 @@
 
         <!-- Fifth Row  -->
         <div class="row">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
               <label for="inputDob">Date Of Birth</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
               <label for="inputDoj">Date of Joining</label>
@@ -161,14 +167,14 @@
 
         <!-- Sixth Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value='{{profile.Address}}'></textarea>
               <label for="inputAddress">Address</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
               <label for="inputcity">City</label>
@@ -178,14 +184,14 @@
 
         <!-- Seventh Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
               <label for="inputstate">State</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
               <label for="inputcountry">Country</label>
@@ -195,14 +201,14 @@
 
         <!-- Eight Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
               <label for="inputQuali">Qualification</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
               <label for="inputMtongue">Mother Tongue</label>
@@ -212,14 +218,14 @@
 
         <!-- Ninth Row  -->
         <div class="row pt-3">
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
               <label for="inputReligion">Religion</label>
             </div>
           </div>
 
-          <div class="col-6" style="display: flex; justify-content: center;">
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
               <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
               <label for="inputContactNo">Contact No.</label>

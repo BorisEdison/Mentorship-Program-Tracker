@@ -1,0 +1,123 @@
+body {
+  font-size: 0.875rem;
+  background-color: #f0f4fb;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+a {
+  color: white;
+  /* text-shadow: 0 0 2px rgb(0, 0, 0); */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  text-shadow: 0 0 2px #fff;
+  color: rgb(0, 0, 0);
+}
+p {
+  margin-bottom: 0;
+}
+h6 {
+  margin: 0;
+  line-height: 3.2;
+  color: white;
+}
+  
+/* sidebar */
+.sidebar {
+  background-color: #dbe2ef;
+  border-radius: 13px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  margin: 10px 0;
+  margin-top: 5.5vh;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+  background-color: #112D4E !important;
+  color: white !important;
+}
+.nav-pills-link {
+  color: #112D4E !important;
+}
+.dashboard-navigation {
+  padding-right: 0;
+}
+
+/* nav-tab */
+.nav-link {
+  color: #3f72af;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #f0f4fb;
+  background-color: #3f72af;
+  border-color: #3f72af #3f72af black;
+}
+.nav-tabs .nav-link {
+  border-bottom: 3px solid transparent;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  z-index: 30;
+  width: 5px;
+  height: 0;
+  y-index: hidden;
+}
+::-webkit-scrollbar-track {
+  background-color: #111;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2b2e33;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+/* Student Dashboard */
+/* .stu-prof-info {
+justify-content: space-between;
+} */
+.accordion{
+  box-shadow: 0 0 3px 1px rgb(0 0 0 / 50%);
+}
+.scrollspy-example {
+  position: relative;
+  height: 250px;
+  overflow: auto;
+}
+.graphs {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.stu-img{
+  display: block;
+  border: none;
+  border-radius: 10px;
+}
+.stu-info > img {
+  width: 120px;
+  height: auto;
+}
+.stu-info > span {
+  display: flex;
+  flex-direction: column;
+  max-width: 20ch;
+  overflow-wrap: normal;
+}
+.stu-info > span > p {
+  font-size: 20px;
+}
+
+@media (max-width:800px) {
+  .accordion-div{
+    padding-top: 1rem  !important;
+  }
+}
+
+@media (max-width:992px) {
+  .accordion-div{
+    padding-top: 1rem  !important;
+  }
+}
