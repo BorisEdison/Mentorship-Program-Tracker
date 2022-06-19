@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-# from django.contrib.auth.models import User
+
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile,User
 # from django.contrib.auth.decorators import permission_required
@@ -18,10 +18,6 @@ def Adminpage(request):
     context = {'user': user} 
     return render(request, 'admin.html', context)
 
-# def faculty(request):
-#     user = User.objects.all()
-#     context = {'user': user}
-#     return render(request, 'faculty-dashboard.html', context)
 
 @login_required
 def student(request, pk):

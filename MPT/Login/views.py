@@ -29,7 +29,7 @@ def login(request):
         
         else:
             messages.info(request, "Check your cerdentials")
-            return render(request, 'login-page.html')
+            return render(request, 'Login/login-page.html')
 
     else: 
-        return render(request, 'login-page.html')
+        return render(request, 'Login/login-page.html')

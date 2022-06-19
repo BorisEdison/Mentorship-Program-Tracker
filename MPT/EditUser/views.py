@@ -122,7 +122,7 @@ def edit(request):
             profile.save()
             return redirect('faculty', pk=user.usr_id)
         else:
-            return render(request, 'faculty-edit.html', context)
+            return render(request, 'EditUser/faculty-edit.html', context)
 
     else:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)

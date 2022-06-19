@@ -21,7 +21,7 @@ def logout(request):
 def studentdetail(request, pk):
     user = User.objects.get(id=pk)
     context = {'users': user}
-    return render(request, 'student-profile.html', context)
+    return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required
 def faculty(request,pk):
@@ -38,8 +38,8 @@ def faculty(request,pk):
     #print(students)
     # user = User.objects.all()  
     context = { 'students': students,
-                'id': pk,}
+                'id': pk}
                 # 'mentor': mentor
                 
-    return render(request, 'faculty-dashboard.html', context)
+    return render(request, 'FacultyDashboard/faculty-dashboard.html', context)
     
