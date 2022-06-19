@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-# from django.contrib.auth.models import User
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile
@@ -16,11 +16,10 @@ from accounts.models import StudentProfile, User, MentorProfile
 @login_required
 def edit(request):
     context = {}
-    # print(request.user)
-    # print(request.user.id)
+    
 
     if request.user.is_staff:
-        profile = MentorProfile.objects.get(user__id=request.user.id)
+        profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
 
         # print("mentor id", profile.id)
         # print("user id", profile.user.id)
@@ -44,11 +43,11 @@ def edit(request):
                 'O-'
             ],
             'profile': profile,
-            'id': request.user.id
+            'id': request.user.usr_id
         }
 
         if request.method == "POST":
-            print("user id after post", profile.user.id)
+            print("user id after post", profile.user.usr_id)
             print("mentor id after post", profile.id)
 
             fName = request.POST['fName']
@@ -95,7 +94,7 @@ def edit(request):
             except:
                 pass
 
-            user = User.objects.get(id=request.user.id)
+            user = User.objects.get(usr_id=request.user.usr_id)
             try:
                 if 'profileImg' in request.FILES:
                     profile_img = request.FILES['profileImg']
@@ -121,12 +120,12 @@ def edit(request):
             profile.mother_tongue = motherTongue
             profile.religion = religion
             profile.save()
-            return redirect('faculty', pk=user.id)
+            return redirect('faculty', pk=user.usr_id)
         else:
             return render(request, 'faculty-edit.html', context)
 
     else:
-        profile = StudentProfile.objects.get(user__id=request.user.id)
+        profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
         context = {'profile': profile}
         print(request.user)
         if request.method == "POST":
@@ -139,7 +138,7 @@ def edit(request):
             # password1= request.POST['password1']
             # password2= request.POST['password2']
             profile_img = request.FILES['profile_img']
-            user = User.objects.get(id=request.user.id)
+            user = User.objects.get(id=request.user.usr_id)
             # if user already has profile image then delete it
             if str(user.profile_img) != 'logo.png':
                 user.profile_img.delete()
