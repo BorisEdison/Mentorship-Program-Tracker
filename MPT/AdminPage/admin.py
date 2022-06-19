@@ -24,11 +24,11 @@ class CustomUserAdmin(UserAdmin):
     form=CustomUserChangeForm
     model=User
     list_display=('email','staff','active','superuser',)
-    list_filter=('email','staff','active','superuser',)
+    list_filter=('email','usr_id','staff','active','superuser',)
     fieldsets = (
         (None, {
             "fields": (
-                'email','password','first_name','last_name','phone','profile_img',
+                'email','usr_id','password','first_name','last_name','phone','profile_img',
             ),
         }),
         ('Permissions', {'fields': ('staff', 'active'),
@@ -48,14 +48,14 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes':('wide',),
             "fields": (
-                'email','password1','password2','first_name','last_name','phone','profile_img','staff','active',
+                'email','password1','password2','usr_id','first_name','last_name','phone','profile_img','staff','active',
             ),
         }),
     )
     
     
-    search_fields=('email',)
-    ordering=('email',)
+    search_fields=('email','usr_id',)
+    ordering=('email','usr_id',)
 
   
 # class UserAdminConfig(UserAdmin):
