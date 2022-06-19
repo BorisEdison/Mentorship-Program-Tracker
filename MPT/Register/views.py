@@ -24,7 +24,7 @@ def StudentRegister(request):
                 
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
-                return render(request, 'register.html')
+                return render(request, 'Register/register.html')
 
             else: 
                 user= User.objects.create_user(usr_id = 'asdfgghjkl', email=email, password= password1, first_name=fname, last_name=Lname,middle_name=mid_name,phone=phone)
@@ -44,10 +44,10 @@ def StudentRegister(request):
     context = {'page': 'StudentUser',
                 'title': 'New Account'
                 }
-    return render(request, 'register.html',context)
+    return render(request, 'Register/register.html',context)
 
 # Faculty Registration
-def FacultyRegister(request):
+def AdminRegister(request):
     
     if request.method == 'POST':
         # fname= request.POST['name']
@@ -62,7 +62,7 @@ def FacultyRegister(request):
                 
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
-                return render(request, 'register.html')
+                return render(request, 'Register/register.html')
 
             else: 
                 user= User.objects.create_superuser(email=email, password= password1)
@@ -79,4 +79,4 @@ def FacultyRegister(request):
                 'title': 'Add New Admin'
                 }
 
-    return render(request, 'register.html', context)
+    return render(request, 'Register/register.html', context)
