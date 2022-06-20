@@ -2,11 +2,69 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = 'faculty-dashboard.html';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' faculty.usr_id%}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
   Dashboard
 </button>
 {% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-main sticky-top navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" onClick="window.location.reload();">
+      <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+      DBIT
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+      <div class="hamburger-toggle">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <div class="ms-auto">
+        {% if faculty.is_authenticated %}
+
+        <a class="navbar-brand" onClick="window.location.reload();">
+          <img src="{{faculty.profile_img.url}}" class=" me-2" width="42" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+          {% if user.first_name and user.last_name %}{{faculty.first_name}} {{faculty.last_name}} {% endif %}
+        </a>
+        {% endif %}
+      </div>
+
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+        <span class="d-inline-block" id="dark-mode-toggle" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle Dark Mode">
+          <li class="nav-item-main">
+            <button type="button" class="btn" data-toggle="button"><span class="iconify  iconify-navbar" data-icon="bi:moon" data-width="24" data-height="26"></span></button>
+          </li>
+        </span>
+
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notification">
+          <li class="nav-item-main">
+            <a class="nav-link" href="#" id="iconifyNotification">
+              <span class="iconify iconify-navbar" data-icon="clarity:notification-solid" data-width="24" data-height="26"></span>
+            </a>
+          </li>
+        </span>
+
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
+          <li class="nav-item-main">
+            <a class="nav-link" id="iconifyLogOut" href="{% url 'logout' %}">
+              <span class="iconify iconify-navbar" data-icon="ic:outline-log-in" data-width="25" data-height="25"></span>
+            </a>
+          </li>
+        </span>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
 
 {% block dashboardContent %}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
