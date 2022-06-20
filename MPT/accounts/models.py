@@ -174,7 +174,7 @@ class MentorProfile(models.Model):
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
     qualification = models.CharField(max_length=50, null=True)
-    Teacher_id = models.CharField(max_length=50, null=True)
+    # Teacher_id = models.CharField(max_length=50, null=True)
     DateofJoining = models.DateField(max_length=50, null=True)
 
     def __str__(self):

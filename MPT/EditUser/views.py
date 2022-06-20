@@ -60,7 +60,7 @@ def edit(request):
             Country = request.POST['country']
             Addr = request.POST['Address']
             Qualification = request.POST['Quali']
-            Teacherid = request.POST['T_Id']
+            Teacherid = request.POST['usr_id']
             city= request.POST['city']
             try:
                 if request.POST['dept'] :
@@ -106,12 +106,12 @@ def edit(request):
                 pass
         
             user.first_name = fName
+            user.usr_id= Teacherid
             user.middle_name=Mname
             user.last_name = Lname
             user.phone = phone
             user.save()
             
-            profile.Teacher_id = Teacherid
             profile.City = city
             profile.qualification= Qualification
             profile.State = State
