@@ -14,10 +14,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def Adminpage(request):
-    user = User.objects.all()
-    context = {'user': user} 
-    return render(request, 'admin.html', context)
-
+    if request.user.is_superuser:
+        user = User.objects.all()
+        context = {'user': user} 
+        return render(request,'AdminPage/admin-user.html',context)
+    else:
+        return HttpResponse("You are not authorized to view this page")
 
 @login_required
 def student(request, pk):

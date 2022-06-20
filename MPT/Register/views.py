@@ -18,22 +18,26 @@ def StudentRegister(request):
         email1= request.POST['email1']
         password1= request.POST['password1']
         password2= request.POST['password2']
-        mid_name= request.POST['Mname']
+        usrID= request.POST['usrID']
 
         if password1==password2 and email==email1:
                 
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
-                return render(request, 'Register/register.html')
+                # return render(request, 'Register/register.html')
+
+            elif User.objects.filter(usr_id=usrID).exists():
+                messages.info(request, "User ID Already Exists")
+                # return render(request, 'Register/register.html')
 
             else: 
-                user= User.objects.create_user(usr_id = 'asdfgghjkl', email=email, password= password1, first_name=fname, last_name=Lname,middle_name=mid_name,phone=phone)
+                user= User.objects.create_user(usr_id = usrID, email=email, password= password1, first_name=fname, last_name=Lname,phone=phone)
                 user.save()
                 # u = User.objects.get(email=request.POST['email'])
                 # profile =StudentProfile(user = u)
                 # # print(request.profile)
                 # profile.save()
-                print("profile saved")
+                # print("profile saved")
                 return redirect('/')
  
         else: 
@@ -48,7 +52,6 @@ def StudentRegister(request):
 
 # Faculty Registration
 def AdminRegister(request):
-    
     if request.method == 'POST':
         # fname= request.POST['name']
         # Lname= request.POST['Lname']

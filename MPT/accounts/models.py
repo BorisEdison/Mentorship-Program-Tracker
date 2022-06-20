@@ -14,9 +14,9 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(max_length=255, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=True)
-    staff=models.BooleanField(default=False)
-    superuser=models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff=models.BooleanField(default=False)
+    is_superuser=models.BooleanField(default=False)
     first_name=models.CharField(max_length=50,null=True)
     last_name=models.CharField(max_length=50,null=True)
     middle_name=models.CharField(max_length=50,null=True)
@@ -29,18 +29,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return str(self.email)
-
-    @property
-    def is_staff(self):
-        return str(self.staff)
-    
-    @property
-    def is_active(self):
-        return str(self.active)
-
-    @property
-    def is_superuser(self):
-        return str(self.superuser)
 
 class StudentProfile(models.Model):
     gender_choices = [
@@ -236,16 +224,16 @@ def get_mentee(mentor):
 def create_user_profile(sender,instance,created, **kwargs):
     if created:
 
-        if instance.staff:
+        if instance.is_staff:
             MentorProfile.objects.create(user=instance)
         
-        if not instance.staff:
+        if not instance.is_staff:
             StudentProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender,instance, **kwargs):
-    if instance.staff:
+    if instance.is_staff:
         try:
             mentor_profile = MentorProfile.objects.get(user=instance)
         except MentorProfile.DoesNotExist:
@@ -262,12 +250,12 @@ def save_user_profile(sender,instance, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender,instance, **kwargs):
-    if not instance.staff:
+    if not instance.is_staff:
         try:
             MentorProfile.objects.get(user=instance).delete()
         except:
             pass
-    if instance.staff:
+    if instance.is_staff:
         try:
             StudentProfile.objects.get(user=instance).delete()
         except:

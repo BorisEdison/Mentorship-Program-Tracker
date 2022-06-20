@@ -16,10 +16,10 @@ def login(request):
         if user:
             if user.is_active:
                 auth.login(request, user)
-                if request.user.superuser ==True:
+                if request.user.is_superuser ==True:
                     return redirect('/AdminPage')
 
-                elif request.user.staff==True:
+                elif request.user.is_staff==True:
                     return redirect('/facultydashboard/'+str(user.usr_id),pk=user.usr_id)
                 
                 else:

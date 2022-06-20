@@ -20,9 +20,9 @@ class CustomUserManager(BaseUserManager):
             email=self.normalize_email(email)
         )
         User.usr_id = usr_id
-        User.active = is_active
-        User.staff = is_staff
-        User.superuser = is_superuser
+        User.is_active = is_active
+        User.is_staff = is_staff
+        User.is_superuser = is_superuser
         User.set_password(password)
         User.first_name=first_name
         User.last_name=last_name

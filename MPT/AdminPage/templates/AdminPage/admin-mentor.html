@@ -47,7 +47,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Username</th>
+                                        <th scope="col">User ID</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -55,8 +55,8 @@
                                 <tbody id="myTable">
                                     {% for users in user %}
                                     <tr>
-                                        <th scope="row">{{users.first_name}}</th>
-                                        <td>{{users.username}}</td>
+                                        <th scope="row">{{users.first_name}} {{ users.last_name}}</th>
+                                        <td>{{users.usr_id}}</td>
                                         <td>{{users.email}}</td>
                                         <td>
                                             <span class="iconify" data-icon="bx:edit"></span>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
 # importing Student
@@ -23,15 +23,15 @@ class CustomUserAdmin(UserAdmin):
     add_form=CustomUserCreationForm
     form=CustomUserChangeForm
     model=User
-    list_display=('email','staff','active','superuser',)
-    list_filter=('email','usr_id','staff','active','superuser',)
+    list_display=('email','usr_id','is_staff','is_active','is_superuser',)
+    list_filter=('email','usr_id','is_staff','is_active','is_superuser',)
     fieldsets = (
         (None, {
             "fields": (
                 'email','usr_id','password','first_name','last_name','phone','profile_img',
             ),
         }),
-        ('Permissions', {'fields': ('staff', 'active'),
+        ('Permissions', {'fields': ('is_active','is_staff', 'is_superuser',),
             'classes': ('collapse',),
         }),
     )
@@ -48,7 +48,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes':('wide',),
             "fields": (
-                'email','password1','password2','usr_id','first_name','last_name','phone','profile_img','staff','active',
+                'email','password1','password2','usr_id','first_name','last_name','phone','profile_img','is_staff','is_active','is_superuser',
             ),
         }),
     )
