@@ -43,9 +43,8 @@
     {% endfor %} {% endcomment %}
 
     {% for users in students %}
-    {% if users.is_staff %}
-    {% else %}
-    <a href="{% url 'studentdetail' users.id %}">
+    {% if not users.is_staff %}
+    <a href="{% url 'studentdetail' users.Mentee.user.usr_id %}">
       <li class="shrink grid-li">
         <span class="grd-cell">
           <img class="grd-img" src="{% static 'content/mentee/boris.png' %}" style="box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);" /><span class="grd-overlay">

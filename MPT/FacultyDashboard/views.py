@@ -19,8 +19,9 @@ def logout(request):
 # Create your views here.
 @login_required
 def studentdetail(request, pk):
-    user = User.objects.get(id=pk)
-    context = {'users': user}
+    fac_id=request.user.usr_id
+    user = User.objects.get(usr_id=pk)
+    context = {'user': user,'fac_id':fac_id}
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required
@@ -39,7 +40,7 @@ def faculty(request,pk):
         #print(students)
         # user = User.objects.all()  
         context = { 'students': students,
-                    'id': pk}
+                    'fac_id': pk}
                     # 'mentor': mentor
                     
         return render(request, 'FacultyDashboard/faculty-dashboard.html', context)
