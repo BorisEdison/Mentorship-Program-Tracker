@@ -18,10 +18,10 @@ def logout(request):
 
 # Create your views here.
 @login_required
-def studentdetail(request, pk):
-    fac_id=request.user.usr_id
-    user = User.objects.get(usr_id=pk)
-    context = {'user': user,'fac_id':fac_id}
+def studentdetail(request, fac_id, stu_id):
+    user = User.objects.get(usr_id=stu_id)
+    faculty=User.objects.get(usr_id=fac_id)
+    context = {'user': user,'faculty':faculty}
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required
