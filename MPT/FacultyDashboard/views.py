@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile,MentorProfile,Mentor_assign
+
+from accounts.models import StudentProfile,MentorProfile,Mentor_assign, StudentDetails
 from django.contrib.auth.decorators import permission_required
 from accounts.models import User
 from django.contrib.auth import logout as django_logout
@@ -19,8 +20,14 @@ def logout(request):
 # Create your views here.
 @login_required
 def studentdetail(request, pk):
-    user = User.objects.get(id=pk)
-    context = {'users': user}
+    # user = StudentDetails.objects.get(student__user__usr_id = request.user.usr_id)
+    user = User.objects.get(usr_id=pk)
+    # print (request.user.usr_id)
+    print(pk)
+    stu = StudentProfile.objects.get(user__usr_id = pk)
+    context = {'users': user,
+                'id': pk,
+                'StudentProfile': stu}
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required
