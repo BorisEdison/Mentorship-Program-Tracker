@@ -16,8 +16,6 @@ from accounts.models import StudentProfile, User, MentorProfile
 @login_required
 def edit(request):
     context = {}
-    
-
     if request.user.is_staff:
         profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
 
@@ -126,31 +124,83 @@ def edit(request):
 
     else:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
-        context = {'profile': profile}
-        print(request.user)
+        context = {
+            'department_list': [
+                'Computer Engineering',
+                'Electronics and Telecommunication Engineering',
+                'Information Technology',
+                'Mechanical Engineering'
+            ],
+            'bloodGroup_list': [
+                'A+',
+                'A-',
+                'B+',
+                'B-',
+                'AB+',
+                'AB-',
+                'O+',
+                'O-'
+            ],
+            'profile': profile,
+            'pk': request.user.usr_id
+        }
         if request.method == "POST":
             fName = request.POST['fName']
-            Lname = request.POST['LName']
-            department = request.POST['department']
-            # phone= request.POST['phone']
-            # email= request.POST['email']
-            # email1= request.POST['email1']
-            # password1= request.POST['password1']
-            # password2= request.POST['password2']
-            profile_img = request.FILES['profile_img']
-            user = User.objects.get(id=request.user.usr_id)
-            # if user already has profile image then delete it
-            if str(user.profile_img) != 'logo.png':
-                user.profile_img.delete()
+            Lname = request.POST['lName']
+            Mname = request.POST['mName']
+            stuid = request.POST['sId']
+            Addr = request.POST['Address']
+            religion = request.POST['Religion']
+            motherTongue = request.POST['mTongue']
+            phone = request.POST['phone']
+            try:
+                if request.POST['dept'] :
+                    department = request.POST['dept']
+                    profile.Branch = department
+            except:
+                pass
+            try:
+                if request.POST['blood_group']:
+                    blood_group = request.POST['blood_group']
+                    profile.Blood_grp = blood_group
+            except:
+                pass
+            try:
+                if request.POST['gender']:
+                    gender = request.POST['gender']
+                    profile.Gender = gender
+            except:
+                pass
+            try:
+                if request.POST['dob']:
+                    DateofBirth = request.POST['dob']
+                    profile.DateofBirth = DateofBirth
+            except:
+                pass
+
+            
+            user = User.objects.get(usr_id=request.user.usr_id)
+            try:
+                if 'profileImg' in request.FILES:
+                    profile_img = request.FILES['profileImg']
+                    # if user already has profile image then delete it
+                    if str(user.profile_img) != 'logo.png':
+                        user.profile_img.delete()
+                    user.profile_img = profile_img
+            except:
+                pass
             user.first_name = fName
+            user.usr_id= stuid
+            user.middle_name=Mname
             user.last_name = Lname
-            user.profile_img = profile_img
+            user.phone = phone
             user.save()
 
-            profile.department = department
+            profile.Address= Addr
+            profile.religion = religion
+            profile.mother_tongue = motherTongue
             profile.save()
-
-            return redirect('/studentdashboard')
+            return redirect('student',pk=user.usr_id)
 
         else:
-            return render(request, 'edit-student-details.html', context)
+            return render(request, 'student-edit.html', context)

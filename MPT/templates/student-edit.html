@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block editButton %}
-<button class="nav-link active nav-pills-link" id="edit-tab" onClick="window.location.reload();" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+<button class="nav-link active nav-pills-link" id="edit-tab" onClick="window.location.href='{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
   <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
   Edit Profile
 </button>
@@ -16,19 +16,6 @@
   </p>
 
   {% include 'components/edit-student-details.html' %}
-
-  <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-
-    <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-      UPDATE PROFILE
-    </button>
-
-    <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-      CANCEL
-      {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-    </button>
-
-  </div>
 
 </div>
 {% endblock %}
