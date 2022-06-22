@@ -54,7 +54,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="number" name='rNo' id="inputRno" class="form-control" placeholder="Roll No" min="1" max="70" value=''>
+            <input type="number"  min=1 name='rNo' id="inputRno" class="form-control" placeholder="Roll No" min="1" max="70" value='{{details.current_rollNo}}'>
             <label for="inputRno">Roll No</label>
           </div>
         </div>
@@ -122,11 +122,18 @@
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
             <select id="inputYear" class="form-select" name="year">
-              <option value="----">----</option>
-              <option value="FE">FE</option>
-              <option value="SE">SE</option>
-              <option value="TE">TE</option>
-              <option value="BE">BE</option>
+              {% if not details.current_year %}
+              <option disabled selected>Please Select Your Current Year</option>
+              {% else %}
+              <option disabled>Please Select Select Your Current Year</option>
+              {% endif %}
+              {% for year in year_list %}
+              {% if details.current_year and details.current_year == year %}
+              <option selected>{{ year}}</option>
+              {% else %}
+              <option>{{ year }}</option>
+              {% endif %}
+              {% endfor %}
             </select>
             <label for="inputYear">Year</label> <br>
           </div>
@@ -253,6 +260,16 @@
               </div>
             </div>
 
+            <div class="row pt-1">
+              <div class="col-12">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='Foccup' class="form-control" id="inputoccup" placeholder="Father's Occupation" value=''>
+                  <label for="Foccup">Occupation</label> <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
                 <select id="inputIncome" class="form-select" name="income">
@@ -266,7 +283,8 @@
               </div>
             </div>
           </div>
-        </div>
+
+          
 
 
         <!-- Mother Details -->
@@ -305,7 +323,7 @@
                   <option value="C">C</option>
                   <option value="D">D</option>
                 </select>
-                <label for="inputIncome">Yearly Income</label> <br>
+                <label for="Moccup">Occupation</label> <br>
               </div>
             </div>
           </div>

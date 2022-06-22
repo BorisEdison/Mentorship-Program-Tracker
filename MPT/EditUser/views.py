@@ -9,7 +9,7 @@ from django.views import generic
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile, User, MentorProfile
+from accounts.models import StudentProfile, User, MentorProfile, StudentDetails
 
 
 # need to do 1-1 relationship with user and mentor while registration
@@ -17,7 +17,7 @@ from accounts.models import StudentProfile, User, MentorProfile
 def edit(request):
     context = {}
     if request.user.is_staff:
-        profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
+        profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
 
         # print("mentor id", profile.id)
         # print("user id", profile.user.id)
@@ -124,6 +124,7 @@ def edit(request):
 
     else:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+        details,created=StudentDetails.objects.get_or_create(student_id=profile.id)
         context = {
             'department_list': [
                 'Computer Engineering',
@@ -141,8 +142,15 @@ def edit(request):
                 'O+',
                 'O-'
             ],
+            'year_list': [
+                'FE',
+                'SE',
+                'TE',
+                'BE'
+            ],
             'profile': profile,
-            'pk': request.user.usr_id
+            'pk': request.user.usr_id,
+            'details':details
         }
         if request.method == "POST":
             fName = request.POST['fName']
@@ -154,9 +162,21 @@ def edit(request):
             motherTongue = request.POST['mTongue']
             phone = request.POST['phone']
             try:
+                if request.POST['rNo'] :
+                    Rno=request.POST['rNo']
+                    details.current_rollNo=Rno
+            except:
+                pass
+            try:
                 if request.POST['dept'] :
                     department = request.POST['dept']
                     profile.Branch = department
+            except:
+                pass
+            try:
+                if request.POST['year'] :
+                    year = request.POST['year']
+                    details.current_year = year
             except:
                 pass
             try:
@@ -199,6 +219,7 @@ def edit(request):
             profile.Address= Addr
             profile.religion = religion
             profile.mother_tongue = motherTongue
+            details.save()
             profile.save()
             return redirect('student',pk=user.usr_id)
 

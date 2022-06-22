@@ -10,25 +10,27 @@ from django.db.models.signals import post_save
 
 
 class User(AbstractUser):
-    usr_id = models.CharField(max_length=50,unique=True)
+    usr_id = models.CharField(max_length=50, unique=True)
     username = None
     email = models.EmailField(max_length=255, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
-    is_staff=models.BooleanField(default=False)
-    is_superuser=models.BooleanField(default=False)
-    first_name=models.CharField(max_length=50,null=True)
-    last_name=models.CharField(max_length=50,null=True)
-    middle_name=models.CharField(max_length=50,null=True)
-    phone= models.CharField(max_length=10,null=True,blank=True)
-    profile_img = models.ImageField(default='logo.png',null=True, blank=True,upload_to='images/')
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
+    middle_name = models.CharField(max_length=50, null=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)
+    profile_img = models.ImageField(
+        default='logo.png', null=True, blank=True, upload_to='images/')
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['usr_id',]
+    REQUIRED_FIELDS = ['usr_id', ]
     objects = CustomUserManager()
 
     def __str__(self):
         return str(self.email)
+
 
 class StudentProfile(models.Model):
     gender_choices = [
@@ -68,73 +70,87 @@ class StudentProfile(models.Model):
     mother_tongue = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return str(self.user.email +' => '+ self.user.first_name)
+        return str(self.user.email + ' => ' + self.user.first_name)
+        # return str(self.id)
 
 
 class StudentDetails(models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True )
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
     current_rollNo = models.IntegerField(unique=True, null=True)
-    AimForLife = models.CharField(max_length=100, blank=True, null=True)
+    AimOfLife = models.CharField(max_length=100, blank=True, null=True)
     reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
-    semester = models.CharField(max_length=50, blank=True, null=True)
+    current_year = models.CharField(max_length=50, blank=True, null=True)
     Course = models.CharField(max_length=50, blank=True, null=True)
     YearOfAdmission = models.IntegerField(null=True)
-    
 
     def __str__(self):
-        return str(self.current_rollNo)+ '' + self.student.user.first_name 
+        return str(self.current_rollNo) + ' ' + self.student.user.first_name + ' '+self.student.user.last_name
+
 
 class StudentContactDetail (models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
-    conct_no = models.IntegerField(null=True, blank=True) #we need to use phonefield 
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
+    conct_no = models.PositiveIntegerField(
+        null=True, blank=True)  # we need to use phonefield
 
-    # pip install django-phonenumber-field[phonenumbers] 
+    # pip install django-phonenumber-field[phonenumbers]
     # conct_no = PhoneNumberField(null = True, blank = True) # Here
 
     def __str__(self):
-        return self.student.user.first_name 
+        return self.student.user.first_name
+
 
 class StudentHobbies (models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
     hobby = models.CharField(max_length=70, null=True, blank=True)
 
     def __str__(self):
-        return self.student.user.first_name 
+        return self.student.user.first_name
+
 
 class GuardianDetails(models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=80, null=True, blank=True)
-    email = models.EmailField(max_length=255, unique=True)
-    relationshipWithStudent = models.CharField(max_length= 50, null=True, blank=True)
-    motherHighestEducation = models.CharField(max_length=50, null=True,  blank=True)
-    fatherHighestEducation = models.CharField(max_length=50, null=True, blank=True)
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
+    father_name = models.CharField(max_length=80, null=True, blank=True)
+    mother_name = models.CharField(max_length=80, null=True, blank=True)
+    relationshipWithStudent = models.CharField(
+        max_length=50, null=True, blank=True)
+    motherHighestEducation = models.CharField(
+        max_length=50, null=True,  blank=True)
+    fatherHighestEducation = models.CharField(
+        max_length=50, null=True, blank=True)
     motherOccupation = models.CharField(max_length=50, null=True, blank=True)
     fatherOccupation = models.CharField(max_length=50, null=True, blank=True)
-    yearlyIncome = models.IntegerField( null=True, blank=True)
-    mother_tongue = models.CharField(max_length=50, null=True, blank=True)
-    religion = models.CharField(max_length=50, null=True)
+    yearlyIncome = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.name+ 'Guardian of' + self.student.user.first_name
+        return self.name + 'Guardian of' + self.student.user.first_name
 
 
 class StudentExtraCurricular(models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
     activityName = models.CharField(max_length=100, null=True, blank=True)
     achievements = models.CharField(max_length=100, null=True, blank=True)
+    clubs = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.student.user.first_name
+
 
 class StudentMedicalReport(models.Model):
-    student = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    student = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
     addiction = models.CharField(max_length=100, null=True, blank=True)
-    phobia = models.CharField(max_length=100, null=True, blank=True) 
+    phobia = models.CharField(max_length=100, null=True, blank=True)
     illness = models.CharField(max_length=100, null=True, blank=True)
-    treatment = models.CharField(max_length=200, null=True, blank=True) 
+    treatment = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.student.user.first_name
+
 
 class MentorProfile(models.Model):
     gender_choices = [
@@ -169,8 +185,8 @@ class MentorProfile(models.Model):
     Branch = models.CharField(max_length=70, null=True, choices=branch_choices)
     Address = models.TextField(max_length=250, null=True)
     City = models.CharField(max_length=50, null=True)
-    State = models.CharField(max_length=50, null=True,default='Maharashtra')
-    Country = models.CharField(max_length=50, null=True,default='India')
+    State = models.CharField(max_length=50, null=True, default='Maharashtra')
+    Country = models.CharField(max_length=50, null=True, default='India')
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
     qualification = models.CharField(max_length=50, null=True)
@@ -185,8 +201,10 @@ class MentorProfile(models.Model):
 
 
 class Mentor_assign(models.Model):
-    Mentor = models.ForeignKey(MentorProfile, on_delete=models.SET_NULL, null=True)
-    Mentee = models.OneToOneField(StudentProfile, on_delete=models.SET_NULL, null=True)
+    Mentor = models.ForeignKey(
+        MentorProfile, on_delete=models.SET_NULL, null=True)
+    Mentee = models.OneToOneField(
+        StudentProfile, on_delete=models.SET_NULL, null=True)
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -221,18 +239,18 @@ def get_mentee(mentor):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender,instance,created, **kwargs):
+def create_user_profile(sender, instance, created, **kwargs):
     if created:
 
         if instance.is_staff:
             MentorProfile.objects.create(user=instance)
-        
+
         if not instance.is_staff:
             StudentProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender,instance, **kwargs):
+def save_user_profile(sender, instance, **kwargs):
     if instance.is_staff:
         try:
             mentor_profile = MentorProfile.objects.get(user=instance)
@@ -248,8 +266,9 @@ def save_user_profile(sender,instance, **kwargs):
         else:
             student_profile.save()
 
+
 @receiver(post_save, sender=User)
-def save_user_profile(sender,instance, **kwargs):
+def save_user_profile(sender, instance, **kwargs):
     if not instance.is_staff:
         try:
             MentorProfile.objects.get(user=instance).delete()
