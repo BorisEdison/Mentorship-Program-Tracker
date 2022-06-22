@@ -290,11 +290,13 @@ def edit(request):
             ReasonForEngg= request.POST['ReasonForEngg']
             Achievements= request.POST['achievements']
             clubs= request.POST['clubs']
+            orgs= request.POST['orgs']
 
             details.reason_of_engg=ReasonForEngg
             details.AimOfLife=aim
             extraCurr.clubs=clubs
             extraCurr.achievements=Achievements
+            extraCurr.organization=orgs
             hobbies.hobby=hobbie
 
 

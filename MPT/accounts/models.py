@@ -136,6 +136,7 @@ class StudentExtraCurricular(models.Model):
     activityName = models.CharField(max_length=100, null=True, blank=True)
     achievements = models.CharField(max_length=100, null=True, blank=True)
     clubs = models.CharField(max_length=100, null=True, blank=True)
+    organization = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.student.user.first_name

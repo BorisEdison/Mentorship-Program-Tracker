@@ -37,7 +37,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{user.middle_name}}'>
+            <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value={% if  user.middle_name != 'None' %}'{{user.middle_name}}' {% else %} '' {% endif %}>
             <label for="inputMname">Middle Name</label>
           </div>
         </div>
@@ -82,7 +82,7 @@
       <div class="row pt-3">
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" >{{profile.Address}}</textarea>
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" >{% if  profile.Address != 'None' %}{{profile.Address}}{% endif %}</textarea>
             <label for="inputAddress">Address</label>
           </div>
         </div>
@@ -103,7 +103,7 @@
       <div class="row pt-3">
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value={% if  profile.religion != 'None' %}'{{profile.religion}}' {% else %} '' {% endif %}>
             <label for="inputReligion">Religion</label>
         </div>
         </div>
@@ -221,7 +221,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value={% if  profile.mother_tongue != 'None' %}'{{profile.mother_tongue}}' {% else %} '' {% endif %}>
             <label for="inputMtongue">Mother Tongue</label>
         </div>
         </div>
@@ -240,7 +240,7 @@
           <div class="row pt-2">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <input type="text" name='FatherName' class="form-control" id="inputname" placeholder="FatherName" value='{{guardian.father_name}}'>
+                <input type="text" name='FatherName' class="form-control" id="inputname" placeholder="FatherName" value={% if  guardian.father_name != 'None' %}'{{guardian.father_name}}' {% else %} '' {% endif %}>
                 <label for="inputname">Full Name</label>
               </div>
             </div>
@@ -306,7 +306,7 @@
           <div class="row pt-2">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <input type="text" name='MotherName' class="form-control" id="inputname" placeholder="MotherName" value='{{guardian.mother_name}}'>
+                <input type="text" name='MotherName' class="form-control" id="inputname" placeholder="MotherName" value={% if  guardian.mother_name != 'None' %}'{{guardian.mother_name}}' {% else %} '' {% endif %}>
                 <label for="inputname">Full Name</label>
               </div>
             </div>
@@ -367,7 +367,7 @@
         <div class="row">
           <div class="col-6">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='addiction' class="form-control" id="inputAddiction" placeholder="Enter Addiction If Any" value='{{Medical.addiction}}'>
+              <input type="text" name='addiction' class="form-control" id="inputAddiction" placeholder="Enter Addiction If Any" value={% if  Medical.addiction != 'None' %}'{{Medical.addiction}}' {% else %} '' {% endif %}>
               <label for="inputAddiction">Addiction</label>
             </div>
 
@@ -375,7 +375,7 @@
 
           <div class="row pt-3">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='illness' class="form-control" id="inputIllness" placeholder="Enter Illness If Any" value='{{Medical.illness}}'>
+              <input type="text" name='illness' class="form-control" id="inputIllness" placeholder="Enter Illness If Any" value={% if  Medical.illness != 'None' %}'{{Medical.illness}}' {% else %} '' {% endif %}>
               <label for="inputIllness">Illness</label>
             </div>
           </div>
@@ -386,14 +386,14 @@
 
           <div class="row">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='phobia' class="form-control" id="inputPhobias" placeholder="Enter Phobia If Any" value='{{Medical.phobia}}'>
+              <input type="text" name='phobia' class="form-control" id="inputPhobias" placeholder="Enter Phobia If Any" value={% if  Medical.phobia != 'None' %}'{{Medical.phobia}}' {% else %} '' {% endif %}>
               <label for="inputPhobias">Phobia</label>
             </div>
           </div>
 
           <div class="row pt-3">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='treatment' class="form-control" id="inputTreatments" placeholder="Give Respective Treatments for Above" value='{{Medical.treatment}}'>
+              <input type="text" name='treatment' class="form-control" id="inputTreatments" placeholder="Give Respective Treatments for Above" value={% if  Medical.treatment != 'None' %}'{{Medical.treatment}}' {% else %} '' {% endif %}>
               <label for="inputTreatments">Treatments</label>
             </div>
           </div>
@@ -412,7 +412,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputAim">Aim</label>
-            <input type="text" name='aim' class="form-control" id="inputAim" placeholder="Your Aim" value='{{details.AimOfLife}}'>
+            <input type="text" name='aim' class="form-control" id="inputAim" placeholder="Your Aim" value={% if  details.AimOfLife != 'None' %}'{{details.AimOfLife}}' {% else %} '' {% endif %}>
           </div>
         </div>
       </div>
@@ -420,7 +420,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputHobbies">Hobbies</label>
-            <input type="text" name='hobby' class="form-control" id="inputHobbies" placeholder="Comma separated" value='{{hobbies.hobby}}'>
+            <input type="text" name='hobby' class="form-control" id="inputHobbies" placeholder="Comma separated" value={% if  hobbies.hobby != 'None' %}'{{hobbies.hobby}}' {% else %} '' {% endif %}>
           </div>
         </div>
       </div>
@@ -428,7 +428,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputReason">Reason for joining Engineering</label>
-            <input type="text" name='ReasonForEngg' class="form-control" id="inputReason" placeholder="Enter Reason" value='{{details.reason_of_engg}}'>
+            <input type="text" name='ReasonForEngg' class="form-control" id="inputReason" placeholder="Enter Reason" value={% if  details.reason_of_engg != 'None' %}'{{details.reason_of_engg}}' {% else %} '' {% endif %}>
           </div>
         </div>
       </div>
@@ -436,7 +436,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputAchievements">Achievements</label>
-            <input type="text" name='achievements' class="form-control" id="inputAchievements" placeholder="Comma separated" value='{{extraCurr.achievements}}'>
+            <input type="text" name='achievements' class="form-control" id="inputAchievements" placeholder="Comma separated" value={% if  extraCurr.achievements != 'None' %}'{{extraCurr.achievements}}' {% else %} '' {% endif %}>
           </div>
         </div>
       </div>
@@ -444,7 +444,15 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputClubs">Clubs</label>
-            <input type="text" name='clubs' class="form-control" id="inputClubs" placeholder="Comma separated" value='{{extraCurr.clubs}}'>
+            <input type="text" name='clubs' class="form-control" id="inputClubs" placeholder="Comma separated" value={% if  extraCurr.clubs != 'None' %}'{{extraCurr.clubs}}' {% else %} '' {% endif %}>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <div class="form-group col-md-10">
+            <label for="inputorg">Organization</label>
+            <input type="text" name='orgs' class="form-control" id="inputorg" placeholder="Comma separated" value={% if  extraCurr.organization != 'None' %}'{{extraCurr.organization}}' {% else %} '' {% endif %}>
           </div>
         </div>
       </div>

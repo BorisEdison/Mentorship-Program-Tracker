@@ -26,7 +26,7 @@
               <p><strong>Roll no</strong></p>
             </div>
             <div class="col-6">
-              <p>{{details.current_rollNo}}</p>
+              {% if  details.current_rollNo != None %}<p>{{details.current_rollNo}}</p>{% endif %}
             </div>
 
             <!--Year-->
@@ -34,7 +34,7 @@
               <p><strong>Year</strong></p>
             </div>
             <div class="col-6">
-            <p>{{details.current_year}}</p>
+            {% if  details.current_year != None %}<p>{{details.current_year}}</p>{% endif %}
             </div>
 
             <!--Department-->
@@ -42,7 +42,7 @@
               <p><strong>Department</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.Branch}}</p>
+            {% if  student.Branch != None %}<p>{{student.Branch}}</p>{% endif %}
             </div>
 
             <!--DOB-->
@@ -50,7 +50,7 @@
               <p><strong>Date of Birth</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.DateofBirth}}</p>
+              {% if  student.DateofBirth != None %}<p>{{student.DateofBirth}}</p>{% endif %}
             </div>
 
             <!--Address-->
@@ -58,7 +58,7 @@
               <p><strong>Address</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.Address}}</p>
+              {% if  student.Address != None %}<p>{{student.Address}}</p>{% endif %}
             </div>
 
           </div>
@@ -73,7 +73,7 @@
               <p><strong>Year Of Admission</strong></p>
             </div>
             <div class="col-6">
-              <p>{{details.YearOfAdmission}}</p> 
+              {% if  details.YearOfAdmission != None or 'None' %}<p>{{details.YearOfAdmission}}</p>{% endif %}
             </div>
 
             <!--Gender-->
@@ -81,7 +81,7 @@
               <p><strong>Gender</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.Gender}}</p>
+              {% if  student.Gender != None %}<p>{{student.Gender}}</p>{% endif %}
             </div>
 
             <!--Blood Group-->
@@ -89,7 +89,7 @@
               <p><strong>Blood Group</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.Blood_grp}}</p>
+              {% if  student.Blood_grp != None %}<p>{{student.Blood_grp}}</p>{% endif %}
             </div>
 
             <!--Mother Tongue-->
@@ -97,7 +97,7 @@
               <p><strong>Mother Tongue</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.mother_tongue}}</p>
+              {% if  student.mother_tongue != None %}<p>{{student.mother_tongue}}</p>{% endif %}
             </div>
 
             <!--Religion-->
@@ -105,7 +105,7 @@
               <p><strong>Religion</strong></p>
             </div>
             <div class="col-6">
-              <p>{{student.religion}}</p>
+              {% if  student.religion != None %}<p>{{student.religion}}</p>{% endif %}
             </div>
 
             <!--Contact no.-->
@@ -147,7 +147,7 @@
               <p><strong>Name</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.mother_name}}</p>
+              {% if  guardian.mother_name != None or 'None' %}<p>{{guardian.mother_name}}</p>{% endif %}
             </div>
 
             <!--Highest Qualification-->
@@ -155,7 +155,7 @@
               <p><strong>Highest Qualification</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.motherHighestEducation}}</p>
+              {% if  guardian.motherHighestEducation != None %}<p>{{guardian.motherHighestEducation}}</p>{% endif %}
             </div>
 
             <!--Occupation-->
@@ -163,7 +163,7 @@
               <p><strong>Occupation</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.motherOccupation}}</p>
+              {% if  guardian.motherOccupation != None %}<p>{{guardian.motherOccupation}}</p>{% endif %}
             </div>
 
             <!--Yearly Income-->
@@ -171,7 +171,7 @@
               <p><strong>Yearly Income</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.yearlyIncome}}</p>
+              {% if  guardian.yearlyIncome != None %}<p>{{guardian.yearlyIncome}}</p>{% endif %}
             </div>
 
           </div>
@@ -189,7 +189,7 @@
               <p><strong>Name</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.father_name}}</p>
+              {% if  guardian.father_name != None %}<p>{{guardian.father_name}}</p>{% endif %}
             </div>
 
             <!--Highest Qualification-->
@@ -197,7 +197,7 @@
               <p><strong>Highest Qualification</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.fatherHighestEducation}}</p>
+              {% if  guardian.fatherHighestEducation != None %}<p>{{guardian.fatherHighestEducation}}</p>{% endif %}
             </div>
 
             <!--Occupation-->
@@ -205,7 +205,7 @@
               <p><strong>Occupation</strong></p>
             </div>
             <div class="col-6">
-              <p>{{guardian.fatherOccupation}}</p>
+              {% if  guardian.fatherOccupation != None %}<p>{{guardian.fatherOccupation}}</p>{% endif %}
             </div>
 
           </div>
@@ -320,7 +320,12 @@
               <p><strong>Hobbies</strong></p>
             </div>
             <div class="col-6">
-              <p>{{hobbies.hobby}}</p>
+              <ul>
+                {% if hobbies.0 != '' %}
+                  {% for hobby in hobbies %}
+                  <li>{{hobby}}</li>
+                  {% endfor %}{% endif %}
+                </ul>
             </div>
 
             <!--Achievements-->
@@ -328,7 +333,21 @@
               <p><strong>Achievements</strong></p>
             </div>
             <div class="col-6">
-              <p>{{extraCurr.achievements}}</p>
+              {% comment %} <p>{{extraCurr.achievements}}</p> {% endcomment %}
+              {% comment %} {% for achievement in extraCurr.achievements| split:","%}
+                <p>{{ achievement }}</p>
+              {% endfor %}  {% endcomment %}
+              
+              <div class="col-6">
+                <ul>
+                  {% if achievements.0 != '' %}
+                  {% for achiv in achievements %}
+                  <li>
+                    <p>{{achiv}}</p>
+                  </li>
+                  {% endfor %}{% endif %}
+                </ul>
+              </div>
             </div>
 
           </div>
@@ -346,19 +365,11 @@
 
             <div class="col-6">
               <ul>
-                <li>
-                  <p>{{extraCurr.clubs}}</p>
-                </li>
-
-                <li>
-                  <p>Dance Club</p>
-                </li>
-
-                <li>
-                  <p>Physics Club</p>
-                </li>
+                {% if clubs.0 != '' %}
+                {% for club in clubs %}
+                <li>{{club}}</li>
+                {% endfor %}{% endif %}
               </ul>
-
             </div>
 
             <!--Organization-->
@@ -367,14 +378,10 @@
             </div>
             <div class="col-6">
               <ul>
-                <li>
-                  <p>ACM</p>
-                </li>
-
-                <li>
-                  <p>DBIT SevaTech</p>
-                </li>
-
+                {% if orgs.0 != '' %}
+                {% for org in orgs %}
+                <li>{{org}}</li>
+                {% endfor %}{% endif %}
               </ul>
             </div>
 
