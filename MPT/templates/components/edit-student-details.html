@@ -54,7 +54,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="number"  min=1 name='rNo' id="inputRno" class="form-control" placeholder="Roll No" min="1" max="70" value='{{details.current_rollNo}}'>
+            <input type="number"  min=1 name='rNo' id="inputRno" class="form-control" placeholder="Roll No" value='{{details.current_rollNo}}'>
             <label for="inputRno">Roll No</label>
           </div>
         </div>
@@ -240,7 +240,7 @@
           <div class="row pt-2">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <input type="text" name='name' class="form-control" id="inputname" placeholder="Father's Name" value=''>
+                <input type="text" name='FatherName' class="form-control" id="inputname" placeholder="FatherName" value='{{guardian.father_name}}'>
                 <label for="inputname">Full Name</label>
               </div>
             </div>
@@ -249,12 +249,19 @@
           <div class="row pt-3">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <select id="inputQualification" class="form-select" name="qualification">
-                  <option value="-">--</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
+                <select id="inputQualification" class="form-select" name="Fqualification">
+                  {% if not guardian.fatherHighestEducation %}
+                  <option disabled selected>Please Select Highest Qualification</option>
+                  {% else %}
+                  <option disabled>Please Select Highest Qualification</option>
+                  {% endif %}
+                  {% for qualification in  qualification_list %}
+                  {% if guardian.fatherHighestEducation and guardian.fatherHighestEducation == qualification %}
+                  <option selected>{{ qualification}}</option>
+                  {% else %}
+                  <option>{{ qualification }}</option>
+                  {% endif %}
+                  {% endfor %}
                 </select>
                 <label for="inputQualfication">Highest Qualification</label> <br>
               </div>
@@ -263,7 +270,20 @@
             <div class="row pt-1">
               <div class="col-12">
                 <div class="form-group form-floating col-md-10">
-                  <input type="text" name='Foccup' class="form-control" id="inputoccup" placeholder="Father's Occupation" value=''>
+                  <select id="inputoccup" class="form-select" name="Foccup">
+                    {% if not guardian.fatherOccupation %}
+                    <option disabled selected>Please Select Respective Occupation</option>
+                    {% else %}
+                    <option disabled>Please Select Highest Respective Occupation</option>
+                    {% endif %}
+                    {% for occupation in  occupation_list %}
+                    {% if guardian.fatherOccupation and guardian.fatherOccupation == occupation %}
+                    <option selected>{{ occupation}}</option>
+                    {% else %}
+                    <option>{{ occupation }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>                  
                   <label for="Foccup">Occupation</label> <br>
                 </div>
               </div>
@@ -272,21 +292,13 @@
           
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <select id="inputIncome" class="form-select" name="income">
-                  <option value="-">--</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-                </select>
+                <input type="number"  min='120000' name='income' id="inputincome" class="form-control" placeholder="Income"  value='{{guardian.yearlyIncome}}'>
                 <label for="inputIncome">Yearly Income</label> <br>
               </div>
             </div>
           </div>
 
           
-
-
         <!-- Mother Details -->
         <div class="col-6">
           <p class="pt-2"><strong>Mother</strong></p>
@@ -294,7 +306,7 @@
           <div class="row pt-2">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <input type="text" name='name' class="form-control" id="inputname" placeholder="Mother's Name" value=''>
+                <input type="text" name='MotherName' class="form-control" id="inputname" placeholder="MotherName" value='{{guardian.mother_name}}'>
                 <label for="inputname">Full Name</label>
               </div>
             </div>
@@ -303,12 +315,19 @@
           <div class="row pt-3">
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <select id="inputQualification" class="form-select" name="qualification">
-                  <option value="-">--</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
+                <select id="inputQualification" class="form-select" name="Mqualification">
+                  {% if not guardian.motherHighestEducation %}
+                  <option disabled selected>Please Select Highest Qualification</option>
+                  {% else %}
+                  <option disabled>Please Select Highest Qualification</option>
+                  {% endif %}
+                  {% for qualification in  qualification_list %}
+                  {% if guardian.motherHighestEducation and guardian.motherHighestEducation == qualification %}
+                  <option selected>{{ qualification}}</option>
+                  {% else %}
+                  <option>{{ qualification }}</option>
+                  {% endif %}
+                  {% endfor %}
                 </select>
                 <label for="inputQualification">Highest Qualification</label> <br>
               </div>
@@ -316,12 +335,19 @@
 
             <div class="col-12">
               <div class="form-group form-floating col-md-10">
-                <select id="inputIncome" class="form-select" name="income">
-                  <option value="-">--</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
+                <select id="inputoccup" class="form-select" name="Moccup">
+                  {% if not guardian.motherOccupation %}
+                  <option disabled selected>Please Select Respective Occupation</option>
+                  {% else %}
+                  <option disabled>Please Select Highest Respective Occupation</option>
+                  {% endif %}
+                  {% for occupation in  occupation_list %}
+                  {% if guardian.motherOccupation and guardian.motherOccupation == occupation %}
+                  <option selected>{{ occupation}}</option>
+                  {% else %}
+                  <option>{{ occupation }}</option>
+                  {% endif %}
+                  {% endfor %}
                 </select>
                 <label for="Moccup">Occupation</label> <br>
               </div>
@@ -341,7 +367,7 @@
         <div class="row">
           <div class="col-6">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='name' class="form-control" id="inputAddiction" placeholder="" value=''>
+              <input type="text" name='addiction' class="form-control" id="inputAddiction" placeholder="Enter Addiction If Any" value='{{Medical.addiction}}'>
               <label for="inputAddiction">Addiction</label>
             </div>
 
@@ -349,7 +375,7 @@
 
           <div class="row pt-3">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='name' class="form-control" id="inputIllness" placeholder="" value=''>
+              <input type="text" name='illness' class="form-control" id="inputIllness" placeholder="Enter Illness If Any" value='{{Medical.illness}}'>
               <label for="inputIllness">Illness</label>
             </div>
           </div>
@@ -360,14 +386,14 @@
 
           <div class="row">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='name' class="form-control" id="inputPhobias" placeholder="" value=''>
+              <input type="text" name='phobia' class="form-control" id="inputPhobias" placeholder="Enter Phobia If Any" value='{{Medical.phobia}}'>
               <label for="inputPhobias">Phobia</label>
             </div>
           </div>
 
           <div class="row pt-3">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='name' class="form-control" id="inputTreatments" placeholder="" value=''>
+              <input type="text" name='treatment' class="form-control" id="inputTreatments" placeholder="Give Respective Treatments for Above" value='{{Medical.treatment}}'>
               <label for="inputTreatments">Treatments</label>
             </div>
           </div>
@@ -386,7 +412,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputAim">Aim</label>
-            <input type="text" name='name' class="form-control" id="inputAim" placeholder="Your Aim" value=''>
+            <input type="text" name='aim' class="form-control" id="inputAim" placeholder="Your Aim" value='{{details.AimOfLife}}'>
           </div>
         </div>
       </div>
@@ -394,7 +420,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputHobbies">Hobbies</label>
-            <input type="text" name='name' class="form-control" id="inputHobbies" placeholder="Comma separated" value=''>
+            <input type="text" name='hobby' class="form-control" id="inputHobbies" placeholder="Comma separated" value='{{hobbies.hobby}}'>
           </div>
         </div>
       </div>
@@ -402,7 +428,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputReason">Reason for joining Engineering</label>
-            <input type="text" name='name' class="form-control" id="inputReason" placeholder="Enter Reason" value='none'>
+            <input type="text" name='ReasonForEngg' class="form-control" id="inputReason" placeholder="Enter Reason" value='{{details.reason_of_engg}}'>
           </div>
         </div>
       </div>
@@ -410,7 +436,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputAchievements">Achievements</label>
-            <input type="text" name='name' class="form-control" id="inputAchievements" placeholder="Comma separated" value=''>
+            <input type="text" name='achievements' class="form-control" id="inputAchievements" placeholder="Comma separated" value='{{extraCurr.achievements}}'>
           </div>
         </div>
       </div>
@@ -418,7 +444,7 @@
         <div class="col-12">
           <div class="form-group col-md-10">
             <label for="inputClubs">Clubs</label>
-            <input type="text" name='name' class="form-control" id="inputClubs" placeholder="Comma separated" value=''>
+            <input type="text" name='clubs' class="form-control" id="inputClubs" placeholder="Comma separated" value='{{extraCurr.clubs}}'>
           </div>
         </div>
       </div>

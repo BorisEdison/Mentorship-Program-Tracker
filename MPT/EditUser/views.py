@@ -9,8 +9,7 @@ from django.views import generic
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile, User, MentorProfile, StudentDetails
-
+from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 
 # need to do 1-1 relationship with user and mentor while registration
 @login_required
@@ -125,6 +124,10 @@ def edit(request):
     else:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
         details,created=StudentDetails.objects.get_or_create(student_id=profile.id)
+        hobbies,created=StudentHobbies.objects.get_or_create(student_id=profile.id)
+        guardian,created=GuardianDetails.objects.get_or_create(student_id=profile.id)
+        extraCurr,created=StudentExtraCurricular.objects.get_or_create(student_id=profile.id)
+        Medical,created=StudentMedicalReport.objects.get_or_create(student_id=profile.id)
         context = {
             'department_list': [
                 'Computer Engineering',
@@ -148,9 +151,37 @@ def edit(request):
                 'TE',
                 'BE'
             ],
+            'qualification_list': [
+                'No formal education',
+                'Primary education',
+                'Secondary education',
+                'Higher secondary education',
+                'GED: Diploma',
+                'Vocational qualification',
+                'Bachelor\'s degree',
+                'Master\'s degree',
+                'Doctorate or higher degree'
+            ],
+            'occupation_list': [
+                'Healthcare Practitioners and Technical Occupation',
+                'Healthcare Support Worker',
+                'Business, Executive, Management, and Financial Occupation',
+                'Architecture and Engineering Occupation',
+                'Education, Training, and Library Occupation',
+                'Other Professional Occupation',
+                'Office and Administrative Support Occupation',
+                'Services Occupation',
+                'Agriculture, Maintenance, Repair, and Skilled Crafts Occupation',
+                'Transportation Occupations and Craft Operator',
+                'Other Occupation'
+            ],
             'profile': profile,
             'pk': request.user.usr_id,
-            'details':details
+            'details':details,
+            'hobbies':hobbies,
+            'guardian':guardian,
+            'extraCurr':extraCurr,
+            'Medical':Medical
         }
         if request.method == "POST":
             fName = request.POST['fName']
@@ -198,7 +229,69 @@ def edit(request):
             except:
                 pass
 
+            # guardian info
+            FatherName = request.POST['FatherName']
+            MotherName = request.POST['MotherName']
+            try:
+                if request.POST['Fqualification']:
+                    Fqualif= request.POST['Fqualification']
+                    guardian.fatherHighestEducation=Fqualif
+            except:
+                pass
+            try:
+                if request.POST['Mqualification']:
+                    Mqualif= request.POST['Mqualification']
+                    guardian.motherHighestEducation=Mqualif
+            except:
+                pass
+            try:
+                if request.POST['Foccup']:
+                    Foccupation= request.POST['Foccup']
+                    guardian.fatherOccupation=Foccupation
+            except:
+                pass
+            try:
+                if request.POST['Moccup']:
+                    Moccupation= request.POST['Moccup']
+                    guardian.motherOccupation=Moccupation
+            except:
+                pass
+            try:
+                if request.POST['income']:
+                    income= request.POST['income']
+                    guardian.yearlyIncome=income
+            except:
+                pass
+
+            guardian.father_name=FatherName
+            guardian.mother_name=MotherName
+
             
+
+            # health info
+            addiction= request.POST['addiction']
+            illness= request.POST['illness']
+            phobia= request.POST['phobia']
+            treatment= request.POST['treatment']
+            Medical.addiction=addiction
+            Medical.illness=illness
+            Medical.phobia=phobia
+            Medical.treatment=treatment
+            
+            #Goals, Hobbies, Extra Curricular Activities
+            aim= request.POST['aim']
+            hobbie= request.POST['hobby']
+            ReasonForEngg= request.POST['ReasonForEngg']
+            Achievements= request.POST['achievements']
+            clubs= request.POST['clubs']
+
+            details.reason_of_engg=ReasonForEngg
+            details.AimOfLife=aim
+            extraCurr.clubs=clubs
+            extraCurr.achievements=Achievements
+            hobbies.hobby=hobbie
+
+
             user = User.objects.get(usr_id=request.user.usr_id)
             try:
                 if 'profileImg' in request.FILES:
@@ -221,6 +314,10 @@ def edit(request):
             profile.mother_tongue = motherTongue
             details.save()
             profile.save()
+            guardian.save()
+            hobbies.save()
+            extraCurr.save()
+            Medical.save()
             return redirect('student',pk=user.usr_id)
 
         else:

@@ -77,7 +77,7 @@ class StudentProfile(models.Model):
 class StudentDetails(models.Model):
     student = models.OneToOneField(
         StudentProfile, on_delete=models.SET_NULL, null=True)
-    current_rollNo = models.IntegerField(unique=True, null=True)
+    current_rollNo = models.PositiveIntegerField(unique=True, null=True)
     AimOfLife = models.CharField(max_length=100, blank=True, null=True)
     reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
     current_year = models.CharField(max_length=50, blank=True, null=True)
@@ -123,10 +123,10 @@ class GuardianDetails(models.Model):
         max_length=50, null=True, blank=True)
     motherOccupation = models.CharField(max_length=50, null=True, blank=True)
     fatherOccupation = models.CharField(max_length=50, null=True, blank=True)
-    yearlyIncome = models.IntegerField(null=True, blank=True)
+    yearlyIncome = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.name + 'Guardian of' + self.student.user.first_name
+        return self.name + ' Guardian of ' + self.student.user.first_name
 
 
 class StudentExtraCurricular(models.Model):
@@ -196,9 +196,6 @@ class MentorProfile(models.Model):
     def __str__(self):
         return str(self.user.email)
 
-    # def get_absolute_url(self):
-    #     return reverse("faculty", kwargs={'pk' : self.id})
-
 
 class Mentor_assign(models.Model):
     Mentor = models.ForeignKey(
@@ -218,18 +215,6 @@ def get_mentee(mentor):
         mentee_list.append(mentee.Mentee)
         mentee_list.extend(get_mentee(mentee.Mentee))
     return mentee_list
-
-
-# def user_post_save(sender, instance, created, **kwargs):
-#     if created:
-#         if instance.is_staff:
-#             instance.groups.add(auth.Group.objects.get(name='Mentor'))
-
-
-# def user_post_save_mentee(sender, instance, created, **kwargs):
-#     if created:
-#         if not instance.is_staff:
-#             instance.groups.add(auth.Group.objects.get(name='Mentee'))
 
 
 ''' this took lot of research and time  to find the solution to the problem of 
