@@ -228,6 +228,12 @@ def edit(request):
                     profile.DateofBirth = DateofBirth
             except:
                 pass
+            try:
+                if request.POST['Yoa']:
+                    yearOfAdd = request.POST['Yoa']
+                    details.YearOfAdmission = yearOfAdd
+            except:
+                pass
 
             # guardian info
             FatherName = request.POST['FatherName']
