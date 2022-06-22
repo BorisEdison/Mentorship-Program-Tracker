@@ -88,3 +88,13 @@ addSemDetail.addEventListener("click", () => {
   // alert("You unlocked an easter egg");
   marksTab.innerHTML += newtab;
 });
+function validateSize(input) {
+    const fileSize = input.files[0].size / 1024; // in KiB
+  // console.log(fileSize)
+    if (fileSize > 500) {
+        alert('File size exceeds 500 KiB');
+        input.value = '';
+        return;
+    }
+
+}
