@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile,User
+from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 # from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
 
@@ -25,10 +25,11 @@ def Adminpage(request):
 def student(request, pk):
     user = User.objects.get(usr_id=pk)
     student=StudentProfile.objects.get(user=user)
-    context = {'student' : student}
+    details=StudentDetails.objects.get(student_id=student.id)
+    hobbies=StudentHobbies.objects.get(student_id=student.id)
+    guardian=GuardianDetails.objects.get(student_id=student.id)
+    extraCurr=StudentExtraCurricular.objects.get(student_id=student.id)
+    Medical=StudentMedicalReport.objects.get(student_id=student.id)
+
+    context = {'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'extraCurr':extraCurr,'Medical':Medical}
     return render(request, 'student-dashboard.html', context)
-
-
-
-# def stud_prof(request):
-#     return render(request, 'student-profile.html')

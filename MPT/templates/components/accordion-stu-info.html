@@ -26,7 +26,7 @@
               <p><strong>Roll no</strong></p>
             </div>
             <div class="col-6">
-              <p>14</p>
+              <p>{{details.current_rollNo}}</p>
             </div>
 
             <!--Year-->
@@ -34,7 +34,7 @@
               <p><strong>Year</strong></p>
             </div>
             <div class="col-6">
-              <p>SE</p>
+            <p>{{details.current_year}}</p>
             </div>
 
             <!--Department-->
@@ -42,7 +42,7 @@
               <p><strong>Department</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.Branch}}</p>
+              <p>{{student.Branch}}</p>
             </div>
 
             <!--DOB-->
@@ -50,7 +50,7 @@
               <p><strong>Date of Birth</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.DateofBirth}}</p>
+              <p>{{student.DateofBirth}}</p>
             </div>
 
             <!--Address-->
@@ -58,7 +58,7 @@
               <p><strong>Address</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.Address}}</p>
+              <p>{{student.Address}}</p>
             </div>
 
           </div>
@@ -73,8 +73,7 @@
               <p><strong>Year Of Admission</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
-              <!-- <p>{{StudentDetail.YearOfAdmission}}</p> -->
+              <p>{{details.YearOfAdmission}}</p> 
             </div>
 
             <!--Gender-->
@@ -82,7 +81,7 @@
               <p><strong>Gender</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.Gender}}</p>
+              <p>{{student.Gender}}</p>
             </div>
 
             <!--Blood Group-->
@@ -90,7 +89,7 @@
               <p><strong>Blood Group</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.Blood_grp}}</p>
+              <p>{{student.Blood_grp}}</p>
             </div>
 
             <!--Mother Tongue-->
@@ -98,7 +97,7 @@
               <p><strong>Mother Tongue</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.mother_tongue}}</p>
+              <p>{{student.mother_tongue}}</p>
             </div>
 
             <!--Religion-->
@@ -106,7 +105,7 @@
               <p><strong>Religion</strong></p>
             </div>
             <div class="col-6">
-              <p>{{StudentProfile.religion}}</p>
+              <p>{{student.religion}}</p>
             </div>
 
             <!--Contact no.-->
@@ -114,7 +113,7 @@
               <p><strong>Contant no</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{user.phone}}</p>
             </div>
 
           </div>
@@ -148,7 +147,7 @@
               <p><strong>Name</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.mother_name}}</p>
             </div>
 
             <!--Highest Qualification-->
@@ -156,7 +155,15 @@
               <p><strong>Highest Qualification</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.motherHighestEducation}}</p>
+            </div>
+
+            <!--Occupation-->
+            <div class="col-6">
+              <p><strong>Occupation</strong></p>
+            </div>
+            <div class="col-6">
+              <p>{{guardian.motherOccupation}}</p>
             </div>
 
             <!--Yearly Income-->
@@ -164,7 +171,7 @@
               <p><strong>Yearly Income</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.yearlyIncome}}</p>
             </div>
 
           </div>
@@ -182,7 +189,7 @@
               <p><strong>Name</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.father_name}}</p>
             </div>
 
             <!--Highest Qualification-->
@@ -190,15 +197,15 @@
               <p><strong>Highest Qualification</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.fatherHighestEducation}}</p>
             </div>
 
-            <!--Yearly Income-->
+            <!--Occupation-->
             <div class="col-6">
-              <p><strong>Yearly Income</strong></p>
+              <p><strong>Occupation</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{guardian.fatherOccupation}}</p>
             </div>
 
           </div>
@@ -231,7 +238,7 @@
               <p><strong>Addiction</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{Medical.addiction}}</p>
             </div>
 
             <!--Illness-->
@@ -239,7 +246,7 @@
               <p><strong>Illness</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{Medical.illness}}</p>
             </div>
 
             <!--Phobia-->
@@ -247,7 +254,7 @@
               <p><strong>Phobia</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{Medical.phobia}}</p>
             </div>
 
             <!--Treatment-->
@@ -255,7 +262,7 @@
               <p><strong>Treatment</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{Medical.treatment}}</p>
             </div>
 
           </div>
@@ -297,8 +304,7 @@
               <p><strong>Aim For Life</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
-              <!-- <p>{{StudentDetail.AimForLife}}</p> -->
+              <p>{{details.AimOfLife}}</p>
             </div>
 
             <!--Reason For Joining Engineering-->
@@ -306,8 +312,7 @@
               <p><strong>Reason For joining Engineering</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
-              <!-- <p>{{StudentDetail.reason_of_engg}}</p> -->
+              <p>{{details.reason_of_engg}}</p>
             </div>
 
             <!--Hobbies-->
@@ -315,7 +320,7 @@
               <p><strong>Hobbies</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{hobbies.hobby}}</p>
             </div>
 
             <!--Achievements-->
@@ -323,7 +328,7 @@
               <p><strong>Achievements</strong></p>
             </div>
             <div class="col-6">
-              <p>-</p>
+              <p>{{extraCurr.achievements}}</p>
             </div>
 
           </div>
@@ -340,10 +345,9 @@
             </div>
 
             <div class="col-6">
-
               <ul>
                 <li>
-                  <p>Math Club</p>
+                  <p>{{extraCurr.clubs}}</p>
                 </li>
 
                 <li>
