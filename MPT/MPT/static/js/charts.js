@@ -81,7 +81,7 @@ var stackedText = {
     ctx.font = "bolder 13px Arial";
     ctx.fillStyle = "rgbs(225,26,104,1)";
     ctx.textAlign = "center";
-    ctx.fillText("5.42", (left + right) / 2, (bottom + top) / 2 - 5);
+    ctx.fillText("9.56", (left + right) / 2, (bottom + top) / 2 - 5);
     ctx.restore();
 
     ctx.font = "bold 8px Arial";
