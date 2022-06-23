@@ -94,16 +94,17 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
+            <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}                
               <div class="modal-body">
-
                 <!--Edit Student Details-->
                 {% include 'components/edit-student-details.html' %}
-
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm">Save changes</button>
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
               </div>
+            </form>
             </div>
           </div>
         </div>
