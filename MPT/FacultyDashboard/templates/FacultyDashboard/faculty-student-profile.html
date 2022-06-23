@@ -30,7 +30,7 @@
 
         <a class="navbar-brand" onClick="window.location.reload();">
           <img src="{{faculty.profile_img.url}}" class=" me-2" width="42" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
-          {% if user.first_name and user.last_name %}{{faculty.first_name}} {{faculty.last_name}} {% endif %}
+          {% if faculty.first_name and faculty.last_name %}{{faculty.first_name}} {{faculty.last_name}} {% endif %}
         </a>
         {% endif %}
       </div>
@@ -75,7 +75,7 @@
 
         <!--Student Name-->
         <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
-          <strong>{{user.first_name}} {{user.last_name}}</strong>
+          <strong>{{user.first_name}} {{user.last_name}} </strong>
         </p>
 
         <!--Edit Student Details Button-->
@@ -112,7 +112,7 @@
 
           <!--Student Image-->
           <div class="col-lg-2 col-md-12 col-sm-12 d-flex align-items-center" style="justify-content: center;">
-            <img src="{% static 'content/mentee/boris.png' %}" class="stu-img" style="height: 22vh; box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5)" alt="hero">
+            <img src="{{user.profile_img.url}}" class="stu-img" style="height: 22vh; box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5)" alt="hero">
           </div>
 
           <!-- Student Info -->
