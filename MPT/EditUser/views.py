@@ -175,7 +175,7 @@ def edit(request):
                 'Transportation Occupations and Craft Operator',
                 'Other Occupation'
             ],
-            'profile': profile,
+            'student': profile,
             'pk': request.user.usr_id,
             'details':details,
             'hobbies':hobbies,

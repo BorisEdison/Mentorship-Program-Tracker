@@ -71,7 +71,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
+            <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if student.DateofBirth %}{{ student.DateofBirth|date:'Y-m-d' }}{% endif %}">
             <label for="inputDob">Date Of Birth</label>
             </select>
           </div>
@@ -82,7 +82,7 @@
       <div class="row pt-3">
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" >{% if  profile.Address != 'None' %}{{profile.Address}}{% endif %}</textarea>
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" >{% if  student.Address != 'None' %}{{student.Address}}{% endif %}</textarea>
             <label for="inputAddress">Address</label>
           </div>
         </div>
@@ -103,7 +103,7 @@
       <div class="row pt-3">
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value={% if  profile.religion != 'None' %}'{{profile.religion}}' {% else %} '' {% endif %}>
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value={% if  student.religion != 'None' %}'{{student.religion}}' {% else %} '' {% endif %}>
             <label for="inputReligion">Religion</label>
         </div>
         </div>
@@ -142,13 +142,13 @@
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
             <select id="inputDept" class="form-select" name="dept">
-              {% if not profile.Branch %}
+              {% if not student.Branch %}
               <option disabled selected>Please Select Your Department</option>
               {% else %}
               <option disabled>Please Select Select Your Department</option>
               {% endif %}
               {% for department in department_list %}
-              {% if profile.Branch and profile.Branch == department %}
+              {% if student.Branch and student.Branch == department %}
               <option selected>{{ department}}</option>
               {% else %}
               <option>{{ department }}</option>
@@ -173,17 +173,17 @@
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
             <select id="inputGender" class="form-select" name="gender">
-              {% if not profile.Gender %}
+              {% if not student.Gender %}
               <option disabled selected>Please Select Your Gender</option>
               {% else %}
               <option disabled>Please Select Your Gender</option>
               {% endif %}
-              {% if profile.Gender and profile.Gender == 'Male' %}
+              {% if student.Gender and student.Gender == 'Male' %}
               <option selected>Male</option>
               {% else %}
               <option>Male</option>
               {% endif %}
-              {% if profile.Gender and profile.Gender == 'Female' %}
+              {% if student.Gender and student.Gender == 'Female' %}
               <option selected>Female</option>
               {% else %}
               <option>Female</option>
@@ -201,13 +201,13 @@
           <div class="form-group form-floating col-md-10">
             <select id="inputBGroup" class="form-select" name="blood_group">
 
-              {% if not profile.Blood_grp %}
+              {% if not student.Blood_grp %}
               <option disabled selected>Please Select Your Blood Group</option>
               {% else %}
               <option disabled>Please Select Your Blood Group</option>
               {% endif %}
               {% for bloodGroup in bloodGroup_list %}
-              {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
+              {% if student.Blood_grp and student.Blood_grp == bloodGroup %}
               <option selected>{{ bloodGroup}}</option>
               {% else %}
               <option>{{ bloodGroup }}</option>
@@ -221,7 +221,7 @@
 
         <div class="col-6">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value={% if  profile.mother_tongue != 'None' %}'{{profile.mother_tongue}}' {% else %} '' {% endif %}>
+            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value={% if  student.mother_tongue != 'None' %}'{{student.mother_tongue}}' {% else %} '' {% endif %}>
             <label for="inputMtongue">Mother Tongue</label>
         </div>
         </div>
