@@ -11,12 +11,61 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 
+studentcontext={
+            'department_list': [
+                'Computer Engineering',
+                'Electronics and Telecommunication Engineering',
+                'Information Technology',
+                'Mechanical Engineering'
+            ],
+            'bloodGroup_list': [
+                'A+',
+                'A-',
+                'B+',
+                'B-',
+                'AB+',
+                'AB-',
+                'O+',
+                'O-'
+            ],
+            'year_list': [
+                'FE',
+                'SE',
+                'TE',
+                'BE'
+            ],
+            'qualification_list': [
+                'No formal education',
+                'Primary education',
+                'Secondary education',
+                'Higher secondary education',
+                'GED: Diploma',
+                'Vocational qualification',
+                'Bachelor\'s degree',
+                'Master\'s degree',
+                'Doctorate or higher degree'
+            ],
+            'occupation_list': [
+                'Healthcare Practitioners and Technical Occupation',
+                'Healthcare Support Worker',
+                'Business, Executive, Management, and Financial Occupation',
+                'Architecture and Engineering Occupation',
+                'Education, Training, and Library Occupation',
+                'Other Professional Occupation',
+                'Office and Administrative Support Occupation',
+                'Services Occupation',
+                'Agriculture, Maintenance, Repair, and Skilled Crafts Occupation',
+                'Transportation Occupations and Craft Operator',
+                'Other Occupation'
+            ],
+            
+        }
 # need to do 1-1 relationship with user and mentor while registration
 @login_required
 def edit(request):
     context = {}
     if request.user.is_staff:
-        profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+        profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
 
         # print("mentor id", profile.id)
         # print("user id", profile.user.id)
@@ -128,61 +177,15 @@ def edit(request):
         guardian,created=GuardianDetails.objects.get_or_create(student_id=profile.id)
         extraCurr,created=StudentExtraCurricular.objects.get_or_create(student_id=profile.id)
         Medical,created=StudentMedicalReport.objects.get_or_create(student_id=profile.id)
-        context = {
-            'department_list': [
-                'Computer Engineering',
-                'Electronics and Telecommunication Engineering',
-                'Information Technology',
-                'Mechanical Engineering'
-            ],
-            'bloodGroup_list': [
-                'A+',
-                'A-',
-                'B+',
-                'B-',
-                'AB+',
-                'AB-',
-                'O+',
-                'O-'
-            ],
-            'year_list': [
-                'FE',
-                'SE',
-                'TE',
-                'BE'
-            ],
-            'qualification_list': [
-                'No formal education',
-                'Primary education',
-                'Secondary education',
-                'Higher secondary education',
-                'GED: Diploma',
-                'Vocational qualification',
-                'Bachelor\'s degree',
-                'Master\'s degree',
-                'Doctorate or higher degree'
-            ],
-            'occupation_list': [
-                'Healthcare Practitioners and Technical Occupation',
-                'Healthcare Support Worker',
-                'Business, Executive, Management, and Financial Occupation',
-                'Architecture and Engineering Occupation',
-                'Education, Training, and Library Occupation',
-                'Other Professional Occupation',
-                'Office and Administrative Support Occupation',
-                'Services Occupation',
-                'Agriculture, Maintenance, Repair, and Skilled Crafts Occupation',
-                'Transportation Occupations and Craft Operator',
-                'Other Occupation'
-            ],
+        context={
             'student': profile,
             'pk': request.user.usr_id,
             'details':details,
             'hobbies':hobbies,
             'guardian':guardian,
             'extraCurr':extraCurr,
-            'Medical':Medical
-        }
+            'Medical':Medical}
+        context.update(studentcontext)
         if request.method == "POST":
             fName = request.POST['fName']
             Lname = request.POST['lName']
