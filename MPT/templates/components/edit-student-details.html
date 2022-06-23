@@ -1,8 +1,5 @@
 {% load static %}
 
-<form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
-
-  {% csrf_token %}
 <div class="row">
   <div class="col-sm-3" id="spy">
     <ul class="nav nav-pills flex-column m-3">
@@ -471,4 +468,3 @@
   </button>
   
 </div>
-</form>

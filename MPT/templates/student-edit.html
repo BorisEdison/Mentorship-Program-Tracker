@@ -14,8 +14,12 @@
   <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
     <strong>Edit Profile</strong>
   </p>
+<form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
+  {% csrf_token %}
+  
   {% include 'components/edit-student-details.html' %}
 
+</form>
 </div>
 {% endblock %}
