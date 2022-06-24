@@ -63,11 +63,11 @@
               <th scope="col">Active</th>
               <th scope="col">Staff</th>
               <th scope="col">Superuser</th>
-              <th scope="col">Action</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {% for users in user %}
+            {% for user in users %}
             <tr>
 
               <td>
@@ -75,24 +75,24 @@
                   <input type="checkbox">
                 </span>
               </td>
-              <th scope="row">{{users.first_name}} {{ users.last_name}}</th>
-              <td>{{users.usr_id}}</td>
-              <td>{{users.email}}</td>
-              <td>{{users.is_active}}</td>
-              <td>{{users.is_staff}}</td>
-              <td>{{users.is_superuser}}</td>
+              <th scope="row">{{user.first_name}} {{ user.last_name}}</th>
+              <td>{{user.usr_id}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.is_active}}</td>
+              <td>{{user.is_staff}}</td>
+              <td>{{user.is_superuser}}</td>
               <td>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="bx:edit" data-width="12" data-height="12"></span>
+                <button type="button" class="btn btn-outline-info ms-auto btn-sm">
+                  <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="11" data-height="12"></span>
+                <button type="button" class="btn btn-outline-danger ms-auto btn-sm">
+                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="12" data-height="12"></span>
+                <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
+                  <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
 
               </td>
@@ -101,13 +101,14 @@
           </tbody>
           <tfoot>
             <tr>
+              <th scope='col'></th>
               <th scope="col">Name</th>
-              <th scope="col">Email</th>
+              <th scope="col">User ID</th>
               <th scope="col">Email</th>
               <th scope="col">Active</th>
               <th scope="col">Staff</th>
               <th scope="col">Superuser</th>
-              <th scope="col">Action</th>
+              <th scope="col">Actions</th>
             </tr>
           </tfoot>
         </table>

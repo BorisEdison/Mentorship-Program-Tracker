@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 
 #logout the logged in user
+@login_required
 def logout(request):
     django_logout(request)
     return redirect('/')
@@ -219,3 +220,12 @@ def faculty(request,pk):
 
     else:
         return HttpResponse("You are not authorized to view this page")    
+
+
+# this is for testing purpose 
+
+def facultymarks(request):
+    return render(request, 'FacultyDashboard/faculty-student-marks.html')
+
+def stumarks(request):
+    return render(request, 'student-marks.html')

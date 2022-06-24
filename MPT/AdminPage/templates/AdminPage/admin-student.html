@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block studentTabContent %}
-<div class="tab-pane fade active" id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
+<div class="tab-pane fade active show " id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
   <div class="container-fluid mb-5">
     <div class="sidebar flex-shrink-0 dashboard-navigation">
       <div class="sidebar-heading d-flex align-items-center justify-content-center">
@@ -46,36 +46,38 @@
         <table class="table table-striped table-bordered" style="widows: 100%;" id="student-table">
           <thead>
             <tr>
-                <th scope="col"></th>
+              <th scope="col"></th>
               <th scope="col">Name</th>
-              <th scope="col">Username</th>
+              <th scope="col">User ID</th>
               <th scope="col">Email</th>
-              <th scope="col">Action</th>
+              <th scope="col">Active</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody id="myTable">
-            {% for users in user %}
+            {% for student in students %}
             <tr>
                 <td>
                     <span class="mb-3">
                         <input type="checkbox">
                       </span>
                 </td>
-              <th scope="row">{{users.first_name}}</th>
-              <td>{{users.username}}</td>
-              <td>{{users.email}}</td>
+              <th scope="row">{{student.user.first_name}} {{student.user.last_name}}</th>
+              <td>{{student.user.usr_id}}</td>
+              <td>{{student.user.email}}</td>
+              <td>{{student.user.is_active}}</td>
               <td>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="bx:edit" data-width="12" data-height="12"></span>
+                <button type="button" class="btn btn-outline-info ms-auto btn-sm">
+                  <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="11" data-height="12"></span>
+                <button type="button" class="btn btn-outline-danger ms-auto btn-sm">
+                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="12" data-height="12"></span>
+                <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
+                  <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
 
               </td>

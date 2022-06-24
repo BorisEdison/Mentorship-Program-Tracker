@@ -3,9 +3,12 @@ from . import views
 
 
 urlpatterns = [
-    path('AdminPage', views.Adminpage, name= 'admin'),
-   
+    # this is for student dashboard
     path('studentdashboard/<str:pk>', views.student, name= 'student'),
-    
-    # path("ViewProfile", views.stud_prof, name="student-profile")
-]
+
+    # this is for admin page
+    path('AdminPage', views.Adminpage, name= 'admin'),
+    path('AdminPage/student', views.Adminstudent, name= 'admin-student'),
+    path('AdminPage/mentor', views.Adminmentor, name= 'admin-mentor'),
+    path('AdminPage/activity', views.Activity, name= 'admin-activity'),
+    ]

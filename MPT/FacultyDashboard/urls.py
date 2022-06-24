@@ -7,4 +7,8 @@ urlpatterns = [
     path('facultydashboard/<str:fac_id>/student/<str:stu_id>/', views.studentdetail, name= 'studentdetail'),
     path('logout/', views.logout, name= 'logout'),
 
+
+    # this is for testing purpose only
+    path('faculty-marks',views.facultymarks, name= 'marks'),
+    path('student-marks',views.stumarks, name= 'student-marks'),
 ]

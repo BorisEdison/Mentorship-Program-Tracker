@@ -38,7 +38,7 @@
                     Welcome  Admin 
                     {% comment %} {% if request.user.is_authenticated and request.user.is_superuser %}
                         {{ request.user.first_name }} {{ request.user.last_name }}
-                    {% endif %} {% endcomment %}
+                    {% endif %}  {% endcomment %}
                 </div>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
@@ -58,25 +58,25 @@
             <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
 
                 {% block userTabButton %}
-                <button class="nav-link active" id="nav-users-tab" onClick="window.location.reload()" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users-tab" aria-selected="true">
+                <button class="nav-link" id="nav-users-tab" onClick="window.location.href='{% url 'admin' %}'" data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users-tab" aria-selected="false">
                     Users
                 </button>
                 {% endblock %}
 
                 {% block studentTabButton %}
-                <button class="nav-link" id="nav-students-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="tab" data-bs-target="#nav-students" type="button" role="tab" aria-controls="nav-students-tab" aria-selected="true">
+                <button class="nav-link" id="nav-students-tab" onclick="window.location.href = '{% url 'admin-student' %}';" data-bs-toggle="tab" data-bs-target="#nav-students" type="button" role="tab" aria-controls="nav-students-tab" aria-selected="false">
                     Students
                 </button>
                 {% endblock %}
 
                 {% block mentorTabButton %}
-                <button class="nav-link" id="nav-mentors-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="tab" data-bs-target="#nav-mentors" type="button" role="tab" aria-controls="nav-mentors-tab" aria-selected="true">
+                <button class="nav-link" id="nav-mentors-tab" onclick="window.location.href = '{% url 'admin-mentor' %}';" data-bs-toggle="tab" data-bs-target="#nav-mentors" type="button" role="tab" aria-controls="nav-mentors-tab" aria-selected="false">
                     Mentors
                 </button>
                 {% endblock %}
 
                 {% block activitiesTabButton %}
-                <button class="nav-link" id="nav-activities-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
+                <button class="nav-link" id="nav-activities-tab" onclick="window.location.href = '{% url 'admin-activity' %}';" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
                     Activities
                 </button>
                 {% endblock %}

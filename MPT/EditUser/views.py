@@ -170,7 +170,7 @@ def edit(request):
         else:
             return render(request, 'EditUser/faculty-edit.html', context)
 
-    else:
+    elif request.user.is_staff == False:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
         details,created=StudentDetails.objects.get_or_create(student_id=profile.id)
         hobbies,created=StudentHobbies.objects.get_or_create(student_id=profile.id)
@@ -275,8 +275,6 @@ def edit(request):
             guardian.father_name=FatherName
             guardian.mother_name=MotherName
 
-            
-
             # health info
             addiction= request.POST['addiction']
             illness= request.POST['illness']
@@ -301,7 +299,6 @@ def edit(request):
             extraCurr.achievements=Achievements
             extraCurr.organization=orgs
             hobbies.hobby=hobbie
-
 
             user = User.objects.get(usr_id=request.user.usr_id)
             try:
