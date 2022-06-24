@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def Open_Cal(request):
-    return render(request, 'faculty-calendar.html')
+    return render(request, 'calender/faculty-calendar.html')
