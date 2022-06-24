@@ -83,18 +83,18 @@
               <td>{{user.is_superuser}}</td>
               <td>
 
-                <button type="button" class="btn btn-outline-info ms-auto btn-sm">
-                  <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
+                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black">
+                  <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
                 </button>
 
-                <form action="{% url 'delete-user' user.id %}" method='POST'>
+                <form action="{% url 'delete-user' user.id %}" class="mb-0" style="display: inline-block" method='POST'>
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-outline-danger ms-auto btn-sm" >
+                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black">
                     <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                   </button> 
                 </form>
 
-                <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
+                <button type="button" class="btn btn-warning ms-auto btn-sm" style="border-color: black">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
 

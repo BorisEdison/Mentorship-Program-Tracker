@@ -81,7 +81,7 @@
                           <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
                         </button>
                       </div>
-                      <form method="POST" enctype="multipart/form-data">
+                      <form method="POST" style="display: inline-block" enctype="multipart/form-data">
                         {% csrf_token %}                
                         <div class="modal-body">
                           <!--Edit Student Details-->
@@ -100,17 +100,15 @@
                       </div>
                     </div>
                   </div>
-        
-          
 
-              <form action="{% url 'delete-user' student.user.id %}" method='POST'>
+              <form action="{% url 'delete-user' student.user.id %}" class="mb-0" style="display: inline-block" method='POST'>
                   {% csrf_token %}
-                <button type="submit" class="btn btn-outline-danger ms-auto btn-sm" onClick="window.location.href='{% url 'delete-user' student.user.id %}'">
+                <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'delete-user' student.user.id %}'">
                   <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                 </button> 
               </form>
 
-                <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
+                <button type="button" class="btn btn-warning ms-auto btn-sm" style="border-color: black">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
               </td>
