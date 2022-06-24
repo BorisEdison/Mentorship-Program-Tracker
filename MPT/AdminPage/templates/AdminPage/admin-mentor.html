@@ -71,10 +71,13 @@
                 <button type="button" class="btn btn-dark ms-auto btn-sm">
                   <span class="iconify" data-icon="bx:edit" data-width="12" data-height="12"></span>
                 </button>
-
-                <button type="button" class="btn btn-dark ms-auto btn-sm">
-                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="11" data-height="12"></span>
-                </button>
+                
+              <form action="{% url 'delete-user' mentor.user.id %}" method='POST'>
+                  {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger ms-auto btn-sm" onClick="window.location.href='{% url 'delete-user' mentor.user.id %}'">
+                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+                </button> 
+              </form>
 
                 <button type="button" class="btn btn-dark ms-auto btn-sm">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="12" data-height="12"></span>

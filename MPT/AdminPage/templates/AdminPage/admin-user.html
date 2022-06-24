@@ -87,9 +87,12 @@
                   <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-outline-danger ms-auto btn-sm">
-                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
-                </button>
+                <form action="{% url 'delete-user' user.id %}" method='POST'>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-danger ms-auto btn-sm" >
+                    <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+                  </button> 
+                </form>
 
                 <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
