@@ -67,19 +67,52 @@
               <td>{{student.user.email}}</td>
               <td>{{student.user.is_active}}</td>
               <td>
-
-                <button type="button" class="btn btn-outline-info ms-auto btn-sm">
+                {% comment %} <button type="button" class="btn btn-outline-info ms-auto btn-sm">
                   <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
-                </button>
+                </button> {% endcomment %}
+                
+                <!-- Edit details -->
+                <div class="modal fade" id="edit-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        {% comment %} <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5> {% endcomment %}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                          <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
+                        </button>
+                      </div>
+                      <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}                
+                        <div class="modal-body">
+                          <!--Edit Student Details-->
+                          {% include 'components/edit-student-details.html' %}
+                        </div>
+        
+                        <div class="modal-footer pb-0">
+                          <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
+                            Save changes
+                          </button>
+                          <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
+                            Close
+                          </button>
+                        </div>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+        
+          
 
-                <button type="button" class="btn btn-outline-danger ms-auto btn-sm">
+              <form action="{% url 'delete-user' student.user.id %}" method='POST'>
+                  {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger ms-auto btn-sm" onClick="window.location.href='{% url 'delete-user' student.user.id %}'">
                   <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
-                </button>
+                </button> 
+              </form>
 
                 <button type="button" class="btn btn-outline-warning ms-auto btn-sm">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
-
               </td>
             </tr>
             {% endfor %}

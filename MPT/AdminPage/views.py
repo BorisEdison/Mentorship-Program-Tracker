@@ -1,8 +1,8 @@
 from audioop import reverse
 import genericpath
 from typing import Generic
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
@@ -68,3 +68,18 @@ def Activity(request):
         return render(request,'AdminPage/admin-activities.html')
     else:
         return HttpResponse("You are not authorized to view this page")
+
+@login_required
+def deleteuser(request,id):
+    if request.user.is_superuser:
+        if request.method=='POST':
+            # User.objects.filter(pk=id).delete()
+            user=User.objects.get(pk=id)
+            check=user.is_staff
+            user.delete()
+            if check:
+                return redirect('admin-mentor')
+            else:
+                return redirect('admin-student')
+
+    return HttpResponse("You are not authorized to view this page")
