@@ -1,12 +1,14 @@
 {% extends "admin.html" %}
 {% load static %}
+
 {% block activitiesTabButton %}
-<button class="nav-link" id="nav-activities-tab" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
+<button class="nav-link active" id="nav-activities-tab" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities" aria-selected="false">
     Activities
 </button>
 {% endblock %}
+
 {% block activitiesTabContent %}
-<div class="tab-pane fade" id="nav-activities" role="tabpanel" aria-labelledby="nav-activities-tab">
+<div class="tab-pane fade active" id="nav-activities" role="tabpanel" aria-labelledby="nav-activities-tab">
     <div class="container-fluid mb-5">
         <div class="sidebar flex-shrink-0 dashboard-navigation">
             <div class="sidebar-heading d-flex align-items-center justify-content-center">
@@ -16,8 +18,8 @@
             <div class="container-fluid">
                 <div class="d-flex bd-highlight mb-3">
                     <div class="p-2 bd-highlight">
-                        <button class="btn btn-light  btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="iconify" data-icon="ci:refresh-02" data-width="22" data-height="22"></span>
+                        <button type="button" onClick="window.location.reload()" class="btn btn-light  btn-sm btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="iconify" data-icon="ci:refresh-02" data-width="25" data-height="25"></span>
                             Refresh List
                         </button>
                     </div>
@@ -25,7 +27,7 @@
                         <input class="form-control" id="myInput" type="text" placeholder="Search..">
                     </div>
                     <div class="ms-auto p-2 bd-highlight">
-                        <button type="button" onclick="alert('Logic to download csv');" class="btn btn-light meetings-btn ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <button type="button" onclick="alert('Logic to download csv');" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
                             Download
                         </button>
@@ -34,7 +36,7 @@
             </div>
             <!-- table -->
             <div class="table-div m-4 mt-4 mb-4">
-                <table class="table ">
+                <table class="table table-striped table-bordered" style="widows: 100%;" id="activity-table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
