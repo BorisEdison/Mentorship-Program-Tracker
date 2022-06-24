@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'calender.apps.CalenderConfig',
     'django.contrib.admin',
     'django.contrib.auth',
