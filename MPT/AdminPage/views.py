@@ -249,7 +249,7 @@ def updateuserprofile(request,usr_id):
                 return redirect('admin-student')
             return render(request, 'AdminPage/admin-student-edit.html', context)
         
-        elif user.is_staff:
+        elif user.is_staff and not user.is_superuser:
             profile = MentorProfile.objects.get(user__usr_id=usr_id)
             context = {
                 'department_list': [
@@ -345,6 +345,7 @@ def updateuserprofile(request,usr_id):
                 return redirect('admin-mentor')
             return render(request, 'AdminPage/admin-mentor-edit.html', context)
 
-
+        else:
+            return HttpResponse(" You are Admin ")
     else:
         return HttpResponse("You are not authorized to view this page")

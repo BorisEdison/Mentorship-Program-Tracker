@@ -84,7 +84,8 @@
               <td>{{user.is_superuser}}</td>
               <td>
 
-                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black">
+                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" 
+                {% if user.is_superuser %} onClick="window.location.reload()" {% else %} onClick="window.location.href='{% url 'update-user' user.usr_id %}'" {% endif %} >
                   <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
                 </button>
 
