@@ -18,8 +18,8 @@ calendarId = "mtop05viv3nnh799dpglb4u1kk@group.calendar.google.com"
 
 # Create your views here.
 
-#def Open_Cal(request):
-#    return render(request, 'calender/faculty-calendar.html')
+def Open_Cal(request):
+    return render(request, 'calender/G-Calendar.html')
 
 def build_service(request):
 
@@ -36,7 +36,7 @@ class HomeView(FormView):
 
         messages.add_message(self.request, messages.INFO, 'Form submission success!!')
 
-        return reverse('Cal')
+        return reverse('Schedule')
 
     
 
