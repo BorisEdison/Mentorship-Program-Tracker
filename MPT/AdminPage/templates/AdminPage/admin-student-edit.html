@@ -1,0 +1,269 @@
+{% extends "admin.html" %}
+{% load static %}
+
+{% block studentTabButton %}
+<button class="nav-link active" id="nav-students-tab" data-bs-toggle="tab" data-bs-target="#nav-students" type="button" role="tab" aria-controls="nav-students-tab" aria-selected="true">
+  Students
+</button>
+{% endblock %}
+
+{% block studentTabContent %}
+{% comment %} {% include 'components/edit-student-details.html' %} {% endcomment %}
+<div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit">
+
+  <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+    <strong>Edit Profile</strong>
+  </p>
+  <form action="{% url 'update-user' user.usr_id %}" method="POST" enctype="multipart/form-data">
+
+  {% csrf_token %}
+  
+  {% include 'components/edit-student-details.html' %}
+
+  {% comment %} <div class="d-flex align-items-center justify-content-center m-3 mt-5"> {% endcomment %}
+  <button type="submit" class="btn btn-sm update-btn ms-auto" onClick="window.location.href='{% url 'admin-student' %}'" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+    UPDATE PROFILE
+  </button>
+  
+  <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-student' %}'" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+    CANCEL
+  </button>
+</form>
+</div>
+{% comment %} <div class="tab-pane fade active show " id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
+  <div class="container-fluid mb-5">
+    <div class="sidebar flex-shrink-0 dashboard-navigation">
+      <div class="sidebar-heading d-flex align-items-center justify-content-center">
+        <h5>Edit</h5>
+      </div>
+
+      <p class="mt-2" style="font-size: 25px; display: flex; justify-content: center;">
+        <strong>{{user.first_name}} {{user.last_name}} </strong>
+      </p>
+
+      <form method="POST" class="align-items-center justify-content-center" style="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!--Edit Student Details-->
+        <div class="align-items-center justify-content-center">
+
+          <!-- First Row  -->
+          <div class="row">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
+                <label for="inputFname">First Name</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value={% if  user.middle_name != 'None' %}'{{user.middle_name}}' {% else %} '' {% endif %}>
+                <label for="inputMname">Middle Name</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Row  -->
+          <div class="row pt-3">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{user.last_name}}'>
+                <label for="inputLname">Last Name</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="number" min=1 name='rNo' id="inputRno" class="form-control" placeholder="Roll No" value='{{details.current_rollNo}}'>
+                <label for="inputRno">Roll No</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Third Row  -->
+          <div class="row pt-3">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='sId' id="inputStudentId" class="form-control" placeholder="Student Id" value='{{user.usr_id}}'>
+                <label for="inputStudentId">Student Id</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if student.DateofBirth %}{{ student.DateofBirth|date:'Y-m-d' }}{% endif %}">
+                <label for="inputDob">Date Of Birth</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fourth Row  -->
+          <div class="row pt-3">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address">{% if  student.Address != 'None' %}{{student.Address}}{% endif %}</textarea>
+                <label for="inputAddress">Address</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}' onchange="validateSize(this)">
+                <label for="formFile" class="form-label">Profile Picture</label>
+                {% if user.profile_img != 'logo.png' %}
+                <strong> image added:</strong>
+                {{user.profile_img |make_list|slice:'7:'|join:''}}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Fifth Row  -->
+          <div class="row pt-3">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value={% if  student.religion != 'None' %}'{{student.religion}}' {% else %} '' {% endif %}>
+                <label for="inputReligion">Religion</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
+                <label for="inputContactNo">Contact No.</label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sixth Row  -->
+          <div class="row pt-3">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputYear" class="form-select" name="year">
+                  {% if not details.current_year %}
+                  <option disabled selected>Please Select Your Current Year</option>
+                  {% else %}
+                  <option disabled>Please Select Select Your Current Year</option>
+                  {% endif %}
+                  {% for year in year_list %}
+                  {% if details.current_year and details.current_year == year %}
+                  <option selected>{{ year}}</option>
+                  {% else %}
+                  <option>{{ year }}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+                <label for="inputYear">Year</label> <br>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputDept" class="form-select" name="dept">
+                  {% if not student.Branch %}
+                  <option disabled selected>Please Select Your Department</option>
+                  {% else %}
+                  <option disabled>Please Select Select Your Department</option>
+                  {% endif %}
+                  {% for department in department_list %}
+                  {% if student.Branch and student.Branch == department %}
+                  <option selected>{{ department}}</option>
+                  {% else %}
+                  <option>{{ department }}</option>
+                  {% endif %}
+                  {% endfor %}
+
+                </select>
+                <label for="inputDept">Department</label> <br>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seventh Row  -->
+          <div class="row">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="month" name='Yoa' id="inputDob" class="form-control" placeholder="Year of Admission" value="{% if details.YearOfAdmission %}{{ details.YearOfAdmission }}{% endif %}">
+                <label for="inputYoa">Year of Admission</label>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputGender" class="form-select" name="gender">
+                  {% if not student.Gender %}
+                  <option disabled selected>Please Select Your Gender</option>
+                  {% else %}
+                  <option disabled>Please Select Your Gender</option>
+                  {% endif %}
+                  {% if student.Gender and student.Gender == 'Male' %}
+                  <option selected>Male</option>
+                  {% else %}
+                  <option>Male</option>
+                  {% endif %}
+                  {% if student.Gender and student.Gender == 'Female' %}
+                  <option selected>Female</option>
+                  {% else %}
+                  <option>Female</option>
+                  {% endif %}
+
+                </select>
+                <label for="inputGender">Gender</label> <br>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eighth Row  -->
+          <div class="row">
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <select id="inputBGroup" class="form-select" name="blood_group">
+
+                  {% if not student.Blood_grp %}
+                  <option disabled selected>Please Select Your Blood Group</option>
+                  {% else %}
+                  <option disabled>Please Select Your Blood Group</option>
+                  {% endif %}
+                  {% for bloodGroup in bloodGroup_list %}
+                  {% if student.Blood_grp and student.Blood_grp == bloodGroup %}
+                  <option selected>{{ bloodGroup}}</option>
+                  {% else %}
+                  <option>{{ bloodGroup }}</option>
+                  {% endif %}
+                  {% endfor %}
+
+                </select>
+                <label for="inputBGroup">Blood Group</label> <br>
+              </div>
+            </div>
+
+            <div class="col-6" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value={% if  student.mother_tongue != 'None' %}'{{student.mother_tongue}}' {% else %} '' {% endif %}>
+                <label for="inputMtongue">Mother Tongue</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+
+      <!-- buttons -->
+      <div class="d-flex align-items-center justify-content-center m-3">
+
+        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          UPDATE PROFILE
+        </button>
+
+        <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          CANCEL
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div> {% endcomment %}
+{% endblock %}

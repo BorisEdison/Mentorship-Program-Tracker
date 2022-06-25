@@ -201,9 +201,9 @@ class MentorProfile(models.Model):
 
 class Mentor_assign(models.Model):
     Mentor = models.ForeignKey(
-        MentorProfile, on_delete=models.SET_NULL, null=True)
+        MentorProfile, on_delete=models.CASCADE, null=True)
     Mentee = models.OneToOneField(
-        StudentProfile, on_delete=models.SET_NULL, null=True)
+        StudentProfile, on_delete=models.CASCADE, null=True)
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -229,7 +229,7 @@ def get_mentee(mentor):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
 
-        if instance.is_staff:
+        if instance.is_staff and not(instance.is_superuser):
             MentorProfile.objects.create(user=instance)
 
         if not instance.is_staff:
@@ -238,14 +238,14 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    if instance.is_staff:
+    if instance.is_staff and not(instance.is_superuser):
         try:
             mentor_profile = MentorProfile.objects.get(user=instance)
         except MentorProfile.DoesNotExist:
             MentorProfile.objects.create(user=instance)
         else:
             mentor_profile.save()
-    else:
+    elif not instance.is_staff:
         try:
             student_profile = StudentProfile.objects.get(user=instance)
         except StudentProfile.DoesNotExist:
@@ -261,7 +261,7 @@ def save_user_profile(sender, instance, **kwargs):
             MentorProfile.objects.get(user=instance).delete()
         except:
             pass
-    if instance.is_staff:
+    if instance.is_staff and not(instance.is_superuser):
         try:
             StudentProfile.objects.get(user=instance).delete()
         except:
