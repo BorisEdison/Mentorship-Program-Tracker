@@ -201,9 +201,9 @@ class MentorProfile(models.Model):
 
 class Mentor_assign(models.Model):
     Mentor = models.ForeignKey(
-        MentorProfile, on_delete=models.SET_NULL, null=True)
+        MentorProfile, on_delete=models.CASCADE, null=True)
     Mentee = models.OneToOneField(
-        StudentProfile, on_delete=models.SET_NULL, null=True)
+        StudentProfile, on_delete=models.CASCADE, null=True)
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
 
