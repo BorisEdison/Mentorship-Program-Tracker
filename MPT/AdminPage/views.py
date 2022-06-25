@@ -83,3 +83,10 @@ def deleteuser(request,id):
                 return redirect('admin-student')
 
     return HttpResponse("You are not authorized to view this page")
+
+@login_required
+def StudentEdit(request):
+    if request.user.is_superuser:
+        return render(request,'AdminPage/admin-student-edit.html')
+    else:
+        return HttpResponse("You are not authorized to view this page")

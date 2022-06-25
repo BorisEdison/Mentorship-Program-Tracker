@@ -12,4 +12,5 @@ urlpatterns = [
     path('AdminPage/mentor', views.Adminmentor, name= 'admin-mentor'),
     path('AdminPage/activity', views.Activity, name= 'admin-activity'),
     path('AdminPage/delete/<str:id>/',views.deleteuser, name= 'delete-user'),
+    path('AdminPage/studentedit',views.StudentEdit, name='admin-student-edit')
     ]
