@@ -8,29 +8,7 @@
 {% endblock %}
 
 {% block studentTabContent %}
-{% comment %} {% include 'components/edit-student-details.html' %} {% endcomment %}
-<div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit">
-
-  <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
-    <strong>Edit Profile</strong>
-  </p>
-  <form action="{% url 'update-user' user.usr_id %}" method="POST" enctype="multipart/form-data">
-
-  {% csrf_token %}
-  
-  {% include 'components/edit-student-details.html' %}
-
-  {% comment %} <div class="d-flex align-items-center justify-content-center m-3 mt-5"> {% endcomment %}
-  <button type="submit" class="btn btn-sm update-btn ms-auto" onClick="window.location.href='{% url 'admin-student' %}'" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-    UPDATE PROFILE
-  </button>
-  
-  <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-student' %}'" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-    CANCEL
-  </button>
-</form>
-</div>
-{% comment %} <div class="tab-pane fade active show " id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
+<div class="tab-pane fade active show " id="nav-students" role="tabpanel" aria-labelledby="nav-students-tab">
   <div class="container-fluid mb-5">
     <div class="sidebar flex-shrink-0 dashboard-navigation">
       <div class="sidebar-heading d-flex align-items-center justify-content-center">
@@ -41,7 +19,7 @@
         <strong>{{user.first_name}} {{user.last_name}} </strong>
       </p>
 
-      <form method="POST" class="align-items-center justify-content-center" style="" enctype="multipart/form-data">
+      <form method="POST" class="align-items-center justify-content-center" action="{% url 'update-user' user.usr_id %}" enctype="multipart/form-data">
         {% csrf_token %}
         <!--Edit Student Details-->
         <div class="align-items-center justify-content-center">
@@ -57,7 +35,7 @@
 
             <div class="col-6" style="display: flex; justify-content: center;">
               <div class="form-group form-floating col-md-10">
-                <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value={% if  user.middle_name != 'None' %}'{{user.middle_name}}' {% else %} '' {% endif %}>
+                <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value={% if  user.middle_name != 'None' or ' ' %} '{{user.middle_name}}' {% else %} '{{guardian.father_name}}' {% endif %}>
                 <label for="inputMname">Middle Name</label>
               </div>
             </div>
@@ -248,22 +226,23 @@
 
         </div>
 
+        
+        <!-- buttons -->
+        <div class="d-flex align-items-center justify-content-center m-3">
+          
+          <button type="submit" class="btn btn-sm update-btn ms-auto"  style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+            UPDATE PROFILE
+          </button>
+          
+          <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-student' %}'" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+            CANCEL
+            {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
+          </button>
+          
+        </div>
       </form>
-
-      <!-- buttons -->
-      <div class="d-flex align-items-center justify-content-center m-3">
-
-        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          UPDATE PROFILE
-        </button>
-
-        <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          CANCEL
-        </button>
-
-      </div>
 
     </div>
   </div>
-</div> {% endcomment %}
+</div>
 {% endblock %}
