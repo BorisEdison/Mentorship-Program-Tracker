@@ -90,3 +90,10 @@ def StudentEdit(request):
         return render(request,'AdminPage/admin-student-edit.html')
     else:
         return HttpResponse("You are not authorized to view this page")
+
+@login_required
+def MentorEdit(request):
+    if request.user.is_superuser:
+        return render(request,'AdminPage/admin-mentor-edit.html')
+    else:
+        return HttpResponse("You are not authorized to view this page")
