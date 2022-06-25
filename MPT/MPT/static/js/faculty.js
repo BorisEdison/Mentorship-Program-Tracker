@@ -36,10 +36,10 @@ btn_cancel.addEventListener("click", () => {
   });
 });
 
-btn_schedule.addEventListener("click", () => {
+/*btn_schedule.addEventListener("click", () => { 
   alert("Yay! You scheduled stuffs😎");
   btn_status(true);
   cbs.forEach((cb) => {
     cb.checked = false;
   });
-});
+});*/

@@ -13,7 +13,7 @@
         {% endfor %}
     </div>
     <div class="picker">
-        <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Cal' %}" method="POST">
+        <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Schedule' %}" method="POST">
            {% csrf_token %}
             <div class="picker__component">
                 <p class="picker__label">Event name</p>
