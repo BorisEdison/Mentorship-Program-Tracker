@@ -57,11 +57,11 @@
           <tbody id="myTable">
             {% for student in students %}
             <tr>
-                <td>
-                    <span class="mb-3">
-                        <input type="checkbox">
-                      </span>
-                </td>
+              <td>
+                <span class="mb-3">
+                  <input type="checkbox">
+                </span>
+              </td>
               <th scope="row">{{student.user.first_name}} {{student.user.last_name}}</th>
               <td>{{student.user.usr_id}}</td>
               <td>{{student.user.email}}</td>
@@ -70,43 +70,17 @@
                 {% comment %} <button type="button" class="btn btn-outline-info ms-auto btn-sm">
                   <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
                 </button> {% endcomment %}
-                
-                <!-- Edit details -->
-                <div class="modal fade" id="edit-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        {% comment %} <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5> {% endcomment %}
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                          <span class="iconify" data-icon="bx:edit" data-width="18" data-height="18"></span>
-                        </button>
-                      </div>
-                      <form method="POST" style="display: inline-block" enctype="multipart/form-data">
-                        {% csrf_token %}                
-                        <div class="modal-body">
-                          <!--Edit Student Details-->
-                          {% include 'components/edit-student-details.html' %}
-                        </div>
-        
-                        <div class="modal-footer pb-0">
-                          <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
-                            Save changes
-                          </button>
-                          <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
-                            Close
-                          </button>
-                        </div>
-                      </form>
-                      </div>
-                    </div>
-                  </div>
 
-              <form action="{% url 'delete-user' student.user.id %}" class="mb-0" style="display: inline-block" method='POST'>
+                <button type="button" class="btn btn-info ms-auto btn-sm" data-bs-toggle="modal" data-bs-target="#edit-details" style="border-color: black">
+                  <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+                </button>
+
+                <form action="{% url 'delete-user' student.user.id %}" class="mb-0" style="display: inline-block" method='POST'>
                   {% csrf_token %}
-                <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'delete-user' student.user.id %}'">
-                  <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
-                </button> 
-              </form>
+                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'delete-user' student.user.id %}'">
+                    <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+                  </button>
+                </form>
 
                 <button type="button" class="btn btn-warning ms-auto btn-sm" style="border-color: black">
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
@@ -117,6 +91,35 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Edit details modal-->
+      <div class="modal fade" id="edit-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              {% comment %} <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5> {% endcomment %}
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" style="display: inline-block" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="modal-body">
+                <!--Edit Student Details-->
+                {% include 'components/edit-student-details.html' %}
+              </div>
+
+              <div class="modal-footer pb-0">
+                <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
+                  Save changes
+                </button>
+                <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
