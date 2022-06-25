@@ -55,26 +55,26 @@
             </tr>
           </thead>
           <tbody id="myTable">
-            {% for mentor in mentors %}
+            {% for user in users %}
             <tr>
               <td>
                 <span class="mb-3">
                   <input type="checkbox">
                 </span>
               </td>
-              <th scope="row">{{mentor.user.first_name}} {{mentor.user.last_name}}</th>
-              <td>{{mentor.user.usr_id}}</td>
-              <td>{{mentor.user.email}}</td>
-              <td>{{mentor.user.is_active}}</td>
+              <th scope="row">{{user.first_name}} {{user.last_name}}</th>
+              <td>{{user.usr_id}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.is_active}}</td>
               <td>
 
-                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black">
+                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'update-user' user.usr_id%}'">
                   <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
                 </button>
 
-                <form action="{% url 'delete-user' mentor.user.id %}" class="mb-0" style="display: inline-block" method='POST'>
+                <form action="{% url 'delete-user' user.id %}" class="mb-0" style="display: inline-block" method='POST'>
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'delete-user' mentor.user.id %}'">
+                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'delete-user' user.id %}'">
                     <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                   </button>
                 </form>

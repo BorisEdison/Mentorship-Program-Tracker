@@ -20,201 +20,243 @@
         <strong>{{user.first_name}} {{user.last_name}} </strong>
       </p>
 
-      <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
+      <form action="{% url 'update-user' user.usr_id %}" method="POST" enctype="multipart/form-data">
+
         {% csrf_token %}
-
-        <div class="align-items-center justify-content-center">
-
-          <!-- First Row  -->
+        <div class="container mt-2 mb-3">
           <div class="row">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{user.first_name}}'>
-                <label for="inputFname">First Name</label>
+    
+            <!-- First Row  -->
+            <div class="row">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='fName' class="form-control" id="inputFname" placeholder="First Name" value='{{profile.user.first_name}}'>
+                  <label for="inputFname">First Name</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.user.middle_name}}'>
+                  <label for="inputMname">Middle Name</label>
+                </div>
               </div>
             </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{user.middle_name}}'>
-                <label for="inputMname">Middle Name</label>
+    
+            <!-- Second Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{profile.user.last_name}}'>
+                  <label for="inputLname">Last Name</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group col-md-10">
+                  <div class="file-upload">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileName">Choose File</div>
+                      <div class="file-select-name" id="noFile">
+                        {% if user.profile_img != 'logo.png' %}
+                        {{user.profile_img |make_list|slice:'7:'|join:''}}</p>
+                        {% else %}
+                        No file chosen...
+                        {% endif %}
+                      </div> 
+                      <input name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img.url}}'>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+    
+            <!-- Third Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='usr_id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{ user.usr_id}}'>
+                  <label for="inputTeacherId">Teacher Id</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <select id="inputDept" class="form-select" name="dept">
+                    {% if not profile.Branch %}
+                    <option disabled selected>Please Select Your Branch</option>
+                    {% else %}
+                    <option disabled>Please Select Select Your Branch</option>
+                    {% endif %}
+                    {% for department in department_list %}
+                    {% if profile.Branch and profile.Branch == department %}
+                    <option selected>{{ department}}</option>
+                    {% else %}
+                    <option>{{ department }}</option>
+                    {% endif %}
+                    {% endfor %}
+    
+                  </select>
+                  <label for="inputDept">Department</label> <br>
+                </div>
               </div>
             </div>
+    
+            <!-- Forth Row  -->
+            <div class="row">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <select id="inputBGroup" class="form-select" name="blood_group">
+    
+                    {% if not profile.Blood_grp %}
+                    <option disabled selected>Please Select Your Blood Group</option>
+                    {% else %}
+                    <option disabled>Please Select Your Blood Group</option>
+                    {% endif %}
+                    {% for bloodGroup in bloodGroup_list %}
+                    {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
+                    <option selected>{{ bloodGroup}}</option>
+                    {% else %}
+                    <option>{{ bloodGroup }}</option>
+                    {% endif %}
+                    {% endfor %}
+    
+                  </select>
+                  <label for="inputBGroup">Blood Group</label> <br>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <select id="inputGender" class="form-select" name="gender">
+                    {% if not profile.Gender %}
+                    <option disabled selected>Please Select Your Gender</option>
+                    {% else %}
+                    <option disabled>Please Select Your Gender</option>
+                    {% endif %}
+                    {% if profile.Gender and profile.Gender == 'Male' %}
+                    <option selected>Male</option>
+                    {% else %}
+                    <option>Male</option>
+                    {% endif %}
+                    {% if profile.Gender and profile.Gender == 'Female' %}
+                    <option selected>Female</option>
+                    {% else %}
+                    <option>Female</option>
+                    {% endif %}
+    
+                  </select>
+                  <label for="inputGender">Gender</label> <br>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Fifth Row  -->
+            <div class="row">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
+                  <label for="inputDob">Date Of Birth</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
+                  <label for="inputDoj">Date of Joining</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Sixth Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>{{profile.Address}}</textarea>
+                  <label for="inputAddress">Address</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
+                  <label for="inputcity">City</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Seventh Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
+                  <label for="inputstate">State</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
+                  <label for="inputcountry">Country</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Eight Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
+                  <label for="inputQuali">Qualification</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+                  <label for="inputMtongue">Mother Tongue</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Ninth Row  -->
+            <div class="row pt-3">
+              <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+                  <label for="inputReligion">Religion</label>
+                </div>
+              </div>
+    
+              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
+                  <label for="inputContactNo">Contact No.</label>
+                </div>
+              </div>
+    
+            </div>
+    
           </div>
-
-          <!-- Second Row  -->
-          <div class="row pt-3">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='lName' class="form-control" id="inputLname" placeholder="Last Name" value='{{user.last_name}}'>
-                <label for="inputLname">Last Name</label>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='usr_id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{ user.usr_id}}'>
-                <label for="inputTeacherId">Teacher Id</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Third Row  -->
-          <div class="row pt-3">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <select id="inputYear" class="form-select" name="year">
-                  <option value="----">----</option>
-                  <option value="FE">FE</option>
-                  <option value="SE">SE</option>
-                  <option value="TE">TE</option>
-                  <option value="BE">BE</option>
-                </select>
-                <label for="inputYear">Year</label> <br>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <select id="inputDept" class="form-select" name="dept">
-                  <option value="--------------">--------------</option>
-                  <option value="Computer">Computer</option>
-                  <option value="IT">IT</option>
-                  <option value="EXTC">EXTC</option>
-                  <option value="Mechanical">Mechanical</option>
-                </select>
-                <label for="inputDept">Department</label> <br>
-              </div>
-            </div>
-          </div>
-
-          <!-- Forth Row  -->
-          <div class="row">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <select id="inputBGroup" class="form-select" name="bGroup">
-                  <option value="-----">-----</option>
-                  <option value="A+">A+</option>
-                  <option value="B+">B+</option>
-                  <option value="O+">O+</option>
-                  <option value="AB+">AB+</option>
-                  <option value="A-">A-</option>
-                  <option value="B-">B-</option>
-                  <option value="O-">O-</option>
-                  <option value="AB-">AB-</option>
-                </select>
-                <label for="inputBGroup">Blood Group</label> <br>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <select id="inputGender" class="form-select" name="gender">
-                  <option value="-----">-----</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-                <label for="inputGender">Gender</label> <br>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fifth Row  -->
-          <div class="row">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value=''>
-                <label for="inputDob">Date Of Birth</label>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value=''>
-                <label for="inputDoj">Date of Joining</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sixth Row  -->
-          <div class="row pt-3">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''></textarea>
-                <label for="inputAddress">Address</label>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-
-              <div class="form-group form-floating col-md-10">
-                {% comment %} <div class="custom-file"> {% endcomment %}
-                  <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}'>
-                  <label for="formFile" class="form-label">Profile Picture</label>
-                  {% comment %} {% if user.profile_img != 'logo.png' %}
-                  image added:
-                  <a href='{{user.profile_img.url}}'>{{user.profile_img |make_list|slice:'7:'|join:''}}</a>
-                  {% endif %} {% endcomment %}
-
-                  {% comment %}
-                </div> {% endcomment %}
-              </div>
-            </div>
-          </div>
-
-          <!-- Seventh Row  -->
-          <div class="row pt-3">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value=''>
-                <label for="inputQuali">Qualification</label>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value=''>
-                <label for="inputMtoungue">Mother Tongue</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Eighth Row  -->
-          <div class="row pt-3">
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value=''>
-                <label for="inputReligion">Religion</label>
-              </div>
-            </div>
-
-            <div class="col-6" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}">
-                <label for="inputContactNo">Contact No.</label>
-              </div>
-            </div>
-
-          </div>
-
+    
         </div>
+    
+        <!-- buttons -->
+        <div class="d-flex align-items-center justify-content-center m-3 mt-5">
+    
+          <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+            UPDATE PROFILE
+          </button>
+    
+          <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+            CANCEL
+          </button>
+    
+        </div>
+    
       </form>
-
-          <!-- buttons -->
-    <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-
-        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          UPDATE PROFILE
-        </button>
-  
-        <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          CANCEL
-          {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-        </button>
-  
-      </div>
-
-    </div>
+    
   </div>
 </div>
 
