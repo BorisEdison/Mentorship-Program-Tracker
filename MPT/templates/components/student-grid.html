@@ -18,12 +18,15 @@
         Select All
       </button>
 
-      <button type="button" class="btn btn-sm ms-auto select-btn" onclick="window.location.href = '{% url 'Schedule' %}';" name="btn-show" id="schedule-btn" style=" margin-left: 10px; width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      <button type="button" class="btn btn-sm ms-auto select-btn" data-bs-toggle="modal" data-bs-target="#schedule-meet" name="btn-show" id="schedule-btn" style=" margin-left: 10px; width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
         <span class="iconify" data-icon="akar-icons:schedule" data-width="20" data-height="20"></span>
         Schedule meeting
       </button>
 
     </div>
+
+    <!--Schedule Meet Modal-->
+    {% include 'components/schedule-meet-modal.html' %}
 
     {% comment %} {% for users in user %} {% endcomment %}
     {% comment %} <li class="shrink grid-li">

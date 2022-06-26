@@ -106,7 +106,3 @@ class HomeView(FormView):
         }
 
         return context
-
-
-
-
