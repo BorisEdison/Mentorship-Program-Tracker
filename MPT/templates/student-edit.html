@@ -10,24 +10,23 @@
 
 {% block editContent %}
 <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit">
-
-  <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+  <p class="h4 pb-3 d-flex justify-content-center">
     <strong>Edit Profile</strong>
   </p>
-<form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
+  <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
-  {% csrf_token %}
-  
-  {% include 'components/edit-student-details.html' %}
-  <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-  <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-    UPDATE PROFILE
-  </button>
-  
-  <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-    CANCEL
-  </button>
-</div>
-</form>
+    {% csrf_token %}
+    
+    {% include 'components/edit-student-details.html' %}
+    <div class="d-flex align-items-center justify-content-center m-3 mt-5">
+    <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn">
+      UPDATE PROFILE
+    </button>
+    
+    <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.reload()">
+      CANCEL
+    </button>
+  </div>
+  </form>
 </div>
 {% endblock %}
