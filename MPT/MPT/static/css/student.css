@@ -28,8 +28,7 @@ h6 {
   background-color: #dbe2ef;
   border-radius: 13px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-  margin: 10px 0;
-  margin-top: 5.5vh;
+  margin: 5.5vh 0 10px 0;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
   background-color: #112D4E !important;
@@ -37,9 +36,6 @@ h6 {
 }
 .nav-pills-link {
   color: #112D4E !important;
-}
-.dashboard-navigation {
-  padding-right: 0;
 }
 
 /* nav-tab */
@@ -85,22 +81,28 @@ justify-content: space-between;
   height: 250px;
   overflow: auto;
 }
-.graphs {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
+
+.graphs > span {
+  max-width: 350px;
 }
-.stu-img{
+
+.graphs > span > canvas {
+  width:500px; 
+  height:250px;
+}
+
+.stu-image {
   display: block;
   border: none;
   border-radius: 10px;
+  height: 22vh; 
+  box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5)
 }
-.stu-info > img {
-  width: 120px;
-  height: auto;
+
+.stu-info > accordion {
+  border-radius: 4px;
 }
-.stu-info > span {
+/*.stu-info > span {
   display: flex;
   flex-direction: column;
   max-width: 20ch;
@@ -108,6 +110,17 @@ justify-content: space-between;
 }
 .stu-info > span > p {
   font-size: 20px;
+}*/
+
+
+.session-record-btn {
+  padding: 2.3vh;
+}
+
+.session-record-btn > button {
+  background-color:#112D4E; 
+  color:white; 
+  border-radius: 7px;
 }
 
 @media (max-width:800px) {

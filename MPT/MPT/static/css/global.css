@@ -1,0 +1,36 @@
+/* ------------------ CSS file that stores globally used styles ------------------ */
+@import "../vendor/bootstrap/bootstrap.min.css";
+:root {
+    /*------ Normal color classes ------ */
+    --bg-color: #F0F4FB;
+    --header-bg:#3F72AF;
+    --light-accent-color:#D6E5FF;
+    --dark-accent-color:#344F6D;
+    --text-white:#FFFFFF;
+    --text-black:#000000;
+    /*------ Dark mode color classes ------ */
+
+}
+
+.custom-btn {
+    width: auto; 
+    border-radius: 7px; 
+    background-color: #112D4E; 
+    color: white; 
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5); 
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 10px;
+    transform: scale(0.8);
+    transition: all 2s;
+    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);
+}
+
+.custom-section-title {
+    @extend .h4 .pb-3 .d-flex .justify-content-center;
+}

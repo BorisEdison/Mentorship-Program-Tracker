@@ -23,13 +23,13 @@
     <!-- First Year -->
     <div class="tab-pane fade show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
 
-      <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+      <p class="h4 pb-3 d-flex justify-content-center">
         <strong>Edit Marks</strong>
       </p>
 
       <div class="mb-3" id="marks" name="edit-body">
         <span></span>
-        <button type="button" id="add-marks-btn" class="btn btn-sm ms-auto select-btn" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <button type="button" id="add-marks-btn" class="btn btn-sm ms-auto select-btn custom-btn">
           Add Semester Details
         </button>
       </div>
@@ -37,11 +37,11 @@
       <!-- buttons -->
       <div class="d-flex align-items-center justify-content-center m-3 mt-5">
 
-        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn">
           UPDATE PROFILE
         </button>
 
-        <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.reload()">
           CANCEL
           {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
         </button>

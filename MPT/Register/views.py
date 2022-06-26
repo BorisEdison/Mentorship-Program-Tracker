@@ -51,11 +51,12 @@ def StudentRegister(request):
     return render(request, 'Register/register.html',context)
 
 # Faculty Registration
-def AdminRegister(request):
+def FacultyRegister(request):
     if request.method == 'POST':
         # fname= request.POST['name']
         # Lname= request.POST['Lname']
         # phone= request.POST['phone']
+        usr_id= request.POST['usr_id']
         email= request.POST['email']
         email1= request.POST['email1']
         password1= request.POST['password1']
@@ -68,7 +69,7 @@ def AdminRegister(request):
                 return render(request, 'Register/register.html')
 
             else: 
-                user= User.objects.create_superuser(email=email, password= password1)
+                user= User.objects.create_staffuser(usr_id = usr_id, email=email, password= password1)
                 user.save()
                 return redirect('/AdminPage')
  
@@ -79,7 +80,46 @@ def AdminRegister(request):
                 messages.info(request, "Email does not match")
 
     context = {'page': 'SuperUser',
-                'title': 'Add New Admin'
+                'title': 'Add New Teacher',
+                'action': 'Add-Faculty'
+                }
+
+    return render(request, 'Register/register.html', context)
+
+
+# Faculty Registration
+def AdminRegister(request):
+    if request.method == 'POST':
+        # fname= request.POST['name']
+        # Lname= request.POST['Lname']
+        # phone= request.POST['phone']
+        usr_id= request.POST['usr_id']
+        email= request.POST['email']
+        email1= request.POST['email1']
+        password1= request.POST['password1']
+        password2= request.POST['password2']
+
+        if password1==password2 and email==email1:
+                
+            if User.objects.filter(email=email).exists():
+                messages.info(request, "Email Already Taken")
+                return render(request, 'Register/register.html')
+
+            else: 
+                user= User.objects.create_superuser(usr_id = usr_id, email=email, password= password1)
+                user.save()
+                return redirect('/AdminPage')
+ 
+        else: 
+            if password1!=password2:
+                messages.info(request, "Password does not match")
+            else:
+                messages.info(request, "Email does not match")
+
+    context = {'page': 'SuperUser',
+                'title': 'Add New Admin',
+                'action': 'Add-Admin'
+
                 }
 
     return render(request, 'Register/register.html', context)

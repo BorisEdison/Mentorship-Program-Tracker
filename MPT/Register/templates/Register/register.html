@@ -111,7 +111,7 @@
     {% elif page == 'SuperUser' %}
 
 
-    <form action="Add-Faculty" method="POST">
+    <form action="{{ action }}" method="POST">
 
       <h1 class="h3 mb-3">{{title}}</h1>
       <p style="opacity: 0.7;">Register by entering information below</p>
@@ -125,11 +125,11 @@
 
           <div class="">
             <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
-          </div>
+          </div> {% endcomment %}
 
           <div class="">
-            <input type="text" name="username" class="form-control middle" placeholder="username" required>
-          </div> {% endcomment %}
+            <input type="text" name="usr_id" class="form-control middle" placeholder="User ID" required>
+          </div>
 
           <div class="">
             <input type="email" name="email" class="form-control top" placeholder="Email" required>
