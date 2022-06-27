@@ -2,62 +2,61 @@
 {% load widget_tweaks %}
 
 <div class="modal fade" id="schedule-meet" tabindex="-1">
-    <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Schedule Meet</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule Meet</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="event">
+          {% for item in booking_event %}
+          <ul class="event__list">
+            <li>Event title:{{ item.0 }}</li>
+            <li>Start_date_time:{{ item.1 }}</li>
+            <li>End_date_time:{{ item.2 }}</li>
+          </ul>
+          {% endfor %}
         </div>
-            <div class="modal-body">
-
-                <div class="event">
-                    {% for item in booking_event %}
-                    <ul class="event__list">
-                        <li>Event title:{{ item.0 }}</li>
-                        <li>Start_date_time:{{ item.1 }}</li>
-                        <li>End_date_time:{{ item.2 }}</li>
-                    </ul>
-                    {% endfor %}
-                </div>
-                <div class="picker">
-                    <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Schedule' %}" method="POST">
-                       {% csrf_token %}
-                        <div class="picker__component">
-                            <p class="picker__label">Event name</p>
-                            {% comment %} {% render_field  form.eventTitle class+="picker__field" %} {% endcomment %}
-                        </div>
-                        <div class="picker__component">
-                            <p class="picker__label">Start Time</p>
-                            {% comment %} {% render_field  form.startDateTime class+="picker__field" %} {% endcomment %}
-                        </div>
-                        <div class="picker__component">
-                            <p class="picker__label">End Time</p>
-                            {% comment %} {% render_field  form.endDateTime class+="picker__field" %} {% endcomment %}
-                       </div>
-                        <input type="submit" value="Submit" class="picker__button">
-                    </form>
-                </div>
-                <div class="display_message">
-                  {% if messages %}
-                      <ul class="messages">
-                          {% for message in messages %}
-                          <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-                          {% endfor %}
-                      </ul>
-                  {% endif %}
-                  </div>
-
+        <div class="picker">
+          <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Schedule' %}" method="POST">
+            {% csrf_token %}
+            <div class="picker__component">
+              <p class="picker__label">Event name</p>
+              {% comment %} {% render_field  form.eventTitle class+="picker__field" %} {% endcomment %}
             </div>
-
-            <div class="modal-footer pb-0">
-            <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
-                Save changes
-            </button>
-            <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
-                Close
-            </button>
+            <div class="picker__component">
+              <p class="picker__label">Start Time</p>
+              {% comment %} {% render_field  form.startDateTime class+="picker__field" %} {% endcomment %}
             </div>
-        </form>
+            <div class="picker__component">
+              <p class="picker__label">End Time</p>
+              {% comment %} {% render_field  form.endDateTime class+="picker__field" %} {% endcomment %}
+            </div>
+            <input type="submit" value="Submit" class="picker__button">
+          </form>
         </div>
+        <div class="display_message">
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+      </div>
+
+      <div class="modal-footer pb-0">
+        <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
+          Save changes
+        </button>
+        <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
+          Close
+        </button>
+      </div>
     </div>
+  </div>
 </div>
