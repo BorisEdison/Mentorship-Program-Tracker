@@ -31,12 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'AdminPage.apps.AdminpageConfig',
     'Register.apps.RegisterConfig',
     'Login.apps.LoginConfig',
     'EditUser.apps.EdituserConfig',
     'accounts.apps.AccountsConfig',
     'FacultyDashboard.apps.FacultydashboardConfig',   
+    'Marks.apps.MarksConfig',   
 ]
 
 MIDDLEWARE = [
