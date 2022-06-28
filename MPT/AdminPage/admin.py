@@ -14,6 +14,7 @@ from accounts.models import (
 # importing Mentor
 from accounts.models import MentorProfile,Mentor_assign
 from accounts.models import User
+from Marks.models import AcademicScores
 from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
 # Register your models here.
 
@@ -100,4 +101,5 @@ admin_site.register(StudentExtraCurricular)
 admin_site.register(StudentMedicalReport)
 admin_site.register(MentorProfile)
 admin_site.register(Mentor_assign)
+admin_site.register(AcademicScores)
 
