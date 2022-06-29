@@ -6,7 +6,7 @@ from AdminPage.admin import admin_site
 
 urlpatterns = [
     path('admin/', admin_site.urls),
-    path('', include('AdminPage.urls')),
+    path('AdminPage/', include('AdminPage.urls')),
     path('', include('Register.urls')),
     path('', include('Login.urls')),    
     path('', include('FacultyDashboard.urls')),  

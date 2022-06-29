@@ -77,7 +77,7 @@ class StudentProfile(models.Model):
 class StudentDetails(models.Model):
     student = models.OneToOneField(
         StudentProfile, on_delete=models.SET_NULL, null=True)
-    current_rollNo = models.PositiveIntegerField(unique=True, null=True)
+    current_rollNo = models.PositiveIntegerField(null=True)
     AimOfLife = models.CharField(max_length=100, blank=True, null=True)
     reason_of_engg = models.CharField(max_length=50, blank=True, null=True)
     current_year = models.CharField(max_length=50, blank=True, null=True)
