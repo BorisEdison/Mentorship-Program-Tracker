@@ -107,9 +107,8 @@
 
     </form>
 
-
+    <!--Add Admin-->
     {% elif page == 'SuperUser' %}
-
 
     <form action="{{ action }}" method="POST">
 
@@ -117,46 +116,37 @@
       <p style="opacity: 0.7;">Register by entering information below</p>
       <div class="row">
 
-        <div class="col-6">
-          {% csrf_token %}
-          {% comment %}<div class="">
-            <input type="text" name="name" class="form-control top" placeholder="First Name" required>
-          </div>
-
-          <div class="">
-            <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
-          </div> {% endcomment %}
-
-          <div class="">
-            <input type="text" name="usr_id" class="form-control middle" placeholder="User ID" required>
-          </div>
-
-          <div class="">
-            <input type="email" name="email" class="form-control top" placeholder="Email" required>
-          </div>
-
-          <div class="">
-            <input type="email" name="email1" class="form-control bottom" placeholder="Re-enter Email" required>
-          </div>
-
+        {% csrf_token %}
+        {% comment %}<div class="">
+          <input type="text" name="name" class="form-control top" placeholder="First Name" required>
         </div>
 
+        <div class="">
+          <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
+        </div> {% endcomment %}
 
+        <div class="">
+          <input type="text" name="usr_id" class="form-control top" placeholder="User ID" required>
+        </div>
 
-        <div class="col-6">
+        <div class="">
+          <input type="email" name="email" class="form-control middle" placeholder="Email" required>
+        </div>
 
-          {% comment %}<div class="">
-            <input type="tel" name="phone" class="form-control top" placeholder="Contact No." pattern="[0-9]{10}" required>
-          </div> {% endcomment %}
+        <div class="">
+          <input type="email" name="email1" class="form-control middle" placeholder="Re-enter Email" required>
+        </div>
 
-          <div class="">
-            <input type="password" name="password1" class="form-control top" placeholder="Password" required>
-          </div>
+        {% comment %}<div class="">
+          <input type="tel" name="phone" class="form-control top" placeholder="Contact No." pattern="[0-9]{10}" required>
+        </div> {% endcomment %}
 
-          <div class="">
-            <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
-          </div>
+        <div class="">
+          <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
+        </div>
 
+        <div class="">
+          <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
         </div>
 
       </div>
@@ -187,7 +177,7 @@
 
   <!-- iconify -->
   <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-  
+
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
