@@ -274,3 +274,10 @@ def updateuserprofile(request,usr_id):
             return HttpResponse(" You are Admin ")
     else:
         return HttpResponse("You are not authorized to view this page")
+
+@login_required
+def Assign(request):
+    if request.user.is_superuser:
+        return render(request,'AdminPage/admin-assign.html')
+    else:
+        return HttpResponse("You are not authorized to view this page")
