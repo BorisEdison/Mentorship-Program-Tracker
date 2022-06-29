@@ -29,7 +29,7 @@ def build_service(request):
 
 class HomeView(FormView):
     form_class = BookingForm
-    template_name = 'calender/faculty-calendar.html'
+    template_name = 'components/schedule-meet-modal.html'
 
 
     def get_success_url(self):
