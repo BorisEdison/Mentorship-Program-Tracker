@@ -117,13 +117,13 @@
         <div class="row">
 
           <!--Student Image-->
-          <div class="col-lg-2 col-md-12 col-sm-12 d-flex align-items-center" style="justify-content: center;">
+          <div class="col-lg-2 col-md-12 col-sm-12 d-flex align-items-center justify-content-center">
             <img src="{{user.profile_img.url}}" class="stu-img" style="height: 22vh; box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5)" alt="hero">
           </div>
 
           <!-- Student Info -->
           <div class="col-lg-10 accordion-div">
-            <div class="accordion accordion-flush" style="border-radius: 4px" id="accordionFlushExample">
+            <div class="accordion accordion-flush rounded" id="accordionFlushExample">
 
               <!--Stduent Information Accordion-->
               {% include 'components/accordion-stu-info.html' %}
@@ -135,6 +135,7 @@
       </div>
     </span>
 
+    <!--Edit marks button-->
     <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4" onclick="window.location.href = 'faculty-student-marks.html';" type="button"
       style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5); ">
       <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
@@ -142,26 +143,26 @@
     </button>
 
     <!-- Year heading -->
-    <p style="font-size: 25px; padding-top: 2rem;"><strong>First Year</strong></p>
+    <p class="h4"><strong>First Year</strong></p>
 
   </section>
 
   <!-- Graph-->
-  <section class="graphs flex-md-row">
-    <span style="max-width: 350px;">
+  <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row ">
+    <span>
       <canvas id="donutGraphSem1"></canvas>
       <canvas id="barGraphSem1" class="pt-2"></canvas>
     </span>
-    <span style="max-width: 350px;">
+    <span>
       <canvas id="donutGraphSem2"></canvas>
       <canvas id="barGraphSem2" class="pt-2"></canvas>
     </span>
   </section>
 
   <!-- Session Records Button -->
-  <div class="d-flex" style="padding: 2.3vh;">
-    <button type="button" style="background-color:#112D4E; color:white; border-radius: 7px" class="btn btn-sm meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#session-records">
-      <span style="color: white;" class="iconify" data-icon="akar-icons:circle-plus" data-width="19" data-height="20"></span>
+  <div class="d-flex session-record-btn">
+    <button type="button" class="btn btn-sm meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#session-records">
+      <span class="iconify" data-icon="akar-icons:circle-plus" data-width="19" data-height="20"></span>
       Session Records
     </button>
   </div>
