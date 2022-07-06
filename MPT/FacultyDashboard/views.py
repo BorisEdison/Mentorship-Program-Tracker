@@ -227,5 +227,5 @@ def faculty(request,pk):
 def facultymarks(request):
     return render(request, 'FacultyDashboard/faculty-student-marks.html')
 
-def stumarks(request):
-    return render(request, 'student-marks.html')
+# def stumarks(request):
+#     return render(request, 'student-marks.html')

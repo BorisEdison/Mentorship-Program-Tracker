@@ -23,3 +23,5 @@ def student(request, pk):
         except:
             pass
         return render(request, 'student-dashboard.html', context)
+
+
