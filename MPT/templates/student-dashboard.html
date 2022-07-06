@@ -50,7 +50,7 @@ Edit Profile
     </span>
 
     <!--Edit marks button-->
-    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = 'student-marks.html';" type="button">
+    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'studentMarks' pk=request.user.usr_id %}';" type="button">
       <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
       Edit Marks
     </button>

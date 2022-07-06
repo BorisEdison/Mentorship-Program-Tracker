@@ -10,5 +10,5 @@ urlpatterns = [
 
     # this is for testing purpose only
     path('faculty-marks',views.facultymarks, name= 'marks'),
-    path('student-marks',views.stumarks, name= 'student-marks'),
+    # path('student-marks',views.stumarks, name= 'student-marks'),
 ]

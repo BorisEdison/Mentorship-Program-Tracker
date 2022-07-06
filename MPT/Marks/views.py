@@ -1,7 +1,9 @@
 from django.shortcuts import render
-
+from accounts.models import User
 # Create your views here.
-# make a student app, we will put marks ka url there only
-def studentMarks(request):
+
+def studentMarks(request, pk):
+    user = User.objects.get(usr_id=pk)
+    print(user.usr_id) 
     context = {'title': 'studentmarks'}
     return render(request, 'Marks/student-marks.html', context)
