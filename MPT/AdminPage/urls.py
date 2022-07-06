@@ -4,8 +4,7 @@ from . import views
 
 urlpatterns = [
     # this is for student dashboard
-    path('studentdashboard/<str:pk>', views.student, name= 'student'),
-
+   
     # this is for admin page
     path('', views.Adminpage, name= 'admin'),
     path('student', views.Adminstudent, name= 'admin-student'),

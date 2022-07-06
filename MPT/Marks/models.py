@@ -5,7 +5,7 @@ from accounts.models import StudentProfile
 # Create your models here.
 
 class AcademicScores(models.Model):
-    student = models.ManyToManyField(StudentProfile, null=True)
+    student = models.ManyToManyField(StudentProfile)
     academicYear = models.CharField(max_length=50, blank=True, null=True)
     sem = models.CharField(max_length=50, blank=True, null=True)
     sub_code = models.CharField(max_length=50, blank=True, null=True)

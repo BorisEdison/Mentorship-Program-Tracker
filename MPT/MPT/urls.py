@@ -11,7 +11,8 @@ urlpatterns = [
     path('', include('Login.urls')),    
     path('', include('FacultyDashboard.urls')),  
     path('', include('EditUser.urls')),   
-    path('', include('calender.urls')) 
+    path('', include('calender.urls')), 
+    path('', include('student.urls')), 
   
 ]
 
