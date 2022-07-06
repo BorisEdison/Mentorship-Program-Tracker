@@ -1,5 +1,3 @@
-import imp
-from stringprep import in_table_a1
 from django.db import models
 from accounts.models import StudentProfile
 # Create your models here.

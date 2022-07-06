@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path('ScheduleMeet', views.HomeView.as_view(), name='Schedule'),
-    path('Calender', views.Open_Cal, name='Cal'),
+    path('calender', views.Open_Faculty_Cal, name='faculty-cal'),
+    path('calendar', views.Open_Student_Cal, name='student-cal'),
 ]

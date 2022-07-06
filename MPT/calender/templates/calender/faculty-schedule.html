@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h1 class="event_title">Mentoring Sessions</h1>
+    <div class="event">
+        {% for item in booking_event %}
+        <ul class="event__list">
+            <li>Event title:{{ item.0 }}</li>
+            <li>Start_date_time:{{ item.1 }}</li>
+            <li>End_date_time:{{ item.2 }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    <div class="picker">
+        <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Schedule' %}" method="POST">
+           {% csrf_token %}
+            <div class="picker__component">
+                <p class="picker__label">Event name</p>
+                {% render_field  form.eventTitle class+="picker__field" %}
+            </div>
+            <div class="picker__component">
+                <p class="picker__label">Start Time</p>
+                {% render_field  form.startDateTime class+="picker__field" %}
+            </div>
+            <div class="picker__component">
+                <p class="picker__label">End Time</p>
+                {% render_field  form.endDateTime class+="picker__field" %}
+           </div>
+            <input type="submit" value="Submit" class="picker__button">
+        </form>
+    </div>
+    <div class="display_message">
+      {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+      </div>
+{% endblock %}

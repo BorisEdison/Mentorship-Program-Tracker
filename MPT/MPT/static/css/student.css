@@ -112,11 +112,9 @@ justify-content: space-between;
   font-size: 20px;
 }*/
 
-
 .session-record-btn {
   padding: 2.3vh;
 }
-
 .session-record-btn > button {
   background-color:#112D4E; 
   color:white; 
