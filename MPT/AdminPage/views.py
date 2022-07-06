@@ -12,26 +12,6 @@ from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 
 # student dashboard view
-@login_required
-def student(request, pk):
-    if request.user.is_authenticated and not(request.user.is_staff):
-        user = User.objects.get(usr_id=pk)
-        student=StudentProfile.objects.get(user=user)
-        context={'user':user,'student':student} 
-        try:
-            details=StudentDetails.objects.get(student_id=student.id)
-            hobbies=StudentHobbies.objects.get(student_id=student.id)
-            guardian=GuardianDetails.objects.get(student_id=student.id)
-            Medical=StudentMedicalReport.objects.get(student_id=student.id)
-            extraCurr=StudentExtraCurricular.objects.get(student_id=student.id)
-            achievements=[i for i in extraCurr.achievements.split(',')]
-            clubs=[i for i in extraCurr.clubs.split(',')]
-            hobbies=[i for i in hobbies.hobby.split(',')]
-            organizations=[i for i in extraCurr.organization.split(',')]
-            context = {'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'clubs':clubs,'hobbies':hobbies,'achievements':achievements,'orgs':organizations,'Medical':Medical}
-        except:
-            pass
-        return render(request, 'student-dashboard.html', context)
 
 # Create your views here for admin page
 
@@ -278,6 +258,7 @@ def updateuserprofile(request,usr_id):
 @login_required
 def Assign(request):
     if request.user.is_superuser:
+        
         return render(request,'AdminPage/admin-assign.html')
     else:
         return HttpResponse("You are not authorized to view this page")

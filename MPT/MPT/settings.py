@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'FacultyDashboard.apps.FacultydashboardConfig',   
     'Marks.apps.MarksConfig',   
+    'student.apps.StudentConfig',   
+
 ]
 
 MIDDLEWARE = [
