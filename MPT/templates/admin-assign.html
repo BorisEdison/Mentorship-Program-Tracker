@@ -1,0 +1,59 @@
+{% extends "admin.html" %}
+{% load static %}
+
+{% block mentorTabButton %}
+<button class="nav-link active" id="nav-mentors-tab" onclick="window.location.href = '{% url 'admin-mentor' %}';" data-bs-toggle="tab" data-bs-target="#nav-mentors" type="button" role="tab" aria-controls="nav-mentors-tab" aria-selected="true">
+  Mentors
+</button>
+{% endblock %}
+
+{% block mentorTabContent %}
+<div class="tab-pane fade active show" id="nav-mentors" role="tabpanel" aria-labelledby="nav-mentors-tab">
+
+  <div class="container-fluid mb-5">
+    <div class="sidebar flex-shrink-0 dashboard-navigation">
+      <div class="sidebar-heading d-flex align-items-center justify-content-center">
+        <h5>{{user.first_name}} {{user.last_name}} </h5>
+      </div>
+
+      <!-- nav-tab -->
+      <div class="mt-3 container-fluid">
+        <nav class="">
+          <div class="nav nav-tabs d-flex align-items-center justify-content-center" id="nav-tab" role="tablist">
+
+            {% block assignedTabButton %}
+            <button class="nav-link" id="nav-assigned-tab" onclick="window.location.href = '{% url 'admin-assigned' %}';" data-bs-toggle="tab" data-bs-target="#nav-assigned" type="button" role="tab" aria-controls="nav-assigned-tab"
+              aria-selected="false">
+              Assigned
+            </button>
+            {% endblock %}
+            
+            {% block unassignedTabButton %}
+            <button class="nav-link" id="nav-unassigned-tab" onClick="window.location.href='{% url 'admin-unassigned' %}'" data-bs-toggle="tab" data-bs-target="#nav-unassigned" type="button" role="tab" aria-controls="nav-unassigned-tab"
+              aria-selected="false">
+              Unassigned
+            </button>
+            {% endblock %}
+
+          </div>
+        </nav>
+        <div class="tab-content mt-5" id="nav-tabContent">
+
+          <!-- Assigned -->
+          {% block assignedTabContent %}
+
+          {% endblock %}
+
+          <!-- Unassigned -->
+          {% block unassignedTabContent %}
+
+          {% endblock %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

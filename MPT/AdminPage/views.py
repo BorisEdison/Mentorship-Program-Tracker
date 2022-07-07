@@ -256,9 +256,17 @@ def updateuserprofile(request,usr_id):
         return HttpResponse("You are not authorized to view this page")
 
 @login_required
-def Assign(request):
+def Assigned(request):
     if request.user.is_superuser:
         
-        return render(request,'AdminPage/admin-assign.html')
+        return render(request,'AdminPage/admin-assign-assigned.html')
+    else:
+        return HttpResponse("You are not authorized to view this page")
+
+@login_required
+def Unassigned(request):
+    if request.user.is_superuser:
+        
+        return render(request,'AdminPage/admin-assign-unassigned.html')
     else:
         return HttpResponse("You are not authorized to view this page")

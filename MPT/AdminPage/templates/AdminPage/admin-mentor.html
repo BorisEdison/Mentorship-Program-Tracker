@@ -30,9 +30,6 @@
               Refresh List
             </button>
           </div>
-          <div class="p-2 bd-highlight">
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">
-          </div>
           <div class="ms-auto p-2 bd-highlight">
             <button type="button" onclick="alert('Logic to download csv');" class="btn btn-light ms-auto btn-sm btn-outline-dark">
               <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
@@ -83,7 +80,7 @@
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black">
+                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'admin-assigned' %}'">
                   <span class="iconify" data-icon="clarity:assign-user-solid" data-width="18" data-height="18"></span>
                 </button>
 
