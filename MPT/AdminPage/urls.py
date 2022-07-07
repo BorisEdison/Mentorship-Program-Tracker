@@ -12,6 +12,6 @@ urlpatterns = [
     path('activity', views.Activity, name= 'admin-activity'),
     path('delete/<str:id>/',views.deleteuser, name= 'delete-user'),
     path('update/<str:usr_id>/',views.updateuserprofile, name= 'update-user'),
-    path('AdminPage/assigned', views.Assigned, name= 'admin-assigned'),
-    path('AdminPage/unassigned', views.Unassigned, name= 'admin-unassigned'),
+    path('assigned/<str:usr_id>', views.Assigned, name= 'admin-assigned'),
+    path('unassigned/<str:usr_id>', views.Unassigned, name= 'admin-unassigned'),
     ]

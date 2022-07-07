@@ -68,6 +68,7 @@ class StudentProfile(models.Model):
     Country = models.CharField(max_length=50, null=True)
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
+    is_assigned=models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user.email + ' => ' + self.user.first_name)
@@ -192,7 +193,6 @@ class MentorProfile(models.Model):
     religion = models.CharField(max_length=50, null=True)
     mother_tongue = models.CharField(max_length=50, null=True)
     qualification = models.CharField(max_length=50, null=True)
-    # Teacher_id = models.CharField(max_length=50, null=True)
     DateofJoining = models.DateField(max_length=50, null=True)
 
     def __str__(self):
@@ -209,14 +209,6 @@ class Mentor_assign(models.Model):
 
     def __str__(self):
         return str(self.Mentee.user.email + '   is assigned to    '+self.Mentor.user.email)
-
-
-def get_mentee(mentor):
-    mentee_list = []
-    for mentee in Mentor_assign.objects.filter(Mentor=mentor):
-        mentee_list.append(mentee.Mentee)
-        mentee_list.extend(get_mentee(mentee.Mentee))
-    return mentee_list
 
 
 ''' this took lot of research and time  to find the solution to the problem of 

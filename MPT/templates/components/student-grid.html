@@ -28,23 +28,6 @@
     <!--Schedule Meet Modal-->
     {% include 'components/schedule-meet-modal.html' %}
 
-    {% comment %} {% for users in user %} {% endcomment %}
-    {% comment %} <li class="shrink grid-li">
-      <span class="grd-cell">
-        <label for="cb1"> {% endcomment %}
-          {% comment %} <a href="{% url 'studentdetail' users.id %}"><img class="grd-img" src="{% static 'content/logo.png' %}" /></a> {% endcomment %}
-          {% comment %} <a href=""><img class="grd-img" src="{% static 'content/logo.png' %}" /></a>
-          <H6>Boris Edison 14</H6>
-        </label>
-        <span class="grd-overlay">
-        </span>
-        <span class="grd-text">
-          {{users.name}}
-        </span>
-      </span>
-    </li>
-    {% endfor %} {% endcomment %}
-
     {% for users in students %}
     {% if not users.is_staff %}
     <a href="{% url 'studentdetail' fac_id users.Mentee.user.usr_id %}">

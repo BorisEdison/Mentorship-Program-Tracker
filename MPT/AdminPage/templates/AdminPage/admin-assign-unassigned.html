@@ -2,13 +2,18 @@
 {% load static %}
 
 {% block unassignedTabButton %}
-<button class="nav-link active" id="nav-unassigned-tab" onClick="window.location.href='{% url 'admin-unassigned' %}'" data-bs-toggle="tab" data-bs-target="#nav-unassigned" type="button" role="tab" aria-controls="nav-unassigned-tab"
+<button class="nav-link active" id="nav-unassigned-tab" onClick="window.location.href='{% url 'admin-unassigned' mentor.user.usr_id%}'" data-bs-toggle="tab" data-bs-target="#nav-unassigned" type="button" role="tab" aria-controls="nav-unassigned-tab"
 aria-selected="false">
-Unassigned
+Unassigned Mentees ( {{mentee_list|length}} )
 </button>
 {% endblock %}
 
 {% block unassignedTabContent %}
+<form method="POST" >
+  {% csrf_token %}
+{% comment %} BOris do modify this but don't change the id  {% endcomment %}
+<center>Selected Student's Id :<input type='text' style="font-size: 14pt; height: 30px; width:400px; " id='mentee_selected' readonly name='mentees'/>
+
 <div class="tab-pane fade active show" id="nav-unassigned" role="tabpanel" aria-labelledby="nav-unassigned-tab">
     <!-- table -->
     <div class="table-div m-4 mt-4 mb-4">
@@ -18,24 +23,38 @@ Unassigned
             <th scope="col"></th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Student Id</th>
+            <th scope="col">Roll No.</th>
+            <th scope="col">Student Id</th>
+            <th scope="col">Gender</th>
             <th scope="col">Department</th>
-            <th scope="col">Sem</th>
             <th scope="col">Year</th>
+            <th scope="col">Date Joined</th>
+            <th scope="col">Last Login</th>
           </tr>
         </thead>
         <tbody id="myTable">
-          {% for user in users %}
+          {% for mentee in mentee_list %}
           <tr>
             <td>
               <span class="mb-3">
-                <input type="checkbox">
+                <input type="checkbox" value="{{ mentee.user.usr_id }}" class="chkvalues" name="mentee_list" id="select-mentee">
               </span>
             </td>
-            <th scope="row">{{user.first_name}} {{user.last_name}}</th>
-            <td>{{user.email}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th scope="row">{{ mentee.user.first_name }} {{ mentee.user.last_name }}</th>
+            <td>{{ mentee.user.email }}</td>
+            <td>{{ mentee.user.usr_id }}</td>
+            <td>{{ mentee.studentdetails.current_rollNo }}</td>
+            <td>{{ mentee.user.usr_id }}</td>
+            <td>{{ mentee.Gender }}</td>
+            <td>{{ mentee.Branch }}</td>
+            <td>{{ mentee.studentdetails.current_year }}</td>
+            <td>{{ mentee.user.date_joined }}</td>
+            <td>{{ mentee.user.last_login }}</td>
+            {% comment %} <td>
+              <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
+            </div></td> {% endcomment %}
           </tr>
           {% endfor %}
         </tbody>
@@ -45,16 +64,13 @@ Unassigned
     <!-- buttons -->
     <div class="d-flex align-items-center justify-content-center m-3">
 
-      <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-        Assign
-      </button>
+      <input type="submit" value='Assign' class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);" />
 
-      <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin' %}'"
+      <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'"
         style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
         Cancel
-        {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
       </button>
-
     </div>
   </div>
+</form>
 {% endblock %}

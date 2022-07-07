@@ -12,9 +12,9 @@
 
   <div class="container-fluid mb-5">
     <div class="sidebar flex-shrink-0 dashboard-navigation">
-      <div class="sidebar-heading d-flex align-items-center justify-content-center">
-        <h5>{{user.first_name}} {{user.last_name}} </h5>
-      </div>
+       <div class="sidebar-heading d-flex align-items-center justify-content-center"> 
+      <h5>{{mentor.user.first_name}} {{mentor.user.last_name}} </h5>
+       </div> 
 
       <!-- nav-tab -->
       <div class="mt-3 container-fluid">
@@ -22,16 +22,16 @@
           <div class="nav nav-tabs d-flex align-items-center justify-content-center" id="nav-tab" role="tablist">
 
             {% block assignedTabButton %}
-            <button class="nav-link" id="nav-assigned-tab" onclick="window.location.href = '{% url 'admin-assigned' %}';" data-bs-toggle="tab" data-bs-target="#nav-assigned" type="button" role="tab" aria-controls="nav-assigned-tab"
+            <button class="nav-link" id="nav-assigned-tab" onclick="window.location.href = '{% url 'admin-assigned' mentor.user.usr_id %}';" data-bs-toggle="tab" data-bs-target="#nav-assigned" type="button" role="tab" aria-controls="nav-assigned-tab"
               aria-selected="false">
-              Assigned
+              Assigned Mentees 
             </button>
             {% endblock %}
             
             {% block unassignedTabButton %}
-            <button class="nav-link" id="nav-unassigned-tab" onClick="window.location.href='{% url 'admin-unassigned' %}'" data-bs-toggle="tab" data-bs-target="#nav-unassigned" type="button" role="tab" aria-controls="nav-unassigned-tab"
+            <button class="nav-link" id="nav-unassigned-tab" onClick="window.location.href='{% url 'admin-unassigned' mentor.user.usr_id %}'" data-bs-toggle="tab" data-bs-target="#nav-unassigned" type="button" role="tab" aria-controls="nav-unassigned-tab"
               aria-selected="false">
-              Unassigned
+              Unassigned Mentees
             </button>
             {% endblock %}
 

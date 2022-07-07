@@ -6,8 +6,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails
-# from django.contrib.auth.decorators import permission_required
+from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails,Mentor_assign
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 
@@ -256,17 +255,55 @@ def updateuserprofile(request,usr_id):
         return HttpResponse("You are not authorized to view this page")
 
 @login_required
-def Assigned(request):
+def Assigned(request,usr_id):
     if request.user.is_superuser:
-        
-        return render(request,'AdminPage/admin-assign-assigned.html')
+        mentee_list = []
+        for mentee in Mentor_assign.objects.filter(Mentor__user__usr_id=usr_id):
+            mentee_list.append(mentee.Mentee)
+        # print(mentee_list)
+        mentor = MentorProfile.objects.get(user__usr_id=usr_id)
+        context={'mentor':mentor,'mentee_list':mentee_list}
+        if request.POST.get('mentees'):
+            mentees_id=request.POST['mentees']
+            for mentee_id in mentees_id.split(','):
+                mentee = StudentProfile.objects.get(user__usr_id=mentee_id)
+                mentee.is_assigned=False
+                mentee.save()
+                unassign_mentee = Mentor_assign.objects.filter(Mentee__user__usr_id=mentee_id)
+                # print(mentor,mentee)
+                try:
+                    unassign_mentee.delete()  
+                    print(mentee.user.first_name,' is unassigned successfully')
+                except:
+                    pass
+        return render(request,'AdminPage/admin-assign-assigned.html',context)
     else:
         return HttpResponse("You are not authorized to view this page")
 
+# For assigning unassigned students :
 @login_required
-def Unassigned(request):
+def Unassigned(request,usr_id):
     if request.user.is_superuser:
-        
-        return render(request,'AdminPage/admin-assign-unassigned.html')
+        mentee_list= StudentProfile.objects.filter(is_assigned=False)
+        mentor = MentorProfile.objects.get(user__usr_id=usr_id)
+        context={'mentor':mentor,'mentee_list':mentee_list}
+        if request.POST.get('mentees'):
+        # if request.method=='POST':
+            mentees_id=request.POST.get('mentees')
+            # mentees_id=request.POST['mentees']
+            for mentee_id in mentees_id.split(','):
+                assign_mentee=Mentor_assign()
+                mentee = StudentProfile.objects.get(user__usr_id=mentee_id)
+                assign_mentee.Mentor=mentor
+                assign_mentee.Mentee=mentee
+                mentee.is_assigned=True
+                mentee.save()
+                # print(mentor,mentee)
+                try:
+                    if assign_mentee.save():  
+                        print(mentee.user.first_name,' is assigned successfully')
+                except:
+                    pass
+        return render(request,'AdminPage/admin-assign-unassigned.html',context)
     else:
         return HttpResponse("You are not authorized to view this page")

@@ -80,16 +80,9 @@
                   <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
                 </button>
 
-                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'admin-assigned' %}'">
+                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'admin-assigned' user.usr_id %}'">
                   <span class="iconify" data-icon="clarity:assign-user-solid" data-width="18" data-height="18"></span>
                 </button>
-
-                <!--<button type="button" onclick="console.log('Assign mentos');" class="btn btn-light meetings-btn btn-sm btn-outline-dark">
-                  <span class="iconify" data-icon="clarity:assign-user-solid" data-width="25" data-height="25"></span>
-                  Assign Mentee
-                </button>-->
-
-                {% comment %} {% include 'components/assign-mentee.html' %} {% endcomment %}
               </td>
             </tr>
             {% endfor %}
