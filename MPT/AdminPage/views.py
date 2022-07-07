@@ -264,7 +264,7 @@ def Assigned(request,usr_id):
         mentor = MentorProfile.objects.get(user__usr_id=usr_id)
         context={'mentor':mentor,'mentee_list':mentee_list}
         if request.POST.get('mentees'):
-            mentees_id=request.POST['mentees']
+            mentees_id=request.POST.get('mentees')
             for mentee_id in mentees_id.split(','):
                 mentee = StudentProfile.objects.get(user__usr_id=mentee_id)
                 mentee.is_assigned=False
@@ -273,7 +273,7 @@ def Assigned(request,usr_id):
                 # print(mentor,mentee)
                 try:
                     unassign_mentee.delete()  
-                    print(mentee.user.first_name,' is unassigned successfully')
+                    print(mentee.user.first_name,'is unassigned successfully from',mentor.user.first_name)
                 except:
                     pass
         return render(request,'AdminPage/admin-assign-assigned.html',context)
@@ -301,7 +301,7 @@ def Unassigned(request,usr_id):
                 # print(mentor,mentee)
                 try:
                     if assign_mentee.save():  
-                        print(mentee.user.first_name,' is assigned successfully')
+                        print(mentee.user.first_name,'is assigned successfully to',mentor.user.first_name)
                 except:
                     pass
         return render(request,'AdminPage/admin-assign-unassigned.html',context)
