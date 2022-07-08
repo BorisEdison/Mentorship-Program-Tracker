@@ -12,7 +12,7 @@ Unassigned Mentees ( {{mentee_list|length}} )
 <form method="POST" >
   {% csrf_token %}
 {% comment %} BOris do modify this but don't change the id  {% endcomment %}
-<center>Selected Student's Id :<input type='text' style="font-size: 14pt; height: 30px; width:400px; " id='mentee_selected' readonly name='mentees'/>
+<center>Selected Student's Id: <input type='text' style="font-size: 14pt; height: 30px; width:400px; " id='mentee_selected' readonly name='mentees'/>
 
 <div class="tab-pane fade active show" id="nav-unassigned" role="tabpanel" aria-labelledby="nav-unassigned-tab">
     <!-- table -->
@@ -25,7 +25,6 @@ Unassigned Mentees ( {{mentee_list|length}} )
             <th scope="col">Email</th>
             <th scope="col">Student Id</th>
             <th scope="col">Roll No.</th>
-            <th scope="col">Student Id</th>
             <th scope="col">Gender</th>
             <th scope="col">Department</th>
             <th scope="col">Year</th>
@@ -45,16 +44,11 @@ Unassigned Mentees ( {{mentee_list|length}} )
             <td>{{ mentee.user.email }}</td>
             <td>{{ mentee.user.usr_id }}</td>
             <td>{{ mentee.studentdetails.current_rollNo }}</td>
-            <td>{{ mentee.user.usr_id }}</td>
             <td>{{ mentee.Gender }}</td>
             <td>{{ mentee.Branch }}</td>
             <td>{{ mentee.studentdetails.current_year }}</td>
             <td>{{ mentee.user.date_joined }}</td>
             <td>{{ mentee.user.last_login }}</td>
-            {% comment %} <td>
-              <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
-            </div></td> {% endcomment %}
           </tr>
           {% endfor %}
         </tbody>

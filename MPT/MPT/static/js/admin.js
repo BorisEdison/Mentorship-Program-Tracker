@@ -8,34 +8,24 @@
 //     });
 //   });
 
-
-
 // ---------- Adding Datatables ------------------
-let usr_table = new DataTable('#user-table', {
-    // options
-});
-let studnt_table = new DataTable('#student-table', {
-
-});
-
-let mntr_table = new DataTable('#mentor-table', {
-    // options
-});
-let actvt_table = new DataTable('#activity-table', {
-    // options
-});
-
-// ----------------- Select button on Admin dash ------------------------ //
-// let btns = document.getElementsByName("btn-show");
-// let cbs = document.getElementsByName("cb-choose");
-// let btn_assign = document.getElementById("assign-btn");
-// let btn_cancel = document.getElementById("cancel-btn");
-
-// const btn_status = (status) => {
-//     btns.forEach((btn) => {
-
-//     });
-//     cbs.forEach((cb) => {
-//         cb.style.opacity = status ? "0" : "1";
-//     });
-// };
+$(document).ready( function () {
+    $('#user-table').DataTable({
+        scrollX: true,
+    });
+} );
+$(document).ready( function () {
+    $('#student-table').DataTable({
+        scrollX: true,
+    });
+} );
+$(document).ready( function () {
+    $('#mentor-table').DataTable({
+        scrollX: true,
+    });
+} );
+$(document).ready( function () {
+    $('#activity-table').DataTable({
+        scrollX: true,
+    });
+} );
