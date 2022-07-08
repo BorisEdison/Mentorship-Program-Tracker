@@ -78,7 +78,7 @@
             {% endblock %}
 
             {% block analyticsButton %}
-            <button class="nav-link nav-pills-link" id="analytics-tab" onclick="window.location.href = 'faculty-analytics.html';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics"
+            <button class="nav-link nav-pills-link" id="analytics-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics"
               aria-selected="false">
               <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
               Analytics
@@ -93,7 +93,7 @@
             {% endblock %}
 
             {% block messageButton %}
-            <button class="nav-link nav-pills-link" id="message-tab" onclick="window.location.href = 'faculty-message.html';" data-bs-toggle="pill" data-bs-target="#message" type="button" role="tab" aria-controls="message" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="message-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#message" type="button" role="tab" aria-controls="message" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Message
             </button>

@@ -40,11 +40,17 @@
             <div class="collapse navbar-collapse" id="navbar-content">
                 <div class="ms-auto admin-greeting">
                     Welcome  Admin 
-                    {% comment %} {% if request.user.is_authenticated and request.user.is_superuser %}
-                        {{ request.user.first_name }} {{ request.user.last_name }}
-                    {% endif %}  {% endcomment %}
                 </div>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change Password">
+                        <li class="nav-item-main">
+                            <a class="navbar-branch" style="padding: 0 0.5rem" id="iconifyLogOut" href="{% url 'ChangePassword' %}">
+                                <span class="iconify iconify-navbar" data-icon="teenyicons:password-outline" data-width="25" data-height="25"></span>
+                            </a>
+                        </li>
+                    </span>
+
                     <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="left" title="Log Out">
                         <li class="nav-item-main">
                             <a class="navbar-brand" id="iconifyLogOut" href="{% url 'logout' %}">

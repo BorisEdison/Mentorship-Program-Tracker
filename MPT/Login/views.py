@@ -33,3 +33,7 @@ def login(request):
 
     else: 
         return render(request, 'Login/login-page.html')
+
+def cPassword(request):
+    context = {}
+    return render(request,'change-password.html',context);

@@ -11,21 +11,21 @@
 // ---------- Adding Datatables ------------------
 $(document).ready( function () {
     $('#user-table').DataTable({
-        scrollX: true,
+        //options
     });
 } );
 $(document).ready( function () {
     $('#student-table').DataTable({
-        scrollX: true,
+        //options
     });
 } );
 $(document).ready( function () {
     $('#mentor-table').DataTable({
-        scrollX: true,
+        //options
     });
 } );
 $(document).ready( function () {
     $('#activity-table').DataTable({
-        scrollX: true,
+        //options
     });
 } );
