@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 
 #logout the logged in user
-@login_required
 def logout(request):
     django_logout(request)
     return redirect('/')

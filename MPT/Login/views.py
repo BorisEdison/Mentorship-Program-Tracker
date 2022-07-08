@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate,logout,login as auth_login
 from accounts.models import User
 
 def login(request):
@@ -15,7 +15,7 @@ def login(request):
         user = auth.authenticate(email=email, password=password)
         if user:
             if user.is_active:
-                auth.login(request, user)
+                auth_login(request, user)
                 if request.user.is_superuser ==True:
                     return redirect('/AdminPage')
 
@@ -34,6 +34,22 @@ def login(request):
     else: 
         return render(request, 'Login/login-page.html')
 
-def cPassword(request):
-    context = {}
-    return render(request,'change-password.html',context);
+def change_password(request):
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    updated=''
+    user=request.user
+    if request.method == 'POST':
+        curr_pass=request.POST['curr_pass']
+        new_pass=request.POST['new_pass']
+        conf_pass=request.POST['confirm_pass']
+        try:
+            if user.check_password(curr_pass):
+                    user.set_password(new_pass)
+                    user.save()
+                    updated='yes' # password updated successfully
+            else:
+                updated='curr_incorrect' # current password is incorrect
+        except:
+            updated='no' # something went wrong
+    return render(request,'change-password.html',{'updated':updated})
