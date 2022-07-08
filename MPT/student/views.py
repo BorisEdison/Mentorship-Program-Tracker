@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails, StudentHobbies, StudentMedicalReport, StudentExtraCurricular
+from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails, StudentHobbies, StudentMedicalReport, StudentExtraCurricular, Mentor_assign
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -9,6 +9,13 @@ def student(request, pk):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
         context={'user':user,'student':student} 
+        if student.is_assigned:
+            try:
+                obj=Mentor_assign.objects.get(Mentee__user__usr_id=pk)
+                mentor=User.objects.get(email=obj.Mentor)
+                context['mentor']= mentor.first_name+' '+mentor.last_name
+            except:
+                pass
         try:
             details=StudentDetails.objects.get(student_id=student.id)
             hobbies=StudentHobbies.objects.get(student_id=student.id)

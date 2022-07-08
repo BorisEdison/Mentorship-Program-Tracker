@@ -25,8 +25,12 @@ Edit Profile
 
         <!--Student Name-->
         <span class="h4 d-flex align-items-center justify-content-center">
+          {% if student.is_assigned and mentor %}
           <strong>Mentor: </strong>&nbsp;
-          Tayyabali Sayyad
+          {{ mentor }}
+          {% else %}
+          <strong> Mentor is Not Assigned </strong>&nbsp;
+          {% endif %}
         </span>
 
         <div class="row">
