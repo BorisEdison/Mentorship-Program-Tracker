@@ -47,31 +47,37 @@
                 <table class="table table-striped table-bordered" style="widows: 100%;" id="user-table">
                     <thead>
                         <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">User ID</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Active</th>
-                            <th scope="col">Staff</th>
-                            <th scope="col">Superuser</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" class="px-2 py-1 text-center">Name</th>
+                            <th scope="col" class="px-2 py-1 text-center">User ID</th>
+                            <th scope="col" class="px-2 py-1 text-center">Email</th>
+                            <th scope="col" class="px-2 py-1 text-center">Active</th>
+                            <th scope="col" class="px-2 py-1 text-center">Staff</th>
+                            <th scope="col" class="px-2 py-1 text-center">Superuser</th>
+                            <th scope="col" class="px-2 py-1 text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for user in users %}
                         <tr>
-                            <td>
-                                <span class="mb-3">
-                                    <input type="checkbox">
-                                </span>
+                            <th scope="row" class="px-2 py-1 text-center">{{user.first_name}} {{ user.last_name}}</th>
+                            <td class="px-2 py-1 text-center">{{user.usr_id}}</td>
+                            <td class="px-2 py-1 text-center">{{user.email}}</td>
+                            <td class="px-2 py-1 text-center">                                
+                                {% if user.is_active %}
+                                <span class="badge bg-primary rounded-pill px-4 py-2">Active</span> {% else %}
+                                <span class="badge bg-danger rounded-pill px-4 py-2">Inactive</span> {% endif %}
+                          </td>
+                            <td class="px-2 py-1 text-center">                                
+                                {% if user.is_staff %}
+                                <span class="badge bg-warning rounded-pill px-4 py-2">&nbsp Staff &nbsp</span> {% else %}
+                                <span class="badge bg-secondary rounded-pill px-4 py-2">Student</span> {% endif %}
                             </td>
-                            <th scope="row">{{user.first_name}} {{ user.last_name}}</th>
-                            <td>{{user.usr_id}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user.is_active}}</td>
-                            <td>{{user.is_staff}}</td>
-                            <td>{{user.is_superuser}}</td>
-                            <td>
+                            <td class="px-2 py-1 text-center">                                
+                                {% if user.is_superuser %}
+                                <span class="badge bg-success rounded-pill px-4 py-2">Superuser</span> {% else %}
+                                <span class="badge bg-secondary rounded-pill px-4 py-2">User</span> {% endif %}
+                            </td>
+                            <td class="px-2 py-1 text-center" >
                                 <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" {% if user.is_superuser %} onClick="window.location.reload()" {% else %} onClick="window.location.href='{% url 'update-user' user.usr_id %}'" {% endif %}>
                                     <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
                                 </button>
@@ -81,23 +87,19 @@
                                         <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                                     </button>
                                 </form>
-                                <button type="button" class="btn btn-warning ms-auto btn-sm" style="border-color: black">
-                                    <span class="iconify" data-icon="ri:indeterminate-circle-fill" data-width="18" data-height="18"></span>
-                                </button>
                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th scope='col'></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">User ID</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Active</th>
-                            <th scope="col">Staff</th>
-                            <th scope="col">Superuser</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" class="px-2 py-1 text-center">Name</th>
+                            <th scope="col" class="px-2 py-1 text-center">User ID</th>
+                            <th scope="col" class="px-2 py-1 text-center">Email</th>
+                            <th scope="col" class="px-2 py-1 text-center">Active</th>
+                            <th scope="col" class="px-2 py-1 text-center">Staff</th>
+                            <th scope="col" class="px-2 py-1 text-center">Superuser</th>
+                            <th scope="col" class="px-2 py-1 text-center">Actions</th>
                         </tr>
                     </tfoot>
                 </table>

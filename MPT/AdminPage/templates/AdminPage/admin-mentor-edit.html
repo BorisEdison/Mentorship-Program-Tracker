@@ -242,8 +242,18 @@
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputStaff" class="form-select" name="staff_status">
-                    <option selected>Active</option>
-                    <option value="1">Inactive</option>
+                    {% if user.is_staff == True %}
+                    <option value="1" selected >Active</option>
+                    {% else %}
+                    <option value="1" >Active</option>
+                    {% endif %}
+        
+                    {% if user.is_staff == False %}
+                    <option value="0" selected>Inactive</option>
+                    {% else %}
+                    <option value="0">Inactive</option>
+                    {% endif %}
+
                   </select>
                   <label for="inputStaff">Staff Status</label>
                 </div>
@@ -252,8 +262,17 @@
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputAccount" class="form-select" name="Account_status">
-                    <option selected>Active</option>
-                    <option value="1">Inactive</option>
+                    {% if user.is_active == True %}
+                    <option value="1" selected >Active</option>
+                    {% else %}
+                    <option value="1" >Active</option>
+                    {% endif %}
+        
+                    {% if user.is_active == False %}
+                    <option value="0" selected>Inactive</option>
+                    {% else %}
+                    <option value="0">Inactive</option>
+                    {% endif %}
                   </select>
                   <label for="inputAccount">Account Status</label>
                 </div>

@@ -87,6 +87,7 @@ def updateuserprofile(request,usr_id):
                 religion = request.POST['Religion']
                 motherTongue = request.POST['mTongue']
                 phone = request.POST['phone']
+                
                 try:
                     if request.POST['rNo'] :
                         Rno=request.POST['rNo']
@@ -138,6 +139,24 @@ def updateuserprofile(request,usr_id):
                         user.profile_img = profile_img
                 except:
                     pass
+                try:
+                    if request.POST['account_status']:
+                        account_status = request.POST['account_status']
+                        if account_status== 'Active':
+                            user.is_active = True
+                        else:
+                            user.is_active = False
+                except:
+                    pass
+                try:
+                    if request.POST['staff_status']:
+                        staff_status = request.POST['staff_status']
+                        if staff_status== 'Active':
+                            user.is_staff = True
+                        else:
+                            user.is_staff = False
+                except:
+                    pass
                 user.first_name = fName
                 user.usr_id= stuid
                 user.middle_name=Mname
@@ -148,8 +167,11 @@ def updateuserprofile(request,usr_id):
                 profile.Address= Addr
                 profile.religion = religion
                 profile.mother_tongue = motherTongue
-                details.save()
                 profile.save()
+                try:
+                    details.save()
+                except:
+                    pass
                 return redirect('admin-student')
             return render(request, 'AdminPage/admin-student-edit.html', context)
         
@@ -189,6 +211,7 @@ def updateuserprofile(request,usr_id):
                 Qualification = request.POST['Quali']
                 Teacherid = request.POST['usr_id']
                 city= request.POST['city']
+                
                 try:
                     if request.POST['dept'] :
                         department = request.POST['dept']
@@ -230,7 +253,24 @@ def updateuserprofile(request,usr_id):
                         user.profile_img = profile_img
                 except:
                     pass
-            
+                try:
+                    if request.POST['account_status']:
+                        account_status = request.POST['account_status']
+                        if account_status== 'Active':
+                            user.is_active = True
+                        else:
+                            user.is_active = False
+                except:
+                    pass
+                try:
+                    if request.POST['staff_status']:
+                        staff_status = request.POST['staff_status']
+                        if staff_status== 'Active':
+                            user.is_staff = True
+                        else:
+                            user.is_staff = False
+                except:
+                    pass
                 user.first_name = fName
                 user.usr_id= Teacherid
                 user.middle_name=Mname
