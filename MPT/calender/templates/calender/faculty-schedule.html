@@ -1,8 +1,20 @@
-{% extends 'base.html' %}
+{% extends "faculty.html" %}
 {% load widget_tweaks %}
+{% load static %}
 
-{% block content %}
-    <h1 class="event_title">Mentoring Sessions</h1>
+
+{% block dashboardButton %}
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="{% url 'faculty' user.usr_id %}" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+  <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
+  Dashboard
+</button>
+{% endblock %}
+
+
+{% block dashboardContent%}
+<div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+    <h1 class="event_title"></h1>
     <div class="event">
         {% for item in booking_event %}
         <ul class="event__list">
@@ -39,4 +51,6 @@
           </ul>
       {% endif %}
       </div>
+
+</div>
 {% endblock %}

@@ -18,15 +18,12 @@
         Select All
       </button>
 
-      <button type="button" class="btn btn-sm ms-auto select-btn custom-btn" data-bs-toggle="modal" data-bs-target="#schedule-meet" name="btn-show" id="schedule-btn" >
+      <button type="button" class="btn btn-sm ms-auto select-btn custom-btn" onclick="window.location.href = '{% url 'Schedule' %}';" name="btn-show" id="schedule-btn" >
         <span class="iconify" data-icon="akar-icons:schedule" data-width="20" data-height="20"></span>
         Schedule meeting
       </button>
 
     </div>
-
-    <!--Schedule Meet Modal-->
-    {% include 'components/schedule-meet-modal.html' %}
 
     {% for users in students %}
     {% if not users.is_staff %}
@@ -53,22 +50,6 @@
     </li>
     <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/hrishikesh.png' %}"/><span class="grd-overlay"></span><span
           class="grd-text">Hrishikesh Panigrahi</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/royce.png' %}"/><span class="grd-overlay"></span><span class="grd-text">Royce
-          Vaz</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/aleron.png' %}"/><span class="grd-overlay"></span><span
-          class="grd-text">Aleron Jaisalroyan</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}"/><span class="grd-overlay"></span><span
-          class="grd-text">DBIT</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/logo.png' %}"/><span class="grd-overlay"></span><span
-          class="grd-text">DBIT</span></span>
       <input type="checkbox" class="cb-choose" name="cb-choose">
     </li>
   </ul>
