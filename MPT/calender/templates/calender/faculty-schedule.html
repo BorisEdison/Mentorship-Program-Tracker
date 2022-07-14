@@ -1,33 +1,41 @@
-{% extends 'base.html' %}
+{% extends "faculty.html" %}
 {% load widget_tweaks %}
+{% load static %}
 
-{% block content %}
-    <h1 class="event_title">Mentoring Sessions</h1>
-    <div class="event">
-        {% for item in booking_event %}
-        <ul class="event__list">
-            <li>Event title:{{ item.0 }}</li>
-            <li>Start_date_time:{{ item.1 }}</li>
-            <li>End_date_time:{{ item.2 }}</li>
-        </ul>
-        {% endfor %}
-    </div>
+
+{% block dashboardButton %}
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="{% url 'faculty' user.usr_id %}" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+  <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
+  Dashboard
+</button>
+{% endblock %}
+
+
+{% block dashboardContent%}
+<div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+    <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+        <strong>Schedule Meet</strong>
+    </p>
+
     <div class="picker">
         <form id="picker__confirm" class="picker__confirm" autocomplete="off" action="{% url 'Schedule' %}" method="POST">
            {% csrf_token %}
-            <div class="picker__component">
-                <p class="picker__label">Event name</p>
+            <div class="picker__component d-flex align-items-center justify-content-center">
+                <p class="picker__label">Event name</p>:&nbsp;
                 {% render_field  form.eventTitle class+="picker__field" %}
             </div>
-            <div class="picker__component">
-                <p class="picker__label">Start Time</p>
+            <div class="picker__component d-flex align-items-center justify-content-center pt-1">
+                &nbsp;&nbsp;<p class="picker__label">Start Time</p>:&nbsp;
                 {% render_field  form.startDateTime class+="picker__field" %}
             </div>
-            <div class="picker__component">
-                <p class="picker__label">End Time</p>
+            <div class="picker__component d-flex align-items-center justify-content-center pt-1">
+                &nbsp;&nbsp;&nbsp;<p class="picker__label">End Time</p>:&nbsp;
                 {% render_field  form.endDateTime class+="picker__field" %}
-           </div>
-            <input type="submit" value="Submit" class="picker__button">
+            </div>
+            <div class="d-flex align-items-center justify-content-center pt-2">
+                <input type="submit" class="btn btn-secondary btn-sm" value="Submit" class="picker__button">
+            </div>
         </form>
     </div>
     <div class="display_message">
@@ -39,4 +47,6 @@
           </ul>
       {% endif %}
       </div>
+
+</div>
 {% endblock %}
