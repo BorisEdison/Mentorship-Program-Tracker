@@ -3,7 +3,7 @@
 <nav class="navbar navbar-main sticky-top navbar-expand-lg pt-0 pb-0">
   <div class="container-fluid">
     <a class="navbar-brand" onClick="window.location.reload();">
-      <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+      <img src="{% static 'content/logo.png' %}" class="image2" alt="">
       DBIT
     </a>
     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
@@ -20,7 +20,7 @@
         {% if user.is_authenticated %}
 
         <a class="navbar-brand" onClick="window.location.reload();">
-          <img src="{{user.profile_img.url}}" class=" me-2" width="50" height="50" alt="{{user.first_name}}" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+          <img src="{{user.profile_img.url}}" class="image2" alt="{{user.first_name}}">
           {% if user.first_name and user.last_name %}{{user.first_name}} {{user.last_name}} {% endif %}
         </a>
         {% endif %}
