@@ -1,5 +1,32 @@
 /* ------------------ CSS file that stores globally used styles ------------------ */
-@import "../vendor/bootstrap/bootstrap.min.css";
+body {
+  font-size: .875rem;
+  background-color: #F0F4FB;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+a {
+  color: white;
+  /*text-shadow: 0 0 2px rgb(0, 0, 0);*/
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  text-shadow: 0 0 2px #fff;
+  color: rgb(0, 0, 0);
+}
+h5 {
+  margin-bottom: 0;
+  text-shadow: 0 0 2px rgb(0, 0, 0);
+}
+p {
+  margin-bottom: 0;
+}
+h6 {
+  margin: 0;
+  line-height: 3.2;
+  color: white;
+}
 :root {
     /*------ Normal color classes ------ */
     --bg-color: #F0F4FB;
@@ -30,7 +57,16 @@
     transition: all 2s;
     box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);
 }
+.image2 {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px; 
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+}
 
 .custom-section-title {
-    @extend .h4 .pb-3 .d-flex .justify-content-center;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 1rem 0;
+    font-size: 1.5rem;
 }

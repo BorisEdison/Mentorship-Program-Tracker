@@ -1,28 +1,3 @@
-body {
-  font-size: 0.875rem;
-  background-color: #f0f4fb;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-}
-a {
-  color: white;
-  /* text-shadow: 0 0 2px rgb(0, 0, 0); */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover {
-  text-shadow: 0 0 2px #fff;
-  color: rgb(0, 0, 0);
-}
-p {
-  margin-bottom: 0;
-}
-h6 {
-  margin: 0;
-  line-height: 3.2;
-  color: white;
-}
-
 /* Dashboard Buttons-1 */
 .dashboard-buttons-1 {
   margin-top: 4vh;
