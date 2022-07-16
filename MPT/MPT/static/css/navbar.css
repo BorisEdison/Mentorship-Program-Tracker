@@ -1,4 +1,4 @@
-@import('global.css');
+@import url('global.css');
 /* navbar */
 .navbar-main{
     background-color: #3F72AF;
