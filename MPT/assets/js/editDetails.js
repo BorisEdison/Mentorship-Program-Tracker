@@ -22,8 +22,8 @@ editBody.forEach((elem) => {
 });
 
 // ------------------------  Marks Dynamic Fields ------------------------- //
-let addSemDetail = document.getElementById("add-marks-btn");
-let marksTab = document.getElementById("marks").childNodes[3];
+// let addSemDetail = document.getElementById("add-marks-btn");
+// let marksTab = document.getElementById("marks").childNodes[3];
 //  newtab goes into event listener
 let newtab =
   '<div class="marks-detail">\
@@ -84,10 +84,10 @@ let newtab =
                 </div> \
               </div>';
 
-addSemDetail.addEventListener("click", () => {
-  // alert("You unlocked an easter egg");
-  marksTab.innerHTML += newtab;
-});
+// addSemDetail.addEventListener("click", () => {
+//   // alert("You unlocked an easter egg");
+//   marksTab.innerHTML += newtab;
+// });
 function validateSize(input) {
     const fileSize = input.files[0].size / 1024; // in KiB
   // console.log(fileSize)

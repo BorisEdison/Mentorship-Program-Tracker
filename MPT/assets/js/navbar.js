@@ -1,3 +1,43 @@
+// ----------------- Toggle Dark Mode ----------------- //
+let toggle = document.getElementById("dark-mode-toggle");
+let root = document.querySelector(':root');
+const change_theme = ()=>{
+  // TODO: Fix tooltip not updating
+  if(toggle.childNodes[1].childNodes[1].childNodes[0].getAttribute("data-icon") == "akar-icons:sun"){
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "bi:moon");
+    root.style.setProperty('--body-bg','#2e3440');
+    root.style.setProperty('--navbar-bg','#81a1c1');
+    root.style.setProperty('--btn-bg','#5e81ac');
+    root.style.setProperty('--content-bg','#434c5e');
+    root.style.setProperty('--text-component','#e5e9f0');
+    root.style.setProperty('--text-body','#4c566a');
+    localStorage.setItem('theme','dark');
+    // toggle.setAttribute("title", "Switch To Light Mode");
+  }
+  else{
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "akar-icons:sun");
+    root.style.setProperty('--body-bg','#F0F4FB');
+    root.style.setProperty('--navbar-bg','#3F72AF');
+    root.style.setProperty('--btn-bg','#112D4E');
+    root.style.setProperty('--content-bg','#DBE2EF');
+    root.style.setProperty('--text-component','#FFFFFF');
+    root.style.setProperty('--text-body','#000000');
+    localStorage.setItem('theme','light');
+    // toggle.setAttribute("title", "Switch To Dark Mode");
+  }
+};
+if (localStorage.getItem('theme') != null){
+  let thm = localStorage.getItem('theme');
+  if (thm == 'dark'){
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "akar-icons:sun"); 
+  }
+  else{
+    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "bi:moon");
+  } 
+  change_theme();
+}
+toggle.addEventListener('click', change_theme);
+
 // navbar
 var mediaQuery = window.matchMedia("(max-width: 991.49px)");
 if (mediaQuery.matches) {
@@ -40,19 +80,3 @@ if (mediaQuery.matches) {
   })();
 }
 
-
-// ----------------- Toggle Dark Mode ----------------- //
-let toggle = document.getElementById("dark-mode-toggle");
-
-toggle.addEventListener('click',()=>{
-  // TODO: Fix tooltip not updating
-  // TODO: Add dark classes
-  if(toggle.childNodes[1].childNodes[1].childNodes[0].getAttribute("data-icon") == "akar-icons:sun"){
-    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "bi:moon");
-    // toggle.setAttribute("title", "Switch To Light Mode");
-  }
-  else{
-    toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "akar-icons:sun");
-    // toggle.setAttribute("title", "Switch To Dark Mode");
-  }
-})
