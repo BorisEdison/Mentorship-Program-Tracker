@@ -44,10 +44,10 @@
             </button>
             {% endblock %}
 
-            {% block messageButton %}
-            <button class="nav-link nav-pills-link" id="message-tab" onclick="window.location.href = 'student-message.html';" data-bs-toggle="pill" data-bs-target="#message" type="button" role="tab" aria-controls="message" aria-selected="false">
+            {% block announcementButton %}
+            <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = 'student-announcement.html';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
-              Message
+              Announcement
             </button>
             {% endblock %}
 
@@ -80,8 +80,8 @@
             </div>
             {% endblock %}
 
-            {% block messageContent %}
-            <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message">
+            {% block announcementContent %}
+            <div class="tab-pane fade" id="announcement" role="tabpanel" aria-labelledby="announcement">
 
             </div>
             {% endblock %}

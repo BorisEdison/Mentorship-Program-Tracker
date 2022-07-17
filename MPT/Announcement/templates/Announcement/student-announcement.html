@@ -1,0 +1,15 @@
+{% extends "student.html" %}
+{% load static %}
+
+{% block announcementButton %}
+<button class="nav-link active nav-pills-link" id="announcement-tab" onClick="window.location.reload();" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
+  <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span> 
+  Announcement
+</button>
+{% endblock %}
+
+{% block announcementContent %}
+<div class="tab-pane fade show active" id="announcement" role="tabpanel" aria-labelledby="announcement">
+
+</div>
+{% endblock %}

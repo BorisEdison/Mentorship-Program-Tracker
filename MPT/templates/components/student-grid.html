@@ -26,30 +26,19 @@
     </div>
 
     {% for users in students %}
-    {% if not users.is_staff %}
-    <a href="{% url 'studentdetail' fac_id users.Mentee.user.usr_id %}">
-      <li class="shrink grid-li">
-        <span class="grd-cell">
-          <img class="grd-img" src="{{ users.Mentee.user.profile_img.url}}"/><span class="grd-overlay">
-          </span><span class="grd-text"> {{users.Mentee.user.first_name}} {{users.Mentee.user.last_name}}
-          </span></span>
-        <input type="checkbox" class="cb-choose" name="cb-choose">
-      </li>
-    </a>
 
-    {% endif %}
+      {% if not users.is_staff %}
+        <a href="{% url 'studentdetail' fac_id users.Mentee.user.usr_id %}">
+          <li class="shrink grid-li">
+            <span class="grd-cell">
+              <img class="grd-img" src="{{ users.Mentee.user.profile_img.url}}"/><span class="grd-overlay">
+              </span><span class="grd-text"> {{users.Mentee.user.first_name}} {{users.Mentee.user.last_name}}
+              </span></span>
+            <input type="checkbox" class="cb-choose" name="cb-choose">
+          </li>
+        </a>
+      {% endif %}
+      
     {% endfor %}
-    <li class="shrink grid-li">
-      <span class="grd-cell">
-        <img class="grd-img" src="{% static 'content/mentee/bipin.png' %}"/><span class="grd-overlay"></span><span class="grd-text">Bipin Giri</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/alston.png' %}"/><span class="grd-overlay"></span><span
-          class="grd-text">Alston Fernandes</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
-    <li class="shrink grid-li"><span class="grd-cell"><img class="grd-img" src="{% static 'content/mentee/hrishikesh.png' %}"/><span class="grd-overlay"></span><span
-          class="grd-text">Hrishikesh Panigrahi</span></span>
-      <input type="checkbox" class="cb-choose" name="cb-choose">
-    </li>
+
   </ul>
