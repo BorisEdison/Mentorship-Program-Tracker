@@ -1,19 +1,20 @@
+@import url('global.css');
 /* image upload */
 .file-upload .file-select {
   display: block;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--nord-5);
   border-radius: 0.25rem;
-  color: #112D4E;
+  color: var(--btn-bg);
   cursor: pointer;
   max-height: 58px;
   line-height: 58px;
   text-align: left;
-  background: #ffffff;
+  background-color: var(--text-component);
   overflow: hidden;
   position: relative;
 }
 .file-upload .file-select .file-select-button {
-  background: #dce4ec;
+  background-color: var(--nord-8);
   padding: 0 10px;
   margin-left: 7.5px;
   display: inline-block;
@@ -27,8 +28,8 @@
   padding: 0 10px;
 }
 .file-upload .file-select:hover .file-select-button {
-  background: #112D4E;
-  color: #ffffff;
+  background-color: var(--btn-bg);
+  color: var(--text-component);
   border-radius: 0.25rem 0 0 0.25rem;
   transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
@@ -39,9 +40,9 @@
   z-index: 100;
   cursor: pointer;
   position: absolute;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--nord-5);
   border-radius: 0.25rem;
-  color: #112D4E;
+  color: var(--btn-bg);
   height: 100%;
   width: 100%;
   top: 0;

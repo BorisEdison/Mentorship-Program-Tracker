@@ -1,23 +1,55 @@
 /* ------------------ CSS file that stores globally used styles ------------------ */
+:root {
+  /*Colors taken from https://www.nordtheme.com/ */
+  /*Polar Night*/
+  --nord-0: #2e3440;
+  --nord-1: #3b4252;
+  --nord-2: #434c5e;
+  --nord-3: #4c566a;
+  /*Snow Storm*/
+  --nord-4: #d8dee9;
+  --nord-5: #e5e9f0;
+  --nord-6: #eceff4;
+  /*Frost*/
+  --nord-7: #8fbcbb;
+  --nord-8: #88c0d0;
+  --nord-9: #81a1c1;
+  --nord-10: #5e81ac;
+  /*Aurora*/
+  --nord-11: #bf616a;
+  --nord-12: #d08770;
+  --nord-13: #ebcb8b;
+  --nord-14: #a3be8c;
+  --nord-15: #b48ead;
+  /*-----------------------------*/
+  /* Colors from across the site */
+  --body-bg: #F0F4FB;
+  --navbar-bg: #3F72AF;
+  --btn-bg: #112D4E;
+  --content-bg: #DBE2EF;
+  --text-component: #FFFFFF;
+  --text-body: #000000;
+}
+/*tags*/
 body {
+  background-color: var(--body-bg);
   font-size: .875rem;
-  background-color: #F0F4FB;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 a {
-  color: white;
+  color: var(--text-component);
   /*text-shadow: 0 0 2px rgb(0, 0, 0);*/
   text-decoration: none;
   transition: color 0.3s ease;
 }
 a:hover {
-  text-shadow: 0 0 2px #fff;
-  color: rgb(0, 0, 0);
+  /*text-shadow: 0 0 2px #fff;*/
+  color: var(--text-body);
 }
 h5 {
   margin-bottom: 0;
-  text-shadow: 0 0 2px rgb(0, 0, 0);
+  /*text-shadow: 0 0 2px rgb(0, 0, 0);*/
 }
 p {
   margin-bottom: 0;
@@ -25,48 +57,57 @@ p {
 h6 {
   margin: 0;
   line-height: 3.2;
-  color: white;
+  color:  var(--text-component);
 }
-:root {
-    /*------ Normal color classes ------ */
-    --bg-color: #F0F4FB;
-    --header-bg:#3F72AF;
-    --light-accent-color:#D6E5FF;
-    --dark-accent-color:#344F6D;
-    --text-white:#FFFFFF;
-    --text-black:#000000;
-    /*------ Dark mode color classes ------ */
-
+/* scrollbar */
+::-webkit-scrollbar {
+  z-index: 30;
+  width: 7px;
+  height: 0;
+  y-index: hidden;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--nord-0);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--nord-3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
 }
 
+/*classes*/
 .custom-btn {
-    width: auto; 
-    border-radius: 7px; 
-    background-color: #112D4E; 
-    color: white; 
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5); 
+  width: auto; 
+  border-radius: 7px; 
+  background-color:  var(--btn-bg); 
+  color:  var(--text-component); 
+  /*box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5); */
+}
+.btn:hover{
+  color: var(--text-component);
 }
 
 .image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: none;
-    border-radius: 10px;
-    transform: scale(0.8);
-    transition: all 2s;
-    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  transform: scale(0.8);
+  transition: all 2s;
+  /*box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);*/
 }
 .image2 {
-    width: 60px;
-    height: 60px;
-    border-radius: 5px; 
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+  width: 60px;
+  height: 60px;
+  border-radius: 5px; 
+  /*box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);*/
 }
 
 .custom-section-title {
-    display: flex;
-    justify-content: center;
-    padding: 0 0 1rem 0;
-    font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 1rem 0;
+  font-size: 1.5rem;
 }
