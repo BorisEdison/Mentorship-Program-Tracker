@@ -4,11 +4,11 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,logout,login as auth_login
 from accounts.models import User
 
 def login(request):
-    logout(request)
     if request.method == 'POST':
         email= request.POST['email']
         password= request.POST['password']
@@ -16,13 +16,20 @@ def login(request):
         if user:
             if user.is_active:
                 auth_login(request, user)
+                
                 if request.user.is_superuser ==True:
+                    if request.GET.get('next',None):
+                        return redirect(request.GET['next'])
                     return redirect('/AdminPage')
 
                 elif request.user.is_staff==True:
+                    if request.GET.get('next',None):
+                        return redirect(request.GET['next'])
                     return redirect('/facultydashboard/'+str(user.usr_id),pk=user.usr_id)
                 
                 else:
+                    if request.GET.get('next',None):
+                        return redirect(request.GET['next'])
                     return redirect('/studentdashboard/'+str(user.usr_id),pk=user.usr_id)
             else:
                 messages.info(request, 'Activate Your Account First then try to login...')
@@ -31,9 +38,17 @@ def login(request):
             messages.info(request, "Check your cerdentials")
             return render(request, 'Login/login-page.html')
 
+    elif request.user.is_authenticated:
+        if request.user.is_superuser ==True:
+            return redirect('/AdminPage')
+        elif request.user.is_staff==True:
+            return redirect('/facultydashboard/'+str(request.user.usr_id),pk=request.user.usr_id)
+        else:
+            return redirect('/studentdashboard/'+str(request.user.usr_id),pk=request.user.usr_id)
     else: 
         return render(request, 'Login/login-page.html')
 
+@login_required
 def change_password(request):
     if not request.user.is_authenticated:
         return redirect('Login')

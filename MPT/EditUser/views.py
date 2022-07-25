@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
@@ -61,7 +60,7 @@ studentcontext={
             
         }
 # need to do 1-1 relationship with user and mentor while registration
-@login_required
+@login_required()
 def edit(request):
     context = {}
     if request.user.is_staff:
