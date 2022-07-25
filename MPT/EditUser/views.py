@@ -329,4 +329,4 @@ def edit(request):
             return redirect('student',pk=user.usr_id)
 
         else:
-            return render(request, 'student-edit.html', context)
+            return render(request, 'EditUser/student-edit.html', context)
