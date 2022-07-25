@@ -14,7 +14,7 @@ from EditUser.views import studentcontext
 
 # Create your views here for admin page
 
-@login_required
+@login_required(login_url='Login')
 def Adminpage(request):
     if request.user.is_superuser:
         users = User.objects.all()
@@ -24,7 +24,7 @@ def Adminpage(request):
         return HttpResponse("You are not authorized to view this page")
 
 # view all the students in the database in the admin page
-@login_required
+@login_required(login_url='Login')
 def Adminstudent(request):
     if request.user.is_superuser:
         students = User.objects.filter(is_staff=False)
@@ -33,7 +33,7 @@ def Adminstudent(request):
     else:
         return HttpResponse("You are not authorized to view this page")
 
-@login_required
+@login_required(login_url='Login')
 def Adminmentor(request):
     if request.user.is_superuser:
         mentors = User.objects.filter(is_staff=True,is_superuser=False)
@@ -42,14 +42,14 @@ def Adminmentor(request):
     else:
         return HttpResponse("You are not authorized to view this page")
 
-@login_required
+@login_required(login_url='Login')
 def Activity(request):
     if request.user.is_superuser:
         return render(request,'AdminPage/admin-activities.html')
     else:
         return HttpResponse("You are not authorized to view this page")
 
-@login_required
+@login_required(login_url='Login')
 def deleteuser(request,id):
     if request.user.is_superuser:
         if request.method=='POST':
@@ -64,7 +64,7 @@ def deleteuser(request,id):
 
     return HttpResponse("You are not authorized to view this page")
 
-@login_required
+@login_required(login_url='Login')
 def updateuserprofile(request,usr_id):
     if request.user.is_superuser:
         user=User.objects.get(usr_id=usr_id)
@@ -294,7 +294,7 @@ def updateuserprofile(request,usr_id):
     else:
         return HttpResponse("You are not authorized to view this page")
 
-@login_required
+@login_required(login_url='Login')
 def Assigned(request,usr_id):
     if request.user.is_superuser:
         mentee_list = []
@@ -321,7 +321,7 @@ def Assigned(request,usr_id):
         return HttpResponse("You are not authorized to view this page")
 
 # For assigning unassigned students :
-@login_required
+@login_required(login_url='Login')
 def Unassigned(request,usr_id):
     if request.user.is_superuser:
         mentee_list= StudentProfile.objects.filter(is_assigned=False)

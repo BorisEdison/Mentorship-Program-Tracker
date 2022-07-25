@@ -60,7 +60,7 @@ studentcontext={
             
         }
 # need to do 1-1 relationship with user and mentor while registration
-@login_required()
+@login_required(login_url='Login')
 def edit(request):
     context = {}
     if request.user.is_staff:

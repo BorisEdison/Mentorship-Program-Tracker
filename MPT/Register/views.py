@@ -6,6 +6,7 @@ from django.contrib.auth.models import auth
 from django.http import HttpResponse
 from accounts.models import StudentProfile, MentorProfile
 from accounts.models import User
+from django.contrib.auth.decorators import login_required
 
 
 # Student Registration + teacher registeration as student from registeration page
@@ -51,6 +52,7 @@ def StudentRegister(request):
     return render(request, 'Register/register.html',context)
 
 # Faculty Registration
+@login_required(login_url='Login')
 def FacultyRegister(request):
     if request.method == 'POST':
         # fname= request.POST['name']
@@ -88,6 +90,7 @@ def FacultyRegister(request):
 
 
 # Faculty Registration
+@login_required(login_url='Login')
 def AdminRegister(request):
     if request.method == 'POST':
         # fname= request.POST['name']

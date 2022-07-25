@@ -19,17 +19,29 @@ def login(request):
                 
                 if request.user.is_superuser ==True:
                     if request.GET.get('next',None):
-                        return redirect(request.GET['next'])
+                        try:
+                            if request.GET.get('pk')==user.usr_id:
+                                return redirect(request.GET['next'])
+                        except:
+                            pass
                     return redirect('/AdminPage')
 
                 elif request.user.is_staff==True:
                     if request.GET.get('next',None):
-                        return redirect(request.GET['next'])
+                        try:
+                            if request.GET.get('pk')==user.usr_id:
+                                return redirect(request.GET['next'])
+                        except:
+                            pass
                     return redirect('/facultydashboard/'+str(user.usr_id),pk=user.usr_id)
                 
                 else:
                     if request.GET.get('next',None):
-                        return redirect(request.GET['next'])
+                        try:
+                            if request.GET.get('pk')==user.usr_id:
+                                return redirect(request.GET['next'])
+                        except:
+                            pass
                     return redirect('/studentdashboard/'+str(user.usr_id),pk=user.usr_id)
             else:
                 messages.info(request, 'Activate Your Account First then try to login...')
@@ -48,7 +60,7 @@ def login(request):
     else: 
         return render(request, 'Login/login-page.html')
 
-@login_required
+@login_required(login_url='Login')
 def change_password(request):
     if not request.user.is_authenticated:
         return redirect('Login')

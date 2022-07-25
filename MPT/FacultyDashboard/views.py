@@ -17,7 +17,7 @@ def logout(request):
     return redirect('/')
 
 # Create your views here.
-@login_required
+@login_required(login_url='Login')
 def studentdetail(request, fac_id, stu_id):
     user = User.objects.get(usr_id=stu_id)
     faculty = User.objects.get(usr_id=fac_id)
@@ -196,7 +196,7 @@ def studentdetail(request, fac_id, stu_id):
         pass
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
-@login_required
+@login_required(login_url='Login')
 def faculty(request,pk):
     if request.user.is_staff:
         ## current_user = request.user
