@@ -153,7 +153,7 @@ def updateuserprofile(request,usr_id):
                         staff_status = request.POST['staff_status']
                         if staff_status== 'Active':
                             user.is_staff = True
-                        else:
+                        elif staff_status=='Inactive':
                             user.is_staff = False
                 except:
                     pass
@@ -172,6 +172,18 @@ def updateuserprofile(request,usr_id):
                     details.save()
                 except:
                     pass
+
+                if user.is_staff==True:
+                    try:
+                        StudentProfile.objects.get(user__usr_id=usr_id).delete()
+                    except:
+                        pass
+                else:
+                    try:
+                        MentorProfile.objects.get(user__usr_id=usr_id).delete()
+                    except:
+                        pass
+
                 return redirect('admin-student')
             return render(request, 'AdminPage/admin-student-edit.html', context)
         
@@ -267,7 +279,7 @@ def updateuserprofile(request,usr_id):
                         staff_status = request.POST['staff_status']
                         if staff_status== 'Active':
                             user.is_staff = True
-                        else:
+                        elif staff_status=='Inactive':
                             user.is_staff = False
                 except:
                     pass
@@ -286,6 +298,17 @@ def updateuserprofile(request,usr_id):
                 profile.mother_tongue = motherTongue
                 profile.religion = religion
                 profile.save()
+                if user.is_staff==True:
+                    try:
+                        StudentProfile.objects.get(user__usr_id=usr_id).delete()
+                    except:
+                        pass
+                else:
+                    try:
+                        MentorProfile.objects.get(user__usr_id=usr_id).delete()
+                    except:
+                        pass
+
                 return redirect('admin-mentor')
             return render(request, 'AdminPage/admin-mentor-edit.html', context)
 

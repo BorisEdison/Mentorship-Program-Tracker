@@ -238,42 +238,41 @@
             </div>
 
             <!-- Tenth Row  -->
-            <div class="row pt-3">
+            <div class="row">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputStaff" class="form-select" name="staff_status">
-                    {% if user.is_staff == True %}
-                    <option value="1" selected >Active</option>
-                    {% else %}
-                    <option value="1" >Active</option>
-                    {% endif %}
-        
-                    {% if user.is_staff == False %}
-                    <option value="0" selected>Inactive</option>
-                    {% else %}
-                    <option value="0">Inactive</option>
-                    {% endif %}
-
+                    {% if user.is_staff  %}
+                      <option value="Active" selected >Active</option>
+                      {% else %}
+                      <option value="Active" >Active</option>
+                      {% endif %}
+          
+                      {% if not user.is_staff  %}
+                      <option value="Inactive" selected>Inactive</option>
+                      {% else %}
+                      <option value="Inactive">Inactive</option>
+                      {% endif %}
                   </select>
                   <label for="inputStaff">Staff Status</label>
                 </div>
               </div>
-
-              <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+  
+              <div class="col-6" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                  <select id="inputAccount" class="form-select" name="Account_status">
-                    {% if user.is_active == True %}
-                    <option value="1" selected >Active</option>
+                  <select id="inputAccount" class="form-select" name="account_status">
+                    {% if user.is_active  %}
+                    <option value="Active" selected >Active</option>
                     {% else %}
-                    <option value="1" >Active</option>
+                    <option value="Active" >Active</option>
                     {% endif %}
         
-                    {% if user.is_active == False %}
-                    <option value="0" selected>Inactive</option>
+                    {% if not user.is_active %}
+                    <option value="Inactive" selected>Inactive</option>
                     {% else %}
-                    <option value="0">Inactive</option>
+                    <option value="Inactive">Inactive</option>
                     {% endif %}
-                  </select>
+                </select>
                   <label for="inputAccount">Account Status</label>
                 </div>
               </div>

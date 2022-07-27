@@ -250,11 +250,11 @@ def save_user_profile(sender, instance, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     if not instance.is_staff:
         try:
-            MentorProfile.objects.get(user=instance).delete()
+            MentorProfile.objects.get(user__usr_id=instance.usr_id).delete()
         except:
             pass
     if instance.is_staff and not(instance.is_superuser):
         try:
-            StudentProfile.objects.get(user=instance).delete()
+            StudentProfile.objects.get(user__usr_id=instance.usr_id).delete()
         except:
             pass
