@@ -56,10 +56,15 @@ def deleteuser(request,id):
             # User.objects.filter(pk=id).delete()
             user=User.objects.get(pk=id)
             check=user.is_staff
-            user.delete()
             if check:
+                for mentee in Mentor_assign.objects.filter(Mentor__user__usr_id=user.usr_id):
+                    mentee.Mentee.user.studentprofile.is_assigned=False
+                    mentee.Mentee.user.studentprofile.save()
+                    user.delete()
+
                 return redirect('admin-mentor')
             else:
+                user.delete()
                 return redirect('admin-student')
 
     return HttpResponse("You are not authorized to view this page")
@@ -323,7 +328,7 @@ def Assigned(request,usr_id):
         mentee_list = []
         for mentee in Mentor_assign.objects.filter(Mentor__user__usr_id=usr_id):
             mentee_list.append(mentee.Mentee)
-        # print(mentee_list)
+        print(mentee_list)
         mentor = MentorProfile.objects.get(user__usr_id=usr_id)
         context={'mentor':mentor,'mentee_list':mentee_list}
         if request.POST.get('mentees'):
