@@ -5,7 +5,7 @@ from AdminPage.admin import admin_site
 
 
 urlpatterns = [
-    path('admin/', admin_site.urls),
+    path('def_admin-Page-django/', admin_site.urls),
     path('AdminPage/', include('AdminPage.urls')),
     path('', include('Register.urls')),
     path('', include('Login.urls')),    
