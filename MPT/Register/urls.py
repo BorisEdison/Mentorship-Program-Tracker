@@ -6,4 +6,5 @@ urlpatterns = [
     path('Sign-Up', views.StudentRegister, name='register'),
     path('Add-Faculty', views.FacultyRegister, name='FacultyRegister'),
     path('Add-Admin', views.AdminRegister, name='AdminRegister'),
+    path('activate/<uidb64>/<token>', views.activate, name='activate'),
 ]

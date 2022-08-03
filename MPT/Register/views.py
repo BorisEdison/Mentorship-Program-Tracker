@@ -8,6 +8,16 @@ from accounts.models import StudentProfile, MentorProfile
 from accounts.models import User
 from django.contrib.auth.decorators import login_required
 
+# from django.core.mail import EmailMessage
+from .tokens import account_activation_token
+from django.core.mail import send_mail
+from MPT import settings    
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.template.loader import render_to_string
+
+
 
 # Student Registration + teacher registeration as student from registeration page
 def StudentRegister(request):
@@ -32,14 +42,25 @@ def StudentRegister(request):
                 # return render(request, 'Register/register.html')
 
             else: 
-                user= User.objects.create_user(usr_id = usrID, email=email, password= password1, first_name=fname, last_name=Lname,phone=phone)
+                user= User.objects.create_user(usr_id = usrID, email=email, password= password1, is_active=False, first_name=fname, last_name=Lname,phone=phone)
                 user.save()
-                # u = User.objects.get(email=request.POST['email'])
-                # profile =StudentProfile(user = u)
-                # # print(request.profile)
-                # profile.save()
-                # print("profile saved")
-                return redirect('/')
+                current_site= get_current_site(request)
+                mail_subject= 'Activate your account.'
+                message= render_to_string('Register/acc_activate_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+                # print(message)
+                to_email= email
+                try:
+                    send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                    messages.info(request, "Please confirm your email address to complete the registration.")
+                    return redirect('/')
+                except:
+                    messages.info(request, 'Error Occured In Sending Mail, Try Again ')
+                    return redirect('/')
  
         else: 
             if password1!=password2:
@@ -50,6 +71,19 @@ def StudentRegister(request):
                 'title': 'New Account'
                 }
     return render(request, 'Register/register.html',context)
+
+def activate(request,uidb64,token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user= User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user= None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active= True
+        user.save()
+        # login(request, user)
+        messages.success(request, "Thank you for your email confirmation. Now you can login your account.")
+        return redirect('/')
 
 # Faculty Registration
 @login_required(login_url='Login')
