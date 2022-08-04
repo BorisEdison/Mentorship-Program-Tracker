@@ -21,6 +21,9 @@ from django.template.loader import render_to_string
 
 # Student Registration + teacher registeration as student from registeration page
 def StudentRegister(request):
+    context = {'page': 'StudentUser',
+                'title': 'New Account'
+                }
     if request.method == 'POST':
         fname= request.POST['name']
         Lname= request.POST['Lname']
@@ -34,12 +37,19 @@ def StudentRegister(request):
         if password1==password2 and email==email1:
                 
             if User.objects.filter(email=email).exists():
-                messages.info(request, "Email Already Taken")
-                # return render(request, 'Register/register.html')
+                try:
+                    existing_user = User.objects.get(email=email)
+                    if (existing_user.is_active == False):
+                        existing_user.delete()
+                    else:
+                        messages.error(request, "This email is already registered.")
+                except:
+                    pass
+                return render(request, 'Register/register.html',context)
 
             elif User.objects.filter(usr_id=usrID).exists():
                 messages.info(request, "User ID Already Exists")
-                # return render(request, 'Register/register.html')
+                return render(request, 'Register/register.html',context)
 
             else: 
                 user= User.objects.create_user(usr_id = usrID, email=email, password= password1, is_active=False, first_name=fname, last_name=Lname,phone=phone)
@@ -56,7 +66,7 @@ def StudentRegister(request):
                 to_email= email
                 try:
                     send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
-                    messages.info(request, "Please confirm your email address to complete the registration.")
+                    messages.success(request, "link has been send to your email id.Please confirm your email address to complete the registration.")
                     return redirect('/')
                 except:
                     messages.info(request, 'Error Occured In Sending Mail, Try Again ')
@@ -67,9 +77,7 @@ def StudentRegister(request):
                 messages.info(request, "Password does not match")
             else:
                 messages.info(request, "Email does not match")
-    context = {'page': 'StudentUser',
-                'title': 'New Account'
-                }
+    
     return render(request, 'Register/register.html',context)
 
 def activate(request,uidb64,token):
@@ -81,7 +89,6 @@ def activate(request,uidb64,token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active= True
         user.save()
-        # login(request, user)
         messages.success(request, "Thank you for your email confirmation. Now you can login your account.")
         return redirect('/')
 

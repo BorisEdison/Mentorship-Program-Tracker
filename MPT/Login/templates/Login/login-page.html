@@ -24,8 +24,8 @@
       <img style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);" src="{% static 'content/logo.png' %}" width="60" height="60" alt="">
     </a>
   </div>
-
-  <main class="form-signin">
+    
+    <main class="form-signin">
     <form action="" method="POST">
 
       <h1 class="h3 mb-3">Welcome to MPT</h1>
@@ -55,19 +55,19 @@
 
     <div>
 
-      {% comment %} {% if messages %}
-      <h2>{{ messages.0 }}</h2> <!-- for printing first message only-->
-      {% endif %} {% endcomment %}
-
-      {% if messages %}
-      {% for message in messages %}
-      {%  if forloop.first  %}
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+      <div class = 'text-center alert alert-{{message.tags}} alert-dismissible fade show' role='alert' >
+        {{message|safe}}
+      </div>
+    {% else %}
       <div class="alert alert-danger d-flex align-items-center mb-0" style="height: 20px" role="alert">
         {{ message }}
       </div>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
+    {% endif %}
+    {% endfor %}
+  {% endif %}
 
     </div>
   </main>

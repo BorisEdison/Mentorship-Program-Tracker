@@ -24,16 +24,7 @@
       <img style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);" src="{% static 'content/logo.png' %}" width="60" height="60" alt="">
     </a>
   </div>
-  
-  {% if messages %}
-    {% for message in messages %}
-      <div class = 'text-center alert alert-{{message.tags}} alert-dismissible fade show' role='alert' >{{message|safe}}
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-          <span aria-hidden='true'>&times;</span>
-      </div>
-    {% endfor %}
-  {% endif %}
-  
+    
   <main class="form-signin" style="max-width: 600px; ">
     {% if page == 'StudentUser' %}
     <form action="Sign-Up" method="POST">
@@ -53,10 +44,6 @@
             <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
             <label for="inpuLname">Last Name</label>
           </div>
-
-          {% comment %} <div class="">
-            <input type="text" name="username" class="form-control middle" placeholder="username" required>
-          </div> {% endcomment %}
 
           <div class="form-floating">
             <input type="email" name="email" class="form-control middle" placeholder="Email" required>
