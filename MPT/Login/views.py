@@ -52,7 +52,8 @@ def login(request):
             elif User.objects.filter(email=email).exists():
                 messages.info(request, 'Password is incorrect...')
             else:
-                messages.info(request,'Email is not registered...')
+                messages.info(request,'Email is not registered... Kindly Register It First...')
+                return redirect(to='register')
             return render(request, 'Login/login-page.html')
 
     elif request.user.is_authenticated:
