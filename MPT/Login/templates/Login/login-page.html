@@ -40,7 +40,7 @@
         <label for="inputPassword">Password</label>
       </div>
 
-      <p><a href=""><strong>Forgot password?</strong></a></p>
+      <p><a href="{% url 'reset_password' %}"><strong>Forgot password?</strong></a></p>
 
       <label class="checkbox-container" style="opacity: 0.85;font-size: 0.9rem;">
         <input type="checkbox">
@@ -50,11 +50,9 @@
 
       <button class="w-100 btn btn-lg btn-primary" style="text-align: center;" type="submit">Login</button>
       <p style="opacity: 0.8;">Don't have an account? <a href="/Sign-Up"><strong>Register</strong></a></p>
-
     </form>
 
     <div>
-
     {% if messages %}
     {% for message in messages %}
     {% if message.tags == 'success' %}
@@ -68,7 +66,6 @@
     {% endif %}
     {% endfor %}
   {% endif %}
-
     </div>
   </main>
 
