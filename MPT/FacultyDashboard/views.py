@@ -194,6 +194,7 @@ def studentdetail(request, fac_id, stu_id):
         context.update({'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'clubs':clubs,'hobbies':hobbies,'achievements':achievements,'orgs':organizations,'Medical':Medical})
     except:
         pass
+    print(student.user.usr_id)
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required(login_url='Login')
@@ -223,8 +224,8 @@ def faculty(request,pk):
 
 # this is for testing purpose 
 
-def facultymarks(request):
-    return render(request, 'FacultyDashboard/faculty-student-marks.html')
+# def facultymarks(request):
+#     return render(request, 'FacultyDashboard/faculty-student-marks.html')
 
 # def stumarks(request):
 #     return render(request, 'student-marks.html')
