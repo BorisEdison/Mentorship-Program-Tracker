@@ -3,13 +3,104 @@
 
 {% block announcementButton %}
 <button class="nav-link active nav-pills-link" id="announcement-tab" onClick="window.location.reload();" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
-  <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span> 
+  <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
   Announcement
 </button>
 {% endblock %}
 
 {% block announcementContent %}
 <div class="tab-pane fade show active" id="announcement" role="tabpanel" aria-labelledby="announcement">
+  <div class="tab-pane fade show active m-5 mt-0 mb-0" id="announcement" role="tabpanel" aria-labelledby="announcement">
 
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+      <h1 style="font-size: 25px; justify-content: center;">
+        <strong>Announcement</strong>
+      </h1>
+    </div>
+
+    <div class="card  mb-4">
+      <div class="card-header">
+            <img class="rounded-circle image3" src="{{user.profile_img.url}}" height="48" width="48">
+            Boris Edison
+      </div>
+      <div class="card-body">
+        <a href="" style="color:black">
+          <h5 class="card-title">World’s Most Fearless Animal</h5>
+        </a>
+        <p class="card-text">
+          The honey badger has been called the world’s most fearless animal because it doesn’t hesitate to attack animals much larger than itself- even lions and crocodiles! Honey badgers are found in arid grasslands and savannahs and even
+          rainforests. They live in burrows in the ground. The honey badger looks a bit like a skunk. It has a stocky, flattened body with short, strong legs. Its long claws on the front feet are used for digging and defense. Its hair is thick and
+          coarse, mostly black with a wide gray-white stripe that stretches across its back from the top of the head to the tip of the tail. The honey badger also has a gland at the base of its tail that stores a stinky liquid. If it is frightened or
+          threatened, it drops a “stink bomb”.
+
+          The honey badger is about two feet long, and its tail adds another foot to its length. Did you know that one foot equals 12 inches, or the length of ruler? The honey badger weighs around 26 pounds, which is around the weight of an average
+          two year old child. Its diet varies from small mammals and the young of large mammals to birds, reptiles, insects, dead animals and even a little vegetation, including juicy fruits. The honey badger gets its name from the fact that it is
+          led by the song of a bird, the honey guide, to a beehive which it breaks open with its strong claws. Then the honey badger and the bird both have a feast!
+
+          Honey badgers’ main threat is human due to poisoning and trapping. Furthermore, beekeepers do not like honey badgers because they destroy beehives. Luckily, honey badger’s fierceness has kept it from being seriously endangered!
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+        September 22, 2022
+      </div>
+    </div>
+
+    <div class="card  mb-4">
+      <div class="card-header">
+            <img class="rounded-circle image3" src="{{user.profile_img.url}}" height="48" width="48">
+            Boris Edison
+      </div>
+      <div class="card-body">
+        <a href="" style="color:black">
+          <h5 class="card-title">World’s Most Fearless Animal</h5>
+        </a>
+        <p class="card-text">
+          The honey badger has been called the world’s most fearless animal because it doesn’t hesitate to attack animals much larger than itself- even lions and crocodiles! Honey badgers are found in arid grasslands and savannahs and even
+          rainforests. They live in burrows in the ground. The honey badger looks a bit like a skunk. It has a stocky, flattened body with short, strong legs. Its long claws on the front feet are used for digging and defense. Its hair is thick and
+          coarse, mostly black with a wide gray-white stripe that stretches across its back from the top of the head to the tip of the tail. The honey badger also has a gland at the base of its tail that stores a stinky liquid. If it is frightened or
+          threatened, it drops a “stink bomb”.
+
+          The honey badger is about two feet long, and its tail adds another foot to its length. Did you know that one foot equals 12 inches, or the length of ruler? The honey badger weighs around 26 pounds, which is around the weight of an average
+          two year old child. Its diet varies from small mammals and the young of large mammals to birds, reptiles, insects, dead animals and even a little vegetation, including juicy fruits. The honey badger gets its name from the fact that it is
+          led by the song of a bird, the honey guide, to a beehive which it breaks open with its strong claws. Then the honey badger and the bird both have a feast!
+
+          Honey badgers’ main threat is human due to poisoning and trapping. Furthermore, beekeepers do not like honey badgers because they destroy beehives. Luckily, honey badger’s fierceness has kept it from being seriously endangered!
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+        September 22, 2022
+      </div>
+    </div>
+
+    <!--Pagination buttons-->
+    <div class="d-flex align-items-center justify-content-center mb-0">
+
+      {% comment %} {% if is_paginated  %} {% endcomment %}
+
+      {% comment %} {% if page_obj.has_prevoius %} {% endcomment %}
+      <a class="btn btn-sm btn-outline-secondary mb-4 left" href="?page=1">First </a>
+      <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{page_obj.previous_page_number}}">Previous </a>
+      {% comment %} {% endif %} {% endcomment %}
+
+      {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+      <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{num}}">{{num}} </a>
+
+      {% elif num > page_obj.number|add:'-3'  and num < page_obj.number|add:'3' %}
+      <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{num}}">{{num}} </a>
+
+      {% endif %}
+      {% endfor %}
+
+      {% comment %} {% if page_obj.has_prevoius %} {% endcomment %}
+      <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{page_obj.next_page_number}}">Next </a>
+      <a class="btn btn-sm btn-outline-secondary mb-4 right" href="?page={{page_obj.paginator.num_pages}}">Last </a>
+      {% comment %} {% endif %} {% endcomment %}
+
+      {% comment %} {% endif %} {% endcomment %}
+
+    </div>
+
+  </div>
 </div>
 {% endblock %}
