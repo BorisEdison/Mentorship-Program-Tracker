@@ -11,51 +11,96 @@
 {% block dashboardContent %}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-  <nav class="">
-    <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-first-tab" data-bs-toggle="tab" data-bs-target="#nav-first" type="button" role="tab" aria-controls="nav-first-tab" aria-selected="false">First</button>
-      <button class="nav-link" id="nav-second-tab" data-bs-toggle="tab" data-bs-target="#nav-second" type="button" role="tab" aria-controls="nav-second-tab" aria-selected="true">Second</button>
-    </div>
-  </nav>
+  <!--Student Name-->
+  <p style="font-size: 25px; display: flex; justify-content: center;">
+    <strong>{{user.first_name}} {{user.last_name}} </strong>
+  </p>
 
-  <div class="tab-content mt-5" id="nav-tabContent">
+  <div class="d-flex align-items-center justify-content-center m-4">
+    <h1 style="font-size: 25px; justify-content: center;">
+      <strong>Marks</strong>
+    </h1>
+    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'facultyAddMarks' request.user.usr_id %}';">
+      Add Marks
+    </button>
+  </div>
 
-    <!-- First Year -->
-    <div class="tab-pane fade show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
-
-      <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
-        <strong>Edit Marks</strong>
-      </p>
-
-      <div class="mb-3" id="marks" name="edit-body">
-        <span></span>
-        <button type="button" id="add-marks-btn" class="btn btn-sm ms-auto select-btn" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          Add Semester Details
-        </button>
-      </div>
-
-      <!-- buttons -->
-      <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-
-        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          UPDATE PROFILE
-        </button>
-
-        <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-          CANCEL
-          {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-        </button>
-
-      </div>
-
-
-    </div>
-
-    <!-- Second Year -->
-    <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
-
-    </div>
-
+  <!-- table -->
+  <div class="table-div m-4">
+    <table class="table table-striped table-bordered" style="widows: 100%;" id="marks-table">
+      <thead>
+        <tr>
+          <th scope="col" class="px-2 py-1 text-center">Subject Code</th>
+          <th scope="col" class="px-2 py-1 text-center">Sem</th>
+          <th scope="col" class="px-2 py-1 text-center">Year</th>
+          <th scope="col" class="px-2 py-1 text-center">Exam</th>
+          <th scope="col" class="px-2 py-1 text-center">Marks</th>
+          <th scope="col" class="px-2 py-1 text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">CSC101</th>
+          <td class="px-2 py-1 text-center">1</td>
+          <td class="px-2 py-1 text-center">FE</td>
+          <td class="px-2 py-1 text-center">ESE</td>
+          <td class="px-2 py-1 text-center">100</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">CSC102</th>
+          <td class="px-2 py-1 text-center">1</td>
+          <td class="px-2 py-1 text-center">FE</td>
+          <td class="px-2 py-1 text-center">ESE</td>
+          <td class="px-2 py-1 text-center">100</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">CSC103</th>
+          <td class="px-2 py-1 text-center">1</td>
+          <td class="px-2 py-1 text-center">FE</td>
+          <td class="px-2 py-1 text-center">ESE</td>
+          <td class="px-2 py-1 text-center">100</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">CSC104</th>
+          <td class="px-2 py-1 text-center">1</td>
+          <td class="px-2 py-1 text-center">FE</td>
+          <td class="px-2 py-1 text-center">ESE</td>
+          <td class="px-2 py-1 text-center">100</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">CSC105</th>
+          <td class="px-2 py-1 text-center">1</td>
+          <td class="px-2 py-1 text-center">FE</td>
+          <td class="px-2 py-1 text-center">ESE</td>
+          <td class="px-2 py-1 text-center">100</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
