@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.urls import path, include
 from AdminPage.admin import admin_site
 
-
 urlpatterns = [
     path('def_admin-Page-django/', admin_site.urls),
     path('AdminPage/', include('AdminPage.urls')),
@@ -14,6 +13,7 @@ urlpatterns = [
     path('', include('calender.urls')), 
     path('', include('student.urls')), 
     path('', include('Marks.urls')), 
+    path('', include('Announcement.urls')), 
   
 ]
 
