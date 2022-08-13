@@ -1,0 +1,43 @@
+{% extends "faculty.html" %}
+{% load static %}
+
+{% block announcementButton %}
+<button class="nav-link active nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
+  <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
+  Announcement
+</button>
+{% endblock %}
+
+{% block announcementContent %}
+<div class="tab-pane fade show active" id="announcement" role="tabpanel" aria-labelledby="announcement">
+  <div class="tab-pane fade show active m-5 mt-0 mb-0" id="announcement" role="tabpanel" aria-labelledby="announcement">
+
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+      <h1 style="font-size: 25px; justify-content: center;">
+        <strong>New Announcement</strong>
+      </h1>
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="inputTitle" class="form-label">Title</label>
+        <input type="text" placeholder="Title" class="form-control" id="inputTitle">
+      </div>
+      <div class="mb-3">
+        <label for="inputDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="inputDescription" rows="10"></textarea>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+        {% comment %} <button class="btn btn-outline-info" type="submit">Post</button> {% endcomment %}
+        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          Post
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
