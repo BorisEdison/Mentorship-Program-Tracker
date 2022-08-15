@@ -11,10 +11,10 @@ from calender.forms import BookingForm
 
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
-service_account_email = "mentoringprogramadmin@mentoringprogramtracker.iam.gserviceaccount.com"
-credentials = service_account.Credentials.from_service_account_file('mentoringprogramtracker-9a3c10783d1a.json')
+service_account_email = "mentorship-program-tracker@mentoringprogramtracker-359506.iam.gserviceaccount.com"
+credentials = service_account.Credentials.from_service_account_file('mentoringprogramtracker-359506-857c94e93a6d.json')
 scoped_credentials = credentials.with_scopes(SCOPES)
-calendarId = "mtop05viv3nnh799dpglb4u1kk@group.calendar.google.com"
+calendarId = "tugodc20ono1a26jtcslduus7o@group.calendar.google.com"
 
 # Create your views here.
 
