@@ -200,18 +200,7 @@ def studentdetail(request, fac_id, stu_id):
 @login_required(login_url='Login')
 def faculty(request,pk):
     if request.user.is_staff:
-        ## current_user = request.user
-        # user_id = current_user.id
-        # print(user_id)
-        print(request.user.usr_id) # this is the user id of the faculty
-        # mentor = MentorProfile.objects.get(user__usr_id=pk)
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
-        #students = Mentor_assign.objects.filter(Mentor__id = pk )
-        # students = mentee.StudentProfile_set.all()
-        # print(mentor.id)
-    
-        #print(students)
-        # user = User.objects.all()  
         context = { 'students': students,
                     'fac_id': pk}
                     # 'mentor': mentor

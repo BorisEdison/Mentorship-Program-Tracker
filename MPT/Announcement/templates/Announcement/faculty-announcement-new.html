@@ -23,15 +23,14 @@
 
       <div class="mb-3">
         <label for="inputTitle" class="form-label">Title</label>
-        <input type="text" placeholder="Title" class="form-control" id="inputTitle">
+        <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle">
       </div>
       <div class="mb-3">
         <label for="inputDescription" class="form-label">Description</label>
-        <textarea class="form-control" id="inputDescription" rows="10"></textarea>
+        <textarea class="form-control" name='content' id="inputDescription" rows="10"></textarea>
       </div>
 
       <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-        {% comment %} <button class="btn btn-outline-info" type="submit">Post</button> {% endcomment %}
         <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
           Post
         </button>

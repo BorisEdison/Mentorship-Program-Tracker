@@ -1,10 +1,40 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import *
+from accounts.models import *
+from django.shortcuts import render, redirect
 
+
+@login_required(login_url='Login')
 def facultyAnnouncement(request):
-    return render(request, 'Announcement/faculty-announcement.html' )
+    return render(request, 'Announcement/faculty-announcement.html')
+
 
 def facultyAnnouncementNew(request):
-    return render(request, 'Announcement/faculty-announcement-new.html' )
+    if request.method == 'POST':
+        announcement = Announcement()
+        announcement.sender = request.user
+        announcement.title = request.POST['title']
+        announcement.content = request.POST['content']
+        announcement.save()
+        # AnnouncementReceiver.objects.create(receiver=request.user, announcement=announcement).save()
+        try:
+            for mentee in Mentor_assign.objects.filter(Mentor__user=request.user):
+                AnnouncementReceiver.objects.create(receiver=mentee.Mentee.user, announcement=announcement).save()
+        except:
+            pass
+        return redirect('faculty-announcement')
+
+            
+    return render(request, 'Announcement/faculty-announcement-new.html')
+
 
 def studentAnnouncement(request):
-    return render(request, 'Announcement/student-announcement.html' )
+    return render(request, 'Announcement/student-announcement.html')
+
+
+@login_required(login_url='Login')
+def deleteAnnouncement(request, id):
+    notification = Announcement.objects.get(id=id)
+    notification.delete()
+    return redirect('faculty-announcement')

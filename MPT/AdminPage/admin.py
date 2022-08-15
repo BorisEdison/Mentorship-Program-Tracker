@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
+from Announcement.models import *
 # importing Student
 from accounts.models import (
     StudentProfile, 
@@ -102,4 +103,5 @@ admin_site.register(StudentMedicalReport)
 admin_site.register(MentorProfile)
 admin_site.register(Mentor_assign)
 admin_site.register(AcademicScores)
-
+admin_site.register(Announcement)
+admin_site.register(AnnouncementReceiver)

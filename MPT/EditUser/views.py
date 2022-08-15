@@ -66,10 +66,6 @@ def edit(request):
     if request.user.is_staff:
         profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
 
-        # print("mentor id", profile.id)
-        # print("user id", profile.user.id)
-        # print(profile.Branch)
-
         context = {
             'department_list': [
                 'Computer Engineering',
@@ -92,9 +88,6 @@ def edit(request):
         }
 
         if request.method == "POST":
-            print("user id after post", profile.user.usr_id)
-            print("mentor id after post", profile.id)
-
             fName = request.POST['fName']
             Lname = request.POST['lName']
             Mname = request.POST['mName']
