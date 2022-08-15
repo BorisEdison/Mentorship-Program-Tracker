@@ -73,12 +73,12 @@
   <!--Pagination buttons-->
   <div class="d-flex align-items-center justify-content-center mb-0">
 
-    {% comment %} {% if is_paginated  %} {% endcomment %}
+    {% if is_paginated  %}
 
-    {% comment %} {% if page_obj.has_prevoius %} {% endcomment %}
+    {% if page_obj.has_prevoius %}
     <a class="btn btn-sm btn-outline-secondary mb-4 left" href="?page=1">First </a>
     <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{page_obj.previous_page_number}}">Previous </a>
-    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
 
     {% for num in page_obj.paginator.page_range %}
     {% if page_obj.number == num %}
@@ -90,12 +90,12 @@
     {% endif %}
     {% endfor %}
 
-    {% comment %} {% if page_obj.has_prevoius %} {% endcomment %}
+    {% if page_obj.has_prevoius %}
     <a class="btn btn-sm btn-outline-secondary mb-4 middle" href="?page={{page_obj.next_page_number}}">Next </a>
     <a class="btn btn-sm btn-outline-secondary mb-4 right" href="?page={{page_obj.paginator.num_pages}}">Last </a>
-    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
 
-    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
 
   </div>
 

@@ -17,7 +17,6 @@ def facultyAnnouncementNew(request):
         announcement.title = request.POST['title']
         announcement.content = request.POST['content']
         announcement.save()
-        # AnnouncementReceiver.objects.create(receiver=request.user, announcement=announcement).save()
         try:
             for mentee in Mentor_assign.objects.filter(Mentor__user=request.user):
                 AnnouncementReceiver.objects.create(receiver=mentee.Mentee.user, announcement=announcement).save()

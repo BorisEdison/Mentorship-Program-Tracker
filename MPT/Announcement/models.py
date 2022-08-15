@@ -9,7 +9,8 @@ class Announcement(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title = models.CharField(max_length=200)
     content = models.TextField()
-    date = models.DateTimeField('date published', auto_now_add=True)
+    date = models.DateTimeField('date published', auto_now_add=timezone.now)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-date']
@@ -26,5 +27,4 @@ class AnnouncementReceiver(models.Model):
         ordering = ['announcement']
 
     def __str__(self):
-        return 'Title: {} is sended by {} to {} at {}.'.format(self.announcement.title, self.announcement.sender, self.receiver,(str(self.announcement.date.hour) + ':' + str(self.announcement.date.minute)+':' + str(self.announcement.date.second)))
-        
+        return 'Title: {} is sended by {} to {}.'.format(self.announcement.title, self.announcement.sender, self.receiver)
