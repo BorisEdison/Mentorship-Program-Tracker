@@ -218,3 +218,7 @@ def faculty(request,pk):
 
 # def stumarks(request):
 #     return render(request, 'student-marks.html')
+
+@login_required(login_url='Login')
+def facultyMeeting(request):
+    return render(request, 'FacultyDashboard/faculty-meeting.html')

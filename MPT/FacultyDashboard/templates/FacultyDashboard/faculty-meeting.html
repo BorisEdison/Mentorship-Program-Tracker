@@ -1,0 +1,92 @@
+{% extends "faculty.html" %}
+{% load static %}
+
+{% block meetingButton %}
+<button class="nav-link active nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'faculty-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
+    <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
+    Meeting
+</button>
+{% endblock %}
+
+{% block announcementContent %}
+<div class="tab-pane fade show active" id="announcement" role="tabpanel" aria-labelledby="announcement">
+  <div class="tab-pane fade show active m-5 mt-0 mb-0" id="announcement" role="tabpanel" aria-labelledby="announcement">
+
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+      <h1 style="font-size: 25px; justify-content: center;">
+        <strong>Schedule Meeting</strong>
+      </h1>
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-4">
+        <label for="inputTitle" class="form-label"><strong>Title</strong></label>
+        <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle">
+      </div>
+
+      <div class="mb-4">
+        <div class="row">
+            <div class="col-6">
+                <label for="inputDate" class="form-label"><strong>Date</strong></label>&nbsp;&nbsp;
+                <input type="date" name="date" required pattern="dd-mm-yyyy">
+            </div>
+            <div class="col-6">
+                <label for="inputTime" class="form-label"><strong>Time</strong></label>&nbsp;&nbsp;
+                <input type="time" id="inputTime" name="time">
+            </div>
+        </div>
+      </div>
+
+
+      <div class= "mb-3">
+        <label for="inputSendto" class="form-label mb-0"><strong>Send To</strong></label>
+        <div class="d-flex align-items-center justify-content-center">
+        <textarea class="form-control justify-content-center" style=" width:400px; " name='sendTo' id="inputSendto" rows="2" disabled></textarea>
+      </div>
+      
+        <!-- table -->
+      <div class="table-div m-4 mt-2">
+        <table class="table table-striped table-bordered" style="widows: 100%;" id="sendTo-table">
+          <thead>
+            <tr>
+              <th scope="col" class="px-2 py-1 text-center">Select</th>
+              <th scope="col" class="px-2 py-1 text-center">Name</th>
+              <th scope="col" class="px-2 py-1 text-center">Email</th>
+              <th scope="col" class="px-2 py-1 text-center">Student Id</th>
+              <th scope="col" class="px-2 py-1 text-center">Roll No.</th>
+              <th scope="col" class="px-2 py-1 text-center">Gender</th>
+              <th scope="col" class="px-2 py-1 text-center">Department</th>
+              <th scope="col" class="px-2 py-1 text-center">Year</th>
+            </tr>
+          </thead>
+          <tbody id="">
+            <tr>
+              <td class="px-2 py-1 text-center">
+                <span class="mb-3">
+                  <input type="checkbox" value="" class="chkvalues" name="mentee_list" id="select-mentee">
+                </span>
+              </td>
+              <th scope="row" class="px-2 py-1 text-center">Boris Edison</th>
+              <td class="px-2 py-1 text-center">borisedison@gmail.com</td>
+              <td class="px-2 py-1 text-center">1</td>
+              <td class="px-2 py-1 text-center">14</td>
+              <td class="px-2 py-1 text-center">M</td>
+              <td class="px-2 py-1 text-center">Comp</td>
+              <td class="px-2 py-1 text-center">2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          Schedule
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -44,16 +44,15 @@
   });
 });*/
 
-// ---------- Adding Datatables For Marks------------------
-// $(document).ready( function () {
-//   $('#marks-table').DataTable({
-//     "filter": true,
-//     });
-// } );
-
 // ---------- Adding Datatables ------------------
 $(document).ready( function () {
   $('#marks-table').DataTable({
+      //options
+  });
+} );
+console.log("hi");
+$(document).ready( function () {
+  $('#sendTo-table').DataTable({
       //options
   });
 } );

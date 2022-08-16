@@ -34,7 +34,7 @@
               <img class="grd-img" src="{{ users.Mentee.user.profile_img.url}}"/><span class="grd-overlay">
               </span><span class="grd-text"> {{users.Mentee.user.first_name}} {{users.Mentee.user.last_name}}
               </span></span>
-            <input type="checkbox" class="cb-choose" name="cb-choose">
+            {% comment %} <input type="checkbox" class="cb-choose" name="cb-choose"> {% endcomment %}
           </li>
         </a>
       {% endif %}
