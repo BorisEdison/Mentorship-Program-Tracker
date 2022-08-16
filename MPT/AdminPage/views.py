@@ -375,3 +375,15 @@ def Unassigned(request,usr_id):
         return render(request,'AdminPage/admin-assign-unassigned.html',context)
     else:
         return HttpResponse("You are not authorized to view this page")
+
+@login_required(login_url='Login')
+def AdminMeeting(request):
+    return render(request, 'AdminPage/admin-meeting.html')
+
+@login_required(login_url='Login')
+def AdminAnnouncementTable(request):
+    return render(request, 'AdminPage/admin-announcement-table.html')
+
+@login_required(login_url='Login')
+def AdminAnnouncementBlog(request):
+    return render(request, 'AdminPage/admin-announcement-blog.html')

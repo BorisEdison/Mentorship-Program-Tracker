@@ -29,3 +29,13 @@ $(document).ready( function () {
         //options
     });
 } );
+$(document).ready( function () {
+    $('#announcement-table').DataTable({
+        //options
+    });
+} );
+$(document).ready( function () {
+    $('#meeting-table').DataTable({
+        //options
+    });
+} );
