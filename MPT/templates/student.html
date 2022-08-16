@@ -54,6 +54,13 @@
             </button>
             {% endblock %}
 
+            {% block meetingButton %}
+            <button class="nav-link nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'student-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
+              <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
+              Meeting
+            </button>
+            {% endblock %}
+
             {% block editButton %}
             <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = 'student-edit.html';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
               <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
@@ -85,6 +92,12 @@
 
             {% block announcementContent %}
             <div class="tab-pane fade" id="announcement" role="tabpanel" aria-labelledby="announcement">
+
+            </div>
+            {% endblock %}
+
+            {% block meetingContent %}
+            <div class="tab-pane fade" id="meeting" role="tabpanel" aria-labelledby="meeting">
 
             </div>
             {% endblock %}

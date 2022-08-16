@@ -31,4 +31,6 @@ def student(request, pk):
             pass
         return render(request, 'student-dashboard.html', context)
 
-
+@login_required(login_url='Login')
+def studentMeeting(request):
+    return render(request, 'student-meeting.html')
