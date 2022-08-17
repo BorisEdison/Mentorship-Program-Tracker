@@ -182,7 +182,7 @@ def edit(request):
             fName = request.POST['fName']
             Lname = request.POST['lName']
             Mname = request.POST['mName']
-            stuid = request.POST['sId']
+            # stuid = request.POST['sId']
             Addr = request.POST['Address']
             religion = request.POST['Religion']
             motherTongue = request.POST['mTongue']
@@ -303,7 +303,7 @@ def edit(request):
             except:
                 pass
             user.first_name = fName
-            user.usr_id= stuid
+            # user.usr_id= stuid
             user.middle_name=Mname
             user.last_name = Lname
             user.phone = phone
