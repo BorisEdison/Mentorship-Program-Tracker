@@ -62,7 +62,7 @@
             {% endblock %}
 
             {% block editButton %}
-            <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = 'student-edit.html';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+            <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
               <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
               Edit Profile
             </button>
