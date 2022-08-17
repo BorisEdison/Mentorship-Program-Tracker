@@ -1,6 +1,35 @@
 {% load static %}
 
 <ul id="grd">
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button class="btn btn-light dropdown-toggle batch-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Computer Science 2024 Batch
+    </button>
+    <ul class="dropdown-menu dropdown-box-shadow dropdown-ul" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2025 Batch</a>
+      </li>
+      <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2026 Batch</a>
+      </li>
+      <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2027 Batch</a>
+      </li>
+    </ul>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#Meetings">
+      <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
+      Meetings
+    </button>
+
+  </div>
+
+  <!-- Meetings modal Section-->
+  <div class="modal-body">
+
+    {% include 'components/meetings-modal.html' %}
+
+  </div>
+  
     <!-- buttons -->
     {% comment %} <div class="d-flex align-items-center justify-content-center m-3 mb-0">
       <button type="button" class="btn btn-sm custom-btn mx-2" id="btn-select">

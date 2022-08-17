@@ -35,37 +35,6 @@
   {% include 'components/navbar.html' %}
   {% endblock %}
   
-  <!-- Dashboard Buttons -->
-  <div class="container">
-    <div class="row dashboard-buttons-1">
-      <!-- Batch Dropdown -->
-      <div class="d-flex align-items-center justify-content-center">
-        <button class="btn btn-light dropdown-toggle batch-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Computer Science 2024 Batch
-        </button>
-        <ul class="dropdown-menu dropdown-box-shadow dropdown-ul" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2025 Batch</a>
-          </li>
-          <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2026 Batch</a>
-          </li>
-          <li><a class="dropdown-item text-dark shadow-none" href="#">Computer Science 2027 Batch</a>
-          </li>
-        </ul>
-
-        <!-- Button trigger modal -->
-        {% comment %} <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
-          Meetings
-        </button> {% endcomment %}
-      </div>
-      <!-- Meetings modal Section-->
-      <div class="modal-body">
-
-        {% include 'components/meetings-modal.html' %}
-
-      </div>
-    </div>
-  </div>
 
   <!-- sidebar -->
   <div class="container-fluid mb-5">

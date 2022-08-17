@@ -387,3 +387,7 @@ def AdminAnnouncementTable(request):
 @login_required(login_url='Login')
 def AdminAnnouncementBlog(request):
     return render(request, 'AdminPage/admin-announcement-blog.html')
+
+@login_required(login_url='Login')
+def AdminAnnouncementNew(request):
+    return render(request, 'AdminPage/admin-announcement-new.html')

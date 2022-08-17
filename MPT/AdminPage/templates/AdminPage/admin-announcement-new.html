@@ -1,0 +1,65 @@
+{% extends "admin.html" %}
+{% load static %}
+
+{% block announcementTabButton %}
+<button class="nav-link active" id="nav-announcement-tab" onclick="window.location.href = '{% url 'admin-announcement-table' %}';" data-bs-toggle="tab" data-bs-target="#nav-announcement" type="button" role="tab" aria-controls="nav-announcement-tab" aria-selected="true">
+  Announcement
+</button>
+{% endblock %}
+
+{% block announcementTabContent %}
+<div class="tab-pane fade active show" id="nav-announcement" role="tabpanel" aria-labelledby="nav-announcement-tab">
+
+  <div class="container-fluid mb-5">
+    <div class="sidebar flex-shrink-0 dashboard-navigation">
+       <div class="sidebar-heading d-flex align-items-center justify-content-center"> 
+      <h5>New Announcement</h5>
+       </div> 
+
+       <form method="POST">
+        {% csrf_token %}
+  
+            <div class="m-5">
+                <div class="mb-4">
+                <label for="inputTitle" class="form-label"><strong>Title</strong></label>
+                <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle">
+                </div>
+                
+                <div class="mb-4">
+                <label for="inputDescription" class="form-label"><strong>Description</strong></label>
+                <textarea class="form-control" name='content' id="inputDescription" rows="10"></textarea>
+                </div>
+        
+                <div class= "mb-3">
+                <p for="inputSendto" class="form-label mb-0"><strong>Send To</strong></p>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFaculty" value="option1">
+                    <label class="form-check-label" for="inputRadioFaculty">Faculty</label>
+                </div>
+        
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioStudents" value="option2">
+                    <label class="form-check-label" for="inputRadioStudents">Students</label>
+                </div>
+        
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBoth" value="option1">
+                    <label class="form-check-label" for="inputRadioBoth">Both</label>
+                </div>
+        
+                </div>
+        
+                <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+                <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+                    Post
+                </button>
+                </div>
+            </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

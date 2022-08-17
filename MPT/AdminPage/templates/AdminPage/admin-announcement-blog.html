@@ -4,7 +4,7 @@
 {% block announcementBlogTabButton %}
 <button class="nav-link active" id="nav-announcement-blog-tab" onClick="window.location.href='{% url 'admin-announcement-blog' %}'" data-bs-toggle="tab" data-bs-target="#nav-announcement-blog" type="button" role="tab" aria-controls="nav-announcement-blog-tab"
 aria-selected="false">
-    <span class="iconify" data-icon="fa:table" data-width="20" data-height="20"></span> 
+<span class="iconify" data-icon="carbon:blog" data-width="20"></span>
 </button>
 {% endblock %}
 
@@ -12,7 +12,7 @@ aria-selected="false">
 <div class="tab-pane fade active show" id="nav-announcement-blog" role="tabpanel" aria-labelledby="nav-announcement-blog-tab">
 
     <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-        <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        <button type="submit" class="btn btn-sm update-btn ms-auto" onClick="window.location.href='{% url 'admin-announcement-new' %}'" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
           New
           <span class="iconify" data-icon="akar-icons:circle-plus" data-width="18" data-height="18"></span>
         </button>

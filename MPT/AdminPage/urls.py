@@ -12,6 +12,7 @@ urlpatterns = [
     path('meeting', views.AdminMeeting, name= 'admin-meeting'),
     path('announcement-table', views.AdminAnnouncementTable, name= 'admin-announcement-table'),
     path('announcement-blog', views.AdminAnnouncementBlog, name= 'admin-announcement-blog'),
+    path('announcement-new', views.AdminAnnouncementNew, name= 'admin-announcement-new'),
     path('activity', views.Activity, name= 'admin-activity'),
     path('delete/<str:id>/',views.deleteuser, name= 'delete-user'),
     path('update/<str:usr_id>/',views.updateuserprofile, name= 'update-user'),
