@@ -20,7 +20,7 @@
     <h1 style="font-size: 25px; justify-content: center;">
       <strong>Marks</strong>
     </h1>
-    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'facultyAddMarks' request.user.usr_id %}';">
+    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'facultyAddMarks' student.user.usr_id %}';">
       Add Marks
     </button>
   </div>
@@ -39,66 +39,20 @@
         </tr>
       </thead>
       <tbody>
+        {% for mark in mark %}
         <tr>
-          <th scope="row" class="px-2 py-1 text-center">CSC101</th>
-          <td class="px-2 py-1 text-center">1</td>
-          <td class="px-2 py-1 text-center">FE</td>
-          <td class="px-2 py-1 text-center">ESE</td>
-          <td class="px-2 py-1 text-center">100</td>
+          <th scope="row" class="px-2 py-1 text-center">{{mark.sub_code}}</th>
+          <td class="px-2 py-1 text-center">{{mark.sem}}</td>
+          <td class="px-2 py-1 text-center">{{mark.academicYear}}</td>
+          <td class="px-2 py-1 text-center">{{mark.exam}}</td>
+          <td class="px-2 py-1 text-center">{{mark.marks}}</td>
           <td class="px-2 py-1 text-center">
             <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
               <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
             </button>
           </td>
         </tr>
-        <tr>
-          <th scope="row" class="px-2 py-1 text-center">CSC102</th>
-          <td class="px-2 py-1 text-center">1</td>
-          <td class="px-2 py-1 text-center">FE</td>
-          <td class="px-2 py-1 text-center">ESE</td>
-          <td class="px-2 py-1 text-center">100</td>
-          <td class="px-2 py-1 text-center">
-            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
-              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row" class="px-2 py-1 text-center">CSC103</th>
-          <td class="px-2 py-1 text-center">1</td>
-          <td class="px-2 py-1 text-center">FE</td>
-          <td class="px-2 py-1 text-center">ESE</td>
-          <td class="px-2 py-1 text-center">100</td>
-          <td class="px-2 py-1 text-center">
-            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
-              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row" class="px-2 py-1 text-center">CSC104</th>
-          <td class="px-2 py-1 text-center">1</td>
-          <td class="px-2 py-1 text-center">FE</td>
-          <td class="px-2 py-1 text-center">ESE</td>
-          <td class="px-2 py-1 text-center">100</td>
-          <td class="px-2 py-1 text-center">
-            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
-              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row" class="px-2 py-1 text-center">CSC105</th>
-          <td class="px-2 py-1 text-center">1</td>
-          <td class="px-2 py-1 text-center">FE</td>
-          <td class="px-2 py-1 text-center">ESE</td>
-          <td class="px-2 py-1 text-center">100</td>
-          <td class="px-2 py-1 text-center">
-            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' request.user.usr_id %}';">
-              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
-            </button>
-          </td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

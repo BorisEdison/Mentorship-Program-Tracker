@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 .vscode/
 migrations/
+
+*.sqlite3
 # C extensions
 *.so
 
