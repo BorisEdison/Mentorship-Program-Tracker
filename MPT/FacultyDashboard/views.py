@@ -21,8 +21,10 @@ def logout(request):
 def studentdetail(request, fac_id, stu_id):
     user = User.objects.get(usr_id=stu_id)
     faculty = User.objects.get(usr_id=fac_id)
-    context =  { 'user': user,'faculty':faculty }
+    student = StudentProfile.objects.get(user=user)
+    context =  { 'user': user,'faculty':faculty, 'student': student }
     context.update(studentcontext)
+
 
     if request.method == "POST":
         profile = StudentProfile.objects.get(user__usr_id=stu_id)
