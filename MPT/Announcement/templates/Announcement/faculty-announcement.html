@@ -27,7 +27,7 @@
   
   {% if receivers %}
   {% for receiver in receivers %}
-  {% if receiver.receiver == request.user or receiver.announcement.sender == request.user%}
+  {% if receiver.receiver == request.user %}
   <div class="card  mb-4">
     <div class="card-header">
       <div class="row">

@@ -12,37 +12,38 @@
 
 {% block dashboardContent%}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
-
+  <form action={% url 'faculty' user.usr_id %} method='POST'>
+    {% csrf_token %}
   <div class="d-flex align-items-center justify-content-center m-5 mb-0 mt-3">
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFe" value="option1">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFe" value="FE" {{ FE }}>
       <label class="form-check-label" for="inputRadioFe">FE</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioSe" value="option2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioSe" value="SE" {{ SE }}>
       <label class="form-check-label" for="inputRadioSe">SE</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioTe" value="option1">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioTe" value="TE" {{ TE }}>
       <label class="form-check-label" for="inputRadioTe">TE</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBe" value="option2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBe" value="BE" {{ BE }}>
       <label class="form-check-label" for="inputRadioBe">BE</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioAll" value="option2" checked>
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioAll" value="ALL" {{ ALL }}>
       <label class="form-check-label" for="inputRadioAll">ALL</label>
     </div>
 
     <button type="submit" class="btn btn-sm btn-secondary" style="width: auto; border-radius: 7px;">
       Filter
     </button>
-
+  </form>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#Meetings">
     <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>

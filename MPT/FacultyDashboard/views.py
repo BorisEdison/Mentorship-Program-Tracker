@@ -205,21 +205,23 @@ def faculty(request,pk):
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
                     'fac_id': pk}
-                    # 'mentor': mentor
+        try:
+            if request.method=='POST':
+                year=request.POST['inlineRadioOptions']
+                if year != 'ALL':
+                    students=Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id ,Mentee__studentdetails__current_year=year)
+                    context['students']=students
+                    context[year]='checked'
+            else:
+                context['ALL']='checked'
+        except:
+            pass
                     
         return render(request, 'FacultyDashboard/faculty-dashboard.html', context)
 
     else:
         return HttpResponse("You are not authorized to view this page")    
 
-
-# this is for testing purpose 
-
-# def facultymarks(request):
-#     return render(request, 'FacultyDashboard/faculty-student-marks.html')
-
-# def stumarks(request):
-#     return render(request, 'student-marks.html')
 
 @login_required(login_url='Login')
 def facultyMeeting(request):
