@@ -72,12 +72,13 @@
           </div>
 
           <div class="form-floating">
-            <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
+            <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
+            oninput="setCustomValidity('')" required>
             <label for="inputpassword1">Password</label>
           </div>
 
           <div class="form-floating">
-            <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
+            <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" required>
             <label for="inputpassword2">Confirm Password</label>
           </div>
 
@@ -113,14 +114,6 @@
       <div class="row">
 
         {% csrf_token %}
-        {% comment %}<div class="">
-          <input type="text" name="name" class="form-control top" placeholder="First Name" required>
-        </div>
-
-        <div class="">
-          <input type="text" name="Lname" class="form-control middle" placeholder="Last Name" required>
-        </div> {% endcomment %}
-
         <div class="">
           <input type="text" name="usr_id" class="form-control top" placeholder="User ID" required>
         </div>
@@ -133,23 +126,20 @@
           <input type="email" name="email1" class="form-control middle" placeholder="Re-enter Email" required>
         </div>
 
-        {% comment %}<div class="">
-          <input type="tel" name="phone" class="form-control top" placeholder="Contact No." pattern="[0-9]{10}" required>
-        </div> {% endcomment %}
-
         <div class="">
-          <input type="password" name="password1" class="form-control middle" placeholder="Password" required>
+          <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
+          oninput="setCustomValidity('')" required>
         </div>
 
         <div class="">
-          <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" required>
+          <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
+          oninput="setCustomValidity('')" required>
         </div>
 
       </div>
 
       <div class="d-grid col-6 mx-auto">
         <button class=" btn btn-md btn-primary" style="text-align: center;" type="submit">Register</button>
-        <!-- <p style="opacity: 0.8; text-align: center;">Already have an account? <a href="/"><strong>Login</strong></a></p> -->
 
         {% if messages %}
         {% for message in messages %}
