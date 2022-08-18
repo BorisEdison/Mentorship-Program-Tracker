@@ -13,6 +13,51 @@
 {% block dashboardContent%}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
+  <div class="d-flex align-items-center justify-content-center m-5 mb-0 mt-3">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFe" value="option1">
+      <label class="form-check-label" for="inputRadioFe">FE</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioSe" value="option2">
+      <label class="form-check-label" for="inputRadioSe">SE</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioTe" value="option1">
+      <label class="form-check-label" for="inputRadioTe">TE</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBe" value="option2">
+      <label class="form-check-label" for="inputRadioBe">BE</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioAll" value="option2" checked>
+      <label class="form-check-label" for="inputRadioAll">ALL</label>
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-secondary" style="width: auto; border-radius: 7px;">
+      Filter
+    </button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#Meetings">
+    <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
+    Meetings
+  </button>
+
+</div>
+
+  <!-- Meetings modal Section-->
+  <div class="modal-body">
+
+    {% include 'components/meetings-modal.html' %}
+
+  </div>
+
   {% include 'components/student-grid.html' %}
 
 </div>

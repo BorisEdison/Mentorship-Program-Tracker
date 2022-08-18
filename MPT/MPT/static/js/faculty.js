@@ -50,9 +50,18 @@ $(document).ready( function () {
       //options
   });
 } );
-console.log("hi");
 $(document).ready( function () {
   $('#sendTo-table').DataTable({
+      //options
+  });
+} );
+$(document).ready( function () {
+  $('#previous-table').DataTable({
+      //options
+  });
+} );
+$(document).ready( function () {
+  $('#upcoming-table').DataTable({
       //options
   });
 } );
