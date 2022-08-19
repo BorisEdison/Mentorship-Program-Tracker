@@ -12,8 +12,7 @@
 
 {% block dashboardContent%}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
-  <form action={% url 'faculty' user.usr_id %} method='POST'>
-    {% csrf_token %}
+  <form action={% url 'faculty' user.usr_id %} method='GET'>
   <div class="d-flex align-items-center justify-content-center m-5 mb-0 mt-3">
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFe" value="FE" {{ FE }}>
@@ -37,7 +36,8 @@
 
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioAll" value="ALL" {{ ALL }}>
-      <label class="form-check-label" for="inputRadioAll">ALL</label>
+      <label class="form-check-label" for="inputRadioAll">ALL </label>
+      
     </div>
 
     <button type="submit" class="btn btn-sm btn-secondary" style="width: auto; border-radius: 7px;">

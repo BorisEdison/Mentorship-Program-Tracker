@@ -31,7 +31,6 @@ def facultyAnnouncementNew(request):
             pass
         return redirect('faculty-announcement')
 
-            
     return render(request, 'Announcement/faculty-announcement-new.html')
 
 

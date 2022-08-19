@@ -204,16 +204,17 @@ def faculty(request,pk):
     if request.user.is_staff:
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
-                    'fac_id': pk}
+                    'fac_id': pk,
+                    'ALL':'checked'
+                    }
         try:
-            if request.method=='POST':
-                year=request.POST['inlineRadioOptions']
+            if request.method=='GET' and request.GET['inlineRadioOptions']:
+                year=request.GET.get('inlineRadioOptions')
                 if year != 'ALL':
                     students=Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id ,Mentee__studentdetails__current_year=year)
+                    del context['ALL']
                     context['students']=students
                     context[year]='checked'
-            else:
-                context['ALL']='checked'
         except:
             pass
                     
@@ -225,4 +226,24 @@ def faculty(request,pk):
 
 @login_required(login_url='Login')
 def facultyMeeting(request):
-    return render(request, 'FacultyDashboard/faculty-meeting.html')
+    if request.user.is_staff:
+        students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
+        context = { 'students': students,
+                    'ALL':'checked'
+                    }
+        try:
+            if request.method=='GET' and request.GET['inlineRadioOptions']:
+                year=request.GET.get('inlineRadioOptions')
+                if year != 'ALL':
+                    students=Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id ,Mentee__studentdetails__current_year=year)
+                    del context['ALL']
+                    context['students']=students
+                    context[year]='checked'
+        except:
+            pass
+                    
+        return render(request, 'FacultyDashboard/faculty-meeting.html',context)
+
+    else:
+        return HttpResponse("You are not authorized to view this page")    
+    
