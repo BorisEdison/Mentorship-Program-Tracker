@@ -10,6 +10,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
+from .models import *
 
 #logout the logged in user
 def logout(request):
@@ -44,7 +45,7 @@ def studentdetail(request, fac_id, stu_id):
         fName = request.POST['fName']
         Lname = request.POST['lName']
         Mname = request.POST['mName']
-        stuid = request.POST['sId']
+        # stuid = request.POST['sId']
         Addr = request.POST['Address']
         religion = request.POST['Religion']
         motherTongue = request.POST['mTongue']
@@ -165,7 +166,7 @@ def studentdetail(request, fac_id, stu_id):
         except:
             pass
         user.first_name = fName
-        user.usr_id= stuid
+        # user.usr_id= stuid
         user.middle_name=Mname
         user.last_name = Lname
         user.phone = phone
@@ -241,7 +242,33 @@ def facultyMeeting(request):
                     context[year]='checked'
         except:
             pass
-                    
+            
+        if request.method=='POST':
+            sender=request.user.mentorprofile
+            title= request.POST['title']
+            meeting_link=request.POST['link']
+            meeting_date=request.POST['date']
+            meeting_desc=request.POST['content']
+            meeting_time=request.POST['time']
+            if request.POST.get('sendTo'):
+                mentees_id=request.POST.get('sendTo')
+                print('mentees selected are ',mentees_id)
+                for mentee_id in mentees_id.split(','):
+                    newMeeting = Meeting()
+                    receiver = StudentProfile.objects.get(user__usr_id=mentee_id)
+                    newMeeting.Sender = sender
+                    newMeeting.Receiver = receiver
+                    newMeeting.Meeting_title = title
+                    newMeeting.Meeting_link = meeting_link
+                    newMeeting.Meeting_date = meeting_date
+                    newMeeting.Meeting_description = meeting_desc
+                    newMeeting.Meeting_time = meeting_time
+                    try:
+                        newMeeting.save()
+                        print('scheduled with ',receiver.user.first_name,'from',sender.user.first_name)
+                    except:
+                        pass
+            return redirect('/facultydashboard/'+str(request.user.usr_id),pk=request.user.usr_id)
         return render(request, 'FacultyDashboard/faculty-meeting.html',context)
 
     else:

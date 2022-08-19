@@ -56,12 +56,17 @@
         {% csrf_token %}
       <div class="mb-4">
         <label for="inputTitle" class="form-label"><strong>Title</strong></label>
-        <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle">
+        <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="inputLink" class="form-label"><strong>Meeting Link </strong></label>
+        <input type="url" name='link' placeholder="Meeting Link starting with http:// OR https://" class="form-control" id="inputLink" value={% if request.user.mentorprofile.meeting_link is not None %}{{request.user.mentorprofile.meeting_link}}{% endif %}>
       </div>
 
       <div class="mb-4">
         <label for="inputDescription" class="form-label"><strong>Description</strong></label>
-        <textarea class="form-control" name='content' id="inputDescription" rows="4"></textarea>
+        <textarea class="form-control" name='content' id="inputDescription" rows="4" required></textarea>
       </div>
 
       <div class="mb-4">
@@ -72,7 +77,7 @@
             </div>
             <div class="col-6">
                 <label for="inputTime" class="form-label"><strong>Time</strong></label>&nbsp;&nbsp;
-                <input type="time" id="inputTime" name="time">
+                <input type="time" id="inputTime" name="time" required>
             </div>
         </div>
       </div>
@@ -81,7 +86,7 @@
       <div class= "mb-3">
         <label for="inputSendto" class="form-label mb-0"><strong>Send To</strong></label>
         <div class="d-flex align-items-center justify-content-center">
-        <textarea class="form-control justify-content-center" style=" width:400px; " name='sendTo' id="inputSendto" rows="2" disabled></textarea>
+        <textarea type='text' class="form-control justify-content-center" style="font-size: 14pt; height: 30px; width:400px;" id='inputSendto' readonly name='sendTo'></textarea>
       </div>
       
         <!-- table -->
@@ -90,30 +95,34 @@
           <thead>
             <tr>
               <th scope="col" class="px-2 py-1 text-center">Select</th>
+              <th scope="col" class="px-2 py-1 text-center">Student Id</th>
               <th scope="col" class="px-2 py-1 text-center">Name</th>
               <th scope="col" class="px-2 py-1 text-center">Email</th>
-              <th scope="col" class="px-2 py-1 text-center">Student Id</th>
               <th scope="col" class="px-2 py-1 text-center">Roll No.</th>
               <th scope="col" class="px-2 py-1 text-center">Gender</th>
               <th scope="col" class="px-2 py-1 text-center">Department</th>
-              <th scope="col" class="px-2 py-1 text-center">Year</th>
+              <th scope="col" class="px-2 py-1 text-center">Current Year</th>
+              <th scope="col" class="px-2 py-1 text-center">Passout Year</th>
             </tr>
           </thead>
           <tbody id="">
+            {% for student in students %}
             <tr>
               <td class="px-2 py-1 text-center">
                 <span class="mb-3">
-                  <input type="checkbox" value="" class="chkvalues" name="mentee_list" id="select-mentee">
+                  <input type="checkbox" value="{{student.Mentee.user.usr_id}}" class="chkvalues" name="mentee_list" id="select-mentee">
                 </span>
               </td>
-              <th scope="row" class="px-2 py-1 text-center">Boris Edison</th>
-              <td class="px-2 py-1 text-center">borisedison@gmail.com</td>
-              <td class="px-2 py-1 text-center">1</td>
-              <td class="px-2 py-1 text-center">14</td>
-              <td class="px-2 py-1 text-center">M</td>
-              <td class="px-2 py-1 text-center">Comp</td>
-              <td class="px-2 py-1 text-center">2024</td>
+              <th class="px-2 py-1 text-center">{{student.Mentee.user.usr_id}}</th>
+              <th scope="row" class="px-2 py-1 text-center">{{student.Mentee.user.first_name}} {{student.Mentee.user.last_name}}</th>
+              <td class="px-2 py-1 text-center">{{student.Mentee.user.email}}</td>
+              <td class="px-2 py-1 text-center">{% if student.Mentee.studentdetails.current_rollNo is not None %}{{student.Mentee.studentdetails.current_rollNo}}{% endif %}</td>
+              <td class="px-2 py-1 text-center">{% if student.Mentee.Gender is not None %}{{ student.Mentee.Gender }}{% endif %}</td>
+              <td class="px-2 py-1 text-center">{% if student.Mentee.Branch is not None %}{{ student.Mentee.Branch }}{% endif %}</td>
+              <td class="px-2 py-1 text-center">{% if student.Mentee.studentdetails.current_year is not None %}{{ student.Mentee.studentdetails.current_year }}{% endif %}</td>
+              <td class="px-2 py-1 text-center">{% if student.Mentee.studentdetails.Passout_year is not None %}{{ student.Mentee.studentdetails.Passout_year }}{% endif %}</td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -127,4 +136,5 @@
 
   </div>
 </div>
+
 {% endblock %}

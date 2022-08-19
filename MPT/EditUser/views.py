@@ -101,6 +101,13 @@ def edit(request):
             Teacherid = request.POST['usr_id']
             city= request.POST['city']
             try:
+                if request.POST['link'] :
+                    meet_link = request.POST['link']
+                    print('this is meet link',meet_link)
+                    profile.meeting_link = meet_link
+            except:
+                pass
+            try:
                 if request.POST['dept'] :
                     department = request.POST['dept']
                     profile.Branch = department
