@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
+from django.core.mail import send_mail
+from MPT import settings    
+from django.template.loader import render_to_string
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, Mentor_assign, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 from django.contrib.auth.decorators import permission_required
@@ -265,7 +268,22 @@ def facultyMeeting(request):
                     newMeeting.Meeting_time = meeting_time
                     try:
                         newMeeting.save()
-                        print('scheduled with ',receiver.user.first_name,'from',sender.user.first_name)
+                        mail_subject= str(title)
+                        message= render_to_string('FacultyDashboard/meeting_scheduled_email.html', {
+                            'sender': str(sender.user.first_name) + ' ' + str(sender.user.last_name),
+                            'receiver': str(receiver.user.first_name) + ' ' + str(receiver.user.last_name),
+                            'meeting_title': title,
+                            'meeting_link': meeting_link,
+                            'meeting_date': meeting_date,
+                            'meeting_time': meeting_time,
+                            'meeting_desc': meeting_desc,
+                        })
+                        to_email= receiver.user.email
+                        try:
+                            send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                        except:
+                            print('Error Occured In Sending Mail, Try Again ')
+                            pass
                     except:
                         pass
             return redirect('/facultydashboard/'+str(request.user.usr_id),pk=request.user.usr_id)
@@ -273,4 +291,3 @@ def facultyMeeting(request):
 
     else:
         return HttpResponse("You are not authorized to view this page")    
-    

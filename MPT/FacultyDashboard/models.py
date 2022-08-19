@@ -17,7 +17,7 @@ class Meeting(models.Model):
         return self.Meeting_title + ' - ' + self.Sender.user.first_name + ' - ' + self.Receiver.user.first_name
 
     class Meta:
-        ordering = ('Meeting_date','Meeting_time')
+        ordering = ['-created_at','-Meeting_date','-Meeting_time']
         verbose_name = 'Meeting'
         verbose_name_plural = 'Meetings'
 
@@ -31,6 +31,6 @@ class MeetingAttendance(models.Model):
         return self.Meeting_id.Meeting_title + ' - ' + self.Student.user.first_name + ' - ' + self.Attendance
 
     class Meta:
-        ordering = ('Meeting_id','created_at')
+        ordering = ('-Meeting_id','-created_at')
         verbose_name = 'Meeting Attendance'
         verbose_name_plural = 'Meetings Attendance'
