@@ -1,4 +1,6 @@
 {% load static %}
+{% now "Y-m-d" as todays_date %}
+{% now "H:i" as current_time%}
 
 <!-- Modal -->
 <div class="modal fade" id="Meetings" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -27,28 +29,25 @@
                     <tr>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
-                      <th scope="col">Duration</th>
-                      <th scope="col">Mode</th>
-                      <th scope="col">Participants</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Meeting Link</th>
+                      <th scope="col">Mentee</th>
                     </tr>
                   </thead>
                   <tbody>
+                    {% for meeting in meetings %}
+                    {% if meeting.Sender.user == request.user %}  
+                    {% if todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time >= meeting.Meeting_time|time:"H:i" %}
                     <tr>
-                      <th scope="row">11-2-2022</th>
-                      <td>4:30 pm</td>
-                      <td>16 mins</td>
-                      <td>Online</td>
-                      <td>Royce Vaz</td>
+                      <th scope="row">{{meeting.Meeting_date}}</th>
+                      <td>{{meeting.Meeting_time}}</td>
+                      <td>{{meeting.Meeting_title}}</td>
+                      <td>{{meeting.Meeting_link}}</td>
+                      <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
                     </tr>
-
-                    <tr>
-                      <th scope="row">11-2-2022</th>
-                      <td>4:00 pm</td>
-                      <td>20 mins</td>
-                      <td>Online</td>
-                      <td>Aleron Jaisalroyan</td>
-                    </tr>
-
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -60,26 +59,25 @@
                     <tr>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
-                      <th scope="col">Mode</th>
-                      <th scope="col">Participants</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Meeting Link</th>
+                      <th scope="col">Mentee</th>
                     </tr>
                   </thead>
                   <tbody>
-
+                    {% for meeting in meetings %}
+                    {% if meeting.Sender.user == request.user %}  
+                    {% if not todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time > meeting.Meeting_time|time:"H:i" %}
                     <tr>
-                      <th scope="row">2-4-2022</th>
-                      <td>4:00 pm</td>
-                      <td>Online</td>
-                      <td>Alston Fernandes</td>
+                      <th scope="row">{{meeting.Meeting_date}}</th>
+                      <td>{{meeting.Meeting_time}}</td>
+                      <td>{{meeting.Meeting_title}}</td>
+                      <td>{{meeting.Meeting_link}}</td>
+                      <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
                     </tr>
-
-                    <tr>
-                      <th scope="row">2-4-2022</th>
-                      <td>4:30 pm</td>
-                      <td>Online</td>
-                      <td>Bipin Giri</td>
-                    </tr>
-
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>

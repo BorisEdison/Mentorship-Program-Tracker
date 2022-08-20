@@ -255,7 +255,7 @@ def facultyMeeting(request):
             meeting_time=request.POST['time']
             if request.POST.get('sendTo'):
                 mentees_id=request.POST.get('sendTo')
-                print('mentees selected are ',mentees_id)
+                # print('mentees selected are ',mentees_id)
                 for mentee_id in mentees_id.split(','):
                     newMeeting = Meeting()
                     receiver = StudentProfile.objects.get(user__usr_id=mentee_id)

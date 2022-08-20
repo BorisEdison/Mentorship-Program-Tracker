@@ -26,7 +26,7 @@ def student(request, pk):
             clubs=[i for i in extraCurr.clubs.split(',')]
             hobbies=[i for i in hobbies.hobby.split(',')]
             organizations=[i for i in extraCurr.organization.split(',')]
-            context = {'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'clubs':clubs,'hobbies':hobbies,'achievements':achievements,'orgs':organizations,'Medical':Medical}
+            context.update({'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'clubs':clubs,'hobbies':hobbies,'achievements':achievements,'orgs':organizations,'Medical':Medical})
         except:
             pass
         return render(request, 'student-dashboard.html', context)
