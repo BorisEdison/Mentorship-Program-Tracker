@@ -159,7 +159,19 @@
   <script src="{% static 'js/charts.js' %}"></script>
   <script src="{% static 'js/scheduleMeet.js' %}"></script>
   <script src="{% static 'js/navbar.js' %}"></script>
-
+  <script>
+    $(document).ready(function(){
+        $('.chkvalues').click(function(){
+        var txt=""
+        $('.chkvalues:checked').each(function(){
+            txt+=$(this).val()+",";
+        })
+        txt=txt.substring(0,txt.length-1);
+        
+        $("#inputSendto").val(txt);
+        });
+    });
+  </script>
 </body>
 
 </html>

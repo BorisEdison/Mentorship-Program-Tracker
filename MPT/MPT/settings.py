@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'Announcement.notification_processors.announcements',
                 'Announcement.notification_processors.announcement_receiver',
+                'FacultyDashboard.scheduled_meeting_processors.scheduled_meetings',
             ],
         },
     },

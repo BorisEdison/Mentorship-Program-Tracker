@@ -8,8 +8,4 @@ urlpatterns = [
     path('logout/', views.logout, name= 'logout'),
     path('facultyMeeting', views.facultyMeeting, name='faculty-meeting'),    
 
-
-    # this is for testing purpose only
-    # path('faculty-marks',views.facultymarks, name= 'marks'),
-    # path('student-marks',views.stumarks, name= 'student-marks'),
 ]

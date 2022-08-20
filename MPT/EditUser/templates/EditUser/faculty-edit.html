@@ -225,10 +225,17 @@
               <label for="inputContactNo">Contact No.</label>
             </div>
           </div>
+          <!-- Tenth Row  -->
+          <div class="row pt-3">
+            <div class="col-12 full-width-sm" style="display: flex; justify-content: center;">
+              <div class="form-group form-floating col-md-10">
+                <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL starting with http:// OR https://" value='{{profile.meeting_link}}'>
+                <label for="Meetlink">Meeting Link</label>
+              </div>
+            </div>
+          </div>
 
         </div>
-
-      </div>
 
     </div>
 
@@ -241,7 +248,6 @@
 
       <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
         CANCEL
-        {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
       </button>
 
     </div>

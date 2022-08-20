@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
+from django.core.mail import send_mail
+from MPT import settings    
+from django.template.loader import render_to_string
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, Mentor_assign, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 from django.contrib.auth.decorators import permission_required
@@ -10,6 +13,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
+from .models import *
 
 #logout the logged in user
 def logout(request):
@@ -44,7 +48,7 @@ def studentdetail(request, fac_id, stu_id):
         fName = request.POST['fName']
         Lname = request.POST['lName']
         Mname = request.POST['mName']
-        stuid = request.POST['sId']
+        # stuid = request.POST['sId']
         Addr = request.POST['Address']
         religion = request.POST['Religion']
         motherTongue = request.POST['mTongue']
@@ -165,7 +169,7 @@ def studentdetail(request, fac_id, stu_id):
         except:
             pass
         user.first_name = fName
-        user.usr_id= stuid
+        # user.usr_id= stuid
         user.middle_name=Mname
         user.last_name = Lname
         user.phone = phone
@@ -204,16 +208,17 @@ def faculty(request,pk):
     if request.user.is_staff:
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
-                    'fac_id': pk}
+                    'fac_id': pk,
+                    'ALL':'checked'
+                    }
         try:
-            if request.method=='POST':
-                year=request.POST['inlineRadioOptions']
+            if request.method=='GET' and request.GET['inlineRadioOptions']:
+                year=request.GET.get('inlineRadioOptions')
                 if year != 'ALL':
                     students=Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id ,Mentee__studentdetails__current_year=year)
+                    del context['ALL']
                     context['students']=students
                     context[year]='checked'
-            else:
-                context['ALL']='checked'
         except:
             pass
                     
@@ -225,4 +230,64 @@ def faculty(request,pk):
 
 @login_required(login_url='Login')
 def facultyMeeting(request):
-    return render(request, 'FacultyDashboard/faculty-meeting.html')
+    if request.user.is_staff:
+        students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
+        context = { 'students': students,
+                    'ALL':'checked'
+                    }
+        try:
+            if request.method=='GET' and request.GET['inlineRadioOptions']:
+                year=request.GET.get('inlineRadioOptions')
+                if year != 'ALL':
+                    students=Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id ,Mentee__studentdetails__current_year=year)
+                    del context['ALL']
+                    context['students']=students
+                    context[year]='checked'
+        except:
+            pass
+            
+        if request.method=='POST':
+            sender=request.user.mentorprofile
+            title= request.POST['title']
+            meeting_link=request.POST['link']
+            meeting_date=request.POST['date']
+            meeting_desc=request.POST['content']
+            meeting_time=request.POST['time']
+            if request.POST.get('sendTo'):
+                mentees_id=request.POST.get('sendTo')
+                print('mentees selected are ',mentees_id)
+                for mentee_id in mentees_id.split(','):
+                    newMeeting = Meeting()
+                    receiver = StudentProfile.objects.get(user__usr_id=mentee_id)
+                    newMeeting.Sender = sender
+                    newMeeting.Receiver = receiver
+                    newMeeting.Meeting_title = title
+                    newMeeting.Meeting_link = meeting_link
+                    newMeeting.Meeting_date = meeting_date
+                    newMeeting.Meeting_description = meeting_desc
+                    newMeeting.Meeting_time = meeting_time
+                    try:
+                        newMeeting.save()
+                        mail_subject= str(title)
+                        message= render_to_string('FacultyDashboard/meeting_scheduled_email.html', {
+                            'sender': str(sender.user.first_name) + ' ' + str(sender.user.last_name),
+                            'receiver': str(receiver.user.first_name) + ' ' + str(receiver.user.last_name),
+                            'meeting_title': title,
+                            'meeting_link': meeting_link,
+                            'meeting_date': meeting_date,
+                            'meeting_time': meeting_time,
+                            'meeting_desc': meeting_desc,
+                        })
+                        to_email= receiver.user.email
+                        try:
+                            send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                        except:
+                            print('Error Occured In Sending Mail, Try Again ')
+                            pass
+                    except:
+                        pass
+            return redirect('/facultydashboard/'+str(request.user.usr_id),pk=request.user.usr_id)
+        return render(request, 'FacultyDashboard/faculty-meeting.html',context)
+
+    else:
+        return HttpResponse("You are not authorized to view this page")    
