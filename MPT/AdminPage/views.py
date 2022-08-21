@@ -413,9 +413,9 @@ def AdminAnnouncementNew(request):
         announcement.save()
         send_to=request.POST['inlineRadioOptions']
         try: 
-            AnnouncementReceiver.objects.create(announcement=announcement, receiver=request.user).save()
+            # AnnouncementReceiver.objects.create(announcement=announcement, receiver=request.user).save()
             if send_to == 'All':
-                for user_all in User.objects.all(is_active=True,is_superuser=False):
+                for user_all in User.objects.all():
                     AnnouncementReceiver.objects.create(announcement=announcement, receiver=user_all).save()
                     mail_subject= str(title)
                     message= render_to_string('Announcement/announcement_email.html', {
@@ -431,32 +431,32 @@ def AdminAnnouncementNew(request):
                         print('Error Occured In Sending Mail, Try Again ')
                         pass
             elif send_to == 'Facutly':
-                for user_fac in User.objects.all(is_active=True,is_staff=True,is_superuser=False):
-                    AnnouncementReceiver.objects.create(receiver=user_fac, announcement=announcement).save()
+                for user_fac in MentorProfile.objects.all():
+                    AnnouncementReceiver.objects.create(receiver=user_fac.user, announcement=announcement).save()
                     mail_subject= str(title)
                     message= render_to_string('Announcement/announcement_email.html', {
                         'sender': 'Admin',
-                        'receiver': str(user_fac.first_name) + ' ' + str(user_fac.last_name),
+                        'receiver': str(user_fac.user.first_name) + ' ' + str(user_fac.user.last_name),
                         'announcement':content,
                         'title': title,
                     })
-                    to_email= user_fac.email
+                    to_email= user_fac.user.email
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
                     except:
                         print('Error Occured In Sending Mail, Try Again ')
                         pass
             elif send_to == 'Students':
-                for user_stu in User.objects.all(is_active=True,is_staff=False,is_superuser=False):
-                    AnnouncementReceiver.objects.create(receiver=user_stu, announcement=announcement).save()
+                for user_stu in StudentProfile.objects.all():
+                    AnnouncementReceiver.objects.create(receiver=user_stu.user, announcement=announcement).save()
                     mail_subject= str(title)
                     message= render_to_string('Announcement/announcement_email.html', {
                         'sender': 'Admin',
-                        'receiver': str(user_stu.first_name) + ' ' + str(user_stu.last_name),
+                        'receiver': str(user_stu.user.first_name) + ' ' + str(user_stu.user.last_name),
                         'announcement':content,
                         'title': title,
                     })
-                    to_email= user_stu.email
+                    to_email= user_stu.user.email
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
                     except:

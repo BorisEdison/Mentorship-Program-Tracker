@@ -23,7 +23,11 @@
     <div class="card  mb-4">
       <div class="card-header">
             <img class="rounded-circle image3" src="{{receiver.announcement.sender.profile_img.url}}" height="48" width="48">
-            {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}}
+            {% if receiver.announcement.sender.is_superuser %}
+            MPT Admin
+            {% else %}
+            {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
+            {% endif %}
       </div>
       <div class="card-body">
         <a href="" style="color:black">

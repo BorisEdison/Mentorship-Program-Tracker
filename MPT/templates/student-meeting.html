@@ -32,7 +32,9 @@
           <p class="card-text">
             Meeting Date: {{ meeting.Meeting_date }}<br>
             Meeting Time: {{ meeting.Meeting_time }}<br>
-            {{ meeting.Meeting_description }}
+            {{ meeting.Meeting_description }}<br><br>
+
+            Meeting Link: <a href={{meeting.Meeting_link}} target='_blank'>{{meeting.Meeting_link}}</a>
           </p>
         </div>
         <div class="card-footer text-muted">
