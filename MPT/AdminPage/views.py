@@ -6,9 +6,15 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
-from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails,Mentor_assign
+# from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails,Mentor_assign
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
+from Announcement.models import *
+from accounts.models import *
+from django.core.mail import send_mail
+from MPT import settings    
+from django.template.loader import render_to_string
+
 
 # student dashboard view
 
@@ -396,4 +402,69 @@ def AdminAnnouncementBlog(request):
 
 @login_required(login_url='Login')
 def AdminAnnouncementNew(request):
+    if request.method == 'POST':
+        announcement = Announcement()
+        sender = request.user
+        title = request.POST['title']
+        content = request.POST['content']
+        announcement.sender = sender
+        announcement.title = title
+        announcement.content = content
+        announcement.save()
+        send_to=request.POST['inlineRadioOptions']
+        try: 
+            AnnouncementReceiver.objects.create(announcement=announcement, receiver=request.user).save()
+            if send_to == 'All':
+                for user_all in User.objects.all(is_active=True,is_superuser=False):
+                    AnnouncementReceiver.objects.create(announcement=announcement, receiver=user_all).save()
+                    mail_subject= str(title)
+                    message= render_to_string('Announcement/announcement_email.html', {
+                        'sender': 'Admin',
+                        'receiver': str(user_all.first_name) + ' ' + str(user_all.last_name),
+                        'announcement':content,
+                        'title': title,
+                    })
+                    to_email= user_all.email
+                    try:
+                        send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                    except:
+                        print('Error Occured In Sending Mail, Try Again ')
+                        pass
+            elif send_to == 'Facutly':
+                for user_fac in User.objects.all(is_active=True,is_staff=True,is_superuser=False):
+                    AnnouncementReceiver.objects.create(receiver=user_fac, announcement=announcement).save()
+                    mail_subject= str(title)
+                    message= render_to_string('Announcement/announcement_email.html', {
+                        'sender': 'Admin',
+                        'receiver': str(user_fac.first_name) + ' ' + str(user_fac.last_name),
+                        'announcement':content,
+                        'title': title,
+                    })
+                    to_email= user_fac.email
+                    try:
+                        send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                    except:
+                        print('Error Occured In Sending Mail, Try Again ')
+                        pass
+            elif send_to == 'Students':
+                for user_stu in User.objects.all(is_active=True,is_staff=False,is_superuser=False):
+                    AnnouncementReceiver.objects.create(receiver=user_stu, announcement=announcement).save()
+                    mail_subject= str(title)
+                    message= render_to_string('Announcement/announcement_email.html', {
+                        'sender': 'Admin',
+                        'receiver': str(user_stu.first_name) + ' ' + str(user_stu.last_name),
+                        'announcement':content,
+                        'title': title,
+                    })
+                    to_email= user_stu.email
+                    try:
+                        send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                    except:
+                        print('Error Occured In Sending Mail, Try Again ')
+                        pass
+
+        except:
+            pass
+        return redirect('admin-announcement-table')
+
     return render(request, 'AdminPage/admin-announcement-new.html')

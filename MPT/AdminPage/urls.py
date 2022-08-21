@@ -2,9 +2,7 @@ from django.urls import path
 from . import views
 
 
-urlpatterns = [
-    # this is for student dashboard
-   
+urlpatterns = [   
     # this is for admin page
     path('', views.Adminpage, name= 'admin'),
     path('student', views.Adminstudent, name= 'admin-student'),

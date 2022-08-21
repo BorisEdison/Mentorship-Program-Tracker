@@ -22,29 +22,29 @@
             <div class="m-5">
                 <div class="mb-4">
                 <label for="inputTitle" class="form-label"><strong>Title</strong></label>
-                <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle">
+                <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle" required>
                 </div>
                 
                 <div class="mb-4">
                 <label for="inputDescription" class="form-label"><strong>Description</strong></label>
-                <textarea class="form-control" name='content' id="inputDescription" rows="10"></textarea>
+                <textarea class="form-control" name='content' id="inputDescription" rows="10" required></textarea>
                 </div>
         
                 <div class= "mb-3">
                 <p for="inputSendto" class="form-label mb-0"><strong>Send To</strong></p>
                 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFaculty" value="option1">
-                    <label class="form-check-label" for="inputRadioFaculty">Faculty</label>
+                  <label class="form-check-label" for="inputRadioFaculty">Faculty</label>
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioFaculty" value="Facutly" required>
                 </div>
         
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioStudents" value="option2">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioStudents" value="Students" required>
                     <label class="form-check-label" for="inputRadioStudents">Students</label>
                 </div>
         
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBoth" value="option1" checked>
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioBoth" value="All" required>
                     <label class="form-check-label" for="inputRadioBoth">Both</label>
                 </div>
         
