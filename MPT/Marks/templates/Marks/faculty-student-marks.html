@@ -50,6 +50,9 @@
             <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' student.user.usr_id mark.id %}';">
               <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
             </button>
+            <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this user/account ?');">
+              <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+          </button>
           </td>
         </tr>
         {% endfor %}
