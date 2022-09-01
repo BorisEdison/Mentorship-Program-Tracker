@@ -1,0 +1,94 @@
+{% extends "faculty.html" %}
+{% load static %}
+{% now "Y-m-d" as todays_date %}
+{% now "H:i" as current_time%}
+
+{% block dashboardButton %}
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+  aria-selected="true">
+  <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
+  Dashboard
+</button>
+{% endblock %}
+
+
+{% block dashboardContent%}
+<div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <h1 style="font-size: 25px; justify-content: center;">
+          <strong>Meeting Records</strong>
+        </h1>
+      </div>
+
+  <nav class="">
+    <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
+      <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-prevoius" aria-selected="false">Previous Meetings</button>
+      <button class="nav-link active" id="nav-upcoming-tab" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab" aria-controls="nav-upcoming-tab" aria-selected="true">Upcoming Meetings</button>
+    </div>
+  </nav>
+
+  <div class="tab-content mt-5" id="nav-tabContent">
+    <!-- Previous -->
+    <div class="tab-pane fade table-div" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
+      <table class="table table-striped table-hover table-sm" style="widows: 100%;" id="previous-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Title</th>
+            <th scope="col">Meeting Link</th>
+            <th scope="col">Mentee</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in meetings %}
+          {% if meeting.Sender.user == request.user %}
+          {% if todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time >= meeting.Meeting_time|time:"H:i" %}
+          <tr>
+            <th scope="row">{{meeting.Meeting_date}}</th>
+            <td>{{meeting.Meeting_time}}</td>
+            <td>{{meeting.Meeting_title}}</td>
+            <td>{{meeting.Meeting_link}}</td>
+            <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+          </tr>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Upcoming -->
+    <div class="tab-pane fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
+      <table class="table table-striped table-hover table-sm" style="widows: 100%;" id="upcoming-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Title</th>
+            <th scope="col">Meeting Link</th>
+            <th scope="col">Mentee</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in meetings %}
+          {% if meeting.Sender.user == request.user %}
+          {% if not todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time > meeting.Meeting_time|time:"H:i" %}
+          <tr>
+            <th scope="row">{{meeting.Meeting_date}}</th>
+            <td>{{meeting.Meeting_time}}</td>
+            <td>{{meeting.Meeting_title}}</td>
+            <td>{{meeting.Meeting_link}}</td>
+            <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+          </tr>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

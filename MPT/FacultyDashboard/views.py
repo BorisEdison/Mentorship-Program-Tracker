@@ -291,3 +291,6 @@ def facultyMeeting(request):
 
     else:
         return HttpResponse("You are not authorized to view this page")    
+
+def facultyMeetingRecords(request):
+    return render(request, 'FacultyDashboard/faculty-meeting-records.html')

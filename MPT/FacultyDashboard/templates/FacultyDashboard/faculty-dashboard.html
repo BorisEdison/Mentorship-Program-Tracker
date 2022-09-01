@@ -45,19 +45,12 @@
     </button>
   </form>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-light meetings-btn ms-auto" data-bs-toggle="modal" data-bs-target="#Meetings">
+  <button type="button" class="btn btn-light meetings-btn ms-auto" onClick="window.location.href='{% url 'faculty-meeting-records' %}';">
     <span class="iconify" data-icon="uil:calender" data-width="20" data-height="20"></span>
     Meetings
   </button>
 
 </div>
-
-  <!-- Meetings modal Section-->
-  <div class="modal-body">
-
-    {% include 'components/meetings-modal.html' %}
-
-  </div>
 
   {% include 'components/student-grid.html' %}
 

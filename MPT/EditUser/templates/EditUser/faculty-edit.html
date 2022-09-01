@@ -20,7 +20,6 @@
       <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
         <strong>Edit Profile</strong>
       </p>
-      <div class="row">
 
         <!-- First Row  -->
         <div class="row">
@@ -57,186 +56,183 @@
               {{user.profile_img |make_list|slice:'7:'|join:''}}
               {% endif %}
             </div>
-            </div>
-          </div>
-          
-        </div>
-
-        <!-- Third Row  -->
-        <div class="row pt-3">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='usr_id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{ user.usr_id}}'>
-              <label for="inputTeacherId">Teacher Id</label>
-            </div>
-          </div>
-
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <select id="inputDept" class="form-select" name="dept">
-                {% if not profile.Branch %}
-                <option disabled selected>Please Select Your Branch</option>
-                {% else %}
-                <option disabled>Please Select Select Your Branch</option>
-                {% endif %}
-                {% for department in department_list %}
-                {% if profile.Branch and profile.Branch == department %}
-                <option selected>{{ department}}</option>
-                {% else %}
-                <option>{{ department }}</option>
-                {% endif %}
-                {% endfor %}
-
-              </select>
-              <label for="inputDept">Department</label> <br>
-            </div>
           </div>
         </div>
 
-        <!-- Forth Row  -->
-        <div class="row">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <select id="inputBGroup" class="form-select" name="blood_group">
-
-                {% if not profile.Blood_grp %}
-                <option disabled selected>Please Select Your Blood Group</option>
-                {% else %}
-                <option disabled>Please Select Your Blood Group</option>
-                {% endif %}
-                {% for bloodGroup in bloodGroup_list %}
-                {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
-                <option selected>{{ bloodGroup}}</option>
-                {% else %}
-                <option>{{ bloodGroup }}</option>
-                {% endif %}
-                {% endfor %}
-
-              </select>
-              <label for="inputBGroup">Blood Group</label> <br>
-            </div>
-          </div>
-
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <select id="inputGender" class="form-select" name="gender">
-                {% if not profile.Gender %}
-                <option disabled selected>Please Select Your Gender</option>
-                {% else %}
-                <option disabled>Please Select Your Gender</option>
-                {% endif %}
-                {% if profile.Gender and profile.Gender == 'Male' %}
-                <option selected>Male</option>
-                {% else %}
-                <option>Male</option>
-                {% endif %}
-                {% if profile.Gender and profile.Gender == 'Female' %}
-                <option selected>Female</option>
-                {% else %}
-                <option>Female</option>
-                {% endif %}
-
-              </select>
-              <label for="inputGender">Gender</label> <br>
-            </div>
+      <!-- Third Row  -->
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='usr_id' id="inputTeacherId" class="form-control" placeholder="Teacher Id" value='{{ user.usr_id}}'>
+            <label for="inputTeacherId">Teacher Id</label>
           </div>
         </div>
 
-        <!-- Fifth Row  -->
-        <div class="row">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
-              <label for="inputDob">Date Of Birth</label>
-            </div>
-          </div>
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputDept" class="form-select" name="dept">
+              {% if not profile.Branch %}
+              <option disabled selected>Please Select Your Branch</option>
+              {% else %}
+              <option disabled>Please Select Select Your Branch</option>
+              {% endif %}
+              {% for department in department_list %}
+              {% if profile.Branch and profile.Branch == department %}
+              <option selected>{{ department}}</option>
+              {% else %}
+              <option>{{ department }}</option>
+              {% endif %}
+              {% endfor %}
 
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
-              <label for="inputDoj">Date of Joining</label>
-            </div>
+            </select>
+            <label for="inputDept">Department</label> <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forth Row  -->
+      <div class="row">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputBGroup" class="form-select" name="blood_group">
+
+              {% if not profile.Blood_grp %}
+              <option disabled selected>Please Select Your Blood Group</option>
+              {% else %}
+              <option disabled>Please Select Your Blood Group</option>
+              {% endif %}
+              {% for bloodGroup in bloodGroup_list %}
+              {% if profile.Blood_grp and profile.Blood_grp == bloodGroup %}
+              <option selected>{{ bloodGroup}}</option>
+              {% else %}
+              <option>{{ bloodGroup }}</option>
+              {% endif %}
+              {% endfor %}
+
+            </select>
+            <label for="inputBGroup">Blood Group</label> <br>
           </div>
         </div>
 
-        <!-- Sixth Row  -->
-        <div class="row pt-3">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>{{profile.Address}}</textarea>
-              <label for="inputAddress">Address</label>
-            </div>
-          </div>
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <select id="inputGender" class="form-select" name="gender">
+              {% if not profile.Gender %}
+              <option disabled selected>Please Select Your Gender</option>
+              {% else %}
+              <option disabled>Please Select Your Gender</option>
+              {% endif %}
+              {% if profile.Gender and profile.Gender == 'Male' %}
+              <option selected>Male</option>
+              {% else %}
+              <option>Male</option>
+              {% endif %}
+              {% if profile.Gender and profile.Gender == 'Female' %}
+              <option selected>Female</option>
+              {% else %}
+              <option>Female</option>
+              {% endif %}
 
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
-              <label for="inputcity">City</label>
-            </div>
+            </select>
+            <label for="inputGender">Gender</label> <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fifth Row  -->
+      <div class="row">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="date" name='dob' id="inputDob" class="form-control" placeholder="Date Of Birth" value="{% if profile.DateofBirth %}{{ profile.DateofBirth|date:'Y-m-d' }}{% endif %}">
+            <label for="inputDob">Date Of Birth</label>
           </div>
         </div>
 
-        <!-- Seventh Row  -->
-        <div class="row pt-3">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
-              <label for="inputstate">State</label>
-            </div>
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
+            <label for="inputDoj">Date of Joining</label>
           </div>
+        </div>
+      </div>
 
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
-              <label for="inputcountry">Country</label>
-            </div>
+      <!-- Sixth Row  -->
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>{{profile.Address}}</textarea>
+            <label for="inputAddress">Address</label>
           </div>
         </div>
 
-        <!-- Eight Row  -->
-        <div class="row pt-3">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
-              <label for="inputQuali">Qualification</label>
-            </div>
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
+            <label for="inputcity">City</label>
           </div>
+        </div>
+      </div>
 
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
-              <label for="inputMtongue">Mother Tongue</label>
-            </div>
+      <!-- Seventh Row  -->
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='state' class="form-control" id="inputstate" placeholder="state" value='{{profile.State}}'>
+            <label for="inputstate">State</label>
           </div>
         </div>
 
-        <!-- Ninth Row  -->
-        <div class="row pt-3">
-          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
-              <label for="inputReligion">Religion</label>
-            </div>
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
+            <label for="inputcountry">Country</label>
           </div>
+        </div>
+      </div>
 
-          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
-            <div class="form-group form-floating col-md-10">
-              <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
-              <label for="inputContactNo">Contact No.</label>
-            </div>
+      <!-- Eight Row  -->
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
+            <label for="inputQuali">Qualification</label>
           </div>
-          <!-- Tenth Row  -->
-          <div class="row pt-3">
-            <div class="col-12 full-width-sm" style="display: flex; justify-content: center;">
-              <div class="form-group form-floating col-md-10">
-                <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL starting with http:// OR https://" value='{{profile.meeting_link}}'>
-                <label for="Meetlink">Meeting Link</label>
-              </div>
-            </div>
-          </div>
-
         </div>
 
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+            <label for="inputMtongue">Mother Tongue</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ninth Row  -->
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+            <label for="inputReligion">Religion</label>
+          </div>
+        </div>
+
+        <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
+            <label for="inputContactNo">Contact No.</label>
+          </div>
+        </div>
+      </div>
+      <!-- Tenth Row  -->
+
+      <div class="row pt-3">
+        <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+          <div class="form-group form-floating col-md-10">
+            <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL starting with http:// OR https://" value='{{profile.meeting_link}}'>
+            <label for="Meetlink">Meeting Link</label>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- buttons -->
