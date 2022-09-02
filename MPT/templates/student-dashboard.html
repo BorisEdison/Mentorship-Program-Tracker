@@ -63,9 +63,7 @@ Edit Profile
     <!-- Year heading -->
     <p class="h4"><strong>First Year</strong></p>
 
-  </section>
-
-  <!-- Graph-->
+      <!-- Graph-->
   <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row ">
     <span>
       <canvas id="donutGraphSem1"></canvas>
@@ -77,17 +75,14 @@ Edit Profile
     </span>
   </section>
 
-  <!-- Session Records Button -->
-    {% comment %} <button type="button" class="btn btn-sm meetings-btn ms-auto custom-btn d-block" data-bs-toggle="modal" data-bs-target="#session-records">
-      <span class="iconify" data-icon="akar-icons:circle-plus" data-width="19" data-height="20"></span>
+      <!-- Session Records Button -->
+      <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button"
+      style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5); ">
+      <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
       Session Records
-    </button> {% endcomment %}
+      </button>
 
-  <!-- Session Records modal Section-->
-  <div class="modal-body">
+  </section>
 
-    {% include 'components/session-records-modal.html' %}
-
-  </div>
 </div>
 {% endblock %}

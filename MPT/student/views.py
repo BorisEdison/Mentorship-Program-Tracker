@@ -34,3 +34,6 @@ def student(request, pk):
 @login_required(login_url='Login')
 def studentMeeting(request):
     return render(request, 'student-meeting.html')
+
+def studentMeetingRecords(request):
+    return render(request, 'student-meeting-records.html')

@@ -40,17 +40,18 @@
             </button>
             {% endblock %}
 
-            {% block calendarButton %}
+            {% comment %} {% block calendarButton %}
             <button class="nav-link nav-pills-link" id="calendar-tab" onclick="window.location.href = '{% url 'student-cal' %}';" data-bs-toggle="pill" data-bs-target="#calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">
               <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>
               Calender
             </button>
-            {% endblock %}
+            {% endblock %} {% endcomment %}
 
             {% block announcementButton %}
             <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'student-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Announcement
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">1</span>
             </button>
             {% endblock %}
 
@@ -58,6 +59,7 @@
             <button class="nav-link nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'student-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
               <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
               Meeting
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">1</span>
             </button>
             {% endblock %}
 
@@ -84,11 +86,11 @@
             </div>
             {% endblock %}
 
-            {% block calendarContent %}
+            {% comment %} {% block calendarContent %}
             <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="calendar">
 
             </div>
-            {% endblock %}
+            {% endblock %} {% endcomment %}
 
             {% block announcementContent %}
             <div class="tab-pane fade" id="announcement" role="tabpanel" aria-labelledby="announcement">
