@@ -11,6 +11,54 @@
 {% block dashboardContent %}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
+  <!--Student Name-->
+  <p style="font-size: 25px; display: flex; justify-content: center;">
+    <strong>{{user.first_name}} {{user.last_name}} </strong>
+  </p>
+
+  <div class="d-flex align-items-center justify-content-center m-4">
+    <h1 style="font-size: 25px; justify-content: center;">
+      <strong>Marks</strong>
+    </h1>
+    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'studentAddMarks' pk=request.user.usr_id %}';">
+      Add Marks
+    </button>
+  </div>
+
+  <!-- table -->
+  <div class="table-div m-4">
+    <table class="table table-striped table-bordered" style="widows: 100%;" id="marks-table">
+      <thead>
+        <tr>
+          <th scope="col" class="px-2 py-1 text-center">Subject Code</th>
+          <th scope="col" class="px-2 py-1 text-center">Sem</th>
+          <th scope="col" class="px-2 py-1 text-center">Year</th>
+          <th scope="col" class="px-2 py-1 text-center">Exam</th>
+          <th scope="col" class="px-2 py-1 text-center">Marks</th>
+          <th scope="col" class="px-2 py-1 text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mark in mark %}
+        <tr>
+          <th scope="row" class="px-2 py-1 text-center">{{mark.sub_code}}</th>
+          <td class="px-2 py-1 text-center">{{mark.sem}}</td>
+          <td class="px-2 py-1 text-center">{{mark.academicYear}}</td>
+          <td class="px-2 py-1 text-center">{{mark.exam}}</td>
+          <td class="px-2 py-1 text-center">{{mark.marks}}</td>
+          <td class="px-2 py-1 text-center">
+            <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'facultyEditMarks' student.user.usr_id mark.id %}';">
+              <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
+            </button>
+            <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this user/account ?');">
+              <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+          </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
 </div>
 {% endblock %}

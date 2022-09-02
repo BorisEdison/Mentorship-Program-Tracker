@@ -12,6 +12,20 @@ def studentMarks(request, pk):
     context = {'title': 'studentmarks'}
     return render(request, 'Marks/student-marks.html', context)
 
+def studentAddMarks(request, pk):
+    user = User.objects.get(usr_id=pk)
+    print(user.usr_id)
+ 
+    context = {'title': 'studentmarks'}
+    return render(request, 'Marks/student-add-marks.html', context)
+
+def studentEditMarks(request, pk):
+    user = User.objects.get(usr_id=pk)
+    print(user.usr_id)
+ 
+    context = {'title': 'studentmarks'}
+    return render(request, 'Marks/student-edit-marks.html', context)
+
 def facultyStudentMarks(request,stu_pk):
 
     user = User.objects.get(usr_id=stu_pk)
