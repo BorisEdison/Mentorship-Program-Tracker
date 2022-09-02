@@ -25,7 +25,7 @@
         {% csrf_token %}
         <div class="container mt-2 mb-3">
           <div class="row">
-    
+
             <!-- First Row  -->
             <div class="row">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -34,7 +34,7 @@
                   <label for="inputFname">First Name</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.user.middle_name}}'>
@@ -42,7 +42,7 @@
                 </div>
               </div>
             </div>
-    
+
             <!-- Second Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -51,7 +51,7 @@
                   <label for="inputLname">Last Name</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group col-md-10">
                   <div class="file-upload">
@@ -63,15 +63,15 @@
                         {% else %}
                         No file chosen...
                         {% endif %}
-                      </div> 
+                      </div>
                       <input name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img.url}}'>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
             </div>
-    
+
             <!-- Third Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -80,7 +80,7 @@
                   <label for="inputTeacherId">Teacher Id</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputDept" class="form-select" name="dept">
@@ -96,19 +96,19 @@
                     <option>{{ department }}</option>
                     {% endif %}
                     {% endfor %}
-    
+
                   </select>
                   <label for="inputDept">Department</label> <br>
                 </div>
               </div>
             </div>
-    
+
             <!-- Forth Row  -->
             <div class="row">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputBGroup" class="form-select" name="blood_group">
-    
+
                     {% if not profile.Blood_grp %}
                     <option disabled selected>Please Select Your Blood Group</option>
                     {% else %}
@@ -121,12 +121,12 @@
                     <option>{{ bloodGroup }}</option>
                     {% endif %}
                     {% endfor %}
-    
+
                   </select>
                   <label for="inputBGroup">Blood Group</label> <br>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputGender" class="form-select" name="gender">
@@ -145,13 +145,13 @@
                     {% else %}
                     <option>Female</option>
                     {% endif %}
-    
+
                   </select>
                   <label for="inputGender">Gender</label> <br>
                 </div>
               </div>
             </div>
-    
+
             <!-- Fifth Row  -->
             <div class="row">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -160,7 +160,7 @@
                   <label for="inputDob">Date Of Birth</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="date" name='doj' id="inputDoj" class="form-control" placeholder="Date Of Joining" value="{% if profile.DateofJoining %}{{ profile.DateofJoining|date:'Y-m-d' }}{% endif %}">
@@ -168,7 +168,7 @@
                 </div>
               </div>
             </div>
-    
+
             <!-- Sixth Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -177,7 +177,7 @@
                   <label for="inputAddress">Address</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
@@ -185,7 +185,7 @@
                 </div>
               </div>
             </div>
-    
+
             <!-- Seventh Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -194,7 +194,7 @@
                   <label for="inputstate">State</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="text" name='country' class="form-control" id="inputcountry" placeholder="country" value='{{profile.Country}}'>
@@ -202,7 +202,7 @@
                 </div>
               </div>
             </div>
-    
+
             <!-- Eight Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -211,7 +211,7 @@
                   <label for="inputQuali">Qualification</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
@@ -219,7 +219,7 @@
                 </div>
               </div>
             </div>
-    
+
             <!-- Ninth Row  -->
             <div class="row pt-3">
               <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
@@ -228,7 +228,7 @@
                   <label for="inputReligion">Religion</label>
                 </div>
               </div>
-    
+
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <input type="tel" name="phone" class="form-control" id="inputContactNo" placeholder="Contact No." pattern="[0-9]{10}" value='{{user.phone}}'>
@@ -253,62 +253,63 @@
                 <div class="form-group form-floating col-md-10">
                   <select id="inputStaff" class="form-select" name="staff_status">
                     {% if user.is_staff  %}
-                      <option value="Active" selected >Active</option>
-                      {% else %}
-                      <option value="Active" >Active</option>
-                      {% endif %}
-          
-                      {% if not user.is_staff  %}
-                      <option value="Inactive" selected>Inactive</option>
-                      {% else %}
-                      <option value="Inactive">Inactive</option>
-                      {% endif %}
+                    <option value="Active" selected>Active</option>
+                    {% else %}
+                    <option value="Active">Active</option>
+                    {% endif %}
+
+                    {% if not user.is_staff  %}
+                    <option value="Inactive" selected>Inactive</option>
+                    {% else %}
+                    <option value="Inactive">Inactive</option>
+                    {% endif %}
                   </select>
                   <label for="inputStaff">Staff Status</label>
                 </div>
               </div>
-  
+
               <div class="col-6" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
                   <select id="inputAccount" class="form-select" name="account_status">
                     {% if user.is_active  %}
-                    <option value="Active" selected >Active</option>
+                    <option value="Active" selected>Active</option>
                     {% else %}
-                    <option value="Active" >Active</option>
+                    <option value="Active">Active</option>
                     {% endif %}
-        
+
                     {% if not user.is_active %}
                     <option value="Inactive" selected>Inactive</option>
                     {% else %}
                     <option value="Inactive">Inactive</option>
                     {% endif %}
-                </select>
+                  </select>
                   <label for="inputAccount">Account Status</label>
                 </div>
               </div>
 
             </div>
-    
+
           </div>
-    
+
         </div>
-    
+
         <!-- buttons -->
         <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-    
+
           <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
             UPDATE PROFILE
           </button>
-    
-          <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+
+          <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'"
+            style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
             CANCEL
           </button>
-    
-        </div>
-    
-      </form>
-    
-  </div>
-</div>
 
-{% endblock %}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

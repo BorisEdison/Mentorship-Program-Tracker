@@ -3,72 +3,72 @@
 
 {% block assignedTabButton %}
 <button class="nav-link active" id="nav-assigned-tab" onClick="window.location.href='{% url 'admin-assigned' mentor.user.usr_id %}'" data-bs-toggle="tab" data-bs-target="#nav-assigned" type="button" role="tab" aria-controls="nav-assigned-tab"
-aria-selected="false">
-Assigned Mentees ( {{mentee_list|length}} )
+  aria-selected="false">
+  Assigned Mentees ( {{mentee_list|length}} )
 </button>
 {% endblock %}
 
 {% block assignedTabContent %}
-<form method="POST" >
+<form method="POST">
   {% csrf_token %}
-{% comment %} BOris do modify this but don't change the id  {% endcomment %}
-<center>Selected Student's Id: <input type='text' style="font-size: 14pt; height: 30px; width:400px; " id='mentee_selected' readonly name='mentees'/>
+  {% comment %} BOris do modify this but don't change the id {% endcomment %}
+  <center>Selected Student's Id: <input type='text' style="font-size: 14pt; height: 30px; width:400px; " id='mentee_selected' readonly name='mentees' />
 
-<div class="tab-pane fade active show" id="nav-unassigned" role="tabpanel" aria-labelledby="nav-unassigned-tab">
-    <!-- table -->
-    <div class="table-div m-4 mt-4 mb-4">
-      <table class="table table-striped table-bordered" style="widows: 100%;" id="student-table">
-        <thead>
-          <tr>
-            <th scope="col" class="px-2 py-1 text-center">Select</th>
-            <th scope="col" class="px-2 py-1 text-center">Name</th>
-            <th scope="col" class="px-2 py-1 text-center">Email</th>
-            <th scope="col" class="px-2 py-1 text-center">Student Id</th>
-            <th scope="col" class="px-2 py-1 text-center">Roll No.</th>
-            <th scope="col" class="px-2 py-1 text-center">Gender</th>
-            <th scope="col" class="px-2 py-1 text-center">Department</th>
-            <th scope="col" class="px-2 py-1 text-center">Year</th>
-            <th scope="col" class="px-2 py-1 text-center">Date Joined</th>
-            <th scope="col" class="px-2 py-1 text-center">Last Login</th>
-          </tr>
-        </thead>
-        <tbody id="myTable">
-          {% for mentee in mentee_list %}
-          <tr>
-            <td class="px-2 py-1 text-center">
-              <span class="mb-3">
-                <input type="checkbox" value="{{ mentee.user.usr_id }}" class="chkvalues" name="mentee_list" id="select-mentee">
-              </span>
-            </td>
-            <th scope="row" class="px-2 py-1 text-center">{{ mentee.user.first_name }} {{ mentee.user.last_name }}</th>
-            <td class="px-2 py-1 text-center">{{ mentee.user.email }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.user.usr_id }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.studentdetails.current_rollNo }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.Gender }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.Branch }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.studentdetails.current_year }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.user.date_joined }}</td>
-            <td class="px-2 py-1 text-center">{{ mentee.user.last_login }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="tab-pane fade active show" id="nav-unassigned" role="tabpanel" aria-labelledby="nav-unassigned-tab">
+      <!-- table -->
+      <div class="table-div m-4 mt-4 mb-4">
+        <table class="table table-striped table-bordered" style="widows: 100%;" id="student-table">
+          <thead>
+            <tr>
+              <th scope="col" class="px-2 py-1 text-center">Select</th>
+              <th scope="col" class="px-2 py-1 text-center">Name</th>
+              <th scope="col" class="px-2 py-1 text-center">Email</th>
+              <th scope="col" class="px-2 py-1 text-center">Student Id</th>
+              <th scope="col" class="px-2 py-1 text-center">Roll No.</th>
+              <th scope="col" class="px-2 py-1 text-center">Gender</th>
+              <th scope="col" class="px-2 py-1 text-center">Department</th>
+              <th scope="col" class="px-2 py-1 text-center">Year</th>
+              <th scope="col" class="px-2 py-1 text-center">Date Joined</th>
+              <th scope="col" class="px-2 py-1 text-center">Last Login</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+            {% for mentee in mentee_list %}
+            <tr>
+              <td class="px-2 py-1 text-center">
+                <span class="mb-3">
+                  <input type="checkbox" value="{{ mentee.user.usr_id }}" class="chkvalues" name="mentee_list" id="select-mentee">
+                </span>
+              </td>
+              <th scope="row" class="px-2 py-1 text-center">{{ mentee.user.first_name }} {{ mentee.user.last_name }}</th>
+              <td class="px-2 py-1 text-center">{{ mentee.user.email }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.user.usr_id }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.studentdetails.current_rollNo }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.Gender }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.Branch }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.studentdetails.current_year }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.user.date_joined }}</td>
+              <td class="px-2 py-1 text-center">{{ mentee.user.last_login }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- buttons -->
+      <div class="d-flex align-items-center justify-content-center m-3">
+
+        <button type="submit" name="btn-show" id="assign-btn" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          Unassign
+        </button>
+
+        <button type="button" name="btn-show" id="cancel-btn" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'"
+          style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          Cancel
+          {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
+        </button>
+
+      </div>
     </div>
-
-    <!-- buttons -->
-    <div class="d-flex align-items-center justify-content-center m-3">
-
-      <button type="submit" name="btn-show" id="assign-btn" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-        Unassign
-      </button>
-
-      <button type="button" name="btn-show" id="cancel-btn" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'admin-mentor' %}'"
-        style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
-        Cancel
-        {% comment %} <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">CANCEL</a> {% endcomment %}
-      </button>
-
-    </div>
-  </div>
 </form>
 {% endblock %}
