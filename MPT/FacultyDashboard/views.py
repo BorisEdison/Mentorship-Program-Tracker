@@ -297,3 +297,6 @@ def overallMeetingRecords(request):
 
 def induvidualMeetingRecords(request):
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
+
+def meetingNotes(request):
+    return render(request, 'FacultyDashboard/meeting-notes.html')

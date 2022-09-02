@@ -44,9 +44,9 @@
           </tr>
         </thead>
         <tbody>
-          {% for meeting in meetings %}
+          {% comment %} {% for meeting in meetings %}
           {% if meeting.Sender.user == request.user %}
-          {% if todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time >= meeting.Meeting_time|time:"H:i" %}
+          {% if todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time >= meeting.Meeting_time|time:"H:i" %} {% endcomment %}
           <tr>
             <th scope="row">{{meeting.Meeting_date}}</th>
             <td>{{meeting.Meeting_time}}</td>
@@ -54,10 +54,16 @@
             <td>Online</td>
             <td>Comp Lab 7</td>
             <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+            <td>
+              <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'meeting-notes' %}';">
+                <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
+                &nbsp;Note
+              </button>
+            </td>
           </tr>
+          {% comment %} {% endif %}
           {% endif %}
-          {% endif %}
-          {% endfor %}
+          {% endfor %} {% endcomment %}
         </tbody>
       </table>
     </div>
@@ -73,6 +79,7 @@
             <th scope="col">Mode</th>
             <th scope="col">Venue</th>
             <th scope="col">Mentee</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -86,6 +93,11 @@
             <td>Offline</td>
             <td>Comp Lab 7</td>
             <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+            <td>            
+              <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this user/account ?');">
+                <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+              </button>
+           </td>
           </tr>
           {% endif %}
           {% endif %}

@@ -1,0 +1,112 @@
+{% extends "faculty.html" %}
+{% load static %}
+{% now "Y-m-d" as todays_date %}
+{% now "H:i" as current_time%}
+
+{% block dashboardButton %}
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+  aria-selected="true">
+  <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
+  Dashboard
+</button>
+{% endblock %}
+
+
+{% block dashboardContent%}
+<div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+    <div class="container mt-2 mb-3">
+      <p style="font-size: 25px; padding-bottom: 1rem; display: flex; justify-content: center;">
+        <strong>Notes</strong>
+      </p>
+
+        <!-- First Row  -->
+        <div class="row">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Mentee Name" value='' disabled>
+              <label for="inputMname">Mentee Name</label>
+            </div>
+          </div>
+
+          <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='title' class="form-control" id="inputTitle" placeholder="Title" value='' disabled>
+              <label for="inputTitle">Title</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row  -->
+        <div class="row pt-3">
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='date' class="form-control" id="inputDate" placeholder="Date" value='' disabled>
+              <label for="inputDate">Date</label>
+            </div>
+          </div>
+
+          <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+            <div class="form-group form-floating col-md-10">
+              <input type="text" name='time' class="form-control" id="inputTime" placeholder="Time" value='' disabled>
+              <label for="inputTime">Time</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Row  -->
+        <div class="row pt-3">
+            <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                <input type="text" name='mode' class="form-control" id="inputMode" placeholder="Mode" value='' disabled>
+                <label for="inputMode">Mode</label>
+                </div>
+            </div>
+    
+            <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                <textarea type="text" name='venue' class="form-control" id="inputVenue" placeholder="Venue" value='' disabled></textarea>
+                <label for="inputVenue">Venue</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forth Row  -->
+        <div class="row pt-3">
+            <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                <textarea type="text" name='note' class="form-control" id="inputNote" placeholder="Note" value=''></textarea>
+                <label for="inputNote">Note</label>
+                </div>
+            </div>
+    
+            <div class="col-6" style="display: flex; justify-content: center;">
+                <div class="form-group form-floating col-md-10">
+                  <select id="inputAttendance" class="form-select" name="attedance">
+                    <option disabled selected>Please Mark Attendance</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+
+                  </select>
+                  <label for="inputAttendance">Attendance</label>
+                </div>
+              </div>
+        </div>
+
+    </div>
+
+    <!-- buttons -->
+    <div class="d-flex align-items-center justify-content-center m-3 mt-5">
+
+      <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        ADD NOTES
+      </button>
+
+      <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+        CANCEL
+      </button>
+
+    </div>
+
+</div>
+{% endblock %}

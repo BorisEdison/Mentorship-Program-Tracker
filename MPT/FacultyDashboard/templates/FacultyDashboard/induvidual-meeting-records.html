@@ -60,7 +60,7 @@
             <td>Comp Lab 7</td>
             <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
             <td>
-                <button type="button" class="btn btn-sm meetings-btn custom-btn">
+                <button type="button" class="btn btn-sm meetings-btn custom-btn"  onClick="window.location.href='{% url 'meeting-notes' %}';">
                   <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
                   &nbsp;Note
                 </button>
