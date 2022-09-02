@@ -389,8 +389,12 @@ def Unassigned(request,usr_id):
         return HttpResponse("You are not authorized to view this page")
 
 @login_required(login_url='Login')
-def AdminMeeting(request):
-    return render(request, 'AdminPage/admin-meeting.html')
+def AdminUpcomingMeeting(request):
+    return render(request, 'AdminPage/admin-meeting-upcoming.html')
+
+@login_required(login_url='Login')
+def AdminPreviousMeeting(request):
+    return render(request, 'AdminPage/admin-meeting-previous.html')
 
 @login_required(login_url='Login')
 def AdminAnnouncementTable(request):

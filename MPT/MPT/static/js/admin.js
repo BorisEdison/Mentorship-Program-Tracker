@@ -35,7 +35,12 @@ $(document).ready( function () {
     });
 } );
 $(document).ready( function () {
-    $('#meeting-table').DataTable({
+    $('#previous-table').DataTable({
         //options
     });
-} );
+  } );
+  $(document).ready( function () {
+    $('#upcoming-table').DataTable({
+        //options
+    });
+  } );

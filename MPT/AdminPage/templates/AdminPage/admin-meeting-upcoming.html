@@ -1,0 +1,52 @@
+{% extends "admin-meeting.html" %}
+{% load static %}
+
+{% block upcomingTabButton %}
+<button class="nav-link active" id="nav-upcoming-tab" onClick="window.location.href='{% url 'admin-upcoming-meeting' %}'" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab"
+  aria-controls="nav-upcoming-tab" aria-selected="false">
+  Upcoming
+</button>
+{% endblock %}
+
+{% block upcomingTabContent %}
+
+<div class="tab-pane fade active show" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
+       
+        <!-- Upcoming -->
+        <div class="tab-pane m-4 mt-4 mb-4 fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
+            <table class="table table-striped table-hover table-sm" style="widows: 100%;" id="upcoming-table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Mode</th>
+                  <th scope="col">Venue</th>
+                  <th scope="col">Mentee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for meeting in meetings %}
+                {% if meeting.Sender.user == request.user %}
+                {% if not todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time > meeting.Meeting_time|time:"H:i" %}
+                <tr>
+                  <th scope="row">{{meeting.Meeting_date}}</th>
+                  <td>{{meeting.Meeting_time}}</td>
+                  <td>{{meeting.Meeting_title}}</td>
+                  <td>Offline</td>
+                  <td>Comp Lab 7</td>
+                  <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+                </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+</div>
+{% endblock %}
+
+        
+        
+        
