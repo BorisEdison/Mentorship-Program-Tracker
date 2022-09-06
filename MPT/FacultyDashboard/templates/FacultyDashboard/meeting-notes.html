@@ -22,14 +22,14 @@
         <div class="row">
           <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Mentee Name" value='' disabled>
+              <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Mentee Name" value='{{meeting.Receiver.user.first_name}}  {{meeting.Receiver.user.last_name}}' disabled>
               <label for="inputMname">Mentee Name</label>
             </div>
           </div>
 
           <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='title' class="form-control" id="inputTitle" placeholder="Title" value='' disabled>
+              <input type="text" name='title' class="form-control" id="inputTitle" placeholder="Title" value='{{meeting.Meeting_title}}' disabled>
               <label for="inputTitle">Title</label>
             </div>
           </div>
@@ -39,14 +39,14 @@
         <div class="row pt-3">
           <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='date' class="form-control" id="inputDate" placeholder="Date" value='' disabled>
+              <input type="text" name='date' class="form-control" id="inputDate" placeholder="Date" value='{{meeting.Meeting_date}}' disabled>
               <label for="inputDate">Date</label>
             </div>
           </div>
 
           <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
             <div class="form-group form-floating col-md-10">
-              <input type="text" name='time' class="form-control" id="inputTime" placeholder="Time" value='' disabled>
+              <input type="text" name='time' class="form-control" id="inputTime" placeholder="Time" value='{{meeting.Meeting_time}}' disabled>
               <label for="inputTime">Time</label>
             </div>
           </div>
@@ -56,35 +56,47 @@
         <div class="row pt-3">
             <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                <input type="text" name='mode' class="form-control" id="inputMode" placeholder="Mode" value='' disabled>
+                <input type="text" name='mode' class="form-control" id="inputMode" placeholder="Mode" value='{{meeting.Meeting_mode}}' disabled>
                 <label for="inputMode">Mode</label>
                 </div>
             </div>
     
             <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                <textarea type="text" name='venue' class="form-control" id="inputVenue" placeholder="Venue" value='' disabled></textarea>
+                <input type="text" name='venue' class="form-control" id="inputVenue" placeholder="Venue" value='{{meeting.Meeting_link_or_venue}}' disabled>
                 <label for="inputVenue">Venue</label>
                 </div>
             </div>
         </div>
 
         <!-- Forth Row  -->
+        <form method='POST'>
+          {% csrf_token %}
         <div class="row pt-3">
             <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                <textarea type="text" name='note' class="form-control" id="inputNote" placeholder="Note" value=''></textarea>
+                <textarea type="text" name='note' class="form-control" id="inputNote" placeholder="Note">{{meetinfo.Notes}}</textarea>
                 <label for="inputNote">Note</label>
                 </div>
             </div>
-    
             <div class="col-6" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                  <select id="inputAttendance" class="form-select" name="attedance">
+                <select id="inputAttendance" class="form-select" name="attedance">
+                    {% if not meetinfo.Attendance %}
                     <option disabled selected>Please Mark Attendance</option>
-                    <option value="Present">Present</option>
-                    <option value="Absent">Absent</option>
-
+                    {% else %}
+                    <option disabled>Please Mark Attendance</option>
+                    {% endif %}
+                    {% if meetinfo.Attendance and meetinfo.Attendance == True or meetinfo.Attendance == 'True' %}
+                    <option selected>Present</option>
+                    {% else %}
+                    <option>Present</option>
+                    {% endif %}
+                    {% if meetinfo.Attendance and meetinfo.Attendance == False or meetinfo.Attendance == 'False' %}
+                    <option selected>Absent</option>
+                    {% else %}
+                    <option>Absent</option>
+                    {% endif %}
                   </select>
                   <label for="inputAttendance">Attendance</label>
                 </div>
@@ -104,6 +116,6 @@
       </button>
 
     </div>
-
+  </form>
 </div>
 {% endblock %}

@@ -311,5 +311,24 @@ def deleteMeeting(request,id):
 def induvidualMeetingRecords(request):
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
 
-def meetingNotes(request):
-    return render(request, 'FacultyDashboard/meeting-notes.html')
+def meetingNotes(request,id):
+    meeting=Meeting.objects.get(Meeting_id=id)
+    attendance_notes=MeetingAttendance.objects.get(Meeting_id=id)
+    context={
+        'meeting':meeting,
+        'meetinfo':attendance_notes,
+    }
+    
+    if request.method=='POST':
+        notes=request.POST['note']
+        attendance=request.POST['attedance']
+        attendance_notes.Notes=notes
+        if attendance=='Present':
+            attendance_notes.Attendance=True
+        elif attendance=='Absent':
+            attendance_notes.Attendance=False
+        
+        attendance_notes.save()
+        return redirect('overall-meeting-records')
+
+    return render(request, 'FacultyDashboard/meeting-notes.html',context)

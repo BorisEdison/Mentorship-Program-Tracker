@@ -53,7 +53,7 @@
             <td>{{meeting.Meeting_link_or_venue}}</td>
             <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
             <td>
-              <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'meeting-notes' %}';">
+              <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'meeting-notes' meeting.Meeting_id %}';">
               <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
               &nbsp;Note
               </button>
@@ -107,6 +107,5 @@
       </table>
     </div>
   </div>
-
 </div>
 {% endblock %}

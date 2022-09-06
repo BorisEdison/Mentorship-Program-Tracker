@@ -10,5 +10,5 @@ urlpatterns = [
     path('overallMeetingRecords', views.overallMeetingRecords, name='overall-meeting-records'),    
     path('deleteMeeting/<str:id>', views.deleteMeeting, name='delete-meeting-record'),
     path('induvidualMeetingRecords', views.induvidualMeetingRecords, name='induvidual-meeting-records'), 
-    path('meetingNotes', views.meetingNotes, name='meeting-notes'),       
+    path('meetingNotes/<str:id>', views.meetingNotes, name='meeting-notes'),       
 ]
