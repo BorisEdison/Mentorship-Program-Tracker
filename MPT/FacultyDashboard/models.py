@@ -24,12 +24,13 @@ class Meeting(models.Model):
 
 class MeetingAttendance(models.Model):
     Meeting_id = models.ForeignKey(Meeting, on_delete=models.CASCADE)
+    Notes = models.TextField(null=True)
     Attendance = models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.Meeting_id.Meeting_title + ' - ' + self.Student.user.first_name + ' - ' + self.Attendance
+        return self.Meeting_id.Meeting_title + ' - ' + self.Meeting_id.Receiver.user.first_name + ' - ' + str(self.Attendance)
 
     class Meta:
         ordering = ('-Meeting_id','-created_at')

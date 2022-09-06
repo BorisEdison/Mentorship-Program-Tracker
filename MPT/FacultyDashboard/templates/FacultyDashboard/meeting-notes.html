@@ -1,7 +1,5 @@
 {% extends "faculty.html" %}
 {% load static %}
-{% now "Y-m-d" as todays_date %}
-{% now "H:i" as current_time%}
 
 {% block dashboardButton %}
 <button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
@@ -92,7 +90,6 @@
                 </div>
               </div>
         </div>
-
     </div>
 
     <!-- buttons -->

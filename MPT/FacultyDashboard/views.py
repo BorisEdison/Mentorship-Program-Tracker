@@ -201,7 +201,7 @@ def studentdetail(request, fac_id, stu_id):
         context.update({'student' : student,'details':details,'hobbies':hobbies,'guardian':guardian,'clubs':clubs,'hobbies':hobbies,'achievements':achievements,'orgs':organizations,'Medical':Medical})
     except:
         pass
-    print(student.user.usr_id)
+    # print(student.user.usr_id)
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @login_required(login_url='Login')
@@ -301,6 +301,12 @@ def overallMeetingRecords(request):
          'current_time':datetime.datetime.now().time()
     }
     return render(request, 'FacultyDashboard/overall-meeting-records.html',context)
+
+def deleteMeeting(request,id):
+    if request.method=='POST':
+        meeting= Meeting.objects.filter(Meeting_id=id)
+        meeting.delete()
+    return redirect('overall-meeting-records')
 
 def induvidualMeetingRecords(request):
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
