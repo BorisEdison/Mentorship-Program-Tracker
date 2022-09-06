@@ -9,7 +9,8 @@ class Meeting(models.Model):
     Meeting_description = models.TextField(null=True)
     Meeting_date = models.DateField(null=True)
     Meeting_time = models.TimeField(null=True)
-    Meeting_link = models.URLField(null=True)
+    Meeting_link_or_venue = models.TextField(null=True)
+    Meeting_mode = models.CharField(max_length=100)
     created_at=models.DateTimeField(default=timezone.now)
     updated_at=models.DateTimeField(auto_now=True)
 

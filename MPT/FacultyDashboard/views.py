@@ -14,6 +14,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 from .models import *
+import datetime
 
 #logout the logged in user
 def logout(request):
@@ -233,7 +234,7 @@ def facultyMeeting(request):
     if request.user.is_staff:
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
-                    'ALL':'checked'
+                    'ALL':'checked',
                     }
         try:
             if request.method=='GET' and request.GET['inlineRadioOptions']:
@@ -249,7 +250,8 @@ def facultyMeeting(request):
         if request.method=='POST':
             sender=request.user.mentorprofile
             title= request.POST['title']
-            meeting_link=request.POST['link']
+            meeting_link_or_venue=request.POST['link_or_venue']
+            mode=request.POST['mode']
             meeting_date=request.POST['date']
             meeting_desc=request.POST['content']
             meeting_time=request.POST['time']
@@ -262,8 +264,9 @@ def facultyMeeting(request):
                     newMeeting.Sender = sender
                     newMeeting.Receiver = receiver
                     newMeeting.Meeting_title = title
-                    newMeeting.Meeting_link = meeting_link
+                    newMeeting.Meeting_link_or_venue = meeting_link_or_venue
                     newMeeting.Meeting_date = meeting_date
+                    newMeeting.Meeting_mode=mode
                     newMeeting.Meeting_description = meeting_desc
                     newMeeting.Meeting_time = meeting_time
                     try:
@@ -273,7 +276,7 @@ def facultyMeeting(request):
                             'sender': str(sender.user.first_name) + ' ' + str(sender.user.last_name),
                             'receiver': str(receiver.user.first_name) + ' ' + str(receiver.user.last_name),
                             'meeting_title': title,
-                            'meeting_link': meeting_link,
+                            'meeting_link_or_venue': meeting_link,
                             'meeting_date': meeting_date,
                             'meeting_time': meeting_time,
                             'meeting_desc': meeting_desc,
@@ -293,7 +296,11 @@ def facultyMeeting(request):
         return HttpResponse("You are not authorized to view this page")    
 
 def overallMeetingRecords(request):
-    return render(request, 'FacultyDashboard/overall-meeting-records.html')
+    context={
+         'todays_date':datetime.date.today(),
+         'current_time':datetime.datetime.now().time()
+    }
+    return render(request, 'FacultyDashboard/overall-meeting-records.html',context)
 
 def induvidualMeetingRecords(request):
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')

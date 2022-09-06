@@ -59,6 +59,24 @@
         <input type="text" name='title' placeholder="Title" class="form-control" id="inputTitle" required>
       </div>
 
+      <div class="mb-4">
+        <label for="inputMode" class="form-label"><strong>Mode</strong></label>&nbsp;&nbsp;
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="mode" id="inputRadioOnline" value="Online"  required>
+          <label class="form-check-label" for="inputRadioOnline">Online</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="mode" id="inputRadioOffline" value="Offline"  required>
+          <label class="form-check-label" for="inputRadioOffline">Offline</label>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="inputVenue" class="form-label"><strong>Link / Venue</strong></label>
+        <input type="text" name='link_or_venue' placeholder="Meeting link OR Venue" class="form-control" id="inputVenue" required>
+      </div>
+
       {% comment %} <div class="mb-4">
         <label for="inputLink" class="form-label"><strong>Meeting Link </strong></label>
         <input type="url" name='link' placeholder="Meeting Link starting with http:// OR https://" class="form-control" id="inputLink" value={% if request.user.mentorprofile.meeting_link is not None %}{{request.user.mentorprofile.meeting_link}}{% endif %}>
@@ -80,25 +98,6 @@
                 <input type="time" id="inputTime" name="time" required>
             </div>
         </div>
-      </div>
-
-      <div class="mb-4">
-        <label for="inputVenue" class="form-label"><strong>Venue</strong></label>
-        <input type="text" name='venue' placeholder="Venue" class="form-control" id="inputVenue" required>
-      </div>
-
-      <div class="mb-4">
-        <label for="inputMode" class="form-label"><strong>Mode</strong></label>&nbsp;&nbsp;
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioOnline" value="FE" {{FE}} required>
-          <label class="form-check-label" for="inputRadioOnline">Online</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inputRadioOffline" value="SE" {{SE}} required>
-          <label class="form-check-label" for="inputRadioOffline">Offline</label>
-        </div>
-
       </div>
 
       <div class= "mb-3">
