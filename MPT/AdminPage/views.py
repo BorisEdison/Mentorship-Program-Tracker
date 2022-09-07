@@ -11,9 +11,11 @@ from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 from Announcement.models import *
 from accounts.models import *
+from FacultyDashboard.models import *
 from django.core.mail import send_mail
 from MPT import settings    
 from django.template.loader import render_to_string
+import datetime
 
 
 # student dashboard view
@@ -390,15 +392,32 @@ def Unassigned(request,usr_id):
 
 @login_required(login_url='Login')
 def AdminUpcomingMeeting(request):
-    return render(request, 'AdminPage/admin-meeting-upcoming.html')
+    context={
+         'todays_date':datetime.date.today(),
+         'current_time':datetime.datetime.now().time()
+    }
+    return render(request, 'AdminPage/admin-meeting-upcoming.html',context)
 
 @login_required(login_url='Login')
 def AdminPreviousMeeting(request):
-    return render(request, 'AdminPage/admin-meeting-previous.html')
+    context={
+         'todays_date':datetime.date.today(),
+         'current_time':datetime.datetime.now().time(),
+         'meetinfo':MeetingAttendance(),
+    }
+    return render(request, 'AdminPage/admin-meeting-previous.html',context)
+
+@login_required(login_url='Login')
+def deleteMeetingRecord(request,id):
+    if request.method=='POST':
+        meeting= Meeting.objects.filter(Meeting_id=id)
+        meeting.delete()
+    return redirect('admin-upcoming-meeting')
+
 
 @login_required(login_url='Login')
 def AdminAnnouncementTable(request):
-    return render(request, 'AdminPage/admin-announcement-table.html')
+    return render(request, 'AdminPage/admin-announcement-table.html')   
 
 @login_required(login_url='Login')
 def AdminAnnouncementBlog(request):

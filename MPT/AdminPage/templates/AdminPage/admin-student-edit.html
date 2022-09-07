@@ -86,7 +86,7 @@
 
             <div class="col-6" style="display: flex; justify-content: center;">
               <div class="form-group form-floating col-md-10">
-                <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png,image/gif, image/jpeg" id="imgsize" value='{{user.profile_img}}' onchange="validateSize(this)">
+                <input class="form-control form-control-sm custom-file-input" name='profileImg' type="file" accept="image/png, image/jpeg" id="imgsize" value='{{user.profile_img}}' onchange="validateSize(this)">
                 <label for="formFile" class="form-label">Profile Picture</label>
                 {% if user.profile_img != 'logo.png' %}
                 <strong> image added:</strong>

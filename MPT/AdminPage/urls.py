@@ -17,4 +17,5 @@ urlpatterns = [
     path('update/<str:usr_id>/',views.updateuserprofile, name= 'update-user'),
     path('assigned/<str:usr_id>', views.Assigned, name= 'admin-assigned'),
     path('unassigned/<str:usr_id>', views.Unassigned, name= 'admin-unassigned'),
+    path('deleteMeeting/<str:id>', views.deleteMeetingRecord, name='admin-delete-meeting-record'),
     ]

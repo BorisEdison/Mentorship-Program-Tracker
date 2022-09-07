@@ -295,6 +295,7 @@ def facultyMeeting(request):
     else:
         return HttpResponse("You are not authorized to view this page")    
 
+@login_required(login_url='Login')
 def overallMeetingRecords(request):
     context={
          'todays_date':datetime.date.today(),
@@ -302,18 +303,24 @@ def overallMeetingRecords(request):
     }
     return render(request, 'FacultyDashboard/overall-meeting-records.html',context)
 
+@login_required(login_url='Login')
 def deleteMeeting(request,id):
     if request.method=='POST':
         meeting= Meeting.objects.filter(Meeting_id=id)
         meeting.delete()
     return redirect('overall-meeting-records')
 
+@login_required(login_url='Login')
 def induvidualMeetingRecords(request):
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
 
+@login_required(login_url='Login')
 def meetingNotes(request,id):
     meeting=Meeting.objects.get(Meeting_id=id)
-    attendance_notes=MeetingAttendance.objects.get(Meeting_id=id)
+    try:
+        attendance_notes=MeetingAttendance.objects.get(Meeting_id=meeting)
+    except:
+        attendance_notes=MeetingAttendance.objects.create(Meeting_id=meeting)
     context={
         'meeting':meeting,
         'meetinfo':attendance_notes,

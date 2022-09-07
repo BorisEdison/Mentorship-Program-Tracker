@@ -14,35 +14,48 @@
        
         <!-- Upcoming -->
         <div class="tab-pane m-4 mt-4 mb-4 fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
-            <table class="table table-striped table-hover table-sm" style="widows: 100%;" id="upcoming-table">
-              <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Time</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Mode</th>
-                  <th scope="col">Venue</th>
-                  <th scope="col">Mentee</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for meeting in meetings %}
-                {% if meeting.Sender.user == request.user %}
-                {% if not todays_date > meeting.Meeting_date|date:"Y-m-d" or todays_date is meeting.Meeting_date|date:"Y-m-d" and current_time > meeting.Meeting_time|time:"H:i" %}
-                <tr>
-                  <th scope="row">{{meeting.Meeting_date}}</th>
-                  <td>{{meeting.Meeting_time}}</td>
-                  <td>{{meeting.Meeting_title}}</td>
-                  <td>Offline</td>
-                  <td>Comp Lab 7</td>
-                  <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
-                </tr>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+          <table class="table table-striped table-hover table-sm" style="widows: 100%;" id="upcoming-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Title</th>
+                <th scope="col">Mode</th>
+                <th scope="col">Venue/link</th>
+                <th scope="col">Description</th>
+                <th scope="col">Mentor</th>
+                <th scope="col">Mentee</th>
+                <th scope="col">Department</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for meeting in meetings %}
+              {% if todays_date <= meeting.Meeting_date and current_time < meeting.Meeting_time or not todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time%}
+              <tr>
+                <th scope="row">{{meeting.Meeting_date}}</th>
+                <td>{{meeting.Meeting_time}}</td>
+                <td>{{meeting.Meeting_title}}</td>
+                <td>{{meeting.Meeting_mode}}</td>
+                <td>{{meeting.Meeting_link_or_venue}}</td>
+                <td>{{meeting.Meeting_description}}</td>
+                <td>{{meeting.Sender.user.first_name}} {{meeting.Sender.user.first_name}}</td>
+                <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+                <td>{{meeting.Sender.Branch}}</td>
+                <td>            
+                <form action="{% url 'admin-delete-meeting-record' meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
+                    {% csrf_token %}
+                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this meeting record ?');">
+                    <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
+                  </button>
+                </form>
+               </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
 
 </div>
 {% endblock %}
