@@ -25,19 +25,50 @@
     <table class="table table-striped table-bordered" style="widows: 100%;" id="announcement-table">
       <thead>
         <tr>
-          <th scope="col" class="px-2 py-1 text-center">Name</th>
-          <th scope="col" class="px-2 py-1 text-center">Email</th>
-          <th scope="col" class="px-2 py-1 text-center">Student Id</th>
-          <th scope="col" class="px-2 py-1 text-center">Roll No.</th>
+          <th scope="col" class="px-2 py-1 text-center">From</th>
+          <th scope="col" class="px-2 py-1 text-center">Status</th>
+          <th scope="col" class="px-2 py-1 text-center">Date</th>
+          <th scope="col" class="px-2 py-1 text-center">Time</th>
+          <th scope="col" class="px-2 py-1 text-center">Title</th>
+          <th scope="col" class="px-2 py-1 text-center">Description</th>
+          {% comment %} <th scope="col" class="px-2 py-1 text-center">Actions</th> {% endcomment %}
         </tr>
       </thead>
       <tbody id="myTable">
+        {% if receivers %}
+        {% for receiver in receivers %}
         <tr>
-          <th scope="row" class="px-2 py-1 text-center"></th>
-          <td class="px-2 py-1 text-center"></td>
-          <td class="px-2 py-1 text-center"></td>
-          <td class="px-2 py-1 text-center"></td>
+          <th scope="row" class="px-2 py-1 text-center">
+            {% if receiver.announcement.sender.is_superuser %}
+            MPT Admin
+            {% else %}
+            {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
+            {% endif %}  
+          </th>
+          <td class="px-2 py-1 text-center">
+            {% if receiver.announcement.sender.is_superuser and receiver.announcement.sender.is_staff  %}
+              Admin
+            {% else %}
+              Teacher
+            {% endif %}
+            
+          </td>
+          <td class="px-2 py-1 text-center">{{receiver.announcement.date|date:"D d M Y" }}</td>
+          <td class="px-2 py-1 text-center">{{receiver.announcement.date|time }}</td>
+          <td class="px-2 py-1 text-center">{{receiver.announcement.title}}</td>
+          <td class="px-2 py-1 text-center">{{receiver.announcement.content}} </td>
+          {% comment %} note the link to delete announcement is not functional need to add that link {% endcomment %}
+          {% comment %} <td class="px-2 py-1 text-center">
+            <form action="{% url 'admin-delete-announcement' receiver.announcement.id %}" class="mb-0" style="display: inline-block" method='POST'>
+              {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px">
+              Delete
+            </button>
+          </form>
+          </td> {% endcomment %}
         </tr>
+        {% endfor %}
+        {% endif %}
       </tbody>
     </table>
   </div>

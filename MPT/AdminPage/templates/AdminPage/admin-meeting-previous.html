@@ -43,7 +43,7 @@
                 <td>{{meeting.Sender.user.first_name}} {{meeting.Sender.user.first_name}}</td>
                 <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
                 <td>{{meeting.Sender.Branch}}</td>
-                <td>{{}}</td>
+                <td></td>
                 <td>            
                   <form action="{% url 'admin-delete-meeting-record' meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
                       {% csrf_token %}

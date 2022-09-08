@@ -19,38 +19,51 @@
     </button>
   </div>
 
+  {% if receivers %}
+  {% for receiver in receivers %}
   <div class="card  mb-4">
     <div class="card-header">
       <div class="row">
         <div class="col-6">
-          <img class="rounded-circle image3" src="" height="48" width="48">
-        </div>
+          <img class="rounded-circle image3" src="{{receiver.announcement.sender.profile_img.url}}" height="48" width="48">
+          {% if receiver.announcement.sender.is_superuser %}
+          MPT Admin
+          {% else %}
+          {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
+          {% endif %}
+      </div>
         <div class="col-6 d-flex align-items-center justify-content-center">
-          <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px">
+          {% comment %} <form action="{% url 'admin-delete-announcement' receiver.announcement.id %}" class="mb-0" style="display: inline-block" method='POST'>
+            {% csrf_token %}
+          <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px"onClick="return confirm('Are you sure Do you want to delete this Announcement ?');">
             Delete
           </button>
-          </form>
-        </div>
+        </form> {% endcomment %}
+      </div>
       </div>
     </div>
-
+    
     <div class="card-body">
       <a href="" style="color:black">
         <h5 class="card-title">{{receiver.announcement.title}}</h5>
       </a>
       <p class="card-text">
+        {{receiver.announcement.content}}      
+      </p>
+      </div>
+      <div class="card-footer text-muted">
+        {{receiver.announcement.date|date:"D d M Y" }}  {{receiver.announcement.date|time }}
+      </div>
+    </div>
+  {% endfor %}
+
+    {% else %}
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3 mb-4">
+      <p style="font-size: 25px; justify-content: center;">
+        <strong>No Announcements</strong>
       </p>
     </div>
-    <div class="card-footer text-muted">
-    </div>
-  </div>
-
-  <div class="d-flex align-items-center justify-content-center mt-3 mb-3 mb-4">
-    <p style="font-size: 25px; justify-content: center;">
-      <strong>No Announcements</strong>
-    </p>
-  </div>
-
+    {% endif %}
   <!--Pagination buttons-->
   <div class="d-flex align-items-center justify-content-center mb-0">
 
