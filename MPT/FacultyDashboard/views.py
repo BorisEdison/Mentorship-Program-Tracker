@@ -271,6 +271,7 @@ def facultyMeeting(request):
                     newMeeting.Meeting_time = meeting_time
                     try:
                         newMeeting.save()
+                        print(newMeeting.Meeting_id)
                         mail_subject= str(title)
                         message= render_to_string('FacultyDashboard/meeting_scheduled_email.html', {
                             'sender': str(sender.user.first_name) + ' ' + str(sender.user.last_name),
@@ -317,10 +318,7 @@ def induvidualMeetingRecords(request):
 @login_required(login_url='Login')
 def meetingNotes(request,id):
     meeting=Meeting.objects.get(Meeting_id=id)
-    try:
-        attendance_notes=MeetingAttendance.objects.get(Meeting_id=meeting)
-    except:
-        attendance_notes=MeetingAttendance.objects.create(Meeting_id=meeting)
+    attendance_notes,created=MeetingAttendance.objects.get_or_create(Meeting_id=meeting)
     context={
         'meeting':meeting,
         'meetinfo':attendance_notes,
@@ -328,12 +326,15 @@ def meetingNotes(request,id):
     
     if request.method=='POST':
         notes=request.POST['note']
-        attendance=request.POST['attedance']
         attendance_notes.Notes=notes
-        if attendance=='Present':
-            attendance_notes.Attendance=True
-        elif attendance=='Absent':
-            attendance_notes.Attendance=False
+        try:
+            attendance=request.POST['attedance']
+            if attendance=='Present':
+                attendance_notes.Attendance=True
+            elif attendance=='Absent':
+                attendance_notes.Attendance=False
+        except:
+            pass
         
         attendance_notes.save()
         return redirect('overall-meeting-records')

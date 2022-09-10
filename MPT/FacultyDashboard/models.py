@@ -23,7 +23,7 @@ class Meeting(models.Model):
         verbose_name_plural = 'Meetings'
 
 class MeetingAttendance(models.Model):
-    Meeting_id = models.ForeignKey(Meeting, on_delete=models.CASCADE)
+    Meeting_id = models.OneToOneField(Meeting, on_delete=models.CASCADE)
     Notes = models.TextField(null=True)
     Attendance = models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
