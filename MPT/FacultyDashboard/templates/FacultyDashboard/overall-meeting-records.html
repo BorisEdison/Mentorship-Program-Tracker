@@ -38,6 +38,7 @@
             <th scope="col">Mode</th>
             <th scope="col">Venue/link</th>
             <th scope="col">Mentee</th>
+            <th scope="col">Attendance</th>
             <th scope="col">Notes</th>
           </tr>
         </thead>
@@ -52,6 +53,17 @@
             <td>{{meeting.Meeting_mode}}</td>
             <td>{{meeting.Meeting_link_or_venue}}</td>
             <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+            <td>
+              {% if meeting.meetingattendance%}
+                {% if meeting.meetingattendance.Attendance %}
+                  Present
+                  {% else %}
+                  Absent
+                  {% endif %}
+                {% else %}
+                  Absent
+              {% endif %}
+            </td>
             <td>
               <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'meeting-notes' meeting.Meeting_id %}';">
               <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>

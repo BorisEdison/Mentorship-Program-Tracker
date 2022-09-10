@@ -403,7 +403,6 @@ def AdminPreviousMeeting(request):
     context={
          'todays_date':datetime.date.today(),
          'current_time':datetime.datetime.now().time(),
-        #  'meetinfos':MeetingAttendance.objects.all(),
     }
     return render(request, 'AdminPage/admin-meeting-previous.html',context)
 

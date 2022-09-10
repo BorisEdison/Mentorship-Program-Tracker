@@ -30,7 +30,6 @@
                 <th scope="col">Actions</th>
               </tr>
             </thead>
-            
             <tbody>
               {% for meeting in meetings %}
               {% if todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time %}
@@ -44,15 +43,17 @@
                 <td>{{meeting.Sender.user.first_name}} {{meeting.Sender.user.last_name}}</td>
                 <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
                 <td>{{meeting.Sender.Branch}}</td>
-                <td>{% if meeting.meetingattendance%}
-                        {% if meeting.meetingattendance.Attendance %}
-                        Present
-                        {% else %}
-                        Absent
-                        {% endif %}
+                <td>
+                  {% if meeting.meetingattendance%}
+                    {% if meeting.meetingattendance.Attendance %}
+                      Present
+                      {% else %}
+                      Absent
+                      {% endif %}
                     {% else %}
                       Absent
-                    {% endif %}</td>
+                  {% endif %}
+                </td>
                 <td>            
                   <form action="{% url 'admin-delete-meeting-record' meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
                       {% csrf_token %}
