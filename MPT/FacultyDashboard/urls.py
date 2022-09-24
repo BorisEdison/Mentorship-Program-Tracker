@@ -9,6 +9,6 @@ urlpatterns = [
     path('facultyMeeting', views.facultyMeeting, name='faculty-meeting'),    
     path('overallMeetingRecords', views.overallMeetingRecords, name='overall-meeting-records'),    
     path('deleteMeeting/<str:id>', views.deleteMeeting, name='delete-meeting-record'),
-    path('induvidualMeetingRecords', views.induvidualMeetingRecords, name='induvidual-meeting-records'), 
+    path('faculty/induvidualMeetingRecords/<str:fac_id>/<str:stu_id>/', views.induvidualMeetingRecords, name='induvidual-meeting-records'), 
     path('meetingNotes/<str:id>', views.meetingNotes, name='meeting-notes'),       
 ]

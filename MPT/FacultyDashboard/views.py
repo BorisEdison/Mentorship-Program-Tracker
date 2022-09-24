@@ -226,7 +226,7 @@ def faculty(request,pk):
         return render(request, 'FacultyDashboard/faculty-dashboard.html', context)
 
     else:
-        return HttpResponse("You are not authorized to view this page")    
+        return redirect(to='Login')   
 
 
 @login_required(login_url='Login')
@@ -277,7 +277,7 @@ def facultyMeeting(request):
                             'sender': str(sender.user.first_name) + ' ' + str(sender.user.last_name),
                             'receiver': str(receiver.user.first_name) + ' ' + str(receiver.user.last_name),
                             'meeting_title': title,
-                            'meeting_link_or_venue': meeting_link,
+                            'meeting_link_or_venue': meeting_link_or_venue,
                             'meeting_date': meeting_date,
                             'meeting_time': meeting_time,
                             'meeting_desc': meeting_desc,
@@ -294,7 +294,7 @@ def facultyMeeting(request):
         return render(request, 'FacultyDashboard/faculty-meeting.html',context)
 
     else:
-        return HttpResponse("You are not authorized to view this page")    
+        return redirect('Login')
 
 @login_required(login_url='Login')
 def overallMeetingRecords(request):
@@ -311,9 +311,6 @@ def deleteMeeting(request,id):
         meeting.delete()
     return redirect('overall-meeting-records')
 
-@login_required(login_url='Login')
-def induvidualMeetingRecords(request):
-    return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
 
 @login_required(login_url='Login')
 def meetingNotes(request,id):
@@ -338,5 +335,19 @@ def meetingNotes(request,id):
         
         attendance_notes.save()
         return redirect('overall-meeting-records')
-
     return render(request, 'FacultyDashboard/meeting-notes.html',context)
+
+
+@login_required(login_url='Login')
+def induvidualMeetingRecords(request,fac_id,stu_id):
+    if request.user.is_staff:
+        student=StudentProfile.objects.get(user__usr_id=stu_id)
+        meetings=Meeting.objects.filter(Receiver=student)
+        context={
+            'student':student,
+            'meetingrecords':meetings,
+            'todays_date':datetime.date.today(),
+            'current_time':datetime.datetime.now().time()
+        }
+        return render(request, 'FacultyDashboard/induvidual-meeting-records.html',context)
+    return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
