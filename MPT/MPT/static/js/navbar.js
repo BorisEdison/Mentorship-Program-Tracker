@@ -5,25 +5,25 @@ const change_theme = ()=>{
   // TODO: Fix tooltip not updating
   if(toggle.childNodes[1].childNodes[1].childNodes[0].getAttribute("data-icon") == "akar-icons:sun"){
     toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "bi:moon");
-    root.style.setProperty('--body-bg','#2e3440');
-    root.style.setProperty('--navbar-bg','#81a1c1');
-    root.style.setProperty('--btn-bg','#5e81ac');
-    root.style.setProperty('--content-bg','#434c5e');
-    root.style.setProperty('--text-component','#e5e9f0');
-    root.style.setProperty('--text-body','#4c566a');
+    root.style.setProperty('--body-bg','#20242C');
+    // root.style.setProperty('--navbar-bg','#3F72AF');
+    root.style.setProperty('--btn-bg','#3F72AF');
+    root.style.setProperty('--content-bg','#2A303C');
+    root.style.setProperty('--text-component','#E5E9f0');
+    root.style.setProperty('--text-body','#E5E9f0');
     localStorage.setItem('theme','dark');
-    // toggle.setAttribute("title", "Switch To Light Mode");
+    toggle.setAttribute("title", "Switch To Light Mode");
   }
   else{
     toggle.childNodes[1].childNodes[1].childNodes[0].setAttribute("data-icon", "akar-icons:sun");
     root.style.setProperty('--body-bg','#F0F4FB');
-    root.style.setProperty('--navbar-bg','#3F72AF');
+    // root.style.setProperty('--navbar-bg','#3F72AF');
     root.style.setProperty('--btn-bg','#112D4E');
     root.style.setProperty('--content-bg','#DBE2EF');
-    root.style.setProperty('--text-component','#FFFFFF');
-    root.style.setProperty('--text-body','#000000');
+    root.style.setProperty('--text-component','#E5E9F0');
+    root.style.setProperty('--text-body','#111318');
     localStorage.setItem('theme','light');
-    // toggle.setAttribute("title", "Switch To Dark Mode");
+    toggle.setAttribute("title", "Switch To Dark Mode");
   }
 };
 if (localStorage.getItem('theme') != null){

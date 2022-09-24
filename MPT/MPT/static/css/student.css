@@ -1,4 +1,3 @@
-@import url('global.css');
 /* sidebar */
 .sidebar {
   background-color: var(--content-bg);
@@ -30,8 +29,9 @@
 
 /* Student Dashboard */
 
-.accordion{
-  /*box-shadow: 0 0 3px 1px rgb(0 0 0 / 50%);*/
+.accordion-item,
+.accordion-button{
+  background-color: var(--body-bg);
 }
 .scrollspy-example {
   position: relative;

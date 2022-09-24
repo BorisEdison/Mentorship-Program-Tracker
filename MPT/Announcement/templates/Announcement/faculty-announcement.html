@@ -13,13 +13,13 @@
 
 {% block announcementContent %}
 
-<div class="tab-pane fade show active m-5 mt-0 mb-0" id="announcement" role="tabpanel" aria-labelledby="announcement">
+<div class="tab-pane fade show active m-5 mt-0 mb-0 text" id="announcement" role="tabpanel" aria-labelledby="announcement">
 
   <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
     <h1 style="font-size: 25px; justify-content: center;">
       <strong>Announcement</strong>
     </h1>
-    <button type="submit" class="btn btn-sm update-btn ms-auto" onclick="window.location.href = '{% url 'faculty-announcement-new' %}';" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+    <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn" onclick="window.location.href = '{% url 'faculty-announcement-new' %}';">
       New
       <span class="iconify" data-icon="akar-icons:circle-plus" data-width="18" data-height="18"></span>
     </button>
@@ -53,14 +53,14 @@
     </div>
     
     <div class="card-body">
-      <a href="" style="color:black">
-        <h5 class="card-title">{{receiver.announcement.title}}</h5>
+      <a href="">
+        <h3 class="card-title text-muted">{{receiver.announcement.title}}</h3>
       </a>
       <p class="card-text">
         {{receiver.announcement.content}}      
       </p>
       </div>
-      <div class="card-footer text-muted">
+      <div class="card-footer">
         {{receiver.announcement.date|date:"D d M Y" }}  {{receiver.announcement.date|time }}
       </div>
     </div>

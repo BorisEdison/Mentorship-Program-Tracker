@@ -5,9 +5,9 @@ var xValues = [
   "Basic Elec. Engg.",
   "Mechanics",
 ];
-var ia1Values = [10, 8, 9, 8, 10];
-var ia2Values = [10, 9, 8, 10, 10];
-var eseValues = [75, 78, 65, 80, 60];
+var ia1Values = [5, 8, 6, 8, 4];
+var ia2Values = [7, 5, 8, 8, 6];
+var eseValues = [66, 47, 35, 39, 40];
 
 var ia1Color = ["#FA1E0E", "#FFCA03", "#42E6A4", "#3EDBF0", "#C355F5"];
 var ia2Color = ["#BD2000", "#FF5403", "#02A8A8", "#77ACF1", "#AA26DA"];
@@ -79,13 +79,13 @@ var stackedText = {
     } = chart;
     ctx.save();
     ctx.font = "bolder 13px Arial";
-    ctx.fillStyle = "rgbs(225,26,104,1)";
+    // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
     ctx.textAlign = "center";
-    ctx.fillText("9.56", (left + right) / 2, (bottom + top) / 2 - 5);
+    ctx.fillText("5.56", (left + right) / 2, (bottom + top) / 2 - 5);
     ctx.restore();
 
     ctx.font = "bold 8px Arial";
-    ctx.fillStyle = "rgbs(225,26,104,1)";
+    // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
     ctx.textAlign = "center";
     ctx.fillText("CGPA", (left + right) / 2, (bottom + top) / 2 + 5);
   },
@@ -118,9 +118,9 @@ var xValues = [
   "Pro. Comm. Ethics",
   "Engg. Drawing",
 ];
-var ia1Values = [10, 8, 9, 8, 10];
-var ia2Values = [10, 9, 8, 10, 10];
-var eseValues = [75, 78, 65, 80, 60];
+var ia1Values = [5, 8, 6, 8, 4];
+var ia2Values = [7, 5, 8, 8, 6];
+var eseValues = [56, 67, 65, 45, 60];
 
 var ia1Color = ["#FA1E0E", "#FFCA03", "#42E6A4", "#3EDBF0", "#C355F5"];
 var ia2Color = ["#BD2000", "#FF5403", "#02A8A8", "#77ACF1", "#AA26DA"];
@@ -183,15 +183,15 @@ var stackedText = {
     } = chart;
     ctx.save();
     ctx.font = "bolder 13px Arial";
-    ctx.fillStyle = "rgbs(225,26,104,1)";
+    // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
     ctx.textAlign = "center";
-    ctx.fillText("9.01", (left + right) / 2, (bottom + top) / 2 - 5);
+    ctx.fillText("7.01", (left + right) / 2, (bottom + top) / 2 - 7);
     ctx.restore();
 
-    ctx.font = "bold 8px Arial";
-    ctx.fillStyle = "rgbs(225,26,104,1)";
+    ctx.font = "bold 12px Arial";
+    // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
     ctx.textAlign = "center";
-    ctx.fillText("CGPA", (left + right) / 2, (bottom + top) / 2 + 5);
+    ctx.fillText("CGPA", (left + right) / 2, (bottom + top) / 2 + 7);
   },
 };
 
@@ -203,7 +203,7 @@ var xValues = [
   "Pro. Comm. Ethics",
   "Engg. Drawing",
 ];
-var yValues = [80, 90, 100, 70, 55];
+var yValues = [56, 70, 80, 68, 55];
 var barColors = ["#8C0000", "#F90716", "#018383", "#04009A", "#851DE0"];
 
 new Chart("donutGraphSem2", {
