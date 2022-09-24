@@ -1,11 +1,10 @@
-@import url('global.css');
 /* navbar */
 .navbar-main{
   background-color: var(--navbar-bg);
-  -webkit-box-shadow: 0 8px 6px -6px #999;
+  /* -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
   box-shadow: 0 8px 6px -6px #999;
-  padding: 2px 0;
+  padding: 2px 0; */
   }
 .navbar-brand{
   text-shadow: 0 0 2px #333 !important;

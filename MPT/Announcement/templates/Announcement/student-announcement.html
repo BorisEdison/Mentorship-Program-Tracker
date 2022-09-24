@@ -10,47 +10,47 @@
 
 {% block announcementContent %}
 <div class="tab-pane fade show active" id="announcement" role="tabpanel" aria-labelledby="announcement">
-  <div class="tab-pane fade show active m-5 mt-0 mb-0" id="announcement" role="tabpanel" aria-labelledby="announcement">
+  <div class="tab-pane fade show active m-5 mt-0 mb-0 text" id="announcement" role="tabpanel" aria-labelledby="announcement">
 
-    <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-      <h1 style="font-size: 25px; justify-content: center;">
-        <strong>Announcement</strong>
-      </h1>
-    </div>
-  {% if receivers %}
-    {% for receiver in receivers %}
-    {% if receiver.receiver == request.user %}
-    <div class="card  mb-4">
-      <div class="card-header">
-            <img class="rounded-circle image3" src="{{receiver.announcement.sender.profile_img.url}}" height="48" width="48">
-            {% if receiver.announcement.sender.is_superuser %}
-            MPT Admin
-            {% else %}
-            {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
-            {% endif %}
+    {% if receivers %}
+      <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <h1 style="font-size: 25px; justify-content: center;">
+          <strong>Announcement</strong>
+        </h1>
       </div>
-      <div class="card-body">
-        <a href="" style="color:black">
-          <h5 class="card-title">{{receiver.announcement.title}}</h5>
-        </a>
-        <p class="card-text">
-          {{receiver.announcement.content}}
-        </p>
-      </div>
-      <div class="card-footer text-muted">
-        {{receiver.announcement.date|date:"D d M Y" }} {{receiver.announcement.date|time}}
-      </div>
+      {% for receiver in receivers %}
+        {% if receiver.receiver == request.user %}
+        <div class="card  mb-4">
+          <div class="card-header">
+                <img class="rounded-circle image3" src="{{receiver.announcement.sender.profile_img.url}}" height="48" width="48">
+                {% if receiver.announcement.sender.is_superuser %}
+                  MPT Admin
+                {% else %}
+                  {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
+                {% endif %}
+          </div>
+          <div class="card-body">
+            <a href="">
+              <h3 class="card-title text-muted">{{receiver.announcement.title}}</h3>
+            </a>
+            <p class="card-text">
+              {{receiver.announcement.content}}
+            </p>
+          </div>
+          <div class="card-footer">
+            {{receiver.announcement.date|date:"D d M Y" }} {{receiver.announcement.date|time}}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+    {% else %}
+    <div class="d-flex align-items-center justify-content-center mt-3 mb-3 mb-4">
+      <p style="font-size: 25px; justify-content: center;">
+        <strong>No Announcements</strong>
+      </p>
     </div>
     {% endif %}
-    {% endfor %}
-
-  {% else %}
-  <div class="d-flex align-items-center justify-content-center mt-3 mb-3 mb-4">
-    <p style="font-size: 25px; justify-content: center;">
-      <strong>No Announcements</strong>
-    </p>
-  </div>
-  {% endif %}
 
     <!--Pagination buttons-->
     <div class="d-flex align-items-center justify-content-center mb-0">

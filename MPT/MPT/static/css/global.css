@@ -2,7 +2,7 @@
 :root {
   /*Colors taken from https://www.nordtheme.com/ */
   /*Polar Night*/
-  --nord-0: #2e3440;
+  --nord-0: #111318;
   --nord-1: #3b4252;
   --nord-2: #434c5e;
   --nord-3: #4c566a;
@@ -27,8 +27,8 @@
   --navbar-bg: #3F72AF;
   --btn-bg: #112D4E;
   --content-bg: #DBE2EF;
-  --text-component: #FFFFFF;
-  --text-body: #000000;
+  --text-component: #E5E9F0;
+  --text-body: #111318;
 }
 /*tags*/
 body {
@@ -64,7 +64,7 @@ h6 {
   z-index: 30;
   width: 7px;
   height: 0;
-  y-index: hidden;
+  /* y-index: hidden; */
 }
 ::-webkit-scrollbar-track {
   background-color: var(--nord-0);
@@ -110,4 +110,13 @@ h6 {
   justify-content: center;
   padding: 0 0 1rem 0;
   font-size: 1.5rem;
+}
+
+.text {
+  color: var(--text-body);
+}
+.card-header,
+.card-body,
+.card-footer {
+  background-color: var(--body-bg) !important;
 }
