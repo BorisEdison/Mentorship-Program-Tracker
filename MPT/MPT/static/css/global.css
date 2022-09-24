@@ -59,6 +59,15 @@ h6 {
   line-height: 3.2;
   color:  var(--text-component);
 }
+.form-control,
+.form-select {
+  background-color: var(--body-bg) !important;
+  color: var(--text-body) !important;
+}
+.form-control+label,
+.form-select+label {
+  color: var(--text-body) !important;
+}
 /* scrollbar */
 ::-webkit-scrollbar {
   z-index: 30;
@@ -119,4 +128,14 @@ h6 {
 .card-body,
 .card-footer {
   background-color: var(--body-bg) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select, 
+.dataTables_wrapper .dataTables_length, 
+.dataTables_wrapper .dataTables_filter, 
+.dataTables_wrapper .dataTables_info, 
+.dataTables_wrapper .dataTables_processing, 
+.dataTables_wrapper .dataTables_paginate {
+  color: var(--text-bg) !important;
 }
