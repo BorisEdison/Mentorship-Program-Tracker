@@ -490,3 +490,9 @@ def AdminAnnouncementNew(request):
         return redirect('admin-announcement-table')
 
     return render(request, 'AdminPage/admin-announcement-new.html')
+
+def AdminAnnouncementDelete(request, id):
+    if request.method == 'POST':
+        announcement = Announcement.objects.get(id=id)
+        announcement.delete()
+    return redirect('admin-announcement-table')

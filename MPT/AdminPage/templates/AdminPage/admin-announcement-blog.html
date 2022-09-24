@@ -19,40 +19,40 @@
     </button>
   </div>
 
-  {% if receivers %}
-  {% for receiver in receivers %}
+  {% if notifications %}
+  {% for notification in notifications %}
   <div class="card  mb-4">
     <div class="card-header">
       <div class="row">
         <div class="col-6">
-          <img class="rounded-circle image3" src="{{receiver.announcement.sender.profile_img.url}}" height="48" width="48">
-          {% if receiver.announcement.sender.is_superuser %}
+          <img class="rounded-circle image3" src="{{notification.sender.profile_img.url}}" height="48" width="48">
+          {% if notification.sender.is_superuser %}
           MPT Admin
           {% else %}
-          {{receiver.announcement.sender.first_name}} {{receiver.announcement.sender.last_name}} 
+          {{notification.sender.first_name}} {{notification.sender.last_name}} 
           {% endif %}
       </div>
         <div class="col-6 d-flex align-items-center justify-content-center">
-          {% comment %} <form action="{% url 'admin-delete-announcement' receiver.announcement.id %}" class="mb-0" style="display: inline-block" method='POST'>
+          <form action="{% url 'admin-delete-announcement' notification.id %}" class="mb-0" style="display: inline-block" method='POST'>
             {% csrf_token %}
-          <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px"onClick="return confirm('Are you sure Do you want to delete this Announcement ?');">
+          <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px" onClick="return confirm('Are you sure Do you want to delete this Announcement ?');">
             Delete
           </button>
-        </form> {% endcomment %}
+        </form>
       </div>
       </div>
     </div>
     
     <div class="card-body">
       <a href="" style="color:black">
-        <h5 class="card-title">{{receiver.announcement.title}}</h5>
+        <h5 class="card-title">{{notification.title}}</h5>
       </a>
       <p class="card-text">
-        {{receiver.announcement.content}}      
+        {{notification.content}}      
       </p>
       </div>
       <div class="card-footer text-muted">
-        {{receiver.announcement.date|date:"D d M Y" }}  {{receiver.announcement.date|time }}
+        {{notification.date|date:"D d M Y" }}  {{notification.date|time }}
       </div>
     </div>
   {% endfor %}
