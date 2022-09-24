@@ -34,12 +34,6 @@
               Refresh List
             </button>
           </div>
-          <div class="ms-auto p-2 bd-highlight">
-            <button type="button" onclick="window.location.href = '{% url 'Edit'  %}';" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              <span class="iconify" data-icon="iwwa:file-csv" data-width="25" data-height="25"></span>
-              Download
-            </button>
-          </div>
         </div>
       </div>
       <!-- table -->
@@ -69,7 +63,7 @@
               </td>
               <td class="px-2 py-1 text-center">
                 {% if user.is_staff %}
-                <span class="badge bg-warning rounded-pill px-4 py-2">&nbsp Staff &nbsp</span> {% else %}
+                <span class="badge bg-warning rounded-pill px-4 py-2">&nbsp; Staff &nbsp;</span> {% else %}
                 <span class="badge bg-secondary rounded-pill px-4 py-2">Student</span> {% endif %}
               </td>
               <td class="px-2 py-1 text-center">
