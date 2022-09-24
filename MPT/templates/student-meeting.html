@@ -10,7 +10,7 @@
 
 {% block meetingContent %}
 <div class="tab-pane fade show active" id="meeting" role="tabpanel" aria-labelledby="meeting">
-  <div class="tab-pane fade show active m-5 mt-0 mb-0" id="meeting" role="tabpanel" aria-labelledby="meeting">
+  <div class="tab-pane fade show active m-5 mt-0 mb-0 text" id="meeting" role="tabpanel" aria-labelledby="meeting">
 
     <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
       <h1 style="font-size: 25px; justify-content: center;">
@@ -26,8 +26,8 @@
               {{ meeting.Sender.user.first_name }} {{ meeting.Sender.user.last_name }}
         </div>
         <div class="card-body">
-          <a href="" style="color:black">
-            <h5 class="card-title">{{ meeting.Meeting_title }}</h5>
+          <a href="">
+            <h3 class="card-title text-muted">{{ meeting.Meeting_title }}</h3>
           </a>
           <p class="card-text">
             Meeting Date: {{ meeting.Meeting_date }}<br>
@@ -37,7 +37,7 @@
             Meeting Link: {{meeting.Meeting_link_or_venue}}</a>
           </p>
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer">
           {{ meeting.created_at|date:"D d M Y" }}  {{ meeting.created_at|time}}
         </div>
       </div>

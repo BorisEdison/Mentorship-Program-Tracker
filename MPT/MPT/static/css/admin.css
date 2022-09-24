@@ -1,11 +1,9 @@
-@import url('global.css');
 /* navbar */
 .admin-greeting {
   font-size: 1.3rem;
   color: var(--text-component);
   /*text-shadow: 0 0 2px rgb(0, 0, 0);*/
 }
-
 /* nav-tab */
 .nav-link {
   color: var(--navbar-bg);
