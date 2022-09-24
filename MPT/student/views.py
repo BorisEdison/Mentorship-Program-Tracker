@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails, StudentHobbies, StudentMedicalReport, StudentExtraCurricular, Mentor_assign
+from accounts.models import *
+from FacultyDashboard.models import *
 from django.contrib.auth.decorators import login_required
+import datetime
 
 # Create your views here.
 @login_required(login_url='Login')
@@ -36,4 +38,12 @@ def studentMeeting(request):
     return render(request, 'student-meeting.html')
 
 def studentMeetingRecords(request):
-    return render(request, 'student-meeting-records.html')
+    student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+    meetings=Meeting.objects.filter(Receiver=student)
+    context={
+        'student':student,
+        'meetingrecords':meetings,
+        'todays_date':datetime.date.today(),
+        'current_time':datetime.datetime.now().time()
+    }
+    return render(request, 'student-meeting-records.html',context)

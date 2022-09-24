@@ -11,6 +11,7 @@
 
 
 {% block dashboardContent%}
+{% if request.user.is_staff %}
 <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
     <div class="container mt-2 mb-3">
@@ -118,4 +119,5 @@
     </div>
   </form>
 </div>
+{% endif %}
 {% endblock %}
