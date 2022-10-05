@@ -7,13 +7,15 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
 # from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, GuardianDetails,Mentor_assign
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
 from EditUser.views import studentcontext
 from Announcement.models import *
 from accounts.models import *
 from FacultyDashboard.models import *
 from django.core.mail import send_mail
-from MPT import settings    
+from MPT import settings   
+from django.http import Http404
 from django.template.loader import render_to_string
 import datetime
 
@@ -21,7 +23,8 @@ import datetime
 # student dashboard view
 
 # Create your views here for admin page
-
+@staff_member_required(login_url='Login')
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def Adminpage(request):
     if request.user.is_superuser:
@@ -29,9 +32,11 @@ def Adminpage(request):
         context = {'users': users} 
         return render(request,'AdminPage/admin-user.html',context)
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
 # view all the students in the database in the admin page
+@user_passes_test(lambda u: u.is_superuser)
+@staff_member_required(login_url='Login')
 @login_required(login_url='Login')
 def Adminstudent(request):
     if request.user.is_superuser:
@@ -39,8 +44,10 @@ def Adminstudent(request):
         context = {'users': students} 
         return render(request,'AdminPage/admin-student.html',context)
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
+@user_passes_test(lambda u: u.is_superuser)
+@staff_member_required(login_url='Login')
 @login_required(login_url='Login')
 def Adminmentor(request):
     if request.user.is_superuser:
@@ -48,7 +55,7 @@ def Adminmentor(request):
         context = {'users': mentors} 
         return render(request,'AdminPage/admin-mentor.html',context)
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
 @login_required(login_url='Login')
 def Activity(request):
@@ -57,6 +64,7 @@ def Activity(request):
     else:
         return HttpResponse("You are not authorized to view this page")
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def deleteuser(request,id):
     if request.user.is_superuser:
@@ -75,8 +83,9 @@ def deleteuser(request,id):
                 user.delete()
                 return redirect('admin-student')
 
-    return HttpResponse("You are not authorized to view this page")
+    return Http404("You are not authorized to view this page")
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def updateuserprofile(request,usr_id):
     if request.user.is_superuser:
@@ -334,8 +343,9 @@ def updateuserprofile(request,usr_id):
         else:
             return HttpResponse(" You are Admin ")
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def Assigned(request,usr_id):
     if request.user.is_superuser:
@@ -360,9 +370,10 @@ def Assigned(request,usr_id):
                     pass
         return render(request,'AdminPage/admin-assign-assigned.html',context)
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
 # For assigning unassigned students :
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def Unassigned(request,usr_id):
     if request.user.is_superuser:
@@ -388,8 +399,9 @@ def Unassigned(request,usr_id):
                     pass
         return render(request,'AdminPage/admin-assign-unassigned.html',context)
     else:
-        return HttpResponse("You are not authorized to view this page")
+        return Http404("You are not authorized to view this page")
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def AdminUpcomingMeeting(request):
     context={
@@ -398,6 +410,7 @@ def AdminUpcomingMeeting(request):
     }
     return render(request, 'AdminPage/admin-meeting-upcoming.html',context)
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def AdminPreviousMeeting(request):
     context={
@@ -406,6 +419,7 @@ def AdminPreviousMeeting(request):
     }
     return render(request, 'AdminPage/admin-meeting-previous.html',context)
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def deleteMeetingRecord(request,id):
     if request.method=='POST':
@@ -413,15 +427,17 @@ def deleteMeetingRecord(request,id):
         meeting.delete()
     return redirect('admin-upcoming-meeting')
 
-
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def AdminAnnouncementTable(request):
     return render(request, 'AdminPage/admin-announcement-table.html')   
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def AdminAnnouncementBlog(request):
     return render(request, 'AdminPage/admin-announcement-blog.html')
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required(login_url='Login')
 def AdminAnnouncementNew(request):
     if request.method == 'POST':
@@ -491,6 +507,8 @@ def AdminAnnouncementNew(request):
 
     return render(request, 'AdminPage/admin-announcement-new.html')
 
+@user_passes_test(lambda u: u.is_superuser)
+@login_required(login_url='Login')
 def AdminAnnouncementDelete(request, id):
     if request.method == 'POST':
         announcement = Announcement.objects.get(id=id)

@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import *
 from accounts.models import *
 from django.core.mail import send_mail
 from MPT import settings    
 from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
+from django.http import Http404
 
-
+@staff_member_required(login_url='login')
 @login_required(login_url='Login')
 def facultyAnnouncement(request):
     return render(request, 'Announcement/faculty-announcement.html')
 
+@staff_member_required(login_url='Login')
 @login_required(login_url='Login')
 def facultyAnnouncementNew(request):
     if request.method == 'POST':
@@ -65,11 +68,14 @@ def facultyAnnouncementNew(request):
 
     return render(request, 'Announcement/faculty-announcement-new.html')
 
-
+@login_required(login_url='Login')
 def studentAnnouncement(request):
-    return render(request, 'Announcement/student-announcement.html')
+    if not request.user.is_staff:
+        return render(request, 'Announcement/student-announcement.html')
+    else:
+        raise Http404("You are not allowed to access this page")
 
-
+@staff_member_required(login_url='Login')
 @login_required(login_url='Login')
 def deleteAnnouncement(request, id):
     notification = Announcement.objects.get(id=id)
