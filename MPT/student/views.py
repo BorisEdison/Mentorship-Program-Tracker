@@ -14,16 +14,29 @@ def student(request, pk):
 
     tp = User.objects.get(usr_id=pk)
     stu= get_object_or_404(StudentProfile, user = tp)    
-    qs = AcademicScores.objects.filter(student = stu).order_by('sub_code','exam')
-    for i in qs:
-        print(i.sub_code)
+    qs = AcademicScores.objects.filter(student = stu).order_by('academicYear','sem','sub_code','exam')
+    distinct_sem_yr = AcademicScores.objects.all().values('academicYear','sem').distinct()
+    distinct_yr = AcademicScores.objects.all().values('academicYear').distinct()
+    distinct_sem = AcademicScores.objects.all().values('sem').distinct()
+
+    chartdict={}
+    for i in distinct_yr:
+        chartdict[i['academicYear']]=AcademicScores.objects.filter(academicYear=i['academicYear']).values('sem').distinct()
     
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
         unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
         unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings,'qs':qs}
+        context={'user':user,
+                'student':student,
+                'unread_announcement':unread_announcements,
+                'unseen_meetings':unseen_meetings,
+                'qs':qs,
+                'distinct_sem_yr':distinct_sem_yr,
+                'distinct_yr':distinct_yr,
+                'distinct_sem':distinct_sem
+                }
         if student.is_assigned:
             try:
                 obj=Mentor_assign.objects.get(Mentee__user__usr_id=pk)

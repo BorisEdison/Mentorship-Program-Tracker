@@ -157,8 +157,7 @@
   </section>
 
     <!-- Session Records Button -->
-  <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'induvidual-meeting-records' %}';" type="button">
-  <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
+  <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'induvidual-meeting-records' fac_id=faculty.usr_id stu_id=student.user.usr_id %}';" type="button">  <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
   Session Records
   </button>
 

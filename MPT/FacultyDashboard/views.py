@@ -351,3 +351,34 @@ def induvidualMeetingRecords(request,fac_id,stu_id):
         }
         return render(request, 'FacultyDashboard/induvidual-meeting-records.html',context)
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
+
+@staff_member_required(login_url='Login')
+def individualMeetingNotes(request,fac_id,stu_id,meet_id):
+    meeting=Meeting.objects.get(Meeting_id=meet_id)
+    attendance_notes,created=MeetingAttendance.objects.get_or_create(Meeting_id=meeting)
+    context={
+        'meeting':meeting,
+        'meetinfo':attendance_notes,
+    }
+    
+    if request.method=='POST':
+        notes=request.POST['note']
+        attendance_notes.Notes=notes
+        try:
+            attendance=request.POST['attedance']
+            if attendance=='Present':
+                attendance_notes.Attendance=True
+            elif attendance=='Absent':
+                attendance_notes.Attendance=False
+        except:
+            pass
+        attendance_notes.save()
+        return redirect('induvidual-meeting-records',fac_id=fac_id,stu_id=stu_id)
+    return render(request, 'FacultyDashboard/meeting-notes.html',context)
+
+@staff_member_required(login_url='Login')
+def individualDeleteMeeting(request,fac_id,stu_id,meet_id):
+    if request.method=='POST':
+        meeting= Meeting.objects.filter(Meeting_id=meet_id)
+        meeting.delete()
+    return redirect('induvidual-meeting-records',fac_id=fac_id,stu_id=stu_id)

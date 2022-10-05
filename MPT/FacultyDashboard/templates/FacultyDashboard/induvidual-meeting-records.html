@@ -15,7 +15,7 @@
 
         <!--Student Name-->
   <p style="font-size: 25px; display: flex; justify-content: center;">
-    <strong>{{user.first_name}} {{user.last_name}} </strong>
+      <strong>{{student.user.first_name}} {{student.user.last_name}} </strong>
   </p>
 
   <div class=" m-2">
@@ -68,7 +68,7 @@
               {% endif %}
             </td>
             <td>
-              <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'meeting-notes' meeting.Meeting_id %}';">
+              <button type="button" class="btn btn-sm meetings-btn custom-btn" onClick="window.location.href='{% url 'individual-meeting-notes' fac_id=user.usr_id stu_id=student.user.usr_id meet_id=meeting.Meeting_id %}';">
               <span class="iconify" data-icon="gg:notes" data-width="15" data-height="15"></span>
               &nbsp;Note
               </button>
@@ -105,7 +105,7 @@
             <td>{{meeting.Meeting_mode}}</td>
             <td>{{meeting.Meeting_link_or_venue}}</td>
             <td>            
-            <form action="{% url 'delete-meeting-record' meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
+            <form action="{% url 'individual-delete-meeting-record' fac_id=user.usr_id stu_id=student.user.usr_id meet_id=meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
                 {% csrf_token %}
               <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this meeting record ?');">
                 <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
