@@ -53,26 +53,11 @@
             </button>
             {% endblock %}
 
-            {% comment %} {% block analyticsButton %}
-            <button class="nav-link nav-pills-link" id="analytics-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics"
-              aria-selected="false">
-              <span class="iconify" data-icon="foundation:graph-pie" data-width="22" data-height="22"></span>
-              Analytics
-            </button>
-            {% endblock %} {% endcomment %}
-
-            {% comment %} {% block calendarButton %}
-            <button class="nav-link nav-pills-link" id="calendar-tab" onclick="window.location.href = '{% url 'faculty-cal' %}';" data-bs-toggle="pill" data-bs-target="#calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">
-              <span class="iconify" data-icon="clarity:date-solid" data-width="20" data-height="20"></span>
-              Calender
-            </button>
-            {% endblock %} {% endcomment %}
-
             {% block announcementButton %}
             <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Announcement
-              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">&nbsp;</span>
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{{unread_announcement}}</span>
             </button>
             {% endblock %}
 

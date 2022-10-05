@@ -11,6 +11,7 @@ class Meeting(models.Model):
     Meeting_time = models.TimeField(null=True)
     Meeting_link_or_venue = models.TextField(null=True)
     Meeting_mode = models.CharField(max_length=100)
+    is_read = models.BooleanField(default=False)
     created_at=models.DateTimeField(default=timezone.now)
     updated_at=models.DateTimeField(auto_now=True)
 

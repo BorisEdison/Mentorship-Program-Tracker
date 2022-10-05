@@ -3,14 +3,18 @@ from accounts.models import *
 from FacultyDashboard.models import *
 from django.contrib.auth.decorators import login_required
 import datetime
+from Announcement.models import *
 
 # Create your views here.
 @login_required(login_url='Login')
 def student(request, pk):
+
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
-        context={'user':user,'student':student} 
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
+        unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings} 
         if student.is_assigned:
             try:
                 obj=Mentor_assign.objects.get(Mentee__user__usr_id=pk)
@@ -35,6 +39,8 @@ def student(request, pk):
 
 @login_required(login_url='Login')
 def studentMeeting(request):
+    student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+    Meeting.objects.filter(Receiver=student, is_read=False).update(is_read=True)
     return render(request, 'student-meeting.html')
 
 def studentMeetingRecords(request):

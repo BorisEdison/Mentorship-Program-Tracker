@@ -14,6 +14,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 from .models import *
+from Announcement.models import *
 import datetime
 
 #logout the logged in user
@@ -206,10 +207,12 @@ def studentdetail(request, fac_id, stu_id):
 @staff_member_required(login_url='Login')
 def faculty(request,pk):
     if request.user.is_staff and not request.user.is_superuser:
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
                     'fac_id': pk,
-                    'ALL':'checked'
+                    'ALL':'checked',
+                    'unread_announcement':unread_announcements
                     }
         try:
             if request.method=='GET' and request.GET['inlineRadioOptions']:

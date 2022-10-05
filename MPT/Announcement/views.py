@@ -11,6 +11,7 @@ from django.http import Http404
 
 @staff_member_required(login_url='login')
 def facultyAnnouncement(request):
+    AnnouncementReceiver.objects.filter(receiver=request.user, is_read=False).update(is_read=True)
     return render(request, 'Announcement/faculty-announcement.html')
 
 @staff_member_required(login_url='Login')
@@ -66,15 +67,17 @@ def facultyAnnouncementNew(request):
 
     return render(request, 'Announcement/faculty-announcement-new.html')
 
-@login_required(login_url='Login')
-def studentAnnouncement(request):
-    if not request.user.is_staff:
-        return render(request, 'Announcement/student-announcement.html')
-    else:
-        raise Http404("You are not allowed to access this page")
 
 @staff_member_required(login_url='Login')
 def deleteAnnouncement(request, id):
     notification = Announcement.objects.get(id=id)
     notification.delete()
     return redirect('faculty-announcement')
+
+@login_required(login_url='Login')
+def studentAnnouncement(request):
+    if not request.user.is_staff:
+        AnnouncementReceiver.objects.filter(receiver=request.user, is_read=False).update(is_read=True)
+        return render(request, 'Announcement/student-announcement.html')
+    else:
+        raise Http404("You are not allowed to access this page")
