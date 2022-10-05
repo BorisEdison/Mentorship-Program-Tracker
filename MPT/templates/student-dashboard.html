@@ -31,6 +31,11 @@ Edit Profile
           {% else %}
           <strong> Mentor is Not Assigned </strong>&nbsp;
           {% endif %}
+
+          {% comment %} {% for data in qs %}
+            {{data.sub_code}}
+            {{data.marks}}
+          {% endfor %} {% endcomment %}
         </span>
 
         <div class="row">
@@ -65,14 +70,19 @@ Edit Profile
 
       <!-- Graph-->
     <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row">
-      <span>
+      {% comment %} <span>
         <canvas id="donutGraphSem1"></canvas>
         <canvas id="barGraphSem1" class="pt-2"></canvas>
       </span>
       <span>
         <canvas id="donutGraphSem2"></canvas>
         <canvas id="barGraphSem2" class="pt-2"></canvas>
-      </span>
+      </span> {% endcomment %}
+  <canvas id="myChart" width="400" height="100"></canvas>  
+
+      {%block scripts%}
+      {%endblock scripts%}
+
     </section>
 
       <!-- Session Records Button -->

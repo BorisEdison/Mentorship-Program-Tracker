@@ -1,20 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import *
 from FacultyDashboard.models import *
 from django.contrib.auth.decorators import login_required
 import datetime
 from Announcement.models import *
 
+
+from Marks.models import AcademicScores
+
 # Create your views here.
 @login_required(login_url='Login')
 def student(request, pk):
 
+    tp = User.objects.get(usr_id=pk)
+    stu= get_object_or_404(StudentProfile, user = tp)    
+    qs = AcademicScores.objects.filter(student = stu).order_by('sub_code','exam')
+    for i in qs:
+        print(i.sub_code)
+    
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
         unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
         unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
+        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings,'qs':qs}
         if student.is_assigned:
             try:
                 obj=Mentor_assign.objects.get(Mentee__user__usr_id=pk)

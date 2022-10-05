@@ -130,9 +130,58 @@
   <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <script src="{% static 'js/student.js' %}"></script>
-  <script src="{% static 'js/charts.js' %}"></script>
   <script src="{% static 'js/editDetails.js' %}"></script>
 
-</body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+  {%block scripts%}
+  <script>
+  $(document).ready(function(){
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                  labels: [{%for data in qs%}'{{data.sub_code}}',{%endfor%}],
+                  datasets: [{
+                      label: '# of users',
+                      data: [{%for data in qs%}{{data.marks}},{%endfor%}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)', 
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+  });
+      });
+  </script>
+  {%endblock scripts%}
+  
+  {%block content%}
+  {%endblock content%}
+
+</body>
 </html>
