@@ -23,7 +23,7 @@
       UPDATE PROFILE
     </button>
     
-    <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.reload()">
+    <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.href='{% url 'student' request.user.usr_id %}';">
       CANCEL
     </button>
   </div>

@@ -14,7 +14,7 @@ def student(request, pk):
         student=StudentProfile.objects.get(user=user)
         unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
         unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings} 
+        context={'user':user,'student':student,'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
         if student.is_assigned:
             try:
                 obj=Mentor_assign.objects.get(Mentee__user__usr_id=pk)

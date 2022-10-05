@@ -242,7 +242,7 @@
         UPDATE PROFILE
       </button>
 
-      <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.reload()" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      <button type="button" class="btn btn-sm cancel-btn" onClick="window.location.href='{% url 'faculty' request.user.usr_id %}';" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
         CANCEL
       </button>
 
