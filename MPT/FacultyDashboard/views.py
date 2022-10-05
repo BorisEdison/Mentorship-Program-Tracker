@@ -23,7 +23,6 @@ def logout(request):
 
 # Create your views here.
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def studentdetail(request, fac_id, stu_id):
     user = User.objects.get(usr_id=stu_id)
     faculty = User.objects.get(usr_id=fac_id)
@@ -205,7 +204,6 @@ def studentdetail(request, fac_id, stu_id):
     return render(request, 'FacultyDashboard/faculty-student-profile.html', context)
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def faculty(request,pk):
     if request.user.is_staff and not request.user.is_superuser:
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
@@ -230,7 +228,6 @@ def faculty(request,pk):
         return redirect(to='Login')   
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def facultyMeeting(request):
     if request.user.is_staff and not request.user.is_superuser:
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
@@ -298,7 +295,6 @@ def facultyMeeting(request):
         return redirect('Login')
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def overallMeetingRecords(request):
     context={
          'todays_date':datetime.date.today(),
@@ -307,7 +303,6 @@ def overallMeetingRecords(request):
     return render(request, 'FacultyDashboard/overall-meeting-records.html',context)
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def deleteMeeting(request,id):
     if request.method=='POST':
         meeting= Meeting.objects.filter(Meeting_id=id)
@@ -316,7 +311,6 @@ def deleteMeeting(request,id):
 
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def meetingNotes(request,id):
     meeting=Meeting.objects.get(Meeting_id=id)
     attendance_notes,created=MeetingAttendance.objects.get_or_create(Meeting_id=meeting)
@@ -342,7 +336,6 @@ def meetingNotes(request,id):
     return render(request, 'FacultyDashboard/meeting-notes.html',context)
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def induvidualMeetingRecords(request,fac_id,stu_id):
     if request.user.is_staff and not request.user.is_superuser:
         student=StudentProfile.objects.get(user__usr_id=stu_id)

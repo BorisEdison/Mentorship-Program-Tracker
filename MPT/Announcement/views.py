@@ -10,12 +10,10 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 
 @staff_member_required(login_url='login')
-@login_required(login_url='Login')
 def facultyAnnouncement(request):
     return render(request, 'Announcement/faculty-announcement.html')
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def facultyAnnouncementNew(request):
     if request.method == 'POST':
         announcement = Announcement()
@@ -76,7 +74,6 @@ def studentAnnouncement(request):
         raise Http404("You are not allowed to access this page")
 
 @staff_member_required(login_url='Login')
-@login_required(login_url='Login')
 def deleteAnnouncement(request, id):
     notification = Announcement.objects.get(id=id)
     notification.delete()

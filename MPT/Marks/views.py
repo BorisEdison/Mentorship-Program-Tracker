@@ -3,7 +3,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import StudentProfile
 from accounts.models import User
 from .models import AcademicScores
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='Login')
 def studentMarks(request, pk):
     user = User.objects.get(usr_id=pk)
     student = get_object_or_404(StudentProfile, user = user)    
@@ -11,6 +14,7 @@ def studentMarks(request, pk):
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student}
     return render(request, 'Marks/student-marks.html', context)
 
+@login_required(login_url='Login')
 def studentAddMarks(request, pk):
     user = User.objects.get(usr_id=pk)
     context = {'title': 'studentmarks'}
@@ -29,6 +33,7 @@ def studentAddMarks(request, pk):
 
     return render(request, 'Marks/student-add-marks.html', context)
 
+@login_required(login_url='Login')
 def studentEditMarks(request, pk,id):
     user = User.objects.get(usr_id=pk)
     student = get_object_or_404(StudentProfile, user = user)
@@ -56,6 +61,7 @@ def studentEditMarks(request, pk,id):
 
     return render(request, 'Marks/student-edit-marks.html', context)
 
+@login_required(login_url='Login')
 def studentDeleteMarks(request, pk, id):
     user = User.objects.get(usr_id=pk)
     student = get_object_or_404(StudentProfile, user = user)
@@ -65,6 +71,7 @@ def studentDeleteMarks(request, pk, id):
 
     return redirect('studentMarks',pk = user.usr_id)
 
+@staff_member_required(login_url='Login')
 def facultyStudentMarks(request,stu_pk):
     user = User.objects.get(usr_id=stu_pk)
     student = get_object_or_404(StudentProfile, user = user)    
@@ -74,6 +81,7 @@ def facultyStudentMarks(request,stu_pk):
 
     return render(request, 'Marks/faculty-student-marks.html', context)
 
+@staff_member_required(login_url='Login')
 def facultyEditMarks(request, stu_pk, id):
     user = User.objects.get(usr_id=stu_pk)
     student = get_object_or_404(StudentProfile, user = user)
@@ -103,8 +111,8 @@ def facultyEditMarks(request, stu_pk, id):
 
     return render(request, 'Marks/faculty-edit-marks.html', context)
 
+@staff_member_required(login_url='Login')
 def facultyAddMarks(request,stu_pk):
-
     user = User.objects.get(usr_id=stu_pk)
     student = get_object_or_404(StudentProfile, user = user)    
 
@@ -121,6 +129,7 @@ def facultyAddMarks(request,stu_pk):
 
     return render(request, 'Marks/faculty-add-marks.html')
     
+@staff_member_required(login_url='Login')
 def facultyDeleteMarks(request, stu_pk, id):
     user = User.objects.get(usr_id=stu_pk)
     student = get_object_or_404(StudentProfile, user = user)
