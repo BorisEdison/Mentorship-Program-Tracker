@@ -37,7 +37,7 @@
 
               <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                  <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{{profile.user.middle_name}}'>
+                  <input type="text" name='mName' class="form-control" id="inputMname" placeholder="Middle Name" value='{% if profile.user.middle_name != None and "None" %}{{profile.user.middle_name}}{% endif %}'>
                   <label for="inputMname">Middle Name</label>
                 </div>
               </div>
@@ -241,7 +241,7 @@
             <div class="row pt-3">
               <div class="col-12 full-width-sm" style="display: flex; justify-content: center;">
                 <div class="form-group form-floating col-md-10">
-                  <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL" value='{{profile.meeting_link}}'>
+                  <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL" value='{% if profile.meeting_link != None and "None" %}{{profile.meeting_link}}{% endif %}'>
                   <label for="Meetlink">Meeting Link</label>
                 </div>
               </div>
