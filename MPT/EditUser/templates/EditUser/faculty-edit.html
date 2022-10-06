@@ -160,14 +160,14 @@
       <div class="row pt-3">
         <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>{{profile.Address}}</textarea>
+            <textarea type="text" name='Address' class="form-control" id="inputAddress" placeholder="Address" value=''>{% if profile.Address != None and 'None' %}{{profile.Address}}{% endif %}</textarea>
             <label for="inputAddress">Address</label>
           </div>
         </div>
 
         <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{{profile.City}}'>
+            <input type="text" name='city' class="form-control" id="inputcity" placeholder="city" value='{% if profile.City != None and "None" %}{{profile.City}}{% endif %}'>
             <label for="inputcity">City</label>
           </div>
         </div>
@@ -194,14 +194,14 @@
       <div class="row pt-3">
         <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{{profile.qualification}}'>
+            <input type="text" name='Quali' class="form-control" id="inputQuali" placeholder="Qualification" value='{% if profile.qualification != None and "None" %}{{profile.qualification}}{% endif %}'>
             <label for="inputQuali">Qualification</label>
           </div>
         </div>
 
         <div class="col-6 full-width-sm pt-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{{profile.mother_tongue}}'>
+            <input type="text" name='mTongue' class="form-control" id="inputMtongue" placeholder="Mother Tongue" value='{% if profile.mother_tongue != None and "None" %}{{profile.mother_tongue}}{% endif %}'>
             <label for="inputMtongue">Mother Tongue</label>
           </div>
         </div>
@@ -211,7 +211,7 @@
       <div class="row pt-3">
         <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{{profile.religion}}'>
+            <input type="text" name='Religion' class="form-control" id="inputReligion" placeholder="Religion" value='{% if profile.religion != None and "None" %}{{profile.religion}}{% endif %}'>
             <label for="inputReligion">Religion</label>
           </div>
         </div>
@@ -228,7 +228,7 @@
       <div class="row pt-3">
         <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
           <div class="form-group form-floating col-md-10">
-            <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL starting with http:// OR https://" value='{{profile.meeting_link}}'>
+            <input type="url" name='link' class="form-control" id="Meetlink" placeholder="Meeting Link URL starting with http:// OR https://" value='{% if profile.meeting_link != None and "None" %}{{profile.meeting_link}}{% endif %}'>
             <label for="Meetlink">Meeting Link</label>
           </div>
         </div>

@@ -58,7 +58,7 @@
               <p><strong>Address</strong></p>
             </div>
             <div class="col-6">
-              {% if  student.Address != None %}<p>{{student.Address}}</p>{% endif %}
+              {% if  student.Address != None and student.Address != 'None' %}<p>{{student.Address}}</p>{% endif %}
             </div>
 
           </div>
@@ -73,7 +73,7 @@
               <p><strong>Year Of Admission</strong></p>
             </div>
             <div class="col-6">
-              {% if  details.YearOfAdmission != None or 'None' %}<p>{{details.YearOfAdmission}}</p>{% endif %}
+              {% if  details.YearOfAdmission != None and 'None' %}<p>{{details.YearOfAdmission}}</p>{% endif %}
             </div>
 
             <!--Gender-->
@@ -97,7 +97,7 @@
               <p><strong>Mother Tongue</strong></p>
             </div>
             <div class="col-6">
-              {% if  student.mother_tongue != None %}<p>{{student.mother_tongue}}</p>{% endif %}
+              {% if  student.mother_tongue != None and student.mother_tongue != 'None' %}<p>{{student.mother_tongue}}</p>{% endif %}
             </div>
 
             <!--Religion-->
@@ -105,7 +105,7 @@
               <p><strong>Religion</strong></p>
             </div>
             <div class="col-6">
-              {% if  student.religion != None %}<p>{{student.religion}}</p>{% endif %}
+              {% if  student.religion != None and student.religion != 'None' %}<p>{{student.religion}}</p>{% endif %}
             </div>
 
             <!--Contact no.-->
