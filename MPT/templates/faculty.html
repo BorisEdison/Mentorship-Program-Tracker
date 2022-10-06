@@ -57,7 +57,7 @@
             <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Announcement
-              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{{unread_announcement}}</span>
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{% if unread_announcement != 0 %}{{unread_announcement}}{% endif %}</span>
             </button>
             {% endblock %}
 

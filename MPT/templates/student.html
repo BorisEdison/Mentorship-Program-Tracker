@@ -45,7 +45,7 @@
             <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'student-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
               Announcement
-              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{{unread_announcement}}</span>
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{% if unread_announcement != 0 %}{{unread_announcement}}{% endif %}</span>
             </button>
             {% endblock %}
 
@@ -53,7 +53,7 @@
             <button class="nav-link nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'student-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
               <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
               Meeting
-              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{{unseen_meetings}}</span>
+              <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{% if unseen_meetings != 0 %}{{unseen_meetings}}{% endif %}</span>
             </button>
             {% endblock %}
 
