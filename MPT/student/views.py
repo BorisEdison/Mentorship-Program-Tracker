@@ -14,15 +14,27 @@ def student(request, pk):
 
     tp = User.objects.get(usr_id=pk)
     stu= get_object_or_404(StudentProfile, user = tp)    
-    qs = AcademicScores.objects.filter(student = stu).order_by('academicYear','sem','sub_code','exam')
-    distinct_sem_yr = AcademicScores.objects.all().values('academicYear','sem').distinct()
-    distinct_yr = AcademicScores.objects.all().values('academicYear').distinct()
-    distinct_sem = AcademicScores.objects.all().values('sem').distinct()
-
+    distinct_sem_yr = AcademicScores.objects.all().values('academicYear','sem').distinct().order_by('academicYear','sem','sub_code','exam')
     chartdict={}
-    for i in distinct_yr:
-        chartdict[i['academicYear']]=AcademicScores.objects.filter(academicYear=i['academicYear']).values('sem').distinct()
-    
+    for i in distinct_sem_yr:
+        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code','exam','marks')
+    # print(chartdict)
+
+    # print the chartdict values
+    # for i in chartdict:
+    #     print(i)
+    #     for j in chartdict[i]:
+    #         print(j)
+    #         for k in j:
+    #             print(k,j[k])
+
+
+    for i in chartdict:
+        print(i)
+        for j in chartdict[i]:
+            print(j['sub_code'],':',j['exam'],'=',j['marks'])
+
+
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
@@ -32,10 +44,7 @@ def student(request, pk):
                 'student':student,
                 'unread_announcement':unread_announcements,
                 'unseen_meetings':unseen_meetings,
-                'qs':qs,
-                'distinct_sem_yr':distinct_sem_yr,
-                'distinct_yr':distinct_yr,
-                'distinct_sem':distinct_sem
+                'chartdict':chartdict
                 }
         if student.is_assigned:
             try:

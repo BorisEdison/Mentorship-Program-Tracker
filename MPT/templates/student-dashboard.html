@@ -66,10 +66,20 @@ Edit Profile
 
       <!-- Graph-->
     <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row">
-      <span>
-        <canvas id="donutGraphSem1"></canvas>
-        <canvas id="barGraphSem1" class="pt-2"></canvas>
-      </span>
+
+      {% for charts in chartdict %}
+        {% for data in chartdict.charts %}
+          {{data.sub_code}}
+          {{data.exam}}
+          {{data.marks}}
+        {% endfor %}
+        
+        <span>
+          <canvas id="donut{{charts}}"></canvas>
+          <canvas id="barGraphSem1" class="pt-2"></canvas>
+        </span>
+        {% endfor %}
+
       {% comment %} <span>
         <canvas id="donutGraphSem2"></canvas>
         <canvas id="barGraphSem2" class="pt-2"></canvas>

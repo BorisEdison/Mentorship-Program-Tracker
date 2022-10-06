@@ -59,8 +59,9 @@ new Chart("barGraphSem1", {
 });
 
 // doughtnut 1
-var xValues = [{% for data in qs %}"{{data.sub_code}}",{% endfor %}];
-var yValues = [{% for data in qs %}{{data.marks}},{% endfor %}];
+{% for charts in chartdict %}
+var xValues = [{% for chart in charts %}"{{chart.sub_code}}",{% endfor %}];
+var yValues = [{% for chart in charts %}{{chart.marks}},{% endfor %}];
 var barColors = ["#8C0000", "#F90716", "#018383", "#04009A", "#851DE0"];
 
 var stackedText = {
@@ -85,7 +86,7 @@ var stackedText = {
   },
 };
 
-new Chart("donutGraphSem1", {
+new Chart("donut{{charts}}", {
   type: "doughnut",
   data: {
     labels: xValues,
@@ -99,3 +100,4 @@ new Chart("donutGraphSem1", {
   maintainAspectRatio: false,
   plugins: [stackedText],
 });
+{% endfor %}
