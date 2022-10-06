@@ -6,18 +6,44 @@ from .models import AcademicScores
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
+marks_context={
+    'exam_list':[
+        'IA1',
+        'IA2',
+        'ESE'
+    ],
+
+    'year_list':[
+        'FE',
+        'SE',
+        'TE',
+        'BE'
+    ],
+    'sem_list':[
+        'I',
+        'II',
+        'III',
+        'IV',
+        'V',
+        'VI',
+        'VII',
+        'VIII'
+    ],
+}
 @login_required(login_url='Login')
 def studentMarks(request, pk):
     user = User.objects.get(usr_id=pk)
     student = get_object_or_404(StudentProfile, user = user)    
     marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student}
+    context.update(marks_context)
     return render(request, 'Marks/student-marks.html', context)
 
 @login_required(login_url='Login')
 def studentAddMarks(request, pk):
     user = User.objects.get(usr_id=pk)
     context = {'title': 'studentmarks'}
+    context.update(marks_context)
     student = get_object_or_404(StudentProfile, user = user)    
 
     if request.method == 'POST':
@@ -39,6 +65,7 @@ def studentEditMarks(request, pk,id):
     student = get_object_or_404(StudentProfile, user = user)
     mark = get_object_or_404(AcademicScores, id = id)
     context = {'title': 'studentmarks', 'mark':mark}
+    context.update(marks_context)
 
     if request.method == 'POST':
         scode = request.POST['sCode']
@@ -78,7 +105,7 @@ def facultyStudentMarks(request,stu_pk):
     marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
     
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student}
-
+    context.update(marks_context)
     return render(request, 'Marks/faculty-student-marks.html', context)
 
 @staff_member_required(login_url='Login')
@@ -88,6 +115,7 @@ def facultyEditMarks(request, stu_pk, id):
     mark = get_object_or_404(AcademicScores, id = id)
 
     context = {'title': 'studentmarks', 'mark':mark}
+    context.update(marks_context)
 
     if request.method == 'POST':
         scode = request.POST['sCode']

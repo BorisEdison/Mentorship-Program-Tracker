@@ -30,15 +30,19 @@
 
     <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
       <div class="form-group form-floating col-md-10">
-        <select id="inputSemester" class="form-select" name="semester" value = "{{mark.sem}}">
-          <option>I</option>
-          <option>II</option>
-          <option>III</option>
-          <option>IV</option>
-          <option>V</option>
-          <option>VI</option>
-          <option>VII</option>
-          <option>VIII</option>
+        <select id="inputSemester" class="form-select" name="semester">
+          {% if not mark.sem %}
+          <option disabled selected>Please Select Semester</option>
+          {% else %}
+          <option disabled>Please Select Select Semester</option>
+          {% endif %}
+          {% for sem in sem_list %}
+          {% if mark.sem and mark.sem == sem %}
+          <option selected>{{ sem }}</option>
+          {% else %}
+          <option>{{ sem }}</option>
+          {% endif %}
+          {% endfor %}
         </select>
         <label for="inputSemester">Semester</label> <br>
       </div>
@@ -49,11 +53,19 @@
   <div class="row">
     <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
       <div class="form-group form-floating col-md-10">
-        <select id="inputYear" class="form-select" name="year" value="{{mark.academicYear}}">
-          <option>FE</option>
-          <option>SE</option>
-          <option>TE</option>
-          <option>BE</option>
+        <select id="inputYear" class="form-select" name="year">
+          {% if not mark.academicYear %}
+          <option disabled selected>Please Select Year</option>
+          {% else %}
+          <option disabled>Please Select Select Year</option>
+          {% endif %}
+          {% for year in year_list %}
+          {% if mark.academicYear and mark.academicYear == year %}
+          <option selected>{{ year }}</option>
+          {% else %}
+          <option>{{ year }}</option>
+          {% endif %}
+          {% endfor %}
         </select>
         <label for="inputYear">Year</label> <br>
       </div>
@@ -61,10 +73,19 @@
 
     <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
       <div class="form-group form-floating col-md-10">
-        <select id="inputExam" class="form-select" name="exam" value="{{mark.exam}}">
-          <option>IA1</option>
-          <option>IA2</option>
-          <option>ESE</option>
+        <select id="inputExam" class="form-select" name="exam">
+          {% if not mark.exam %}
+          <option disabled selected>Please Select Exam Type</option>
+          {% else %}
+          <option disabled>Please Select Select Exam Type</option>
+          {% endif %}
+          {% for exam in exam_list %}
+          {% if mark.exam and mark.exam == exam %}
+          <option selected>{{ exam}}</option>
+          {% else %}
+          <option>{{ exam }}</option>
+          {% endif %}
+          {% endfor %}
         </select>
         <label for="inputExam">Exam</label> <br>
       </div>
