@@ -12,7 +12,7 @@ def student(request, pk):
 
     tp = User.objects.get(usr_id=pk)
     stu= get_object_or_404(StudentProfile, user = tp)    
-    distinct_sem_yr = AcademicScores.objects.all().values('academicYear','sem').distinct().order_by('academicYear','sem','sub_code','exam')
+    distinct_sem_yr = AcademicScores.objects.filter(student=stu).values('academicYear','sem').distinct().order_by('academicYear','sem','sub_code','exam')
     chartdict={}
     for i in distinct_sem_yr:
         chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]= AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code','exam','marks')
