@@ -2,11 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import *
 from FacultyDashboard.models import *
 from django.contrib.auth.decorators import login_required
-import datetime
 from Announcement.models import *
-
-
 from Marks.models import AcademicScores
+import datetime
 
 # Create your views here.
 @login_required(login_url='Login')
@@ -17,22 +15,16 @@ def student(request, pk):
     distinct_sem_yr = AcademicScores.objects.all().values('academicYear','sem').distinct().order_by('academicYear','sem','sub_code','exam')
     chartdict={}
     for i in distinct_sem_yr:
-        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code','exam','marks')
-    # print(chartdict)
-
-    # print the chartdict values
-    # for i in chartdict:
-    #     print(i)
-    #     for j in chartdict[i]:
-    #         print(j)
-    #         for k in j:
-    #             print(k,j[k])
-
+        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]= AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code','exam','marks')
+    
+    print('before',chartdict)
 
     for i in chartdict:
         print(i)
         for j in chartdict[i]:
-            print(j['sub_code'],':',j['exam'],'=',j['marks'])
+            chartdict[i]=[{'sub_code':j['sub_code'],'exam':j['exam'],'marks':j['marks']}]
+    
+    print('after',chartdict)
 
 
     if request.user.is_authenticated and not(request.user.is_staff):
