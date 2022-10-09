@@ -1,31 +1,29 @@
-{% comment %} https://onlinegdb.com/3k3ai9pSY {% endcomment %}
 {% for semyear,subcodes in chartdict.items %}
-
 var xValues = [];
 var ia1Values = [];
 var ia2Values = [];
 var eseValues = [];
 
-{% comment %} {% for subcode,sub_marks in subcodes.items %}
+{% for subcode,sub_marks in subcodes.items %}
   xValues.push('{{subcode}}');
+  ia1Values.push(0);
+  ia2Values.push(0);
+  eseValues.push(0);
   {% for sub_mark in sub_marks %}
-    {% if sub_mark.exam == 'IA1' %}
-      ia1Values.push({{sub_mark.marks}});
-    {% elif sub_mark.exam != 'IA2' or sub_mark.exam != 'ESE' %}
-      ia1Values.push(0); 
-    {% endif%}
-    {% if sub_mark.exam == 'IA2' %}
-      ia2Values.push({{sub_mark.marks}});
-    {% elif sub_mark.exam != 'IA1' or sub_mark.exam != 'ESE' %}
-      ia2Values.push(0);
-    {% endif %} 
-    {% if sub_mark.exam == 'ESE'%}
-      eseValues.push({{sub_mark.marks}});
-    {% elif sub_mark.exam != 'IA1' or sub_mark.exam != 'IA2' %}
-      eseValues.push(0);
-    {% endif %}
+  if("{{sub_mark.exam}}" == "IA1"){
+    ia1Values.pop();
+    ia1Values.push({{sub_mark.marks}});
+  }
+  else if("{{sub_mark.exam}}" == "IA2"){
+    ia2Values.pop();
+    ia2Values.push({{sub_mark.marks}});
+  }
+  else if("{{sub_mark.exam}}" == "ESE"){
+    eseValues.pop();
+    eseValues.push({{sub_mark.marks}});
+  }
   {% endfor %}
-{% endfor %} {% endcomment %}
+{% endfor %} 
 
 var ia1Color = ["#FA1E0E", "#FFCA03", "#42E6A4", "#3EDBF0", "#C355F5"];
 var ia2Color = ["#BD2000", "#FF5403", "#02A8A8", "#77ACF1", "#AA26DA"];
