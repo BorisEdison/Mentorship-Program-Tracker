@@ -26,9 +26,10 @@ def logout(request):
 @staff_member_required(login_url='Login')
 def studentdetail(request, fac_id, stu_id):
     user = User.objects.get(usr_id=stu_id)
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     faculty = User.objects.get(usr_id=fac_id)
     student = StudentProfile.objects.get(user=user)
-    context =  { 'user': user,'faculty':faculty, 'student': student }
+    context =  { 'user': user,'faculty':faculty, 'student': student,'unread_announcement':unread_announcements} 
     context.update(studentcontext)
 
     if request.method == "POST":
@@ -233,9 +234,11 @@ def faculty(request,pk):
 @staff_member_required(login_url='Login')
 def facultyMeeting(request):
     if request.user.is_staff and not request.user.is_superuser:
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
         students = Mentor_assign.objects.filter(Mentor__user__usr_id = request.user.usr_id)
         context = { 'students': students,
                     'ALL':'checked',
+                    'unread_announcement':unread_announcements
                     }
         try:
             if request.method=='GET' and request.GET['inlineRadioOptions']:
@@ -299,9 +302,12 @@ def facultyMeeting(request):
 
 @staff_member_required(login_url='Login')
 def overallMeetingRecords(request):
+
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     context={
          'todays_date':datetime.date.today(),
-         'current_time':datetime.datetime.now().time()
+         'current_time':datetime.datetime.now().time(),
+            'unread_announcement':unread_announcements
     }
     return render(request, 'FacultyDashboard/overall-meeting-records.html',context)
 
@@ -315,11 +321,13 @@ def deleteMeeting(request,id):
 
 @staff_member_required(login_url='Login')
 def meetingNotes(request,id):
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     meeting=Meeting.objects.get(Meeting_id=id)
     attendance_notes,created=MeetingAttendance.objects.get_or_create(Meeting_id=meeting)
     context={
         'meeting':meeting,
         'meetinfo':attendance_notes,
+        'unread_announcement':unread_announcements
     }
     
     if request.method=='POST':
@@ -341,24 +349,28 @@ def meetingNotes(request,id):
 @staff_member_required(login_url='Login')
 def induvidualMeetingRecords(request,fac_id,stu_id):
     if request.user.is_staff and not request.user.is_superuser:
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()        
         student=StudentProfile.objects.get(user__usr_id=stu_id)
         meetings=Meeting.objects.filter(Receiver=student)
         context={
             'student':student,
             'meetingrecords':meetings,
             'todays_date':datetime.date.today(),
-            'current_time':datetime.datetime.now().time()
+            'current_time':datetime.datetime.now().time(),
+            'unread_announcement':unread_announcements
         }
         return render(request, 'FacultyDashboard/induvidual-meeting-records.html',context)
     return render(request, 'FacultyDashboard/induvidual-meeting-records.html')
 
 @staff_member_required(login_url='Login')
 def individualMeetingNotes(request,fac_id,stu_id,meet_id):
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     meeting=Meeting.objects.get(Meeting_id=meet_id)
     attendance_notes,created=MeetingAttendance.objects.get_or_create(Meeting_id=meeting)
     context={
         'meeting':meeting,
         'meetinfo':attendance_notes,
+        'unread_announcement':unread_announcements
     }
     
     if request.method=='POST':

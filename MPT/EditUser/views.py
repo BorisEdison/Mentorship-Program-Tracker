@@ -9,6 +9,8 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
+from Announcement.models import *
+from FacultyDashboard.models import *
 
 studentcontext={
             'department_list': [
@@ -65,6 +67,7 @@ def edit(request):
     context = {}
     if request.user.is_staff:
         profile = MentorProfile.objects.get(user__usr_id=request.user.usr_id)
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
 
         context = {
             'department_list': [
@@ -84,7 +87,8 @@ def edit(request):
                 'O-'
             ],
             'profile': profile,
-            'id': request.user.usr_id
+            'id': request.user.usr_id,
+            'unread_announcement':unread_announcements,
         }
 
         if request.method == "POST":
@@ -171,6 +175,9 @@ def edit(request):
 
     elif request.user.is_staff == False:
         profile = StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+        unseen_meetings=Meeting.objects.filter(Receiver=profile,is_read=False).count()
+
         details,created=StudentDetails.objects.get_or_create(student_id=profile.id)
         hobbies,created=StudentHobbies.objects.get_or_create(student_id=profile.id)
         guardian,created=GuardianDetails.objects.get_or_create(student_id=profile.id)
@@ -183,7 +190,10 @@ def edit(request):
             'hobbies':hobbies,
             'guardian':guardian,
             'extraCurr':extraCurr,
-            'Medical':Medical}
+            'Medical':Medical,
+            'unread_announcement':unread_announcements,
+            'unseen_meeting':unseen_meetings,
+            }
         context.update(studentcontext)
         if request.method == "POST":
             fName = request.POST['fName']

@@ -6,25 +6,19 @@ from Announcement.models import *
 from Marks.models import AcademicScores
 import datetime
 
-# Create your views here.
 @login_required(login_url='Login')
 def student(request, pk):
 
     tp = User.objects.get(usr_id=pk)
     stu= get_object_or_404(StudentProfile, user = tp)    
-    distinct_sem_yr = AcademicScores.objects.filter(student=stu).values('academicYear','sem').distinct().order_by('academicYear','sem','sub_code','exam')
+    distinct_sem_yr = AcademicScores.objects.filter(student=stu).values('academicYear','sem','exam').distinct().order_by('academicYear','sem','sub_code','exam')
     chartdict={}
     for i in distinct_sem_yr:
-        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]= AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code','exam','marks')
-    
-    print('before',chartdict)
-
-    for i in chartdict:
-        print(i)
-        for j in chartdict[i]:
-            chartdict[i]=[{'sub_code':j['sub_code'],'exam':j['exam'],'marks':j['marks']}]
-    
-    print('after',chartdict)
+        distinct_exams=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('exam').distinct()
+        exam_dict={}
+        for j in distinct_exams:
+            exam_dict[j['exam']]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem'],exam=j['exam']).values('sub_code','marks')
+        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=exam_dict
 
 
     if request.user.is_authenticated and not(request.user.is_staff):
@@ -62,17 +56,26 @@ def student(request, pk):
 
 @login_required(login_url='Login')
 def studentMeeting(request):
-    student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = request.user)    
+    unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+    # student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
     Meeting.objects.filter(Receiver=student, is_read=False).update(is_read=True)
-    return render(request, 'student-meeting.html')
+    return render(request, 'student-meeting.html',{'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings})
 
 def studentMeetingRecords(request):
-    student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+    # student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = request.user)    
+    unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+
     meetings=Meeting.objects.filter(Receiver=student)
     context={
         'student':student,
         'meetingrecords':meetings,
         'todays_date':datetime.date.today(),
-        'current_time':datetime.datetime.now().time()
+        'current_time':datetime.datetime.now().time(),
+        'unread_announcement':unread_announcements,
+        'unseen_meetings':unseen_meetings
     }
     return render(request, 'student-meeting-records.html',context)

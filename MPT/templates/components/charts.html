@@ -1,13 +1,11 @@
+{% comment %} Need to make changes here {% endcomment %}
+{% for semyear,sem_marks in chartdict.items %}
 var xValues = [
-  "Engg. Maths 1",
-  "Engg. Physics 1",
-  "Engg. Chemistry 1",
-  "Basic Elec. Engg.",
-  "Mechanics",
+{% for sem_mark in sem_marks %}"{{sem_mark.sub_code}}",{% endfor %}
 ];
-var ia1Values = [5, 8, 6, 8, 4];
-var ia2Values = [7, 5, 8, 8, 6];
-var eseValues = [66, 47, 35, 39, 40];
+var ia1Values = [{% if sem_mark.exam == 'IA1' %}{{sem_mark.marks}}{% else %}0{% endif %},];
+var ia2Values = [{% if sem_mark.exam == 'IA2' %}{{sem_mark.marks}}{% else %}0{% endif %},];
+var eseValues = [{% if sem_mark.exam == 'ESE' %}{{sem_mark.marks}}{% else %}0{% endif %},];
 
 var ia1Color = ["#FA1E0E", "#FFCA03", "#42E6A4", "#3EDBF0", "#C355F5"];
 var ia2Color = ["#BD2000", "#FF5403", "#02A8A8", "#77ACF1", "#AA26DA"];
@@ -57,11 +55,12 @@ new Chart("barGraphSem1", {
     },
   },
 });
+{% endfor %}
 
 // doughtnut 1
-{% for charts in chartdict %}
-var xValues = [{% for chart in charts %}"{{chart.sub_code}}",{% endfor %}];
-var yValues = [{% for chart in charts %}{{chart.marks}},{% endfor %}];
+{% for semyear,sem_marks in chartdict.items %}
+var xValues = [{% for sem_mark in sem_marks %}{% if sem_mark.exam == 'ESE' %}"{{sem_mark.sub_code}}",{% endif %}{% endfor %}];
+var yValues = [{% for sem_mark in sem_marks %}{% if sem_mark.exam == 'ESE' %}{{sem_mark.marks}},{% endif %}{% endfor %}];
 var barColors = ["#8C0000", "#F90716", "#018383", "#04009A", "#851DE0"];
 
 var stackedText = {
@@ -86,7 +85,7 @@ var stackedText = {
   },
 };
 
-new Chart("donut{{charts}}", {
+new Chart("donut{{semyear}}", {
   type: "doughnut",
   data: {
     labels: xValues,
