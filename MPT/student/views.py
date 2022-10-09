@@ -8,24 +8,21 @@ import datetime
 
 @login_required(login_url='Login')
 def student(request, pk):
-
-    tp = User.objects.get(usr_id=pk)
-    stu= get_object_or_404(StudentProfile, user = tp)    
-    distinct_sem_yr = AcademicScores.objects.filter(student=stu).values('academicYear','sem','exam').distinct().order_by('academicYear','sem','sub_code','exam')
-    chartdict={}
-    for i in distinct_sem_yr:
-        distinct_exams=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('exam').distinct()
-        exam_dict={}
-        for j in distinct_exams:
-            exam_dict[j['exam']]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem'],exam=j['exam']).values('sub_code','marks')
-        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=exam_dict
-
-
+    
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
         unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
         unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+        distinct_sem_yr = AcademicScores.objects.filter(student=student).values('academicYear','sem','exam').distinct().order_by('academicYear','sem','sub_code','exam')
+        chartdict={}
+        for i in distinct_sem_yr:
+            distinct_subs=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code').distinct()
+            sub_code_dict={}
+            for j in distinct_subs:
+                sub_code_dict[j['sub_code']]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem'],sub_code=j['sub_code']).values('exam','marks')
+            chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=sub_code_dict
+
         context={'user':user,
                 'student':student,
                 'unread_announcement':unread_announcements,

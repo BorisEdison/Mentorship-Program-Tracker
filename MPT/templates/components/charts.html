@@ -1,18 +1,38 @@
-{% comment %} Need to make changes here {% endcomment %}
-{% for semyear,sem_marks in chartdict.items %}
-var xValues = [
-{% for sem_mark in sem_marks %}"{{sem_mark.sub_code}}",{% endfor %}
-];
-var ia1Values = [{% if sem_mark.exam == 'IA1' %}{{sem_mark.marks}}{% else %}0{% endif %},];
-var ia2Values = [{% if sem_mark.exam == 'IA2' %}{{sem_mark.marks}}{% else %}0{% endif %},];
-var eseValues = [{% if sem_mark.exam == 'ESE' %}{{sem_mark.marks}}{% else %}0{% endif %},];
+{% comment %} https://onlinegdb.com/3k3ai9pSY {% endcomment %}
+{% for semyear,subcodes in chartdict.items %}
+
+var xValues = [];
+var ia1Values = [];
+var ia2Values = [];
+var eseValues = [];
+
+{% comment %} {% for subcode,sub_marks in subcodes.items %}
+  xValues.push('{{subcode}}');
+  {% for sub_mark in sub_marks %}
+    {% if sub_mark.exam == 'IA1' %}
+      ia1Values.push({{sub_mark.marks}});
+    {% elif sub_mark.exam != 'IA2' or sub_mark.exam != 'ESE' %}
+      ia1Values.push(0); 
+    {% endif%}
+    {% if sub_mark.exam == 'IA2' %}
+      ia2Values.push({{sub_mark.marks}});
+    {% elif sub_mark.exam != 'IA1' or sub_mark.exam != 'ESE' %}
+      ia2Values.push(0);
+    {% endif %} 
+    {% if sub_mark.exam == 'ESE'%}
+      eseValues.push({{sub_mark.marks}});
+    {% elif sub_mark.exam != 'IA1' or sub_mark.exam != 'IA2' %}
+      eseValues.push(0);
+    {% endif %}
+  {% endfor %}
+{% endfor %} {% endcomment %}
 
 var ia1Color = ["#FA1E0E", "#FFCA03", "#42E6A4", "#3EDBF0", "#C355F5"];
 var ia2Color = ["#BD2000", "#FF5403", "#02A8A8", "#77ACF1", "#AA26DA"];
 var eseColor = ["#8C0000", "#F90716", "#018383", "#04009A", "#851DE0"];
 
 // horizontal bar chart 1
-new Chart("barGraphSem1", {
+new Chart("bar-{{semyear}}", {
   type: "horizontalBar",
   data: {
     labels: xValues,
@@ -31,13 +51,14 @@ new Chart("barGraphSem1", {
       },
     ],
   },
+  
   options: {
     responsive: true,
     legend: { display: false },
     title: {
       position: "bottom",
       display: true,
-      text: "Semester 1",
+      text: "{{semyear|slice:"2:"}}",
     },
     scales: {
       xAxes: [
@@ -58,9 +79,9 @@ new Chart("barGraphSem1", {
 {% endfor %}
 
 // doughtnut 1
-{% for semyear,sem_marks in chartdict.items %}
-var xValues = [{% for sem_mark in sem_marks %}{% if sem_mark.exam == 'ESE' %}"{{sem_mark.sub_code}}",{% endif %}{% endfor %}];
-var yValues = [{% for sem_mark in sem_marks %}{% if sem_mark.exam == 'ESE' %}{{sem_mark.marks}},{% endif %}{% endfor %}];
+{% for semyear,subcodes in chartdict.items %}
+var xValues = [{% for subcode,sub_marks in subcodes.items %}{% for sub_mark in sub_marks %}{% if sub_mark.exam == 'ESE' %}"{{subcode}}",{% endif %}{% endfor %}{% endfor %}];
+var yValues = [{% for subcode,sub_marks in subcodes.items %}{% for sub_mark in sub_marks %}{% if sub_mark.exam == 'ESE' %}{{sub_mark.marks}},{% endif %}{% endfor %}{% endfor %}];
 var barColors = ["#8C0000", "#F90716", "#018383", "#04009A", "#851DE0"];
 
 var stackedText = {
@@ -85,7 +106,7 @@ var stackedText = {
   },
 };
 
-new Chart("donut{{semyear}}", {
+new Chart("donut-{{semyear}}", {
   type: "doughnut",
   data: {
     labels: xValues,

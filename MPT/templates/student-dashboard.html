@@ -65,19 +65,23 @@ Edit Profile
     <p class="h4"><strong>First Year</strong></p>
 
       <!-- Graph-->
-    <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row">
-
-      {% for semyear,exams in chartdict.items %} 
-        {{semyear}}<br>
-        {% for exam in exams.keys %}
+      <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row">
+      {% for semyear,subcodes in chartdict.items %} 
+          {% comment %} {{semyear}}<br>
+          {% for subcode,sub_marks in subcodes.items %}
+              <br>{{subcode}} : 
+              {% for sub_mark in sub_marks %}
+              {{sub_mark.exam}}
+              {{sub_mark.marks}}
+              {% endfor %}
+          {% endfor %} {% endcomment %}
           <span>
-            <canvas id="donut{{semyear}}"></canvas>
-            <canvas id="barGraphSem1" class="pt-2"></canvas>
+            <canvas id="donut-{{semyear}}"></canvas>
+            <canvas id="bar-{{semyear}}"></canvas>
           </span>
-        {% endfor %}
-      {% endfor %}
-    </section>
-
+          {% endfor %}
+        </section> 
+    
       <!-- Session Records Button -->
       <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button">
       <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
