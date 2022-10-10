@@ -21,16 +21,26 @@
 <form action="" method="POST">
   {% csrf_token %}
  <!-- First Row  -->
- <div class="row">
+ <div class="row mb-4">
   <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
     <div class="form-group form-floating col-md-10">
       <input type="text" name='sCode' class="form-control" id="inputScode" placeholder="Subject Code" value=''>
-      <label for="inputFname">Subject Code</label>
+      <label for="inputScode">Subject Code</label>
     </div>
   </div>
 
   <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
     <div class="form-group form-floating col-md-10">
+      <input type="text" name='sName' class="form-control" id="inputSname" placeholder="Subject Name" value=''>
+      <label for="inputSname">Subject Name</label>
+    </div>
+  </div>
+</div>
+
+<!-- Second Row  -->
+<div class="row">
+  <div class="col-4 full-width-sm" style="display: flex; justify-content: center;">
+    <div class="form-group form-floating col-md-9">
       <select id="inputSemester" class="form-select" name="semester">
         <option>I</option>
         <option>II</option>
@@ -44,12 +54,8 @@
       <label for="inputSemester">Semester</label> <br>
     </div>
   </div>
-</div>
-
-<!-- Second Row  -->
-<div class="row">
-  <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-    <div class="form-group form-floating col-md-10">
+  <div class="col-4 full-width-sm" style="display: flex; justify-content: center;">
+    <div class="form-group form-floating col-md-8">
       <select id="inputYear" class="form-select" name="year">
         <option>FE</option>
         <option>SE</option>
@@ -60,8 +66,8 @@
     </div>
   </div>
 
-  <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
-    <div class="form-group form-floating col-md-10">
+  <div class="col-4 full-width-sm" style="display: flex; justify-content: center;">
+    <div class="form-group form-floating col-md-9">
       <select id="inputExam" class="form-select" name="exam">
         <option>IA1</option>
         <option>IA2</option>
@@ -76,11 +82,16 @@
 <div class="row">
   <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
     <div class="form-group form-floating col-md-10">
-      <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks" min="0" max="100">
-      <label for="inputMarks">Marks</label>
+      <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks Recieved" min="0" max="100">
+      <label for="inputMarks">Marks Recieved</label>
     </div>
   </div>
-
+  <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+    <div class="form-group form-floating col-md-10">
+      <input type="number" name='totalMarks' class="form-control" id="inputTotalMarks" placeholder="Out Of" min="0" max="100">
+      <label for="inputTotalMarks">Out Of</label>
+    </div>
+  </div>
 </div>
 
 <!-- buttons -->

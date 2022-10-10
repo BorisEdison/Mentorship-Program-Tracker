@@ -65,7 +65,7 @@ Edit Profile
     <p class="h4"><strong>First Year</strong></p>
 
       <!-- Graph-->
-      <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row">
+      <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row flex-wrap">
       {% for semyear,subcodes in chartdict.items %} 
           {{semyear}}<br>
           {% for subcode,sub_marks in subcodes.items %}
