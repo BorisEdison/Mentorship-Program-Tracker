@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block meetingButton %}
-<button class="nav-link active nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'faculty-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="meeting-tab" onclick="window.location.href = '{% url 'faculty-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
   <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
-  Meeting
+  &nbsp;Meeting
 </button>
 {% endblock %}
 
@@ -46,7 +46,7 @@
           <label class="form-check-label" for="inputRadioAll">ALL</label>
         </div>
 
-        <button type="submit" class="btn btn-sm btn-secondary" style="width: auto; border-radius: 7px;">
+        <button type="submit" class="btn btn-sm custom-btn" style="width: auto; border-radius: 7px;">
           Filter
         </button>
       </div>
@@ -74,7 +74,7 @@
 
       <div class="mb-4">
         <label for="inputVenue" class="form-label"><strong>Link / Venue</strong></label>
-        <input type="text" name='link_or_venue' placeholder="Meeting link OR Venue" class="form-control" id="inputVenue" required>
+        <input type="text" name='link_or_venue' placeholder="Meeting Link / Venue" class="form-control" id="inputVenue" required>
       </div>
 
       {% comment %} <div class="mb-4">
@@ -108,7 +108,7 @@
         </div>
 
         <!-- table -->
-        <div class="table-div m-4 mt-2">
+        <div class="table-div mt-2">
           <table class="table table-striped table-hover table-bordered text" id="sendTo-table">
             <thead>
               <tr>
@@ -145,8 +145,8 @@
           </table>
         </div>
 
-        <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-          <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn">
+        <div class="d-flex align-items-center justify-content-center mt-4 mb-3">
+          <button type="submit" class="btn ms-auto btn-sm custom-btn">
             Schedule
           </button>
         </div>

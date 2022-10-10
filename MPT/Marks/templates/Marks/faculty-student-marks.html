@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
   aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
-  Dashboard
+  &nbsp;Dashboard
 </button>
 {% endblock %}
 
