@@ -15,8 +15,6 @@ $(document).ready( function () {
         'pageLength',
         ]
     });
-  } );
-$(document).ready( function () {
     $('#student-previous-table').DataTable({
         //options
         dom: 'Blfrtip',
@@ -32,8 +30,6 @@ $(document).ready( function () {
         'pageLength',
         ]
     });
-} );
-$(document).ready( function () {
     $('#student-upcoming-table').DataTable({
         //options
         dom: 'Blfrtip',
@@ -49,4 +45,4 @@ $(document).ready( function () {
         'pageLength',
         ]
     });
-} );
+});
