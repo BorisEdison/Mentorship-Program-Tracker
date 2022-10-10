@@ -26,11 +26,17 @@ class AcademicScores(models.Model):
 class SemCGPA(models.Model):
     id = models.AutoField(primary_key=True)
     student = models.ForeignKey(StudentProfile,null=True,blank=True ,on_delete=models.CASCADE)
-    sem = models.CharField(max_length=50, blank=True, null=True)
-    cgpa = models.FloatField(default=0.0)
+    semI = models.FloatField(default=0)
+    semII = models.FloatField(default=0)
+    semIII = models.FloatField(default=0)
+    semIV = models.FloatField(default=0)
+    semV = models.FloatField(default=0)
+    semVI = models.FloatField(default=0)
+    semVII = models.FloatField(default=0)
+    semVIII = models.FloatField(default=0)
 
     class Meta():
-        unique_together = [['student','sem']]
-        verbose_name = "Semester CGPA"
+        verbose_name = "SemCGPA"
+
     def __str__(self):
-        return self.student.user.first_name + " " + self.sem + " " + str(self.cgpa)
+        return self.student.user.first_name + " SemCGPA" 

@@ -109,13 +109,14 @@ def studentDeleteMarks(request, pk, id):
 
 
 @login_required(login_url='Login')
-def studentAddCGPA(request,pk):
+def studentAddCGPA(request):
     user = User.objects.get(usr_id=pk)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-    context = {'title': 'studentCGPA', 'student' : student, 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
-    
+    context = {'title': 'studentCGPA', 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
+    # if request.method == 'POST':
+
     return render(request, 'Marks/student-add-cgpa.html')
 
 @staff_member_required(login_url='Login')

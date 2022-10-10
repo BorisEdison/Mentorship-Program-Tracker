@@ -352,7 +352,6 @@ def Assigned(request,usr_id):
         mentee_list = []
         for mentee in Mentor_assign.objects.filter(Mentor__user__usr_id=usr_id):
             mentee_list.append(mentee.Mentee)
-        print(mentee_list)
         mentor = MentorProfile.objects.get(user__usr_id=usr_id)
         context={'mentor':mentor,'mentee_list':mentee_list}
         if request.POST.get('mentees'):
@@ -362,10 +361,9 @@ def Assigned(request,usr_id):
                 mentee.is_assigned=False
                 mentee.save()
                 unassign_mentee = Mentor_assign.objects.filter(Mentee__user__usr_id=mentee_id)
-                # print(mentor,mentee)
                 try:
                     unassign_mentee.delete()  
-                    print(mentee.user.first_name,'is unassigned successfully from',mentor.user.first_name)
+                    # print(mentee.user.first_name,'is unassigned successfully from',mentor.user.first_name)
                 except:
                     pass
         return render(request,'AdminPage/admin-assign-assigned.html',context)
@@ -466,7 +464,7 @@ def AdminAnnouncementNew(request):
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
                     except:
-                        print('Error Occured In Sending Mail, Try Again ')
+                        # print('Error Occured In Sending Mail, Try Again ')
                         pass
             elif send_to == 'Facutly':
                 for user_fac in MentorProfile.objects.all():
@@ -482,7 +480,7 @@ def AdminAnnouncementNew(request):
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
                     except:
-                        print('Error Occured In Sending Mail, Try Again ')
+                        # print('Error Occured In Sending Mail, Try Again ')
                         pass
             elif send_to == 'Students':
                 for user_stu in StudentProfile.objects.all():
@@ -498,7 +496,7 @@ def AdminAnnouncementNew(request):
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
                     except:
-                        print('Error Occured In Sending Mail, Try Again ')
+                        # print('Error Occured In Sending Mail, Try Again ')
                         pass
 
         except:
