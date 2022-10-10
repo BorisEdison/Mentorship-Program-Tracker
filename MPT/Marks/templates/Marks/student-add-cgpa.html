@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
   aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
-  Dashboard
+  &nbsp;Dashboard
 </button>
 {% endblock %}
 
@@ -91,11 +91,11 @@
     <!-- buttons -->
     <div class="d-flex align-items-center justify-content-center m-3">
 
-      <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      <button type="submit" class="btn btn-sm update-btn ms-auto">
         Add
       </button>
 
-      <button type="button" class="btn btn-sm cancel-btn" onclick="window.history.go(-1); return false;" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+      <button type="button" class="btn btn-sm cancel-btn" onclick="window.history.go(-1); return false;" style="margin-left: 10px;">
         Cancel
       </button>
 

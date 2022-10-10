@@ -2,19 +2,6 @@
 .dashboard-buttons-1 {
   margin-top: 4vh;
 }
-.batch-dropdown {
-  position: relative;
-  align-items: center;
-  width: auto;
-  /*box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);*/
-}
-.dropdown-ul {
-  width: auto;
-}
-.meetings-btn {
-  width: auto;
-  /*box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);*/
-}
 
 /* Meetings Modal */
 .modal-body {
@@ -26,7 +13,7 @@
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: var(--body-bg);
-  background-color: var(--navbar-bg);
+  background-color: var(--btn-bg);
   border-color: var(--navbar-bg) var(--navbar-bg) var(--text-body);
 }
 .nav-tabs .nav-link {
@@ -42,7 +29,7 @@
 .sidebar {
   background-color: var(--content-bg);
   border-radius: 13px;
-  /*box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);*/
+  /* box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5); */
   margin: 10px 0;
   margin-top: 5.5vh;
 }
@@ -56,23 +43,6 @@
 .dashboard-navigation {
   padding-right: 0;
 }
-
-/* select button */
-/*.select-btn{
-  width: auto;
-  border-radius: 7px;
-  background-color: #018383;
-  color: var(--text-component);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-}*/  
-/* .cancel-btn{
-  width: auto;
-  margin-left: 10px;
-  border-radius: 7px;
-  background-color: #8C0000;
-  color: white;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-}   */
 
 /* student profile grid */
 #grd {

@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' faculty.usr_id%}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' faculty.usr_id%}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
   aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
-  Dashboard
+  &nbsp;Dashboard
 </button>
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-main sticky-top navbar-expand-lg">
+<nav class="navbar navbar-main sticky-top shadow-lg navbar-expand-lg pt-0 pb-0">
   <div class="container-fluid">
     <a class="navbar-brand" onClick="window.location.reload();">
-      <img src="{% static 'content/logo.png' %}" class=" me-2" width="50" height="50" alt="" style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+      <img src="{% static 'content/logo.png' %}" class="image2"  alt="" >
       DBIT
     </a>
     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
@@ -30,7 +30,7 @@
         {% if faculty.is_authenticated %}
 
         <a class="navbar-brand" onClick="window.location.reload();">
-          <img src="{{faculty.profile_img.url}}" class=" me-2" width="42" height="50" alt="" style="border-radius: 4px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);">
+          <img src="{{faculty.profile_img.url}}" class=" image2">
           {% if faculty.first_name and faculty.last_name %}{{faculty.first_name}} {{faculty.last_name}} {% endif %}
         </a>
         {% endif %}
@@ -44,10 +44,10 @@
           </li>
         </span>
 
-        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notification">
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change Password">
           <li class="nav-item-main">
-            <a class="nav-link" href="#" id="iconifyNotification">
-              <span class="iconify iconify-navbar" data-icon="clarity:notification-solid" data-width="24" data-height="26"></span>
+            <a class="nav-link" id="iconifyChangePassword" href="{% url 'ChangePassword' %}">
+              <span class="iconify iconify-navbar" data-icon="teenyicons:password-outline" data-width="25" data-height="25"></span>
             </a>
           </li>
         </span>
@@ -81,7 +81,7 @@
 
         <!--Edit Student Details Button-->
         <div class="d-flex align-items-center justify-content-center mb-3">
-          <button type="button" class="btn btn-sm ms-auto select-btn custom-btn" data-bs-toggle="modal" data-bs-target="#edit-details">
+          <button type="button" class="btn btn-sm ms-auto select-btn custom-btn d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#edit-details">
             <span class="iconify" data-icon="mdi:account-edit" data-width="20" data-height="20"></span>
             Edit Details
           </button>
@@ -103,10 +103,10 @@
                 </div>
 
                 <div class="modal-footer pb-0">
-                  <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
+                  <button type="submit" class="btn btn-sm update-btn">
                     Save changes
                   </button>
-                  <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
+                  <button type="button" class="btn btn-sm cancel-btn" data-bs-dismiss="modal">
                     Close
                   </button>
                 </div>

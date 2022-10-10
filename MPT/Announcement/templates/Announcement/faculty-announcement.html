@@ -3,9 +3,9 @@
 
 {% block announcementButton %}
 
-<button class="nav-link active nav-pills-link" id="announcement-tab" onClick="window.location.reload()" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="announcement-tab" onClick="window.location.reload()" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement" aria-selected="false">
   <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
-  Announcement
+  &nbsp;Announcement
 </button>
 
 {% endblock %}
@@ -19,7 +19,7 @@
     <h1 style="font-size: 25px; justify-content: center;">
       <strong>Announcement</strong>
     </h1>
-    <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn" onclick="window.location.href = '{% url 'faculty-announcement-new' %}';">
+    <button type="submit" class="btn btn-sm ms-auto custom-btn" onclick="window.location.href = '{% url 'faculty-announcement-new' %}';">
       New
       <span class="iconify" data-icon="akar-icons:circle-plus" data-width="18" data-height="18"></span>
     </button>
@@ -40,10 +40,10 @@
           {% endif %}
         </div>
         {% if receiver.announcement.sender == request.user %}
-        <div class="col-6 d-flex align-items-center justify-content-center">
-          <form action="{% url 'delete-announcement' receiver.announcement.id %}" class="mb-0" style="display: inline-block" method='POST'>
+        <div class="col-6 d-flex align-items-center">
+          <form action="{% url 'delete-announcement' receiver.announcement.id %}" class="ms-auto mb-0" method='POST'>
             {% csrf_token %}
-            <button type="submit" class="btn btn-sm btn-danger update-btn ms-auto" style="width: auto; border-radius: 7px; margin-left: 10px" onClick="return confirm('Are you sure Do you want to delete this Announcement ?');">
+            <button type="submit" class="btn btn-sm ms-auto btn-danger" onClick="return confirm('Are you sure Do you want to delete this Announcement ?');">
               Delete
             </button>
           </form>

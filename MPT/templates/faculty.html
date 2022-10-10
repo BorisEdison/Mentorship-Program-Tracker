@@ -43,35 +43,35 @@
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
             {% block dashboardButton %}
-            <button class="nav-link nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+            <button class="nav-link nav-pills-link d-flex align-items-center justify-content-center" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
               aria-selected="true">
               <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
-              Dashboard
+              &nbsp;Dashboard
             </button>
             {% endblock %}
 
             {% block announcementButton %}
-            <button class="nav-link nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement"
+            <button class="nav-link nav-pills-link d-flex align-items-center justify-content-center" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement"
               aria-selected="false">
               <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
-              Announcement
+              &nbsp;Announcement
               <span class="badge rounded-pill text-bg-danger" style="background-color: #DC3545 !important;">{% if unread_announcement != 0 %}{{unread_announcement}}{% endif %}</span>
             </button>
             {% endblock %}
 
             {% block meetingButton %}
-            <button class="nav-link nav-pills-link" id="meeting-tab" onclick="window.location.href = '{% url 'faculty-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting"
+            <button class="nav-link nav-pills-link d-flex align-items-center justify-content-center" id="meeting-tab" onclick="window.location.href = '{% url 'faculty-meeting' %}';" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting"
               aria-selected="false">
               <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
-              Meeting
+              &nbsp;Meeting
             </button>
             {% endblock %}
 
 
             {% block editButton %}
-            <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+            <button class="nav-link nav-pills-link d-flex align-items-center justify-content-center" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
               <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
-              Edit Profile
+              &nbsp;Edit Profile
             </button>
             {% endblock %}
 

@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block announcementButton %}
-<button class="nav-link active nav-pills-link" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement"
+<button class="nav-link active nav-pills-link d-flex align-items-center justify-content-center" id="announcement-tab" onclick="window.location.href = '{% url 'faculty-announcement' %}';" data-bs-toggle="pill" data-bs-target="#announcement" type="button" role="tab" aria-controls="announcement"
   aria-selected="false">
   <span class="iconify" data-icon="bx:message-detail" data-width="20" data-height="20"></span>
-  Announcement
+  &nbsp;Announcement
 </button>
 {% endblock %}
 
@@ -63,7 +63,7 @@
       </div>
 
       <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-        <button type="submit" class="btn btn-sm update-btn ms-auto custom-btn">
+        <button type="submit" class="btn btn-sm ms-auto custom-btn">
           Post
         </button>
       </div>
