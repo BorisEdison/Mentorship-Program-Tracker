@@ -24,7 +24,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'jazzmin',
     'widget_tweaks',
-    'calender.apps.CalenderConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
