@@ -53,15 +53,17 @@ def student(request, pk):
 
 @login_required(login_url='Login')
 def studentMeeting(request):
-    student = get_object_or_404(StudentProfile, user = request.user)    
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = request.user)    
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+    # student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
     Meeting.objects.filter(Receiver=student, is_read=False).update(is_read=True)
     return render(request, 'student-meeting.html',{'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings})
 
 def studentMeetingRecords(request):
-    student = get_object_or_404(StudentProfile, user = request.user)    
+    # student=StudentProfile.objects.get(user__usr_id=request.user.usr_id)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = request.user)    
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
 
     meetings=Meeting.objects.filter(Receiver=student)
