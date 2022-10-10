@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-main sticky-top navbar-expand-lg pt-0 pb-0">
+<nav class="navbar navbar-main sticky-top shadow-lg navbar-expand-lg pt-0 pb-0">
   <div class="container-fluid">
     <a class="navbar-brand" onClick="window.location.reload();">
       <img src="{% static 'content/logo.png' %}" class="image2"  alt="" >
@@ -81,7 +81,7 @@
 
         <!--Edit Student Details Button-->
         <div class="d-flex align-items-center justify-content-center mb-3">
-          <button type="button" class="btn btn-sm ms-auto select-btn custom-btn" data-bs-toggle="modal" data-bs-target="#edit-details">
+          <button type="button" class="btn btn-sm ms-auto select-btn custom-btn d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#edit-details">
             <span class="iconify" data-icon="mdi:account-edit" data-width="20" data-height="20"></span>
             Edit Details
           </button>
@@ -103,10 +103,10 @@
                 </div>
 
                 <div class="modal-footer pb-0">
-                  <button type="submit" class="btn btn-sm" style="background-color: #018383; color: white;">
+                  <button type="submit" class="btn btn-sm update-btn">
                     Save changes
                   </button>
-                  <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background-color: #8C0000; color: white;">
+                  <button type="button" class="btn btn-sm cancel-btn" data-bs-dismiss="modal">
                     Close
                   </button>
                 </div>

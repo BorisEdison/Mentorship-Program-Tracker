@@ -22,11 +22,11 @@
       <strong>Marks</strong>
     </h1>
 
-    <button type="button" style="margin-right:10px" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'facultyAddCGPA' %}';">
+    <button type="button" style="margin-right:10px" class="btn ms-auto btn-sm custom-btn" onclick="window.location.href = '{% url 'facultyAddCGPA' %}';">
       Add CGPA
     </button>
 
-    <button type="button" class="btn btn-light meetings-btn btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'facultyAddMarks' student.user.usr_id %}';">
+    <button type="button" class="btn btn-sm custom-btn" onclick="window.location.href = '{% url 'facultyAddMarks' student.user.usr_id %}';">
       Add Marks
     </button>
   </div>
