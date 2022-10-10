@@ -2,30 +2,6 @@
 
 <ul id="grd">
   
-    <!-- buttons -->
-    {% comment %} <div class="d-flex align-items-center justify-content-center m-3 mb-0">
-      <button type="button" class="btn btn-sm custom-btn mx-2" id="btn-select">
-        <span class="iconify" data-icon="fluent:checkbox-person-24-regular" data-width="20" data-height="20"></span>
-        Select
-      </button>
-
-      <button type="reset" class="btn btn-sm custom-btn mx-2" name="btn-show" id="cancel-btn">
-        <span class="iconify" data-icon="mdi:account-cancel-outline" data-width="20" data-height="20"></span>
-        Cancel
-      </button>
-
-      <button type="button" class="btn btn-sm custom-btn" name="btn-show" id="sel-all-btn">
-        <span class="iconify" data-icon="fluent:select-all-on-24-regular" data-width="20" data-height="20"></span>
-        Select All
-      </button>
-
-      <button type="button" class="btn btn-sm ms-auto custom-btn" onclick="window.location.href = '{% url 'Schedule' %}';" name="btn-show" id="schedule-btn" >
-        <span class="iconify" data-icon="akar-icons:schedule" data-width="20" data-height="20"></span>
-        Schedule meeting
-      </button>
-
-    </div> {% endcomment %}
-
     {% for users in students %}
 
       {% if not users.is_staff %}
