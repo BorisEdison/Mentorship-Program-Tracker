@@ -16,18 +16,23 @@
     <strong>{{user.first_name}} {{user.last_name}} </strong>
   </p>
 
-  <div class="d-flex align-items-center justify-content-center m-4">
-    <h1 style="font-size: 25px; justify-content: center;">
+  <div class="d-flex align-items-center m-4">
+    <h1 style="font-size: 25px;">
       <strong>Marks</strong>
     </h1>
-    <button type="button" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'studentAddMarks' pk=request.user.usr_id %}';">
+
+    <button type="button" style="margin-right:10px" class="btn btn-light meetings-btn ms-auto btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'studentAddCGPA' %}';">
+      Add CGPA
+    </button>
+
+    <button type="button" class="btn btn-light meetings-btn btn-sm btn-outline-dark" onclick="window.location.href = '{% url 'studentAddMarks' pk=request.user.usr_id %}';">
       Add Marks
     </button>
   </div>
 
   <!-- table -->
   <div class="table-div m-4">
-    <table class="table table-bordered text" style="widows: 100%;" id="student-mark-table">
+    <table class="table table-striped table-hover table-bordered" style="widows: 100%;" id="student-mark-table">
       <thead>
         <tr>
           <th scope="col" class="px-2 py-1 text-center">Subject Code</th>

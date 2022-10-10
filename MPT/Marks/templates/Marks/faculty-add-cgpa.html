@@ -1,0 +1,104 @@
+{% extends "faculty.html" %}
+{% load static %}
+
+{% block dashboardButton %}
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+  <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
+  Dashboard
+</button>
+{% endblock %}
+
+{% block dashboardContent %}
+<div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+  <div class="d-flex align-items-center justify-content-center mt-3 mb-3 text">
+    <h1 style="font-size: 25px; justify-content: center;">
+      <strong>Add Marks</strong>
+    </h1>
+  </div>
+
+<form action="" method="POST">
+  {% csrf_token %}
+ <!-- First Row  -->
+ <div class="row">
+    <div class="col-6 full-width-sm d-flex justify-content-center">
+        <div class="form-group form-floating col-md-10">
+          <input type="number" name='ISem' class="form-control" id="inputISem" placeholder="I SEM" min="0" max="10">
+          <label for="inputISem">I Semester</label>
+        </div>
+    </div>
+
+    <div class="col-6 full-width-sm d-flex justify-content-center" >
+        <div class="form-group form-floating col-md-10">
+          <input type="number" name='IISem' class="form-control" id="inputIISem" placeholder="II Sem" min="0" max="10">
+          <label for="inputIISem">II Semester</label>
+        </div>
+      </div>
+</div>
+
+<!-- Second Row  -->
+<div class="row mt-3">
+    <div class="col-6 full-width-sm d-flex justify-content-center">
+        <div class="form-group form-floating col-md-10">
+          <input type="number" name='IIISem' class="form-control" id="inputIIISem" placeholder="III Sem" min="0" max="10">
+          <label for="inputIIISem">III Semester</label>
+        </div>
+      </div>
+
+      <div class="col-6 full-width-sm d-flex justify-content-center">
+        <div class="form-group form-floating col-md-10">
+          <input type="number" name='IVSem' class="form-control" id="inputIVSem" placeholder="IV Sem" min="0" max="10">
+          <label for="inputIVSem">IV Semester</label>
+        </div>
+      </div>
+</div>
+
+<!-- Third Row  -->
+<div class="row mt-3">
+  <div class="col-6 full-width-sm d-flex justify-content-center">
+    <div class="form-group form-floating col-md-10">
+      <input type="number" name='VSem' class="form-control" id="inputVSem" placeholder="V Sem" min="0" max="10">
+      <label for="inputVSem">V Semester</label>
+    </div>
+  </div>
+
+  <div class="col-6 full-width-sm d-flex justify-content-center">
+    <div class="form-group form-floating col-md-10">
+      <input type="number" name='VISem' class="form-control" id="inputVISem" placeholder="VI Sem" min="0" max="10">
+      <label for="inputVISem">VI Semester</label>
+    </div>
+  </div>
+</div>
+
+<!-- Forth Row  -->
+<div class="row mt-3">
+    <div class="col-6 full-width-sm d-flex justify-content-center">
+      <div class="form-group form-floating col-md-10">
+        <input type="number" name='VIISem' class="form-control" id="inputVIISem" placeholder="VII Sem" min="0" max="10">
+        <label for="inputVIISem">VII Semester</label>
+      </div>
+    </div>
+  
+    <div class="col-6 full-width-sm d-flex justify-content-center">
+      <div class="form-group form-floating col-md-10">
+        <input type="number" name='VIIISem' class="form-control" id="inputVIIISem" placeholder="VIII Sem" min="0" max="10">
+        <label for="inputVIIISem">VIII Semester</label>
+      </div>
+    </div>
+  </div>
+
+<!-- buttons -->
+<div class="d-flex align-items-center justify-content-center m-3">
+
+  <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+    Add
+  </button>
+
+  <button type="button" class="btn btn-sm cancel-btn" onclick="window.history.go(-1); return false;" style="width: auto; margin-left: 10px; border-radius: 7px; background-color: #8C0000; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+    Cancel
+  </button>
+
+</div>
+</form>
+</div>
+{% endblock %}
