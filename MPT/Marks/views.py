@@ -66,10 +66,6 @@ def studentAddMarks(request, pk):
     return render(request, 'Marks/student-add-marks.html', context)
 
 @login_required(login_url='Login')
-def studentAddCGPA(request,):
-    return render(request, 'Marks/student-add-cgpa.html')
-
-@login_required(login_url='Login')
 def studentEditMarks(request, pk,id):
     user = User.objects.get(usr_id=pk)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
@@ -111,10 +107,21 @@ def studentDeleteMarks(request, pk, id):
 
     return redirect('studentMarks',pk = user.usr_id)
 
+
+@login_required(login_url='Login')
+def studentAddCGPA(request,pk):
+    user = User.objects.get(usr_id=pk)
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = user)
+    unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+    context = {'title': 'studentCGPA', 'student' : student, 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
+    
+    return render(request, 'Marks/student-add-cgpa.html')
+
 @staff_member_required(login_url='Login')
 def facultyStudentMarks(request,stu_pk):
     user = User.objects.get(usr_id=stu_pk)
-    unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
     marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
     
@@ -125,7 +132,7 @@ def facultyStudentMarks(request,stu_pk):
 @staff_member_required(login_url='Login')
 def facultyEditMarks(request, stu_pk, id):
     user = User.objects.get(usr_id=stu_pk)
-    unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)
     mark = get_object_or_404(AcademicScores, id = id)
 
@@ -157,7 +164,7 @@ def facultyEditMarks(request, stu_pk, id):
 @staff_member_required(login_url='Login')
 def facultyAddMarks(request,stu_pk):
     user = User.objects.get(usr_id=stu_pk)
-    unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
 
     if request.method == 'POST':
@@ -173,9 +180,6 @@ def facultyAddMarks(request,stu_pk):
 
     return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
     
-@login_required(login_url='Login')
-def facultyAddCGPA(request,):
-    return render(request, 'Marks/faculty-add-cgpa.html')
 
 @staff_member_required(login_url='Login')
 def facultyDeleteMarks(request, stu_pk, id):
@@ -187,3 +191,6 @@ def facultyDeleteMarks(request, stu_pk, id):
 
     return redirect('facultyStudentMarks',stu_pk = user.usr_id)
 
+@staff_member_required(login_url='Login')
+def facultyAddCGPA(request,):
+    return render(request, 'Marks/faculty-add-cgpa.html')
