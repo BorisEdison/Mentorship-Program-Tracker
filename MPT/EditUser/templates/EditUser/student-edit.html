@@ -16,17 +16,17 @@
   <form action="{% url 'Edit' %}" method="POST" enctype="multipart/form-data">
 
     {% csrf_token %}
-    
+
     {% include 'components/edit-student-details.html' %}
     <div class="d-flex align-items-center justify-content-center m-3 mt-5">
-    <button type="submit"  style="margin-right:10px" class="btn btn-sm update-btn ms-auto custom-btn">
-      UPDATE PROFILE
-    </button>
-    
-    <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.href='{% url 'student' request.user.usr_id %}';">
-      CANCEL
-    </button>
-  </div>
+      <button type="submit" style="margin-right:10px" class="btn btn-sm update-btn ms-auto custom-btn">
+        UPDATE PROFILE
+      </button>
+
+      <button type="button" class="btn btn-sm cancel-btn custom-btn" onClick="window.location.href='{% url 'student' request.user.usr_id %}';">
+        CANCEL
+      </button>
+    </div>
   </form>
 </div>
 {% endblock %}
