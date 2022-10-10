@@ -4,7 +4,7 @@ from accounts.models import StudentProfile
 from accounts.models import User
 from Announcement.models import *
 from FacultyDashboard.models import *
-from .models import AcademicScores
+from .models import *
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
@@ -59,9 +59,13 @@ def studentAddMarks(request, pk):
         exam = request.POST['exam']
         marks = request.POST['marks']
 
-        AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
+        try:
+            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
+        except:
+            # give error message
+            return render(request, 'Marks/student-marks-add.html', context)
 
-        return redirect('studentMarks', pk = user.usr_id)
+        return redirect('studentMarks', pk = pk)
 
     return render(request, 'Marks/student-add-marks.html', context)
 
@@ -92,8 +96,9 @@ def studentEditMarks(request, pk,id):
             Edit.marks = marks
             Edit.save()
         except:
+            # give error message
             pass
-        return redirect('studentMarks', pk = user.usr_id)
+        return redirect('studentMarks', pk = pk)
 
     return render(request, 'Marks/student-edit-marks.html', context)
 
@@ -105,19 +110,72 @@ def studentDeleteMarks(request, pk, id):
     if request.method == 'POST':
         mark.delete()
 
-    return redirect('studentMarks',pk = user.usr_id)
+    return redirect('studentMarks',pk = pk)
 
 
 @login_required(login_url='Login')
-def studentAddCGPA(request):
+def studentAddCGPA(request,pk):
     user = User.objects.get(usr_id=pk)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-    context = {'title': 'studentCGPA', 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
-    # if request.method == 'POST':
+    cgpa,created=SemCGPA.objects.get_or_create(student=student)
+    context = {'title': 'studentCGPA', 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings,'cgpa':cgpa}
 
-    return render(request, 'Marks/student-add-cgpa.html')
+    if request.method == 'POST':
+        try:
+            if request.POST['SemI']:
+                sem1=request.POST['SemI']
+                cgpa.semI=sem1
+        except:
+            pass
+        try:
+            if request.POST['SemII']:
+                sem2=request.POST['SemII']
+                cgpa.semII=sem2
+        except:
+            pass
+        try:
+            if request.POST['SemIII']:
+                print('sem3')
+                sem3=request.POST['SemIII']
+                cgpa.semIII=sem3
+        except:
+            pass
+        try:
+            if request.POST['SemIV']:
+                sem4=request.POST['SemIV']
+                cgpa.semIV=sem4
+        except:
+            pass
+        try:
+            if request.POST['SemV']:
+                sem5=request.POST['SemV']
+                cgpa.semV=sem5
+        except:
+            pass
+        try:
+            if request.POST['SemVI']:
+                sem6=request.POST['SemVI']
+                cgpa.semVI=sem6
+        except:
+            pass
+        try:
+            if request.POST['SemVII']:
+                sem7=request.POST['SemVII']
+                cgpa.semVII=sem7
+        except:
+            pass
+        try:
+            if request.POST['SemVIII']:
+                sem8=request.POST['SemVIII']
+                cgpa.semVIII=sem8
+        except:
+            pass
+        cgpa.save()
+        return redirect('studentMarks', pk = pk)
+        
+    return render(request, 'Marks/student-add-cgpa.html', context)
 
 @staff_member_required(login_url='Login')
 def facultyStudentMarks(request,stu_pk):
@@ -158,7 +216,7 @@ def facultyEditMarks(request, stu_pk, id):
         except:
             pass  
 
-        return redirect('facultyStudentMarks', stu_pk = user.usr_id)
+        return redirect('facultyStudentMarks', stu_pk = stu_pk)
 
     return render(request, 'Marks/faculty-edit-marks.html', context)
 
@@ -174,9 +232,11 @@ def facultyAddMarks(request,stu_pk):
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-
-        AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
-
+        try:
+            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
+        except:
+            # give error message
+            return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
         return redirect('facultyStudentMarks', stu_pk = user.usr_id)
 
     return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
@@ -193,5 +253,64 @@ def facultyDeleteMarks(request, stu_pk, id):
     return redirect('facultyStudentMarks',stu_pk = user.usr_id)
 
 @staff_member_required(login_url='Login')
-def facultyAddCGPA(request,):
-    return render(request, 'Marks/faculty-add-cgpa.html')
+def facultyAddCGPA(request,stu_pk):
+    user = User.objects.get(usr_id=stu_pk)
+    unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+    student = get_object_or_404(StudentProfile, user = user)
+    cgpa,created=SemCGPA.objects.get_or_create(student=student)
+    context = {'title': 'studentCGPA', 'cgpa':cgpa,'unread_announcement':unread_announcements}
+
+    if request.method == 'POST':
+        try:
+            if request.POST['SemI']:
+                sem1=request.POST['SemI']
+                cgpa.semI=sem1
+        except:
+            pass
+        try:
+            if request.POST['SemII']:
+                sem2=request.POST['SemII']
+                cgpa.semII=sem2
+        except:
+            pass
+        try:
+            if request.POST['SemIII']:
+                print('sem3')
+                sem3=request.POST['SemIII']
+                cgpa.semIII=sem3
+        except:
+            pass
+        try:
+            if request.POST['SemIV']:
+                sem4=request.POST['SemIV']
+                cgpa.semIV=sem4
+        except:
+            pass
+        try:
+            if request.POST['SemV']:
+                sem5=request.POST['SemV']
+                cgpa.semV=sem5
+        except:
+            pass
+        try:
+            if request.POST['SemVI']:
+                sem6=request.POST['SemVI']
+                cgpa.semVI=sem6
+        except:
+            pass
+        try:
+            if request.POST['SemVII']:
+                sem7=request.POST['SemVII']
+                cgpa.semVII=sem7
+        except:
+            pass
+        try:
+            if request.POST['SemVIII']:
+                sem8=request.POST['SemVIII']
+                cgpa.semVIII=sem8
+        except:
+            pass
+        cgpa.save()
+        return redirect('facultyStudentMarks', stu_pk = stu_pk)
+
+    return render(request, 'Marks/faculty-add-cgpa.html',context)

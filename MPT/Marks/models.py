@@ -14,8 +14,10 @@ class AcademicScores(models.Model):
     academicYear = models.CharField(max_length=50, blank=True, null=True)
     sem = models.CharField(max_length=50, blank=True, null=True)
     sub_code = models.CharField(max_length=50, blank=True, null=True)
+    sub_name = models.CharField(max_length=50, blank=True, null=True)
     exam = models.CharField(max_length=20,blank=True,null=True,choices=exam_choices,default=1)
-    marks = models.IntegerField(default=50)
+    marks = models.IntegerField(default=0)
+    outof = models.IntegerField(default=100)
 
     class Meta():
         unique_together = [['student','sem','exam','sub_code']]
@@ -24,8 +26,7 @@ class AcademicScores(models.Model):
         return self.student.user.first_name
 
 class SemCGPA(models.Model):
-    id = models.AutoField(primary_key=True)
-    student = models.ForeignKey(StudentProfile,null=True,blank=True ,on_delete=models.CASCADE)
+    student = models.OneToOneField(StudentProfile,on_delete=models.SET_NULL, null=True)
     semI = models.FloatField(default=0)
     semII = models.FloatField(default=0)
     semIII = models.FloatField(default=0)
