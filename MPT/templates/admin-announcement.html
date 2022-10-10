@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block announcementTabButton %}
-<button class="nav-link active" id="nav-announcement-tab" onclick="window.location.href = '{% url 'admin-mentor' %}';" data-bs-toggle="tab" data-bs-target="#nav-announcement" type="button" role="tab" aria-controls="nav-announcement-tab" aria-selected="true">
+<button class="nav-link active" id="nav-announcement-tab" onclick="window.location.href = '{% url 'admin-mentor' %}';" data-bs-toggle="tab" data-bs-target="#nav-announcement" type="button" role="tab" aria-controls="nav-announcement-tab"
+  aria-selected="true">
   Announcement
 </button>
 {% endblock %}
@@ -12,9 +13,9 @@
 
   <div class="container-fluid mb-5 ">
     <div class="sidebar flex-shrink-0 dashboard-navigation">
-       <div class="sidebar-heading d-flex align-items-center justify-content-center"> 
-      <h5>Announcement</h5>
-       </div> 
+      <div class="sidebar-heading d-flex align-items-center justify-content-center">
+        <h5>Announcement</h5>
+      </div>
 
       <!-- nav-tab -->
       <div class="mt-3 container-fluid">
@@ -22,15 +23,15 @@
           <div class="nav nav-tabs d-flex align-items-center justify-content-center" id="nav-tab" role="tablist">
 
             {% block announcementTableTabButton %}
-            <button class="nav-link" id="nav-announcement-table-tab" onclick="window.location.href = '{% url 'admin-announcement-table' %}';" data-bs-toggle="tab" data-bs-target="#nav-announcement-table" type="button" role="tab" aria-controls="nav-announcement-table-tab"
-              aria-selected="false">
-              <span class="iconify" data-icon="fa:table" data-width="20" data-height="20"></span> 
+            <button class="nav-link" id="nav-announcement-table-tab" onclick="window.location.href = '{% url 'admin-announcement-table' %}';" data-bs-toggle="tab" data-bs-target="#nav-announcement-table" type="button" role="tab"
+              aria-controls="nav-announcement-table-tab" aria-selected="false">
+              <span class="iconify" data-icon="fa:table" data-width="20" data-height="20"></span>
             </button>
             {% endblock %}
-            
+
             {% block announcementBlogTabButton %}
-            <button class="nav-link" id="nav-announcement-blog-tab" onClick="window.location.href='{% url 'admin-announcement-blog' %}'" data-bs-toggle="tab" data-bs-target="#nav-announcement-blog" type="button" role="tab" aria-controls="nav-annoncement-blog-tab"
-              aria-selected="false">
+            <button class="nav-link" id="nav-announcement-blog-tab" onClick="window.location.href='{% url 'admin-announcement-blog' %}'" data-bs-toggle="tab" data-bs-target="#nav-announcement-blog" type="button" role="tab"
+              aria-controls="nav-annoncement-blog-tab" aria-selected="false">
               <span class="iconify" data-icon="carbon:blog" data-width="20"></span>
             </button>
             {% endblock %}

@@ -1,9 +1,9 @@
-
 {% extends "student.html" %}
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+  aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
   Dashboard
 </button>
@@ -11,95 +11,95 @@
 
 {% block editButton %}
 <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
-<span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
-Edit Profile
+  <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
+  Edit Profile
 </button>
 {% endblock %}
 
 {% block dashboardContent %}
 <div class="tab-pane fade show active text" id="dashboard" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-    <div class=" m-2">
-        <h1 style="font-size: 25px; justify-content: center;">
-          <strong>Session Records</strong>
-        </h1>
-      </div>
-    
-      <nav class="m-2 mt-0">
-        <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
-          <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-prevoius" aria-selected="false">Previous Meetings</button>
-          <button class="nav-link active" id="nav-upcoming-tab" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab" aria-controls="nav-upcoming-tab" aria-selected="true">Upcoming Meetings</button>
-        </div>
-      </nav>
-    
-      <div class="tab-content m-2 mt-4" id="nav-tabContent">
-        <!-- Previous -->
-        <div class="tab-pane fade table-div" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
-          <table class="table table-striped table-hover table-bordered table-sm text" style="widows: 100%;" id="student-previous-table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Title</th>
-                <th scope="col">Mode</th>
-                <th scope="col">Venue/link</th>
-                <th scope="col">Attendance</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for meeting in meetingrecords %}
-              {% if todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time %}
-              <tr>
-                <th scope="row">{{meeting.Meeting_date}}</th>
-                <td>{{meeting.Meeting_time}}</td>
-                <td>{{meeting.Meeting_title}}</td>
-                <td>{{meeting.Meeting_mode}}</td>
-                <td>{{meeting.Meeting_link_or_venue}}</td>
-                <td>
-                  {% if meeting.meetingattendance%}
-                    {% if meeting.meetingattendance.Attendance %}
-                      Present
-                      {% else %}
-                      Absent
-                      {% endif %}
-                    {% else %}
-                      Absent
-                  {% endif %}
-                </td>
-              </tr>
+  <div class=" m-2">
+    <h1 style="font-size: 25px; justify-content: center;">
+      <strong>Session Records</strong>
+    </h1>
+  </div>
+
+  <nav class="m-2 mt-0">
+    <div class="nav nav-tabs nav-justified mt-3" id="nav-tab" role="tablist">
+      <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-prevoius" aria-selected="false">Previous Meetings</button>
+      <button class="nav-link active" id="nav-upcoming-tab" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab" aria-controls="nav-upcoming-tab" aria-selected="true">Upcoming Meetings</button>
+    </div>
+  </nav>
+
+  <div class="tab-content m-2 mt-4" id="nav-tabContent">
+    <!-- Previous -->
+    <div class="tab-pane fade table-div" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
+      <table class="table table-striped table-hover table-bordered table-sm text" style="widows: 100%;" id="student-previous-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Title</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Venue/link</th>
+            <th scope="col">Attendance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in meetingrecords %}
+          {% if todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time %}
+          <tr>
+            <th scope="row">{{meeting.Meeting_date}}</th>
+            <td>{{meeting.Meeting_time}}</td>
+            <td>{{meeting.Meeting_title}}</td>
+            <td>{{meeting.Meeting_mode}}</td>
+            <td>{{meeting.Meeting_link_or_venue}}</td>
+            <td>
+              {% if meeting.meetingattendance%}
+              {% if meeting.meetingattendance.Attendance %}
+              Present
+              {% else %}
+              Absent
               {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>    
-        <!-- Upcoming -->
-        <div class="tab-pane fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
-          <table class="table table-hover table-sm text" style="widows: 100%;" id="student-upcoming-table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Title</th>
-                <th scope="col">Mode</th>
-                <th scope="col">Venue/link</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for meeting in meetingrecords %}
-              {% if todays_date <= meeting.Meeting_date and current_time < meeting.Meeting_time or not todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time%}
-              <tr>
-                <th scope="row">{{meeting.Meeting_date}}</th>
-                <td>{{meeting.Meeting_time}}</td>
-                <td>{{meeting.Meeting_title}}</td>
-                <td>{{meeting.Meeting_mode}}</td>
-                <td>{{meeting.Meeting_link_or_venue}}</td>
-              </tr>
+              {% else %}
+              Absent
               {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-          </div>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- Upcoming -->
+    <div class="tab-pane fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
+      <table class="table table-hover table-sm text" style="widows: 100%;" id="student-upcoming-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Title</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Venue/link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in meetingrecords %}
+          {% if todays_date <= meeting.Meeting_date and current_time < meeting.Meeting_time or not todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time%}
+          <tr>
+            <th scope="row">{{meeting.Meeting_date}}</th>
+            <td>{{meeting.Meeting_time}}</td>
+            <td>{{meeting.Meeting_title}}</td>
+            <td>{{meeting.Meeting_mode}}</td>
+            <td>{{meeting.Meeting_link_or_venue}}</td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </div>
 {% endblock %}

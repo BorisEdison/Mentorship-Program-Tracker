@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' faculty.usr_id%}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onclick="window.location.href = '{% url 'faculty' faculty.usr_id%}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+  aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
   Dashboard
 </button>
@@ -95,7 +96,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}                
+                {% csrf_token %}
                 <div class="modal-body">
                   <!--Edit Student Details-->
                   {% include 'components/edit-student-details.html' %}
@@ -144,22 +145,23 @@
     <!-- Year heading -->
     <p class="h4"><strong>First Year</strong></p>
 
-      <!-- Graph-->
-  <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row ">
-    <span>
-      <canvas id="donutGraphSem1"></canvas>
-      <canvas id="barGraphSem1" class="pt-2"></canvas>
-    </span>
-    <span>
-      <canvas id="donutGraphSem2"></canvas>
-      <canvas id="barGraphSem2" class="pt-2"></canvas>
-    </span>
-  </section>
+    <!-- Graph-->
+    <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row ">
+      <span>
+        <canvas id="donutGraphSem1"></canvas>
+        <canvas id="barGraphSem1" class="pt-2"></canvas>
+      </span>
+      <span>
+        <canvas id="donutGraphSem2"></canvas>
+        <canvas id="barGraphSem2" class="pt-2"></canvas>
+      </span>
+    </section>
 
     <!-- Session Records Button -->
-  <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'induvidual-meeting-records' fac_id=faculty.usr_id stu_id=student.user.usr_id %}';" type="button">  <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
-  Session Records
-  </button>
+    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn"
+      onclick="window.location.href = '{% url 'induvidual-meeting-records' fac_id=faculty.usr_id stu_id=student.user.usr_id %}';" type="button"> <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
+      Session Records
+    </button>
 
   </section>
 

@@ -23,15 +23,15 @@
           <div class="nav nav-tabs d-flex align-items-center justify-content-center" id="nav-tab" role="tablist">
 
             {% block previousTabButton %}
-            <button class="nav-link" id="nav-previous-tab" onclick="window.location.href = '{% url 'admin-previous-meeting' %}';" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab"
-              aria-controls="nav-previous-tab" aria-selected="false">
+            <button class="nav-link" id="nav-previous-tab" onclick="window.location.href = '{% url 'admin-previous-meeting' %}';" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous-tab"
+              aria-selected="false">
               Previous
             </button>
             {% endblock %}
 
             {% block upcomingTabButton %}
-            <button class="nav-link" id="upcoming-tab" onClick="window.location.href='{% url 'admin-upcoming-meeting' %}'" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab"
-              aria-controls="nav-upcoming-tab" aria-selected="false">
+            <button class="nav-link" id="upcoming-tab" onClick="window.location.href='{% url 'admin-upcoming-meeting' %}'" data-bs-toggle="tab" data-bs-target="#nav-upcoming" type="button" role="tab" aria-controls="nav-upcoming-tab"
+              aria-selected="false">
               Upcoming
             </button>
             {% endblock %}

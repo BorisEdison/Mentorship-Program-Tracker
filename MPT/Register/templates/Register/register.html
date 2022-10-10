@@ -24,7 +24,7 @@
       <img style="border-radius: 5px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);" src="{% static 'content/logo.png' %}" width="60" height="60" alt="">
     </a>
   </div>
-    
+
   <main class="form-signin" style="max-width: 600px; ">
     {% if page == 'StudentUser' %}
     <form action="Sign-Up" method="POST">
@@ -72,8 +72,8 @@
           </div>
 
           <div class="form-floating">
-            <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
-            oninput="setCustomValidity('')" required>
+            <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+              oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')" oninput="setCustomValidity('')" required>
             <label for="inputpassword1">Password</label>
           </div>
 
@@ -127,13 +127,13 @@
         </div>
 
         <div class="">
-          <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
-          oninput="setCustomValidity('')" required>
+          <input type="password" name="password1" class="form-control middle" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+            oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')" oninput="setCustomValidity('')" required>
         </div>
 
         <div class="">
-          <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')"
-          oninput="setCustomValidity('')" required>
+          <input type="password" name="password2" class="form-control bottom" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+            oninvalid="this.setCustomValidity('Password must be at least 8 character and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')" oninput="setCustomValidity('')" required>
         </div>
 
       </div>

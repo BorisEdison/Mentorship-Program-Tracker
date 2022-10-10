@@ -1,9 +1,9 @@
-
 {% extends "student.html" %}
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' student.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' student.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+  aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
   Dashboard
 </button>
@@ -11,8 +11,8 @@
 
 {% block editButton %}
 <button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
-<span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
-Edit Profile
+  <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
+  Edit Profile
 </button>
 {% endblock %}
 
@@ -64,29 +64,29 @@ Edit Profile
     <!-- Year heading -->
     <p class="h4"><strong>First Year</strong></p>
 
-      <!-- Graph-->
-      <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row flex-wrap">
-      {% for semyear,subcodes in chartdict.items %} 
-          {{semyear}}<br>
-          {% for subcode,sub_marks in subcodes.items %}
-              <br>{{subcode}} : 
-              {% for sub_mark in sub_marks %}
-              {{sub_mark.exam}}
-              {{sub_mark.marks}}
-              {% endfor %}
-          {% endfor %}
-          <span>
-            <canvas id="donut-{{semyear}}"></canvas>
-            <canvas id="bar-{{semyear}}"></canvas>
-          </span>
-          {% endfor %}
-        </section> 
-    
-      <!-- Session Records Button -->
-      <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button">
+    <!-- Graph-->
+    <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row flex-wrap">
+      {% for semyear,subcodes in chartdict.items %}
+      {{semyear}}<br>
+      {% for subcode,sub_marks in subcodes.items %}
+      <br>{{subcode}} :
+      {% for sub_mark in sub_marks %}
+      {{sub_mark.exam}}
+      {{sub_mark.marks}}
+      {% endfor %}
+      {% endfor %}
+      <span>
+        <canvas id="donut-{{semyear}}"></canvas>
+        <canvas id="bar-{{semyear}}"></canvas>
+      </span>
+      {% endfor %}
+    </section>
+
+    <!-- Session Records Button -->
+    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button">
       <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
       Session Records
-      </button>
+    </button>
 
   </section>
 

@@ -3,8 +3,8 @@
 
 {% block meetingButton %}
 <button class="nav-link active nav-pills-link" id="meeting-tab" onClick="window.location.reload();" data-bs-toggle="pill" data-bs-target="#meeting" type="button" role="tab" aria-controls="meeting" aria-selected="false">
-    <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
-    Meeting
+  <span class="iconify-inline" data-icon="akar-icons:schedule" data-width="21" data-height="21"></span>
+  Meeting
 </button>
 {% endblock %}
 
@@ -19,31 +19,31 @@
     </div>
     {% if meetings %}
     {% for meeting in meetings %}
-    {% if meeting.Receiver.user == request.user %} 
+    {% if meeting.Receiver.user == request.user %}
     <div class="card  mb-4">
-        <div class="card-header">
-              <img class="rounded-circle image3" src="{{ meeting.Sender.user.profile_img.url }}" height="48" width="48">
-              {{ meeting.Sender.user.first_name }} {{ meeting.Sender.user.last_name }}
-        </div>
-        <div class="card-body">
-          <a href="">
-            <h3 class="card-title text-muted">{{ meeting.Meeting_title }}</h3>
-          </a>
-          <p class="card-text">
-            Meeting Date: {{ meeting.Meeting_date }}<br>
-            Meeting Time: {{ meeting.Meeting_time }}<br>
-            {{ meeting.Meeting_description }}<br><br>
-
-            Meeting Link: {{meeting.Meeting_link_or_venue}}</a>
-          </p>
-        </div>
-        <div class="card-footer">
-          {{ meeting.created_at|date:"D d M Y" }}  {{ meeting.created_at|time}}
-        </div>
+      <div class="card-header">
+        <img class="rounded-circle image3" src="{{ meeting.Sender.user.profile_img.url }}" height="48" width="48">
+        {{ meeting.Sender.user.first_name }} {{ meeting.Sender.user.last_name }}
       </div>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
+      <div class="card-body">
+        <a href="">
+          <h3 class="card-title text-muted">{{ meeting.Meeting_title }}</h3>
+        </a>
+        <p class="card-text">
+          Meeting Date: {{ meeting.Meeting_date }}<br>
+          Meeting Time: {{ meeting.Meeting_time }}<br>
+          {{ meeting.Meeting_description }}<br><br>
+
+          Meeting Link: {{meeting.Meeting_link_or_venue}}</a>
+        </p>
+      </div>
+      <div class="card-footer">
+        {{ meeting.created_at|date:"D d M Y" }} {{ meeting.created_at|time}}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     <!--Pagination buttons-->
     <div class="d-flex align-items-center justify-content-center mb-0">
 
