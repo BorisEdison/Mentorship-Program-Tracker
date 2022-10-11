@@ -17,12 +17,12 @@
 
 /* Nav-Tab */
 .nav-link {
-  color: var(--btn-bg);
+  color: var(--navbar-bg);
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: var(--body-bg);
-  background-color: var(--navbar-bg);
+  background-color: var(--btn-bg);
   border-color: var(--navbar-bg) var(--navbar-bg) var(--text-body);
 }
 .nav-tabs .nav-link {
@@ -43,8 +43,9 @@
   display: block;
   border: none;
   border-radius: 10px;
-  height: 22vh; 
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  max-height: 24vh !important; 
+  max-width: 11vw !important; 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
 }
 
 /* Graph */
