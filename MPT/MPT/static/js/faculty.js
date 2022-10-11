@@ -1,7 +1,7 @@
 // ---------- Adding Datatables ------------------
 $(document).ready( function () {
   $('#marks-table').DataTable({
-      //options
+        //options
         dom: 'Blfrtip',
         select:true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
@@ -18,7 +18,7 @@ $(document).ready( function () {
 } );
 $(document).ready( function () {
   $('#sendTo-table').DataTable({
-      //options
+        //options
         dom: 'Blfrtip',
         select:true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
@@ -35,7 +35,7 @@ $(document).ready( function () {
 } );
 $(document).ready( function () {
   $('#previous-table').DataTable({
-      //options
+        //options
         dom: 'Blfrtip',
         select:true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
@@ -52,7 +52,7 @@ $(document).ready( function () {
 } );
 $(document).ready( function () {
   $('#upcoming-table').DataTable({
-      //options
+        //options
         dom: 'Blfrtip',
         select:true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
