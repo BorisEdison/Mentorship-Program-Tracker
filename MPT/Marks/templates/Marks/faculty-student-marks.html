@@ -22,7 +22,7 @@
       <strong>Marks</strong>
     </h1>
 
-    <button type="button" style="margin-right:10px" class="btn ms-auto btn-sm custom-btn" onclick="window.location.href = '{% url 'facultyAddCGPA' %}';">
+    <button type="button" style="margin-right:10px" class="btn ms-auto btn-sm custom-btn" onclick="window.location.href = '{% url 'facultyAddCGPA' student.user.usr_id %}';">
       Add CGPA
     </button>
 

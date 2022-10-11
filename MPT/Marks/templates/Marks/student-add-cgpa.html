@@ -24,14 +24,14 @@
     <div class="row">
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='ISem' class="form-control" id="inputISem" placeholder="I SEM" min="0" max="10">
+          <input type="number" name='SemI' class="form-control" id="inputISem" placeholder="I Sem" min="4" max="10" step="0.01" {% if cgpa.semI %} value={{cgpa.semI}} {% endif %}>
           <label for="inputISem">I Semester</label>
         </div>
       </div>
 
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='IISem' class="form-control" id="inputIISem" placeholder="II Sem" min="0" max="10">
+          <input type="number" name='SemII' class="form-control" id="inputIISem" placeholder="II Sem" min="4" max="10" step="0.01" {% if cgpa.semII %} value={{cgpa.semII}} {% endif %}>
           <label for="inputIISem">II Semester</label>
         </div>
       </div>
@@ -41,14 +41,14 @@
     <div class="row mt-3">
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='IIISem' class="form-control" id="inputIIISem" placeholder="III Sem" min="0" max="10">
+          <input type="number" name='SemIII' class="form-control" id="inputIIISem" placeholder="III Sem" min="4" max="10" step="0.01" {% if cgpa.semIII %} value={{cgpa.semIII}} {% endif %}>
           <label for="inputIIISem">III Semester</label>
         </div>
       </div>
 
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='IVSem' class="form-control" id="inputIVSem" placeholder="IV Sem" min="0" max="10">
+          <input type="number" name='SemIV' class="form-control" id="inputIVSem" placeholder="IV Sem" min="4" max="10" step="0.01"  {% if cgpa.semIV %} value={{cgpa.semIV}} {% endif %} >
           <label for="inputIVSem">IV Semester</label>
         </div>
       </div>
@@ -58,14 +58,14 @@
     <div class="row mt-3">
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='VSem' class="form-control" id="inputVSem" placeholder="V Sem" min="0" max="10">
+          <input type="number" name='SemV' class="form-control" id="inputVSem" placeholder="V Sem" min="4" max="10" step="0.01" {% if cgpa.semV %} value={{cgpa.semV}} {% endif %}>
           <label for="inputVSem">V Semester</label>
         </div>
       </div>
 
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='VISem' class="form-control" id="inputVISem" placeholder="VI Sem" min="0" max="10">
+          <input type="number" name='SemVI' class="form-control" id="inputVISem" placeholder="VI Sem" min="4" max="10" step="0.01" {% if cgpa.semVI %} value={{cgpa.semVI}} {% endif %}>
           <label for="inputVISem">VI Semester</label>
         </div>
       </div>
@@ -75,14 +75,14 @@
     <div class="row mt-3">
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='VIISem' class="form-control" id="inputVIISem" placeholder="VII Sem" min="0" max="10">
+          <input type="number" name='SemVII' class="form-control" id="inputVIISem" placeholder="VII Sem" min="4" max="10" step="0.01" {% if cgpa.semVII %} value={{cgpa.semVII}} {% endif %}>
           <label for="inputVIISem">VII Semester</label>
         </div>
       </div>
 
       <div class="col-6 full-width-sm d-flex justify-content-center">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='VIIISem' class="form-control" id="inputVIIISem" placeholder="VIII Sem" min="0" max="10">
+          <input type="number" name='SemVIII' class="form-control" id="inputVIIISem" placeholder="VIII Sem" min="4" max="10" step="0.01" {% if cgpa.semVIII %} value={{cgpa.semVIII}} {% endif %}>
           <label for="inputVIIISem">VIII Semester</label>
         </div>
       </div>
