@@ -30,6 +30,7 @@
   --text-component: #E5E9F0;
   --text-body: #111318;
 }
+
 /*tags*/
 body {
   background-color: var(--body-bg);
@@ -68,6 +69,7 @@ h6 {
 .form-select+label {
   color: var(--text-body) !important;
 }
+
 /* scrollbar */
 ::-webkit-scrollbar {
   z-index: 30;
@@ -153,7 +155,6 @@ h6 {
 .card-footer {
   background-color: var(--body-bg) !important;
 }
-
 .dataTables_wrapper .dataTables_filter input,
 .dataTables_wrapper .dataTables_length select, 
 .dataTables_wrapper .dataTables_length, 

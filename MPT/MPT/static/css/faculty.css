@@ -1,12 +1,21 @@
-/* Dashboard Buttons-1 */
-.dashboard-buttons-1 {
-  margin-top: 4vh;
-}
-
 /* Meetings Modal */
 .modal-body {
   padding: 0;
 }
+.modal-content {
+  background-color: var(--content-bg);
+}
+
+/* Nav Pill */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+  background-color: var(--navbar-bg);
+  color: var(--text-component);
+}
+.nav-pills-link {
+  color: var(--navbar-bg);
+}
+
+/* Nav Tab */
 .nav-link {
   color: var(--navbar-bg);
 }
@@ -32,13 +41,6 @@
   /* box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5); */
   margin: 10px 0;
   margin-top: 5.5vh;
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-  background-color: var(--navbar-bg);
-  color: var(--text-component);
-}
-.nav-pills-link {
-  color: var(--navbar-bg);
 }
 .dashboard-navigation {
   padding-right: 0;
@@ -139,11 +141,17 @@
   transform: scale(0.9); */
 }
 
-/* select-checkbox */
-.cb-choose{
-  position: absolute;
-  right: 25px;
-  top: 30px;
+/* Student Profile */
+.stu-image {
+  display: block;
+  border: none;
+  border-radius: 10px;
+  height: 22vh; 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.accordion-item,
+.accordion-button{
+  background-color: var(--body-bg);
 }
 
 /* Media query */
@@ -165,12 +173,4 @@
   #grd .grid-li {
     width: 50%;
   }
-}
-.modal-content {
-  background-color: var(--content-bg);
-}
-
-.accordion-item,
-.accordion-button{
-  background-color: var(--body-bg);
 }

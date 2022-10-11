@@ -5,6 +5,8 @@
   /*box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);*/
   margin: 5.5vh 0 10px 0;
 }
+
+/* Nav Pill */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
   background-color: var(--btn-bg);
   color: var(--text-component);
@@ -13,7 +15,7 @@
   color: var(--btn-bg);
 }
 
-/* nav-tab */
+/* Nav-Tab */
 .nav-link {
   color: var(--btn-bg);
 }
@@ -28,7 +30,6 @@
 }
 
 /* Student Dashboard */
-
 .accordion-item,
 .accordion-button{
   background-color: var(--body-bg);
@@ -38,7 +39,15 @@
   height: 250px;
   overflow: auto;
 }
+.stu-image {
+  display: block;
+  border: none;
+  border-radius: 10px;
+  height: 22vh; 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
+/* Graph */
 .graphs > span {
   max-width: 350px;
 }
@@ -48,34 +57,11 @@
   height:250px;
 }
 
-.stu-image {
-  display: block;
-  border: none;
-  border-radius: 10px;
-  height: 22vh; 
-  /*box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5)*/
-}
-
-.stu-info > accordion {
-  border-radius: 4px;
-}
-/*.stu-info > span {
-  display: flex;
-  flex-direction: column;
-  max-width: 20ch;
-  overflow-wrap: normal;
-}
-.stu-info > span > p {
-  font-size: 20px;
-}*/
-
-
 @media (max-width:800px) {
   .accordion-div{
     padding-top: 1rem  !important;
   }
 }
-
 @media (max-width:992px) {
   .accordion-div{
     padding-top: 1rem  !important;

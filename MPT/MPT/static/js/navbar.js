@@ -65,7 +65,7 @@ if (mediaQuery.matches) {
     "0 0 2px rgb(0 0 0)";
 }
 
-// tooltip
+// Tooltip
 var mediaQuery = window.matchMedia("(min-width: 991.49px)");
 if (mediaQuery.matches) {
   (function () {

@@ -4,6 +4,7 @@
   color: var(--text-component);
   /*text-shadow: 0 0 2px rgb(0, 0, 0);*/
 }
+
 /* nav-tab */
 .nav-link {
   color: var(--navbar-bg);
@@ -16,7 +17,6 @@
   background-color: var(--navbar-bg);
   border-color: var(--navbar-bg) var(--navbar-bg) var(--text-body);
   /*text-shadow: 0 0 2px black;*/
-
 }
 .nav-tabs .nav-link {
   border-bottom: 3px solid transparent;
