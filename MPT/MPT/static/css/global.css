@@ -91,12 +91,12 @@ h6 {
   border-radius: 7px; 
   background-color:  var(--btn-bg); 
   color:  var(--text-component); 
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .custom-btn:hover{
   color: var(--btn-bg) !important;
   background-color: var(--text-component) !important;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
 }
 .update-btn{
   width: auto; 
@@ -114,14 +114,14 @@ h6 {
   border-radius: 7px; 
   background-color: #8C0000; 
   color: white; 
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .cancel-btn:hover{
   width: auto; 
   border-radius: 7px; 
   background-color: white; 
   color: #8C0000; 
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .image {
   display: block;

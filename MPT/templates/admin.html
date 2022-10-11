@@ -24,7 +24,7 @@
 
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-main sticky-top navbar-expand-lg">
+  <nav class="navbar navbar-main sticky-top navbar-expand-lg shadow-lg pt-0 pb-0">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="{% static 'content/logo.png' %}" class="image2" alt="">
@@ -42,7 +42,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar-content">
         <div class="ms-auto admin-greeting">
-          Welcome Admin
+          Welcome Admin&nbsp;
         </div>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
@@ -102,12 +102,12 @@
         </button>
         {% endblock %}
 
-        {% block activitiesTabButton %}
+        <!-- {% block activitiesTabButton %}
         <button class="nav-link" id="nav-activities-tab" onclick="window.location.href = '{% url 'admin-activity' %}';" data-bs-toggle="tab" data-bs-target="#nav-activities" type="button" role="tab" aria-controls="nav-activities"
           aria-selected="false">
           Activities
         </button>
-        {% endblock %}
+        {% endblock %} -->
 
       </div>
     </nav>
