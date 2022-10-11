@@ -38,24 +38,24 @@
       <table class="table table-striped table-hover table-bordered table-sm text" style="widows: 100%;" id="student-previous-table">
         <thead>
           <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Title</th>
-            <th scope="col">Mode</th>
-            <th scope="col">Venue/link</th>
-            <th scope="col">Attendance</th>
+            <th class="text-center" scope="col">Date</th>
+            <th class="text-center" scope="col">Time</th>
+            <th class="text-center" scope="col">Title</th>
+            <th class="text-center" scope="col">Mode</th>
+            <th class="text-center" scope="col">Venue/link</th>
+            <th class="text-center" scope="col">Attendance</th>
           </tr>
         </thead>
         <tbody>
           {% for meeting in meetingrecords %}
           {% if todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time %}
           <tr>
-            <th scope="row">{{meeting.Meeting_date}}</th>
-            <td>{{meeting.Meeting_time}}</td>
-            <td>{{meeting.Meeting_title}}</td>
-            <td>{{meeting.Meeting_mode}}</td>
-            <td>{{meeting.Meeting_link_or_venue}}</td>
-            <td>
+            <th class="text-center" scope="row">{{meeting.Meeting_date}}</th>
+            <td class="text-center">{{meeting.Meeting_time}}</td>
+            <td class="text-center">{{meeting.Meeting_title}}</td>
+            <td class="text-center">{{meeting.Meeting_mode}}</td>
+            <td class="text-center">{{meeting.Meeting_link_or_venue}}</td>
+            <td class="text-center">
               {% if meeting.meetingattendance%}
               {% if meeting.meetingattendance.Attendance %}
               Present
@@ -77,22 +77,22 @@
       <table class="table table-hover table-sm text" style="widows: 100%;" id="student-upcoming-table">
         <thead>
           <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Title</th>
-            <th scope="col">Mode</th>
-            <th scope="col">Venue/link</th>
+            <th class="text-center" scope="col">Date</th>
+            <th class="text-center" scope="col">Time</th>
+            <th class="text-center" scope="col">Title</th>
+            <th class="text-center" scope="col">Mode</th>
+            <th class="text-center" scope="col">Venue/link</th>
           </tr>
         </thead>
         <tbody>
           {% for meeting in meetingrecords %}
           {% if todays_date <= meeting.Meeting_date and current_time < meeting.Meeting_time or not todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time%}
           <tr>
-            <th scope="row">{{meeting.Meeting_date}}</th>
-            <td>{{meeting.Meeting_time}}</td>
-            <td>{{meeting.Meeting_title}}</td>
-            <td>{{meeting.Meeting_mode}}</td>
-            <td>{{meeting.Meeting_link_or_venue}}</td>
+            <th class="text-center" scope="row">{{meeting.Meeting_date}}</th>
+            <td class="text-center">{{meeting.Meeting_time}}</td>
+            <td class="text-center">{{meeting.Meeting_title}}</td>
+            <td class="text-center">{{meeting.Meeting_mode}}</td>
+            <td class="text-center">{{meeting.Meeting_link_or_venue}}</td>
           </tr>
           {% endif %}
           {% endfor %}
