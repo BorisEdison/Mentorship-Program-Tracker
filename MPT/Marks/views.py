@@ -54,16 +54,19 @@ def studentAddMarks(request, pk):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
+        outof = request.POST['totalMarks']
 
-        try:
-            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
-        except:
-            # give error message
-            return render(request, 'Marks/student-marks-add.html', context)
+        if outof >= marks:
+            try:
+                AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode ,sub_name=sname, exam = exam , marks = marks, outof = outof)
+            except:
+                # give error message
+                return render(request, 'Marks/student-marks-add.html', context)
 
         return redirect('studentMarks', pk = pk)
 
@@ -82,23 +85,29 @@ def studentEditMarks(request, pk,id):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            Edit = AcademicScores.objects.get(id = id)
-            Edit.student = student
-            Edit.academicYear = year
-            Edit.sem = sem
-            Edit.sub_code = scode
-            Edit.exam = exam
-            Edit.marks = marks
-            Edit.save()
-        except:
-            # give error message
-            pass
-        return redirect('studentMarks', pk = pk)
+        outof = request.POST['totalMarks']
+        
+        if outof >= marks:
+            try:
+                Edit = AcademicScores.objects.get(id = id)
+                Edit.student = student
+                Edit.academicYear = year
+                Edit.sem = sem
+                Edit.sub_code = scode
+                Edit.sub_name = sname
+                Edit.exam = exam
+                Edit.marks = marks
+                Edit.outof = outof
+                Edit.save()
+            except:
+                # give error message
+                pass
+            return redirect('studentMarks', pk = pk)
 
     return render(request, 'Marks/student-edit-marks.html', context)
 
@@ -199,23 +208,28 @@ def facultyEditMarks(request, stu_pk, id):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            Edit = AcademicScores.objects.get(id = id)
-            Edit.student = student
-            Edit.academicYear = year
-            Edit.sem = sem
-            Edit.sub_code = scode
-            Edit.exam = exam
-            Edit.marks = marks
-            Edit.save()      
-        except:
-            pass  
+        outof = request.POST['totalMarks']
 
-        return redirect('facultyStudentMarks', stu_pk = stu_pk)
+        if outof >= marks:
+            try:
+                Edit = AcademicScores.objects.get(id = id)
+                Edit.student = student
+                Edit.academicYear = year
+                Edit.sem = sem
+                Edit.sub_code = scode
+                Edit.exam = exam
+                Edit.marks = marks
+                Edit.outof = outof
+                Edit.save()      
+            except:
+                pass  
+
+            return redirect('facultyStudentMarks', stu_pk = stu_pk)
 
     return render(request, 'Marks/faculty-edit-marks.html', context)
 
@@ -227,16 +241,20 @@ def facultyAddMarks(request,stu_pk):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
-        except:
-            # give error message
-            return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
-        return redirect('facultyStudentMarks', stu_pk = user.usr_id)
+        outof = request.POST['totalMarks']
+
+        if outof >= marks:
+            try:
+                AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode ,sub_name=sname, exam = exam , marks = marks, outof = outof)
+            except:
+                # give error message
+                return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
+            return redirect('facultyStudentMarks', stu_pk = user.usr_id)
 
     return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
     

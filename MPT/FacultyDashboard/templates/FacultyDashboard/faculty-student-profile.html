@@ -143,18 +143,16 @@
     </button>
 
     <!-- Year heading -->
-    <p class="h4"><strong>First Year</strong></p>
+    <p class="h4"><strong>Academic Analytics</strong></p>
 
     <!-- Graph-->
-    <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row ">
+    <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row flex-wrap">
+      {% for semyear,subcodes in chartdict.items %}
       <span>
-        <canvas id="donutGraphSem1"></canvas>
-        <canvas id="barGraphSem1" class="pt-2"></canvas>
+        <canvas id="donut-{{semyear}}"></canvas>
+        <canvas id="bar-{{semyear}}"></canvas>
       </span>
-      <span>
-        <canvas id="donutGraphSem2"></canvas>
-        <canvas id="barGraphSem2" class="pt-2"></canvas>
-      </span>
+      {% endfor %}
     </section>
 
     <!-- Session Records Button -->

@@ -95,13 +95,17 @@ var stackedText = {
     ctx.font = "bolder 13px Arial";
     // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
     ctx.textAlign = "center";
-    ctx.fillText("5.56", (left + right) / 2, (bottom + top) / 2 - 5);
-    ctx.restore();
-
-    ctx.font = "bold 8px Arial";
-    // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
-    ctx.textAlign = "center";
-    ctx.fillText("CGPA", (left + right) / 2, (bottom + top) / 2 + 5);
+    {% for sem,cgpa in cgpa_dict.items %}
+      {% if semyear|slice:"3:" == sem %}
+      ctx.fillText("{% if cgpa %}{{cgpa}}{% endif %}", (left + right) / 2, (bottom + top) / 2 - 5);
+      ctx.restore();
+      
+      ctx.font = "bold 8px Arial";
+      // ctx.fillStyle = localStorage.getItem('theme') == 'dark' ?"#e5e9f0":"#111318";
+      ctx.textAlign = "center";
+      ctx.fillText("{% if cgpa %}CGPA{% endif %}", (left + right) / 2, (bottom + top) / 2 + 5);
+      {% endif %}
+      {% endfor %}
   },
 };
 

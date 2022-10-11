@@ -3,7 +3,7 @@ from accounts.models import *
 from FacultyDashboard.models import *
 from django.contrib.auth.decorators import login_required
 from Announcement.models import *
-from Marks.models import AcademicScores
+from Marks.models import *
 import datetime
 
 @login_required(login_url='Login')
@@ -12,6 +12,13 @@ def student(request, pk):
     if request.user.is_authenticated and not(request.user.is_staff):
         user = User.objects.get(usr_id=pk)
         student=StudentProfile.objects.get(user=user)
+        cgpa,created=SemCGPA.objects.get_or_create(student=student)
+        cgpa_dict={}
+        try:
+            for i in ['I','II','III','IV','V','VI','VII','VIII']:
+                cgpa_dict['SEMESTER '+i] = cgpa.__dict__['sem'+i]
+        except:
+            pass
         unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
         unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
         distinct_sem_yr = AcademicScores.objects.filter(student=student).values('academicYear','sem','exam').distinct().order_by('academicYear','sem','sub_code','exam')
@@ -27,7 +34,8 @@ def student(request, pk):
                 'student':student,
                 'unread_announcement':unread_announcements,
                 'unseen_meetings':unseen_meetings,
-                'chartdict':chartdict
+                'chartdict':chartdict,
+                'cgpa_dict':cgpa_dict
                 }
         if student.is_assigned:
             try:

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
@@ -8,12 +8,12 @@ from django.template.loader import render_to_string
 from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, Mentor_assign, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 from django.contrib.auth.decorators import permission_required
-from accounts.models import User
 from django.contrib.auth import logout as django_logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from EditUser.views import studentcontext
 from .models import *
+from Marks.models import *
 from Announcement.models import *
 import datetime
 
@@ -29,7 +29,23 @@ def studentdetail(request, fac_id, stu_id):
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     faculty = User.objects.get(usr_id=fac_id)
     student = StudentProfile.objects.get(user=user)
-    context =  { 'user': user,'faculty':faculty, 'student': student,'unread_announcement':unread_announcements} 
+    cgpa,created=SemCGPA.objects.get_or_create(student=student)
+    cgpa_dict={}
+    try:
+        for i in ['I','II','III','IV','V','VI','VII','VIII']:
+            cgpa_dict['SEMESTER '+i] = cgpa.__dict__['sem'+i]
+    except:
+        pass
+    distinct_sem_yr = AcademicScores.objects.filter(student=student).values('academicYear','sem','exam').distinct().order_by('academicYear','sem','sub_code','exam')
+    chartdict={}
+    for i in distinct_sem_yr:
+        distinct_subs=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem']).values('sub_code').distinct()
+        sub_code_dict={}
+        for j in distinct_subs:
+            sub_code_dict[j['sub_code']]=AcademicScores.objects.filter(academicYear=i['academicYear'],sem=i['sem'],sub_code=j['sub_code']).values('exam','marks')
+        chartdict[str(i['academicYear'])+" SEMESTER " +str(i['sem'])]=sub_code_dict
+
+    context =  { 'user': user,'faculty':faculty, 'student': student,'unread_announcement':unread_announcements,'chartdict':chartdict,'cgpa_dict':cgpa_dict} 
     context.update(studentcontext)
 
     if request.method == "POST":
