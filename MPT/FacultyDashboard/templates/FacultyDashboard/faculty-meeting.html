@@ -52,7 +52,7 @@
       </div>
     </form>
 
-    <form method="POST" action={% url 'faculty-meeting' %}>
+    <form method="POST" action={% url 'faculty-meeting' %} onsubmit="schedule.disabled = true; return true;">
       {% csrf_token %}
       <div class="mb-4">
         <label for="inputTitle" class="form-label"><strong>Title</strong></label>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="d-flex align-items-center justify-content-center mt-4 mb-3">
-          <button type="submit" class="btn ms-auto btn-sm custom-btn">
+          <button type="submit" class="btn ms-auto btn-sm custom-btn" name='schedule'>
             Schedule
           </button>
         </div>

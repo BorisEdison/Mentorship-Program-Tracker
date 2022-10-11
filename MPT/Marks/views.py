@@ -38,7 +38,7 @@ def studentMarks(request, pk):
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-    marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
+    marks = AcademicScores.objects.filter(student = student).order_by('sub_code','-exam').values()
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student, 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
     context.update(marks_context)
     return render(request, 'Marks/student-marks.html', context)
@@ -137,7 +137,6 @@ def studentAddCGPA(request,pk):
             pass
         try:
             if request.POST['SemIII']:
-                print('sem3')
                 sem3=request.POST['SemIII']
                 cgpa.semIII=sem3
         except:
@@ -182,7 +181,7 @@ def facultyStudentMarks(request,stu_pk):
     user = User.objects.get(usr_id=stu_pk)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
-    marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
+    marks = AcademicScores.objects.filter(student = student).order_by('sub_code','-exam').values()
     
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student, 'unread_announcement':unread_announcements}
     context.update(marks_context)
@@ -275,7 +274,6 @@ def facultyAddCGPA(request,stu_pk):
             pass
         try:
             if request.POST['SemIII']:
-                print('sem3')
                 sem3=request.POST['SemIII']
                 cgpa.semIII=sem3
         except:

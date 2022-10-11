@@ -19,7 +19,7 @@
       </h1>
     </div>
 
-    <form method="POST">
+    <form method="POST" onsubmit="post.disabled = true; return true;" >
       {% csrf_token %}
 
       <div class="mb-4">
@@ -63,12 +63,14 @@
       </div>
 
       <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-        <button type="submit" class="btn btn-sm ms-auto custom-btn">
-          Post
-        </button>
+        <input type="submit" value='POST' class="btn btn-sm ms-auto custom-btn" name='post'>
       </div>
     </form>
 
   </div>
 </div>
+
+<script>
+</script>
+
 {% endblock %}
