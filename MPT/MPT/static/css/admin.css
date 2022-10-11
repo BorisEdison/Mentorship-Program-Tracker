@@ -25,13 +25,13 @@
 /* main window */
 .sidebar-heading {
   height: 5.5vh;
-  background-color: #344F6D;
+  background-color: #112D4E;
   color: white;
   border-radius: 13px 13px 0 0;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
 }
 .sidebar {
-  background-color: #F1F1F1;
+  background-color: var(--content-bg);
   border-radius: 13px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
   margin: 10px 0;

@@ -16,16 +16,16 @@
       </div>
       <!-- buttons -->
       <div class="container-fluid" style="overflow-x: auto;">
-        <div class="d-flex bd-highlight mb-3">
+        <div class="d-flex bd-highlight mb-2">
           <!--   -->
-          <div class="p-2 bd-highlight">
-            <button type="button" onclick="window.location.href = '{% url 'register'  %}';" class="btn btn-light ms-auto btn-sm btn-outline-dark" d>
+          <div class="p-2 pt-3 bd-highlight">
+            <button type="button" onclick="window.location.href = '{% url 'register'  %}';" class="btn ms-auto btn-sm custom-btn" d>
               <span class="iconify" data-icon="ant-design:user-add-outlined" data-width="25" data-height="25"></span>
               Add Students
             </button>
           </div>
-          <div class="p-2 bd-highlight">
-            <button type="button" onClick="window.location.reload()" class="btn btn-light  btn-sm btn-outline-dark" type="button">
+          <div class="p-2 pt-3 bd-highlight">
+            <button type="button" onClick="window.location.reload()" class="btn custom-btn btn-sm" type="button">
               <span class="iconify" data-icon="ci:refresh-02" data-width="25" data-height="25"></span>
               Refresh List
             </button>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <!-- table -->
-      <div class="table-div m-4 mt-4 mb-4">
+      <div class="table-div m-4 mt-2 mb-4">
         <table class="table table-striped table-hover table-bordered" style="widows: 100%;" id="student-table">
           <thead>
             <tr>

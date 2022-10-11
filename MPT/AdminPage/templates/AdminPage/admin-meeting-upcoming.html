@@ -13,7 +13,7 @@
 <div class="tab-pane fade active show" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
 
   <!-- Upcoming -->
-  <div class="tab-pane m-4 mt-4 mb-4 fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
+  <div class="tab-pane m-4 mt-3 class="text-center" mb-4 fade show active" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab">
     <table class="table table-striped table-hover table-bordered table-sm" style="widows: 100%;" id="upcoming-table">
       <thead>
         <tr>
@@ -34,15 +34,15 @@
         {% if todays_date <= meeting.Meeting_date and current_time < meeting.Meeting_time or not todays_date >= meeting.Meeting_date and current_time > meeting.Meeting_time%}
         <tr>
           <th scope="row">{{meeting.Meeting_date}}</th>
-          <td>{{meeting.Meeting_time}}</td>
-          <td>{{meeting.Meeting_title}}</td>
-          <td>{{meeting.Meeting_mode}}</td>
-          <td>{{meeting.Meeting_link_or_venue}}</td>
-          <td>{{meeting.Meeting_description}}</td>
-          <td>{{meeting.Sender.user.first_name}} {{meeting.Sender.user.first_name}}</td>
-          <td>{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
-          <td>{{meeting.Sender.Branch}}</td>
-          <td>
+          <td class="text-center">{{meeting.Meeting_time}}</td>
+          <td class="text-center">{{meeting.Meeting_title}}</td>
+          <td class="text-center">{{meeting.Meeting_mode}}</td>
+          <td class="text-center">{{meeting.Meeting_link_or_venue}}</td>
+          <td class="text-center">{{meeting.Meeting_description}}</td>
+          <td class="text-center">{{meeting.Sender.user.first_name}} {{meeting.Sender.user.first_name}}</td>
+          <td class="text-center">{{meeting.Receiver.user.first_name}} {{meeting.Receiver.user.last_name}}</td>
+          <td class="text-center">{{meeting.Sender.Branch}}</td>
+          <td class="text-center">
             <form action="{% url 'admin-delete-meeting-record' meeting.Meeting_id %}" class="mb-0" style="display: inline-block" method='POST'>
               {% csrf_token %}
               <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this meeting record ?');">
