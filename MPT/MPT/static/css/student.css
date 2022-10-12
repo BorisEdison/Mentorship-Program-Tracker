@@ -2,7 +2,7 @@
 .sidebar {
   background-color: var(--content-bg);
   border-radius: 13px;
-  /*box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);*/
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin: 5.5vh 0 10px 0;
 }
 
@@ -17,12 +17,12 @@
 
 /* Nav-Tab */
 .nav-link {
-  color: var(--btn-bg);
+  color: var(--navbar-bg);
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: var(--body-bg);
-  background-color: var(--navbar-bg);
+  background-color: var(--btn-bg);
   border-color: var(--navbar-bg) var(--navbar-bg) var(--text-body);
 }
 .nav-tabs .nav-link {
@@ -34,6 +34,10 @@
 .accordion-button{
   background-color: var(--body-bg);
 }
+.accordion{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+  border-radius: 10px !important;
+}
 .scrollspy-example {
   position: relative;
   height: 250px;
@@ -43,8 +47,9 @@
   display: block;
   border: none;
   border-radius: 10px;
-  height: 22vh; 
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  max-height: 24vh !important; 
+  max-width: 11vw !important; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 /* Graph */

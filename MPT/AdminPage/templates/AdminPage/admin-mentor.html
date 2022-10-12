@@ -57,16 +57,16 @@
               </td>
               <td class="px-2 py-1 text-center">
 
-                <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'update-user' user.usr_id%}'">
+                <button type="button" class="btn btn-info ms-auto btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="border-color: black" onClick="window.location.href='{% url 'update-user' user.usr_id%}'">
                   <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>
                 </button>
                 <form action="{% url 'delete-user' user.id %}" class="mb-0" style="display: inline-block" method='POST'>
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-danger ms-auto btn-sm" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this user/account ?');">
+                  <button type="submit" class="btn btn-danger ms-auto btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" style="border-color: black" onClick="return confirm('Are you sure Do you want to delete this user/account ?');">
                     <span class="iconify" data-icon="ant-design:delete-filled" data-width="17" data-height="18"></span>
                   </button>
                 </form>
-                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black" onClick="window.location.href='{% url 'admin-assigned' user.usr_id %}'">
+                <button type="button" class="btn btn-secondary ms-auto btn-sm" style="border-color: black" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Assign Students" onClick="window.location.href='{% url 'admin-assigned' user.usr_id %}'">
                   <span class="iconify" data-icon="clarity:assign-user-solid" data-width="18" data-height="18"></span>
                 </button>
               </td>

@@ -38,7 +38,7 @@
 
           <!--Student Image-->
           <div class="col-lg-2 col-md-12 col-sm-12 d-flex align-items-center justify-content-center">
-            <img src="{{user.profile_img.url}}" style="max-width: 157px" class="stu-image" alt="hero">
+            <img src="{{user.profile_img.url}}" class="stu-image" alt="hero">          
           </div>
 
           <!-- Student Info -->
@@ -67,7 +67,8 @@
     <!-- Graph-->
     <section class="graphs d-flex align-items-center justify-content-evenly flex-column flex-md-row flex-wrap">
       {% for semyear,subcodes in chartdict.items %}
-      <span>
+      <span class="pt-2">
+        <h5 class="h4 d-flex justify-content-center" style="font-size: 16px"><b>{{semyear}}</b></h5>
         <canvas id="donut-{{semyear}}"></canvas>
         <canvas id="bar-{{semyear}}"></canvas>
       </span>
@@ -75,7 +76,7 @@
     </section>
 
     <!-- Session Records Button -->
-    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-4 custom-btn" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button">
+    <button type="button" class="btn btn-sm ms-auto select-btn d-flex align-items-center justify-content-center mt-2 custom-btn" onclick="window.location.href = '{% url 'student-meeting-records' %}';" type="button">
       <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
       Session Records
     </button>
