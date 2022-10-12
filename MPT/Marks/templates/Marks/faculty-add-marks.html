@@ -24,14 +24,14 @@
     <div class="row">
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
-          <input type="text" name='sCode' class="form-control" id="inputScode" placeholder="Subject Code" value=''>
+          <input type="text" name='sCode' class="form-control" id="inputScode" placeholder="Subject Code" value='' required >
           <label for="inputFname">Subject Code</label>
         </div>
       </div>
 
-      <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+      <div class="col-6 full-width-sm" style="display: flex; justify-content: center;" >
         <div class="form-group form-floating col-md-10">
-          <select id="inputSemester" class="form-select" name="semester">
+          <select id="inputSemester" class="form-select" name="semester" required>
             <option>I</option>
             <option>II</option>
             <option>III</option>
@@ -50,7 +50,7 @@
     <div class="row">
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
-          <select id="inputYear" class="form-select" name="year">
+          <select id="inputYear" class="form-select" name="year" required>
             <option>FE</option>
             <option>SE</option>
             <option>TE</option>
@@ -62,7 +62,7 @@
 
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
-          <select id="inputExam" class="form-select" name="exam">
+          <select id="inputExam" class="form-select" name="exam" required>
             <option>IA1</option>
             <option>IA2</option>
             <option>ESE</option>
@@ -76,7 +76,7 @@
     <div class="row">
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks" min="0" max="100">
+          <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks" min="0" max="100" required>
           <label for="inputMarks">Marks</label>
         </div>
       </div>

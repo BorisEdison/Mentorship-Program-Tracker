@@ -194,7 +194,7 @@ class MentorProfile(models.Model):
     mother_tongue = models.CharField(max_length=50, null=True)
     qualification = models.CharField(max_length=50, null=True)
     DateofJoining = models.DateField(max_length=50, null=True)
-    meeting_link = models.URLField(null=True, blank=True)
+    # meeting_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return str(self.user.email)

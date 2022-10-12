@@ -17,7 +17,7 @@
         <h5>New Announcement</h5>
       </div>
 
-      <form method="POST">
+      <form method="POST" onsubmit="post.disabled = true; return true;">
         {% csrf_token %}
 
         <div class="m-5 mt-4">
@@ -52,7 +52,7 @@
           </div>
 
           <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
-            <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+            <button type="submit" name='post' class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #112D4E; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
               Post
             </button>
           </div>

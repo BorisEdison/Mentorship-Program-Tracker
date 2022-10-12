@@ -17,7 +17,7 @@ class AcademicScores(models.Model):
     sub_name = models.CharField(max_length=50, blank=True, null=True)
     exam = models.CharField(max_length=20,blank=True,null=True,choices=exam_choices,default=1)
     marks = models.IntegerField(default=0)
-    outof = models.IntegerField(default=100)
+    outof = models.IntegerField(default=80)
 
     class Meta():
         unique_together = [['student','sem','exam','sub_code']]

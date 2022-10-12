@@ -19,7 +19,7 @@
         <strong>{{user.first_name}} {{user.last_name}} </strong>
       </p>
 
-      <form method="POST" class="align-items-center justify-content-center" action="{% url 'update-user' user.usr_id %}" enctype="multipart/form-data">
+      <form method="POST" class="align-items-center justify-content-center" action="{% url 'update-user' user.usr_id %}" enctype="multipart/form-data" onsubmit="update.disabled = true; return true;">
         {% csrf_token %}
         <!--Edit Student Details-->
         <div class="align-items-center justify-content-center">
@@ -272,7 +272,7 @@
         <!-- buttons -->
         <div class="d-flex align-items-center justify-content-center m-3">
 
-          <button type="submit" class="btn btn-sm update-btn ms-auto" style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
+          <button type="submit" class="btn btn-sm update-btn ms-auto"  name='update' style="width: auto; border-radius: 7px; background-color: #018383; color: white; box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);">
             UPDATE PROFILE
           </button>
 

@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import *
+from FacultyDashboard.models import *
 from accounts.models import *
 from django.core.mail import send_mail
 from MPT import settings    
@@ -78,6 +79,9 @@ def deleteAnnouncement(request, id):
 def studentAnnouncement(request):
     if not request.user.is_staff:
         AnnouncementReceiver.objects.filter(receiver=request.user, is_read=False).update(is_read=True)
-        return render(request, 'Announcement/student-announcement.html')
+        unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
+        student = get_object_or_404(StudentProfile, user = request.user)    
+        unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
+        return render(request, 'Announcement/student-announcement.html',{'unread_announcements':unread_announcements,'unseen_meetings':unseen_meetings})
     else:
         raise Http404("You are not allowed to access this page")

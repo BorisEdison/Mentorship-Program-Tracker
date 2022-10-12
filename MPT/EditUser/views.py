@@ -33,7 +33,8 @@ studentcontext={
                 'FE',
                 'SE',
                 'TE',
-                'BE'
+                'BE',
+                'Graduated',
             ],
             'qualification_list': [
                 'No formal education',
@@ -104,13 +105,13 @@ def edit(request):
             Qualification = request.POST['Quali']
             Teacherid = request.POST['usr_id']
             city= request.POST['city']
-            try:
-                if request.POST['link'] :
-                    meet_link = request.POST['link']
-                    print('this is meet link',meet_link)
-                    profile.meeting_link = meet_link
-            except:
-                pass
+            # try:
+            #     if request.POST['link'] :
+            #         meet_link = request.POST['link']
+            #         print('this is meet link',meet_link)
+            #         profile.meeting_link = meet_link
+            # except:
+            #     pass
             try:
                 if request.POST['dept'] :
                     department = request.POST['dept']
@@ -192,7 +193,7 @@ def edit(request):
             'extraCurr':extraCurr,
             'Medical':Medical,
             'unread_announcement':unread_announcements,
-            'unseen_meeting':unseen_meetings,
+            'unseen_meetings':unseen_meetings,
             }
         context.update(studentcontext)
         if request.method == "POST":

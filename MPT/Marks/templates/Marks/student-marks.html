@@ -37,10 +37,12 @@
       <thead>
         <tr>
           <th scope="col" class="px-2 py-1 text-center">Subject Code</th>
+          <th scope="col" class="px-2 py-1 text-center">Subject Name</th>
           <th scope="col" class="px-2 py-1 text-center">Sem</th>
           <th scope="col" class="px-2 py-1 text-center">Year</th>
           <th scope="col" class="px-2 py-1 text-center">Exam</th>
-          <th scope="col" class="px-2 py-1 text-center">Marks</th>
+          <th scope="col" class="px-2 py-1 text-center">Marks Received</th>
+          <th scope="col" class="px-2 py-1 text-center">Total Marks</th>
           <th scope="col" class="px-2 py-1 text-center">Actions</th>
         </tr>
       </thead>
@@ -48,10 +50,12 @@
         {% for mark in marks %}
         <tr>
           <th scope="row" class="px-2 py-1 text-center">{{mark.sub_code}}</th>
+          <th scope="row" class="px-2 py-1 text-center">{{mark.sub_name}}</th>
           <td class="px-2 py-1 text-center">{{mark.sem}}</td>
           <td class="px-2 py-1 text-center">{{mark.academicYear}}</td>
           <td class="px-2 py-1 text-center">{{mark.exam}}</td>
           <td class="px-2 py-1 text-center">{{mark.marks}}</td>
+          <td class="px-2 py-1 text-center">{{mark.outof}}</td>
           <td class="px-2 py-1 text-center">
             <button type="button" class="btn btn-info ms-auto btn-sm" style="border-color: black" onclick="window.location.href = '{% url 'studentEditMarks' student.user.usr_id mark.id %}';">
               <span class="iconify" data-icon="bxs:edit" data-width="18" data-height="18"></span>

@@ -38,7 +38,7 @@ def studentMarks(request, pk):
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
     unseen_meetings=Meeting.objects.filter(Receiver=student,is_read=False).count()
-    marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
+    marks = AcademicScores.objects.filter(student = student).order_by('sub_code','-exam').values()
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student, 'unread_announcement':unread_announcements,'unseen_meetings':unseen_meetings}
     context.update(marks_context)
     return render(request, 'Marks/student-marks.html', context)
@@ -54,16 +54,19 @@ def studentAddMarks(request, pk):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
+        outof = request.POST['totalMarks']
 
-        try:
-            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
-        except:
-            # give error message
-            return render(request, 'Marks/student-marks-add.html', context)
+        if outof >= marks:
+            try:
+                AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode ,sub_name=sname, exam = exam , marks = marks, outof = outof)
+            except:
+                # give error message
+                return render(request, 'Marks/student-marks-add.html', context)
 
         return redirect('studentMarks', pk = pk)
 
@@ -82,23 +85,29 @@ def studentEditMarks(request, pk,id):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            Edit = AcademicScores.objects.get(id = id)
-            Edit.student = student
-            Edit.academicYear = year
-            Edit.sem = sem
-            Edit.sub_code = scode
-            Edit.exam = exam
-            Edit.marks = marks
-            Edit.save()
-        except:
-            # give error message
-            pass
-        return redirect('studentMarks', pk = pk)
+        outof = request.POST['totalMarks']
+        
+        if outof >= marks:
+            try:
+                Edit = AcademicScores.objects.get(id = id)
+                Edit.student = student
+                Edit.academicYear = year
+                Edit.sem = sem
+                Edit.sub_code = scode
+                Edit.sub_name = sname
+                Edit.exam = exam
+                Edit.marks = marks
+                Edit.outof = outof
+                Edit.save()
+            except:
+                # give error message
+                pass
+            return redirect('studentMarks', pk = pk)
 
     return render(request, 'Marks/student-edit-marks.html', context)
 
@@ -137,7 +146,6 @@ def studentAddCGPA(request,pk):
             pass
         try:
             if request.POST['SemIII']:
-                print('sem3')
                 sem3=request.POST['SemIII']
                 cgpa.semIII=sem3
         except:
@@ -182,7 +190,7 @@ def facultyStudentMarks(request,stu_pk):
     user = User.objects.get(usr_id=stu_pk)
     unread_announcements=AnnouncementReceiver.objects.filter(receiver=request.user,is_read=False).count()
     student = get_object_or_404(StudentProfile, user = user)    
-    marks = AcademicScores.objects.filter(student = student).order_by('sub_code').values()
+    marks = AcademicScores.objects.filter(student = student).order_by('sub_code','-exam').values()
     
     context = {'title': 'studentmarks', 'marks' : marks, 'student' : student, 'unread_announcement':unread_announcements}
     context.update(marks_context)
@@ -200,23 +208,28 @@ def facultyEditMarks(request, stu_pk, id):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            Edit = AcademicScores.objects.get(id = id)
-            Edit.student = student
-            Edit.academicYear = year
-            Edit.sem = sem
-            Edit.sub_code = scode
-            Edit.exam = exam
-            Edit.marks = marks
-            Edit.save()      
-        except:
-            pass  
+        outof = request.POST['totalMarks']
 
-        return redirect('facultyStudentMarks', stu_pk = stu_pk)
+        if outof >= marks:
+            try:
+                Edit = AcademicScores.objects.get(id = id)
+                Edit.student = student
+                Edit.academicYear = year
+                Edit.sem = sem
+                Edit.sub_code = scode
+                Edit.exam = exam
+                Edit.marks = marks
+                Edit.outof = outof
+                Edit.save()      
+            except:
+                pass  
+
+            return redirect('facultyStudentMarks', stu_pk = stu_pk)
 
     return render(request, 'Marks/faculty-edit-marks.html', context)
 
@@ -228,16 +241,20 @@ def facultyAddMarks(request,stu_pk):
 
     if request.method == 'POST':
         scode = request.POST['sCode']
+        sname = request.POST['sName']
         sem = request.POST['semester']
         year = request.POST['year']
         exam = request.POST['exam']
         marks = request.POST['marks']
-        try:
-            AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode , exam = exam , marks = marks)
-        except:
-            # give error message
-            return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
-        return redirect('facultyStudentMarks', stu_pk = user.usr_id)
+        outof = request.POST['totalMarks']
+
+        if outof >= marks:
+            try:
+                AcademicScores.objects.get_or_create(student =student, academicYear = year , sem = sem , sub_code = scode ,sub_name=sname, exam = exam , marks = marks, outof = outof)
+            except:
+                # give error message
+                return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
+            return redirect('facultyStudentMarks', stu_pk = user.usr_id)
 
     return render(request, 'Marks/faculty-add-marks.html', {'unread_announcement':unread_announcements})
     
@@ -275,7 +292,6 @@ def facultyAddCGPA(request,stu_pk):
             pass
         try:
             if request.POST['SemIII']:
-                print('sem3')
                 sem3=request.POST['SemIII']
                 cgpa.semIII=sem3
         except:
