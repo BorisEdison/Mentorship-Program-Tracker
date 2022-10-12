@@ -29,6 +29,17 @@
         </div>
       </div>
 
+      <div class="col-6 full-width-sm d-flex justify-content-center">
+        <div class="form-group form-floating col-md-10">
+          <input type="text" name='sName' class="form-control" id="inputSname" placeholder="Subject Name" value='{{mark.sub_name}}'  required>
+          <label for="inputSname">Subject Name</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row  -->
+    <div class="row pt-3">
+
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
           <select id="inputSemester" class="form-select" name="semester">
@@ -48,10 +59,7 @@
           <label for="inputSemester">Semester</label> <br>
         </div>
       </div>
-    </div>
 
-    <!-- Second Row  -->
-    <div class="row">
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
           <select id="inputYear" class="form-select" name="year">
@@ -72,6 +80,11 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Third Row  -->
+    <div class="row">
+
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
           <select id="inputExam" class="form-select" name="exam">
@@ -91,17 +104,26 @@
           <label for="inputExam">Exam</label> <br>
         </div>
       </div>
-    </div>
 
-    <!-- Third Row  -->
-    <div class="row">
       <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
         <div class="form-group form-floating col-md-10">
-          <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks" value='{{mark.marks}}' min="0" max="100">
-          <label for="inputMarks">Marks</label>
+          <input type="number" name='marks' class="form-control" id="inputMarks" placeholder="Marks Obtained" value='{{mark.marks}}' min="0" max="100">
+          <label for="inputMarks">Marks Obtained</label>
         </div>
       </div>
 
+    </div>
+
+    <!-- Forth Row  -->
+    <div class="row">
+
+      <div class="col-6 full-width-sm" style="display: flex; justify-content: center;">
+        <div class="form-group form-floating col-md-10">
+          <input type="number" name='totalMarks' class="form-control" id="inputTotalMarks" value='{{mark.outof}}'  placeholder="Out Of" min="0" max="100" required>
+          <label for="inputTotalMarks">Out Of</label>
+        </div>
+      </div>
+      
     </div>
 
     <!-- buttons -->

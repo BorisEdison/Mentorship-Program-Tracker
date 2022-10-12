@@ -163,6 +163,16 @@
   border-radius: 10px !important;
 }
 
+/* Graph */
+.graphs > span {
+  max-width: 350px;
+}
+
+.graphs > span > canvas {
+  width:500px; 
+  height:250px;
+}
+
 /* Media query */
 /* Student grid */
 @media (max-width: 9000px) {
