@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from accounts.models import StudentProfile, MentorProfile
 from accounts.models import User
 from django.contrib.auth.decorators import login_required
-
+import phonenumbers
 # from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.core.mail import send_mail
@@ -52,25 +52,28 @@ def StudentRegister(request):
                 return render(request, 'Register/register.html',context)
 
             else: 
-                user= User.objects.create_user(usr_id = usrID, email=email, password= password1, is_active=False, first_name=fname, last_name=Lname,phone=phone)
-                user.save()
-                current_site= get_current_site(request)
-                mail_subject= 'Activate your account.'
-                message= render_to_string('Register/acc_activate_email.html', {
-                    'user': user,
-                    'domain': current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'token': account_activation_token.make_token(user),
-                })
-                to_email= email
-                try:
-                    send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
-                    messages.success(request, "link has been send to your email id.Please confirm your email address to complete the registration.")
-                    return redirect('/')
-                except:
-                    messages.info(request, 'Error Occured In Sending Mail, Try Again ')
-                    return redirect('/')
- 
+                if phonenumbers.is_valid_number(phonenumbers.parse(phone, "IN")):
+                    user= User.objects.create_user(usr_id = usrID, email=email, password= password1, is_active=False, first_name=fname, last_name=Lname,phone=phone)
+                    user.save()
+                    current_site= get_current_site(request)
+                    mail_subject= 'Activate your account.'
+                    message= render_to_string('Register/acc_activate_email.html', {
+                        'user': user,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': account_activation_token.make_token(user),
+                    })
+                    to_email= email
+                    try:
+                        send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
+                        messages.success(request, "link has been send to your email id.Please confirm your email address to complete the registration.")
+                        return redirect('/')
+                    except:
+                        messages.info(request, 'Error Occured In Sending Mail, Try Again ')
+                        return redirect('/')
+                else:
+                    messages.info(request, 'Invalid Phone Number')
+                    return render(request, 'Register/register.html',context)
         else: 
             if password1!=password2:
                 messages.info(request, "Password does not match")

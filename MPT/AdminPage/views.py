@@ -18,7 +18,7 @@ from MPT import settings
 from django.http import Http404
 from django.template.loader import render_to_string
 import datetime
-
+import phonenumbers
 
 # student dashboard view
 
@@ -179,11 +179,12 @@ def updateuserprofile(request,usr_id):
                             user.is_staff = False
                 except:
                     pass
+                if phonenumbers.is_valid_number(phonenumbers.parse(phone, "IN")):
+                    user.phone = phone
                 user.first_name = fName
                 user.usr_id= stuid
                 user.middle_name=Mname
                 user.last_name = Lname
-                user.phone = phone
                 user.save()
 
                 profile.Address= Addr
@@ -311,11 +312,12 @@ def updateuserprofile(request,usr_id):
                             user.is_staff = False
                 except:
                     pass
+                if phonenumbers.is_valid_number(phonenumbers.parse(phone, "IN")):
+                    user.phone = phone
                 user.first_name = fName
                 user.usr_id= Teacherid
                 user.middle_name=Mname
                 user.last_name = Lname
-                user.phone = phone
                 user.save()
                 
                 profile.City = city

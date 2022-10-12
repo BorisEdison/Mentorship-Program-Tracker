@@ -11,6 +11,7 @@ from django.contrib.auth.forms import UserChangeForm
 from accounts.models import StudentProfile, User, MentorProfile, StudentDetails, StudentHobbies,GuardianDetails,StudentExtraCurricular,StudentMedicalReport
 from Announcement.models import *
 from FacultyDashboard.models import *
+import phonenumbers
 
 studentcontext={
             'department_list': [
@@ -155,11 +156,12 @@ def edit(request):
             except:
                 pass
         
+            if phonenumbers.is_valid_number(phonenumbers.parse(phone, "IN")):
+                user.phone = phone
             user.first_name = fName
             user.usr_id= Teacherid
             user.middle_name=Mname
             user.last_name = Lname
-            user.phone = phone
             user.save()
             
             profile.City = city
@@ -320,11 +322,13 @@ def edit(request):
                     user.profile_img = profile_img
             except:
                 pass
+            
+            if phonenumbers.is_valid_number(phonenumbers.parse(phone, "IN")):
+                user.phone = phone
             user.first_name = fName
             # user.usr_id= stuid
             user.middle_name=Mname
             user.last_name = Lname
-            user.phone = phone
             user.save()
 
             profile.Address= Addr
