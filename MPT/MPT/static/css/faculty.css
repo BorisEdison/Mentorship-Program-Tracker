@@ -1,3 +1,14 @@
+/* sidebar */
+.sidebar {
+  background-color: var(--content-bg);
+  border-radius: 13px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin-top: 5.5vh;
+}
+.dashboard-navigation {
+  padding-right: 0;
+}
+
 /* Meetings Modal */
 .modal-body {
   padding: 0;
@@ -8,14 +19,14 @@
 
 /* Nav Pill */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-  background-color: var(--navbar-bg);
+  background-color: var(--btn-bg);
   color: var(--text-component);
 }
 .nav-pills-link {
-  color: var(--navbar-bg);
+  color: var(--btn-bg);
 }
 
-/* Nav Tab */
+/* Nav-Tab */
 .nav-link {
   color: var(--navbar-bg);
 }
@@ -32,18 +43,6 @@
 /* table */
 .table-div {
   overflow-x: auto;
-}
-
-/* sidebar */
-.sidebar {
-  background-color: var(--content-bg);
-  border-radius: 13px;
-  /* box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5); */
-  margin: 10px 0;
-  margin-top: 5.5vh;
-}
-.dashboard-navigation {
-  padding-right: 0;
 }
 
 /* student profile grid */
@@ -87,7 +86,7 @@
   border-radius: 10px;
   transform: scale(0.8);
   transition: all 200ms;
-  /*box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.5);*/
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .grd-overlay {
   position: absolute;
@@ -146,12 +145,22 @@
   display: block;
   border: none;
   border-radius: 10px;
-  height: 22vh; 
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  max-height: 24vh !important; 
+  max-width: 11vw !important; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+.scrollspy-example {
+  position: relative;
+  height: 250px;
+  overflow: auto;
 }
 .accordion-item,
 .accordion-button{
   background-color: var(--body-bg);
+}
+.accordion{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+  border-radius: 10px !important;
 }
 
 /* Media query */
