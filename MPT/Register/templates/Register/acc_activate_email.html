@@ -1,8 +1,10 @@
 {% autoescape off %}
-Hi {{ user.first_name }} {{ user.last_name }} ,
-Thanks for signing up for Mentorship Program Tracker,
+Hello {{ user.first_name }} {{ user.last_name }},
 
-To set up your account, Please click on the link to confirm your registration,
+Somebody just used this email address to sign up at Mentorship Program Tracker,
+
+If this was you, verify your email by clicking on the link below:
+
 http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
 
 Thanks for using our site!

@@ -66,7 +66,7 @@ def StudentRegister(request):
                     to_email= email
                     try:
                         send_mail(subject=mail_subject,message= message, from_email= settings.EMAIL_HOST_USER,recipient_list= [to_email], fail_silently=False)
-                        messages.success(request, "link has been send to your email id.Please confirm your email address to complete the registration.")
+                        messages.success(request, "Account Activation link has been sent to your inbox")
                         return redirect('/')
                     except:
                         messages.info(request, 'Error Occured In Sending Mail, Try Again ')
@@ -91,7 +91,7 @@ def activate(request,uidb64,token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active= True
         user.save()
-        messages.success(request, "Thank you for your email confirmation. Now you can login your account.")
+        messages.success(request, "Your email address is now verified!!!")
         return redirect('/')
 
 # Faculty Registration
