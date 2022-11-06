@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block dashboardButton %}
-<button class="nav-link active nav-pills-link" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+<button class="nav-link active nav-pills-link text-left d-flex align-items-center" id="dashboard-tab" onClick="window.location.href='{% url 'student' request.user.usr_id %}';" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
   aria-selected="true">
   <span class="iconify" data-icon="ci:dashboard" data-width="20" data-height="20"></span>
-  Dashboard
+  &nbsp;Dashboard
 </button>
 {% endblock %}
 
 {% block editButton %}
-<button class="nav-link nav-pills-link" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
+<button class="nav-link nav-pills-link text-left d-flex align-items-center" id="edit-tab" onclick="window.location.href = '{% url 'Edit' %}';" data-bs-toggle="pill" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false">
   <span class="iconify" data-icon="akar-icons:edit" data-width="20" data-height="20"></span>
-  Edit Profile
+  &nbsp;Edit Profile
 </button>
 {% endblock %}
 
