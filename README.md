@@ -83,8 +83,8 @@ Run Django Server:
 
 `python manage.py runserver`
 
-# Deployement  <a id="deployement"></a>
-How To Deploy Django App with Nginx, Gunicorn, PostgreSQL and Let’s Encrypt SSL on Ubuntu - [Link](https://djangocentral.com/deploy-django-with-nginx-gunicorn-postgresql-and-lets-encrypt-ssl-on-ubuntu/)
+# Deployment  <a id="deployement"></a>
+How To Deploy Django App with Nginx, Gunicorn, PostgreSQL and Let’s Encrypt SSL on Ubuntu - [Link](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04)
 
 # License  <a id="license"></a>
 
