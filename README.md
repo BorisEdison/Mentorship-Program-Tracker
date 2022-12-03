@@ -1,9 +1,39 @@
-# mentoring-program-tracker
- A website for tracking all the progress in the student-teacher mentoring program
+<p align="center">
+  <a href="https://mpt.borisedison.in/">
+    <img alt="babel" src="MPT/MPT/static/content/favicon.png" width="300">
+  </a>
+</p>
 
-<strong>Project [template](https://www.figma.com/file/haofGDovUBBTcLC6TTpRqT/mentoring-project-tracking-app?node-id=65%3A91)</strong> made using Figma
+# What is MPT?  <a id="what"></a>
+Mentorship Program Tracker aims to make tracking the progress of the mentees easier and digital for all educational institutions. We started by making the [design](https://www.figma.com/file/haofGDovUBBTcLC6TTpRqT/mentoring-project-tracking-app?node-id=65%3A91) using an online designing tool called Figma while the frontend of the project is made using HTML, CSS, Bootstrap, and Javascript. All of these combined are used to make a basic functional and responsive website. The website features a sign in and sign up page, the faculty , admin and student dashboards, student profiles, meeting scheduling, details regarding meetings and activity logs. We Later made the Database [Schema](https://drawsql.app/teams/student-599/diagrams/mpt-db-schema) using the tool drawSQL The backend is made using Django, an open-source python web framework used for rapid development, pragmatic, maintainable, clean design, and secure websites. It provides an inbuilt admin page with logs and user lists for ease of access to the user with admin role. Roles can be assigned by the admin to give different views to the users
 
-## Getting Started  <a id="gettingstarted"></a>
+## Roles
+- Admin
+
+    - Give staff status i.e. Faculty/Mentor status
+    - View and edit info of all the registered users
+    - Assign students to their respective mentors
+    - Send announcements to selected users
+    - View all scheduled or previous meetings
+
+
+- Faculty
+    - View all the assigned mentees on the dashboard
+    - View and edit personal & academic mentee details
+    - Send announcements to selected mentees
+    - Schedule meeting with selected mentees
+
+- Student
+    - View and edit personal & academic details
+    - View the announcements send by the mentor
+    - Get update of the meetings scheduled by the mentor
+
+# Contribute  <a id="contribute"></a>
+Contributions are welcome, and they are greatly appreciated! Every little bit helps, and credit will always be given.
+
+Please star the repo and feel free to make pull requests.
+
+## Not sure where to start?  <a id="wheretostart"></a>
 
 #### Step 1:
 
@@ -52,3 +82,10 @@ Install Requirements Packages:
 Run Django Server:
 
 `python manage.py runserver`
+
+# Deployement  <a id="deployement"></a>
+How To Deploy Django App with Nginx, Gunicorn, PostgreSQL and Let’s Encrypt SSL on Ubuntu - [Link](https://djangocentral.com/deploy-django-with-nginx-gunicorn-postgresql-and-lets-encrypt-ssl-on-ubuntu/)
+
+# License  <a id="license"></a>
+
+[MIT](https://github.com/BorisEdison/mentorship-program-tracker/blob/main/LICENSE.txt)
