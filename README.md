@@ -40,7 +40,7 @@ Please star the repo and feel free to make pull requests.
 Download or clone this repository by using the command given below:
 
 `
-git clone https://github.com/05Alston/mentoring-program-tracker.git
+git clone https://github.com/BorisEdison/MPT.git
 `
 
 #### Step 2:
@@ -88,4 +88,4 @@ How To Deploy Django App with Nginx, Gunicorn, PostgreSQL and Let’s Encrypt SS
 
 # License  <a id="license"></a>
 
-[MIT](https://github.com/BorisEdison/mentorship-program-tracker/blob/main/LICENSE.txt)
+[MIT](https://github.com/BorisEdison/MPT/blob/main/LICENSE.txt)
